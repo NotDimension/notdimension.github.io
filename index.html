@@ -205,22 +205,15 @@
 
 </main>
 
-<!-- View Counter -->
-<div id="view-counter" class="fixed bottom-2 left-2 text-sm text-gray-300 bg-gray-800/50 p-2 rounded z-50">
-  Views: <span id="view-count">0</span>
-</div>
-
 <custom-footer></custom-footer>
 
 <script src="components/navbar.js"></script>
 <script src="components/footer.js"></script>
 <script src="script.js"></script>
-
 <script>
-document.addEventListener("DOMContentLoaded", async () => {
   feather.replace();
 
-  // Discord Icons
+  // fetch Discord icons
   async function fetchDiscordIcon(inviteCode, elementId){
     try{
       const response = await fetch(`https://discord.com/api/v9/invites/${inviteCode}?with_counts=true&with_expiration=true`);
@@ -243,7 +236,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   fetchDiscordIcon('sfSnvmtFfA','shatter-icon');
   fetchDiscordIcon('YYwWMXxKAz','nebular-icon');
 
-  // VANTA Globe (optional)
+  // VANTA background (if you have #vanta-bg)
   if(document.getElementById('vanta-bg')){
     VANTA.GLOBE({
       el: "#vanta-bg",
@@ -255,22 +248,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       scaleMobile: 1.00
     });
   }
-
-  // View counter
-  const counterEl = document.getElementById('view-count');
-  const COUNTER_SLUG = 'first-counter-1511';
-  if(counterEl){
-    try{
-      const res = await fetch(`https://api.counterapi.dev/up/${encodeURIComponent(COUNTER_SLUG)}`);
-      const data = await res.json();
-      counterEl.textContent = (data && typeof data.value === 'number') ? data.value : '—';
-    }catch(err){
-      console.error('CounterAPI error:', err);
-      counterEl.textContent = '—';
-    }
-  }
-});
 </script>
-
 </body>
 </html>
+
