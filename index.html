@@ -11,7 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
-<body class="bg-gray-900 text-gray-100 min-h-screen">
+<body class="bg-gray-900 text-gray-100 min-h-screen relative">
 
 <!-- Background video -->
 <div class="fixed inset-0 z-0 overflow-hidden">
@@ -80,11 +80,10 @@
             </a>
         </div>
 
-        <!-- Added: SMP Finder moved to Current Roles as Helper -->
         <div class="bg-gray-800/50 p-4 rounded-lg hover:bg-gray-700/50 transition">
             <img id="smpfinder-icon" class="w-16 h-16 rounded-full mb-2 mx-auto" alt="SMP Finder">
             <h3 class="text-xl font-semibold mb-2 text-center">SMP Finder</h3>
-            <p class="text-green-300 mb-2 text-center">Helper (23k members)</p>
+            <p class="text-green-300 mb-2 text-center">Reinstated (23k members)</p>
             <a href="https://discord.gg/cuP8bPZgYv" class="text-blue-400 hover:underline flex items-center justify-center" target="_blank">
                 <i data-feather="link" class="mr-1 w-4 h-4"></i> Discord
             </a>
@@ -207,7 +206,11 @@
 
 </main>
 
+<!-- Footer with view counter -->
 <custom-footer></custom-footer>
+<div id="view-counter" class="fixed bottom-4 left-4 bg-gray-800/70 text-green-300 px-3 py-1 rounded-lg text-sm shadow-lg">
+    Views: <span id="views">0</span>
+</div>
 
 <script src="components/navbar.js"></script>
 <script src="components/footer.js"></script>
@@ -233,15 +236,15 @@ async function fetchDiscordIcon(inviteCode, elementId){
 fetchDiscordIcon('cVBDxNxP5c','prism-icon');
 fetchDiscordIcon('py7ZGUJKmt','lunex-icon');
 fetchDiscordIcon('YEgAUe8UMp','ocean-icon');
-fetchDiscordIcon('cuP8bPZgYv','smpfinder-icon'); // moved to Current Roles
+fetchDiscordIcon('cuP8bPZgYv','smpfinder-icon');
 
 // Previous roles
-fetchDiscordIcon('nGVcVzK6','steaky-icon'); // updated Steaky link
+fetchDiscordIcon('nGVcVzK6','steaky-icon');
 fetchDiscordIcon('cnDtF5w7VN','verged-icon');
 fetchDiscordIcon('sfSnvmtFfA','shatter-icon');
-fetchDiscordIcon('YYwWMXxKAz','nebular-icon'); // updated Nebular link
+fetchDiscordIcon('YYwWMXxKAz','nebular-icon');
 
-// VANTA background (optional)
+// VANTA background
 VANTA.GLOBE({
     el: "#vanta-bg",
     mouseControls: true,
@@ -251,6 +254,13 @@ VANTA.GLOBE({
     scale: 1.00,
     scaleMobile: 1.00
 });
+
+// Simple view counter using localStorage
+let views = localStorage.getItem('pageViews') || 0;
+views++;
+localStorage.setItem('pageViews', views);
+document.getElementById('views').textContent = views;
 </script>
 </body>
 </html>
+
