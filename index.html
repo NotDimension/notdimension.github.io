@@ -206,12 +206,13 @@
 
 </main>
 
-<!-- View Counter -->
+<!-- Footer -->
+<custom-footer></custom-footer>
+
+<!-- View Counter (bottom-left) -->
 <div id="view-counter" class="fixed bottom-4 left-4 bg-gray-800/50 p-2 rounded-lg text-green-400 shadow-lg">
     Views: <span id="views">0</span>
 </div>
-
-<custom-footer></custom-footer>
 
 <script src="components/navbar.js"></script>
 <script src="components/footer.js"></script>
@@ -237,15 +238,15 @@ async function fetchDiscordIcon(inviteCode, elementId){
 fetchDiscordIcon('cVBDxNxP5c','prism-icon');
 fetchDiscordIcon('py7ZGUJKmt','lunex-icon');
 fetchDiscordIcon('YEgAUe8UMp','ocean-icon');
-fetchDiscordIcon('cuP8bPZgYv','smpfinder-icon');
+fetchDiscordIcon('cuP8bPZgYv','smpfinder-icon'); // moved to Current Roles
 
 // Previous roles
-fetchDiscordIcon('nGVcVzK6','steaky-icon');
+fetchDiscordIcon('nGVcVzK6','steaky-icon'); // updated Steaky link
 fetchDiscordIcon('cnDtF5w7VN','verged-icon');
 fetchDiscordIcon('sfSnvmtFfA','shatter-icon');
-fetchDiscordIcon('YYwWMXxKAz','nebular-icon');
+fetchDiscordIcon('YYwWMXxKAz','nebular-icon'); // updated Nebular link
 
-// VANTA background
+// VANTA background (optional)
 VANTA.GLOBE({
     el: "#vanta-bg",
     mouseControls: true,
@@ -256,37 +257,27 @@ VANTA.GLOBE({
     scaleMobile: 1.00
 });
 
-// Unique view logic with 12-hour cooldown
-const VIEW_COOLDOWN = 12 * 60 * 60 * 1000; // 12 hours in ms
-let userId = localStorage.getItem('userId');
-if(!userId){
-    userId = crypto.randomUUID();
-    localStorage.setItem('userId', userId);
-}
-
-function sendView(){
-    fetch('/view', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ userId })
-    })
-    .then(res => res.json())
-    .then(data => { document.getElementById('views').textContent = data.count; });
-}
-
+// View Counter with 12-hour unique cooldown per browser
+const VIEW_COOLDOWN = 12 * 60 * 60 * 1000; // 12 hours
 const lastView = localStorage.getItem('lastViewTime');
 const now = Date.now();
+
+async function updateViews() {
+    const url = 'https://api.countapi.xyz/hit/notdimension/uniqueviews';
+    const response = await fetch(url);
+    const data = await response.json();
+    document.getElementById('views').textContent = data.value;
+}
+
+// Only increment if cooldown passed
 if(!lastView || now - lastView > VIEW_COOLDOWN){
-    sendView();
+    updateViews();
     localStorage.setItem('lastViewTime', now);
-}else{
-    fetch('/view-count')
-    .then(res => res.json())
-    .then(data => { document.getElementById('views').textContent = data.count; });
+} else {
+    fetch('https://api.countapi.xyz/get/notdimension/uniqueviews')
+        .then(res => res.json())
+        .then(data => document.getElementById('views').textContent = data.value);
 }
 </script>
-
 </body>
 </html>
-
-
