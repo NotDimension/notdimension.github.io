@@ -80,10 +80,11 @@
             </a>
         </div>
 
+        <!-- Added: SMP Finder moved to Current Roles as Helper -->
         <div class="bg-gray-800/50 p-4 rounded-lg hover:bg-gray-700/50 transition">
             <img id="smpfinder-icon" class="w-16 h-16 rounded-full mb-2 mx-auto" alt="SMP Finder">
             <h3 class="text-xl font-semibold mb-2 text-center">SMP Finder</h3>
-            <p class="text-green-300 mb-2 text-center">Reinstated</p>
+            <p class="text-green-300 mb-2 text-center">Helper (23k members)</p>
             <a href="https://discord.gg/cuP8bPZgYv" class="text-blue-400 hover:underline flex items-center justify-center" target="_blank">
                 <i data-feather="link" class="mr-1 w-4 h-4"></i> Discord
             </a>
@@ -204,13 +205,12 @@
     </div>
 </section>
 
-<!-- Website Views -->
-<section class="fixed bottom-4 left-4 bg-gray-800/50 p-3 rounded-lg shadow-lg flex items-center gap-2">
-    <span>🌐 Views: </span>
-    <span id="view-count">0</span>
-</section>
-
 </main>
+
+<!-- View Counter -->
+<div id="view-counter" class="fixed bottom-2 left-2 text-sm text-gray-300 bg-gray-800/50 p-2 rounded z-50">
+  Views: <span id="view-count">0</span>
+</div>
 
 <custom-footer></custom-footer>
 
@@ -238,15 +238,15 @@ async function fetchDiscordIcon(inviteCode, elementId){
 fetchDiscordIcon('cVBDxNxP5c','prism-icon');
 fetchDiscordIcon('py7ZGUJKmt','lunex-icon');
 fetchDiscordIcon('YEgAUe8UMp','ocean-icon');
-fetchDiscordIcon('cuP8bPZgYv','smpfinder-icon'); // moved to Current Roles
+fetchDiscordIcon('cuP8bPZgYv','smpfinder-icon');
 
 // Previous roles
-fetchDiscordIcon('nGVcVzK6','steaky-icon'); // updated Steaky link
+fetchDiscordIcon('nGVcVzK6','steaky-icon');
 fetchDiscordIcon('cnDtF5w7VN','verged-icon');
 fetchDiscordIcon('sfSnvmtFfA','shatter-icon');
-fetchDiscordIcon('YYwWMXxKAz','nebular-icon'); // updated Nebular link
+fetchDiscordIcon('YYwWMXxKAz','nebular-icon');
 
-// VANTA background (optional)
+// VANTA background
 VANTA.GLOBE({
     el: "#vanta-bg",
     mouseControls: true,
@@ -257,14 +257,14 @@ VANTA.GLOBE({
     scaleMobile: 1.00
 });
 
-// Website Views via CountAPI with 12-hour cooldown
-const namespace = "notdimension_site";
-const key = "unique_views_12h";
+// View counter with 12-hour cooldown
 const cooldown = 12 * 60 * 60 * 1000; // 12 hours
-
 function updateViewCount() {
     const now = Date.now();
     const lastVisit = localStorage.getItem('lastVisit') || 0;
+    const key = 'unique_views_12h';
+    const namespace = 'notdimension_site';
+    
     if(now - lastVisit > cooldown){
         fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
         .then(res => res.json())
@@ -274,7 +274,6 @@ function updateViewCount() {
         })
         .catch(console.error);
     } else {
-        // Show current value without increment
         fetch(`https://api.countapi.xyz/get/${namespace}/${key}`)
         .then(res => res.json())
         .then(data => {
@@ -288,4 +287,3 @@ updateViewCount();
 </script>
 </body>
 </html>
-
