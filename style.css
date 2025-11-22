@@ -12,11 +12,14 @@
     --color-olive-100: #d2e2d2;
     --color-olive-50: #e5f5e5;
 }
+
 body {
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    background: linear-gradient(135deg, var(--color-olive-900), var(--color-olive-700));
+    color: white; /* FIX: ensures text is visible */
 }
 
 /* Glass morphism effect */
@@ -26,6 +29,8 @@ body {
     -webkit-backdrop-filter: blur(16px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.125);
     transition: all 0.3s ease;
+    padding: 20px; /* FIX: so content does not collapse */
+    border-radius: 12px;
 }
 .frosted-glass:hover {
     transform: translateY(-5px);
@@ -37,7 +42,6 @@ body {
 .text-gradient-olive {
     background: linear-gradient(to right, #0F751C, #1DB954);
     -webkit-background-clip: text;
-    background-clip: text;
     color: transparent;
 }
 
