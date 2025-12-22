@@ -252,6 +252,54 @@
       scaleMobile: 1.00
     });
   }
+
+ 
+
+<audio id="bg-music" autoplay loop>
+  <source src="background.mp3" type="audio/mpeg">
+</audio>
+
+<button id="music-btn" onclick="toggleMusic()">⏸</button>
+
+<script>
+  const audio = document.getElementById("bg-music");
+  const btn = document.getElementById("music-btn");
+
+  audio.volume = 1.0;
+  audio.muted = false;
+
+  // force autoplay attempt
+  audio.play().catch(() => {
+    console.log("Autoplay blocked until interaction");
+  });
+
+  function toggleMusic() {
+    if (audio.paused) {
+      audio.play();
+      btn.textContent = "⏸";
+    } else {
+      audio.pause();
+      btn.textContent = "▶";
+    }
+  }
+</script>
+
+<style>
+  #music-btn {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 9999;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+</style> 
 </script>
 </body>
 </html>
+
