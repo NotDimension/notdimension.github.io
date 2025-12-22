@@ -252,36 +252,38 @@
       scaleMobile: 1.00
     });
   }
-
- 
-
-<audio id="bg-music" autoplay loop>
+<audio id="bgm" autoplay loop>
   <source src="background.mp3" type="audio/mpeg">
 </audio>
 
-<button id="music-btn" onclick="toggleMusic()">⏸</button>
+<button id="playBtn">▶</button>
+
+<style>
+  #playBtn {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 9999;
+  }
+</style>
 
 <script>
-  const audio = document.getElementById("bg-music");
-  const btn = document.getElementById("music-btn");
+  const audio = document.getElementById("bgm");
+  const btn = document.getElementById("playBtn");
 
-  audio.volume = 1.0;
-  audio.muted = false;
-
-  // force autoplay attempt
+  // attempt autoplay
+  audio.volume = 0.6;
   audio.play().catch(() => {
-    console.log("Autoplay blocked until interaction");
+    // browser blocked it, wait for click
   });
 
-  function toggleMusic() {
-    if (audio.paused) {
-      audio.play();
-      btn.textContent = "⏸";
-    } else {
-      audio.pause();
-      btn.textContent = "▶";
-    }
-  }
+  btn.onclick = () => {
+    audio.play();
+    btn.textContent = "⏸";
+  };
 </script>
 
 <style>
