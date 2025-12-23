@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | NotDimension</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body class="bg-[#0d0c0b] text-[#f0ebe7] min-h-screen relative">
+  <!-- Background video -->
+  <div class="fixed inset-0 z-[-10] overflow-hidden">
+    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+      <source src="background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
+    <div class="absolute inset-0 opacity-20" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMxMTExMTEiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')"></div>
+  </div>
+<custom-navbar></custom-navbar>
+
+<main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
+    <!-- Hero -->
+    <section class="text-center animate-fadeIn">
+        <h1 class="text-5xl font-bold mb-4 text-[#e0c8af] glow-text">Projects</h1>
+        <p class="text-xl text-[#f5efe9] max-w-3xl mx-auto">
+            A showcase of Minecraft server projects I’ve been involved with, along with personal creative work.
+        </p>
+    </section>
+    <!-- Live Projects -->
+    <section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-8 text-[#e0c8af] glow-text">Live Projects</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-[#1c1917]/60 p-6 rounded-xl hover:bg-[#262320]/70 transition">
+                <div class="flex items-center mb-4">
+                    <img src="images/icons/shady.png" alt="ShadySMP" class="w-12 h-12 rounded-full">
+                    <div class="ml-4">
+                        <h3 class="text-2xl font-semibold text-[#f5efe9]">ShadySMP</h3>
+                        <p class="text-[#d6bfa7]">Co‑Owner, Development & Staff Lead</p>
+                    </div>
+                </div>
+                <p class="text-[#f5efe9] mb-4">
+                    A community‑oriented SMP with custom plugins, events, and a growing player base.
+                </p>
+                <div class="flex justify-between">
+                    <span class="text-[#d6bfa7]">Status: <strong class="text-green-400">Active</strong></span>
+                    <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="flex items-center text-[#d6bfa7] hover:text-[#e0c8af]">
+                        <i data-feather="link" class="mr-1 w-4 h-4"></i> Discord
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-[#1c1917]/60 p-6 rounded-xl hover:bg-[#262320]/70 transition">
+                <div class="flex items-center mb-4">
+                    <img src="images/icons/smpfinder.png" alt="SMP Finder" class="w-12 h-12 rounded-full">
+                    <div class="ml-4">
+                        <h3 class="text-2xl font-semibold text-[#f5efe9]">SMP Finder</h3>
+                        <p class="text-[#d6bfa7]">Moderator & Community Manager</p>
+                    </div>
+                </div>
+                <p class="text-[#f5efe9] mb-4">
+                    A large Discord server helping players find and join SMPs. Managing rules & support.
+                </p>
+                <div class="flex justify-between">
+                    <span class="text-[#d6bfa7]">Status: <strong class="text-green-400">Active</strong></span>
+                    <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="flex items-center text-[#d6bfa7] hover:text-[#e0c8af]">
+                        <i data-feather="link" class="mr-1 w-4 h-4"></i> Discord
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-[#1c1917]/60 p-6 rounded-xl hover:bg-[#262320]/70 transition">
+                <div class="flex items-center mb-4">
+                    <img src="images/icons/collective.png" alt="Discord Collective" class="w-12 h-12 rounded-full">
+                    <div class="ml-4">
+                        <h3 class="text-2xl font-semibold text-[#f5efe9]">Discord Collective</h3>
+                        <p class="text-[#d6bfa7]">Manager & Community Organizer</p>
+                    </div>
+                </div>
+                <p class="text-[#f5efe9] mb-4">
+                    A collective of Discord server owners and managers sharing knowledge and resources.
+                </p>
+                <div class="flex justify-between">
+                    <span class="text-[#d6bfa7]">Status: <strong class="text-green-400">Active</strong></span>
+                    <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="flex items-center text-[#d6bfa7] hover:text-[#e0c8af]">
+                        <i data-feather="link" class="mr-1 w-4 h-4"></i> Discord
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Technical Creations -->
+    <section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-8 text-[#e0c8af] glow-text">Technical Creations</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-[#1c1917]/60 p-6 rounded-xl hover:bg-[#262320]/70 transition">
+                <div class="flex items-center mb-4">
+                    <i data-feather="code" class="text-[#d6bfa7] w-8 h-8 mr-3"></i>
+                    <h3 class="text-2xl font-semibold text-[#f5efe9]">Plugin Configurations</h3>
+                </div>
+                <p class="text-[#f5efe9] mb-4">
+                    Custom YAML & JSON configurations for plugins like EssentialsX, LuckPerms, and more.
+                </p>
+                <div class="flex">
+                    <span class="text-[#d6bfa7]">Examples: Economy, Ranks, Custom Items</span>
+                </div>
+            </div>
+
+            <div class="bg-[#1c1917]/60 p-6 rounded-xl hover:bg-[#262320]/70 transition">
+                <div class="flex items-center mb-4">
+                    <i data-feather="file-text" class="text-[#d6bfa7] w-8 h-8 mr-3"></i>
+                    <h3 class="text-2xl font-semibold text-[#f5efe9]">Custom Documentation</h3>
+                </div>
+                <p class="text-[#f5efe9] mb-4">
+                    Comprehensive server guides, staff handbooks, and community rules.
+                </p>
+                <div class="flex">
+                    <span class="text-[#d6bfa7]">Used in multiple SMPs and public servers</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Archived Projects -->
+    <section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-8 text-[#e0c8af] glow-text">Archived Projects</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-[#1c1917]/50 p-5 rounded-xl hover:bg-[#262320]/70 transition">
+                <h4 class="font-semibold text-[#f5efe9]">Prism SMP</h4>
+                <p class="text-sm text-[#d6bfa7]">Owner (700 members)</p>
+                <p class="text-xs text-[#f0ebe7] mt-2">Closed in early 2024</p>
+            </div>
+            <div class="bg-[#1c1917]/50 p-5 rounded-xl hover:bg-[#262320]/70 transition">
+                <h4 class="font-semibold text-[#f5efe9]">OceanMC</h4>
+                <p class="text-sm text-[#d6bfa7]">Owner (300 members)</p>
+                <p class="text-xs text-[#f0ebe7] mt-2">Closed in mid‑2023</p>
+            </div>
+            <div class="bg-[#1c1917]/50 p-5 rounded-xl hover:bg-[#262320]/70 transition">
+                <h4 class="font-semibold text-[#f5efe9]">SteakySMP</h4>
+                <p class="text-sm text-[#d6bfa7]">Co‑Owner (1.5k members)</p>
+                <p class="text-xs text-[#f0ebe7] mt-2">Closed in 2023</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<custom-footer></custom-footer>
+
+<script src="components/navbar.js"></script>
+<script src="components/footer.js"></script>
+<script src="script.js"></script>
+<script>
+    feather.replace();
+</script>
+</body>
+</html>
