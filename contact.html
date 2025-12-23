@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | NotDimension</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body class="bg-[#0d0c0b] text-[#f0ebe7] min-h-screen relative">
+  <!-- Background video -->
+  <div class="fixed inset-0 z-[-10] overflow-hidden">
+    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+      <source src="background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
+    <div class="absolute inset-0 opacity-20" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMxMTExMTEiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')"></div>
+  </div>
+<custom-navbar></custom-navbar>
+
+<main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
+    <!-- Hero -->
+    <section class="text-center animate-fadeIn">
+        <h1 class="text-5xl font-bold mb-4 text-[#e0c8af] glow-text">Contact</h1>
+        <p class="text-xl text-[#f5efe9] max-w-3xl mx-auto">
+            Get in touch via Discord for inquiries, collaborations, or just a friendly chat.
+        </p>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-8 text-[#e0c8af] glow-text">Ways to Reach Me</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-[#1c1917]/60 p-6 rounded-xl hover:bg-[#262320]/70 transition">
+                <div class="flex items-center mb-4">
+                    <i data-feather="message-circle" class="text-[#d6bfa7] w-8 h-8 mr-4"></i>
+                    <h3 class="text-2xl font-semibold text-[#f5efe9]">Discord</h3>
+                </div>
+                <p class="text-[#f5efe9] mb-4">
+                    The best way to contact me. I'm active daily and respond quickly.
+                </p>
+                <div class="flex items-center justify-between">
+                    <code class="text-lg bg-black/40 px-4 py-2 rounded text-[#d6bfa7]">notdimension</code>
+                    <a href="https://discord.com/users/753556348784083024" target="_blank" class="flex items-center text-[#d6bfa7] hover:text-[#e0c8af]">
+                        <i data-feather="external-link" class="mr-1 w-4 h-4"></i> Message
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-[#1c1917]/60 p-6 rounded-xl hover:bg-[#262320]/70 transition">
+                <div class="flex items-center mb-4">
+                    <i data-feather="mail" class="text-[#d6bfa7] w-8 h-8 mr-4"></i>
+                    <h3 class="text-2xl font-semibold text-[#f5efe9]">Email</h3>
+                </div>
+                <p class="text-[#f5efe9] mb-4">
+                    For formal communication, though responses may be slower.
+                </p>
+                <div class="flex items-center justify-between">
+                    <code class="text-lg bg-black/40 px-4 py-2 rounded text-[#d6bfa7]">contact@example.com</code>
+                    <a href="mailto:contact@example.com" class="flex items-center text-[#d6bfa7] hover:text-[#e0c8af]">
+                        <i data-feather="send" class="mr-1 w-4 h-4"></i> Send
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Servers -->
+    <section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-8 text-[#e0c8af] glow-text">Community Servers</h2>
+        <p class="text-[#f5efe9] text-lg mb-6">
+            I'm active in these Discord servers; feel free to join and ask if I'm around.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6">
+            <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="bg-[#1c1917]/50 p-5 rounded-xl hover:bg-[#262320]/70 transition flex flex-col items-center text-center">
+                <img src="images/icons/shady.png" alt="ShadySMP" class="w-16 h-16 rounded-full mb-3">
+                <h4 class="font-semibold text-[#f5efe9]">ShadySMP</h4>
+                <p class="text-sm text-[#d6bfa7]">Discord Server</p>
+            </a>
+            <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="bg-[#1c1917]/50 p-5 rounded-xl hover:bg-[#262320]/70 transition flex flex-col items-center text-center">
+                <img src="images/icons/smpfinder.png" alt="SMP Finder" class="w-16 h-16 rounded-full mb-3">
+                <h4 class="font-semibold text-[#f5efe9]">SMP Finder</h4>
+                <p class="text-sm text-[#d6bfa7]">Discord Server</p>
+            </a>
+            <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="bg-[#1c1917]/50 p-5 rounded-xl hover:bg-[#262320]/70 transition flex flex-col items-center text-center">
+                <img src="images/icons/collective.png" alt="Discord Collective" class="w-16 h-16 rounded-full mb-3">
+                <h4 class="font-semibold text-[#f5efe9]">Discord Collective</h4>
+                <p class="text-sm text-[#d6bfa7]">Discord Server</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Response Times -->
+    <section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-8 text-[#e0c8af] glow-text">Typical Response Times</h2>
+        <div class="space-y-4 text-[#f5efe9]">
+            <div class="flex justify-between items-center">
+                <span class="text-lg">Discord (Active Hours)</span>
+                <span class="text-[#d6bfa7]"><strong>Within minutes</strong></span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-lg">Discord (Off‑peak)</span>
+                <span class="text-[#d6bfa7]"><strong>Within hours</strong></span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-lg">Email</span>
+                <span class="text-[#d6bfa7]"><strong>1–2 business days</strong></span>
+            </div>
+        </div>
+    </section>
+</main>
+
+<custom-footer></custom-footer>
+
+<script src="components/navbar.js"></script>
+<script src="components/footer.js"></script>
+<script src="script.js"></script>
+<script>
+    feather.replace();
+</script>
+</body>
+</html>
