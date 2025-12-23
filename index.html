@@ -11,16 +11,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body class="bg-[#0d0c0b] text-[#f0ebe7] min-h-screen relative">
-
-<!-- Background video -->
-<div class="fixed inset-0 z-[-10] overflow-hidden">
-  <video autoplay muted loop playsinline class="w-full h-full object-cover">
-    <source src="background.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <div class="absolute inset-0 bg-black/40"></div>
-</div>
-
+  <!-- Background video -->
+  <div class="fixed inset-0 z-[-10] overflow-hidden">
+    <video autoplay muted loop playsinline class="w-full h-full object-cover">
+      <source src="background.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
+    <div class="absolute inset-0 opacity-20" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMxMTExMTEiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')"></div>
+  </div>
 <custom-navbar></custom-navbar>
 
 <main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
@@ -29,8 +28,8 @@
   <section class="flex flex-col md:flex-row items-center gap-8 animate-fadeIn">
     <img src="images/profile.png" alt="Profile" class="rounded-full w-40 h-40 border-4 border-[#d6bfa7] shadow-lg pulse-animation">
     <div>
-      <h1 class="text-5xl font-bold mb-2 text-[#e0c8af]">NotDimension</h1>
-      <p class="text-xl mb-1 rounded-full bg-[#1a1816]/70 px-4 py-1 inline-block text-[#f0dbca]">Minecraft Server Developer</p>
+    <h1 class="text-5xl font-bold mb-2 text-[#e0c8af] glow-text">NotDimension</h1>
+<p class="text-xl mb-1 rounded-full bg-[#1a1816]/70 px-4 py-1 inline-block text-[#f0dbca]">Minecraft Server Developer</p>
       <p class="text-[#d4c3b6] text-sm">South Africa</p>
       <div class="flex gap-4 mt-3">
         <a href="https://discord.com/users/753556348784083024" target="_blank"><i data-feather="message-circle" class="text-[#d6bfa7]"></i></a>
@@ -43,19 +42,23 @@
 
   <!-- About -->
   <section class="frosted-glass rounded-lg p-6 shadow-xl animate-fadeIn">
-    <h2 class="text-3xl font-bold mb-4 text-[#e0c8af]">About Me</h2>
-    <p class="text-[#f5efe9] text-lg leading-relaxed">
+    <div class="section-header">
+      <i data-feather="user"></i>
+      <h2 class="text-3xl font-bold text-[#e0c8af] glow-text">About Me</h2>
+    </div>
+<p class="text-[#f5efe9] text-lg leading-relaxed">
       Minecraft server developer specializing in plugin configuration, staff management, and community engagement. Experienced in growing servers from small communities to hundreds of members, focusing on creating good gameplay experience.
     </p>
   </section>
-
   <!-- Current Roles -->
-  <section class="frosted-glass rounded-lg p-6 shadow-xl animate-fadeIn">
-    <h2 class="text-3xl font-bold mb-4 text-[#e0c8af]">Current Roles</h2>
-    <div class="grid md:grid-cols-3 gap-4">
-      
-      <div class="bg-[#1c1917]/70 p-4 rounded-lg hover:bg-[#262320]/70 transition">
-        <img src="images/icons/shady.png" class="w-16 h-16 rounded-full mb-2 mx-auto" alt="Lunex">
+  <section id="current-roles" class="frosted-glass rounded-lg p-6 shadow-xl animate-fadeIn">
+<div class="section-header">
+      <i data-feather="award"></i>
+      <h2 class="text-3xl font-bold text-[#e0c8af] glow-text">Current Roles</h2>
+    </div>
+<div class="grid md:grid-cols-3 gap-4">
+      <div class="bg-[#1c1917]/70 p-4 rounded-lg hover:bg-[#262320]/70 transition hover-grow">
+<img src="images/icons/shady.png" class="w-16 h-16 rounded-full mb-2 mx-auto" alt="Lunex">
         <h3 class="text-xl font-semibold mb-2 text-center text-[#f5efe9]">ShadySMP</h3>
         <p class="mb-2 text-center text-[#d6bfa7]">Co-Owner (450 Members)</p>
         <a href="https://discord.gg/Jg48d8xbcD" class="flex items-center justify-center text-[#d6bfa7]" target="_blank">
@@ -86,8 +89,11 @@
 
   <!-- Previous Roles -->
   <section class="frosted-glass rounded-lg p-6 shadow-xl animate-fadeIn">
-    <h2 class="text-3xl font-bold mb-4 text-[#e0c8af]">Previous Roles</h2>
-    <div class="grid md:grid-cols-3 gap-4">
+    <div class="section-header">
+      <i data-feather="clock"></i>
+      <h2 class="text-3xl font-bold text-[#e0c8af] glow-text">Previous Roles</h2>
+    </div>
+<div class="grid md:grid-cols-3 gap-4">
 
       <div class="bg-[#1c1917]/70 p-4 rounded-lg hover:bg-[#262320]/70 transition">
         <img src="images/icons/prism.png" class="w-16 h-16 rounded-full mb-2 mx-auto" alt="Prism SMP">
@@ -144,14 +150,18 @@
       </div>
       
   </section>
-
   <!-- Skills & Responsibilities -->
-  <section class="frosted-glass rounded-lg p-6 shadow-xl animate-fadeIn">
-    <h2 class="text-3xl font-bold mb-4 text-[#e0c8af]">Skills & Responsibilities</h2>
-    <div class="grid md:grid-cols-2 gap-6">
+  <section id="skills" class="frosted-glass rounded-lg p-6 shadow-xl animate-fadeIn">
+<div class="section-header">
+      <i data-feather="tool"></i>
+      <h2 class="text-3xl font-bold text-[#e0c8af] glow-text">Skills & Responsibilities</h2>
+    </div>
+<div class="grid md:grid-cols-2 gap-6">
       <div>
-        <h3 class="text-xl font-semibold mb-3 text-[#e0c8af]">Core Expertise</h3>
-        <ul class="space-y-2">
+        <h3 class="text-xl font-semibold mb-3 text-[#e0c8af] flex items-center">
+          <i data-feather="star" class="mr-2"></i>Core Expertise
+        </h3>
+<ul class="space-y-2">
           <li class="flex items-start"><i data-feather="check-circle" class="text-[#d6bfa7] mr-2 mt-1"></i>Server Administration</li>
           <li class="flex items-start"><i data-feather="check-circle" class="text-[#d6bfa7] mr-2 mt-1"></i>Staff Management</li>
           <li class="flex items-start"><i data-feather="check-circle" class="text-[#d6bfa7] mr-2 mt-1"></i>Community Engagement</li>
@@ -161,8 +171,10 @@
         </ul>
       </div>
       <div>
-        <h3 class="text-xl font-semibold mb-3 text-[#e0c8af]">Daily Tasks</h3>
-        <ul class="space-y-2">
+        <h3 class="text-xl font-semibold mb-3 text-[#e0c8af] flex items-center">
+          <i data-feather="list" class="mr-2"></i>Daily Tasks
+        </h3>
+<ul class="space-y-2">
           <li class="flex items-start"><i data-feather="zap" class="text-[#d6bfa7] mr-2 mt-1"></i>Server maintenance & monitoring</li>
           <li class="flex items-start"><i data-feather="zap" class="text-[#d6bfa7] mr-2 mt-1"></i>Staff coordination & training</li>
           <li class="flex items-start"><i data-feather="zap" class="text-[#d6bfa7] mr-2 mt-1"></i>Plugin installation & configuration</li>
@@ -176,14 +188,19 @@
 
   <!-- Currently Working On -->
   <section class="frosted-glass rounded-lg p-6 shadow-xl animate-fadeIn">
-    <h2 class="text-3xl font-bold mb-6 text-[#e0c8af]">Currently Working On</h2>
-    <div class="flex flex-col md:flex-row gap-6">
+    <div class="section-header">
+      <i data-feather="code"></i>
+      <h2 class="text-3xl font-bold text-[#e0c8af] glow-text">Currently Working On</h2>
+    </div>
+<div class="flex flex-col md:flex-row gap-6">
       
       <!-- Card 1 -->
       <div class="flex-1 bg-[#1c1917]/70 rounded-xl p-5 shadow-lg hover:bg-[#262320]/70 transition flex flex-col justify-between">
         <div>
-          <h3 class="text-xl font-semibold mb-2 text-[#f5efe9]">MOOC Java Programming I & II</h3>
-          <p class="text-[#d6bfa7]">Learning Java programming through online courses.</p>
+        <h3 class="text-xl font-semibold mb-2 text-[#f5efe9] flex items-center">
+          <i data-feather="book" class="mr-2"></i>MOOC Java Programming I & II
+        </h3>
+<p class="text-[#d6bfa7]">Learning Java programming through online courses.</p>
           <p class="mt-3 font-bold text-[#d6bfa7]">ETA: 3 months</p>
         </div>
         <a href="https://java-programming.mooc.fi/" target="_blank" class="mt-4 flex items-center text-[#d6bfa7] hover:text-[#e0c8af]">
@@ -194,8 +211,10 @@
       <!-- Card 2 -->
       <div class="flex-1 bg-[#1c1917]/70 rounded-xl p-5 shadow-lg hover:bg-[#262320]/70 transition flex flex-col justify-between">
         <div>
-          <h3 class="text-xl font-semibold mb-2 text-[#f5efe9]">Object-Oriented Java Course</h3>
-          <p class="text-[#d6bfa7]">Developing object-oriented programming skills in Java.</p>
+          <h3 class="text-xl font-semibold mb-2 text-[#f5efe9] flex items-center">
+            <i data-feather="code" class="mr-2"></i>Object-Oriented Java Course
+          </h3>
+<p class="text-[#d6bfa7]">Developing object-oriented programming skills in Java.</p>
           <p class="mt-3 font-bold text-[#d6bfa7]">ETA: 2 months</p>
         </div>
         <a href="https://www.coursera.org/learn/object-oriented-java" target="_blank" class="mt-4 flex items-center text-[#d6bfa7] hover:text-[#e0c8af]">
@@ -208,8 +227,11 @@
 
   <!-- Socials -->
   <section class="frosted-glass rounded-lg p-6 shadow-xl animate-fadeIn">
-    <h2 class="text-3xl font-bold mb-6 text-[#e0c8af]">Socials</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="section-header">
+      <i data-feather="share-2"></i>
+      <h2 class="text-3xl font-bold text-[#e0c8af] glow-text">Socials</h2>
+    </div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
       <a href="https://discord.com/users/753556348784083024" target="_blank" class="bg-[#1c1917]/70 hover:bg-[#262320]/70 p-4 rounded-lg flex items-center transition">
         <i data-feather="message-circle" class="text-[#d6bfa7] mr-3"></i> Discord
       </a>
@@ -241,8 +263,13 @@
 <script>
   feather.replace();
 
+  // Add more icons
+  feather.icons['star'] = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>';
+  feather.icons['list'] = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>';
+  feather.icons['book'] = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>';
+
   if(document.getElementById('vanta-bg')){
-    VANTA.GLOBE({
+VANTA.GLOBE({
       el: "#vanta-bg",
       mouseControls: true,
       touchControls: true,
@@ -253,55 +280,37 @@
     });
   }
 <audio id="bgm" autoplay loop>
-  <source src="background.mp3" type="audio/mpeg">
+  <source src="https://www.youtube.com/watch?v=DaP8j6zqoOo" type="audio/mpeg">
 </audio>
-
-<button id="playBtn">▶</button>
-
-<style>
-  #playBtn {
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    padding: 8px 12px;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 9999;
-  }
-</style>
+<button id="playBtn" class="frosted-glass text-[#d6bfa7] hover:text-[#e0c8af] rounded-full w-10 h-10 flex items-center justify-center backdrop-blur-sm">
+  <i data-feather="play" id="playIcon"></i>
+</button>
 
 <script>
   const audio = document.getElementById("bgm");
   const btn = document.getElementById("playBtn");
+  const icon = document.getElementById("playIcon");
 
-  // attempt autoplay
-  audio.volume = 0.6;
+  audio.volume = 0.4;
+  
+  // Try autoplay
   audio.play().catch(() => {
-    // browser blocked it, wait for click
+    btn.classList.add('pulse-animation');
   });
 
   btn.onclick = () => {
-    audio.play();
-    btn.textContent = "⏸";
+    if (audio.paused) {
+      audio.play();
+      icon.setAttribute('data-feather', 'pause');
+      btn.classList.remove('pulse-animation');
+    } else {
+      audio.pause();
+      icon.setAttribute('data-feather', 'play');
+    }
+    feather.replace();
   };
 </script>
-
-<style>
-  #music-btn {
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    z-index: 9999;
-    background: rgba(0,0,0,0.7);
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 6px;
-  }
-</style> 
 </script>
+<script src="https://huggingface.co/deepsite/deepsite-badge.js"></script>
 </body>
 </html>
-
