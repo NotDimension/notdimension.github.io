@@ -66,3 +66,59 @@ body {
 ::-webkit-scrollbar-track{background:#1a202c;}
 ::-webkit-scrollbar-thumb{background:#2d3748;border-radius:4px;}
 ::-webkit-scrollbar-thumb:hover{background:#4a5568;}
+
+
+body {
+	padding: 2rem;
+	font-family: -apple-system, BlinkMacSystemFont, "Arial", sans-serif;
+}
+
+/* Icon additions */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.section-header i {
+    width: 32px;
+    height: 32px;
+    stroke-width: 2;
+}
+
+/* Current Roles section icons */
+#current-roles i {
+    color: #d6bfa7;
+    margin-right: 0.5rem;
+}
+
+/* Skills section icons */
+#skills i {
+    color: #d6bfa7;
+    margin-right: 0.5rem;
+}
+h1 {
+	font-size: 16px;
+	margin-top: 0;
+}
+
+p {
+	color: rgb(107, 114, 128);
+	font-size: 15px;
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+.card {
+	max-width: 620px;
+	margin: 0 auto;
+	padding: 16px;
+	border: 1px solid lightgray;
+	border-radius: 16px;
+}
+
+.card p:last-child {
+	margin-bottom: 0;
+}
+
