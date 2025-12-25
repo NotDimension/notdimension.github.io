@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
-<body class="bg-page text-page min-h-screen relative">
+<body class="bg-main text-main min-h-screen relative">
 
   <!-- Background video -->
   <div class="fixed inset-0 z-[-10] overflow-hidden">
@@ -17,14 +17,13 @@
       <source src="background.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
-    <div class="absolute inset-0 opacity-20" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMxMTExMTEiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')"></div>
+    <div class="absolute inset-0 bg-overlay"></div>
   </div>
 
   <custom-navbar></custom-navbar>
 
   <!-- Back Button -->
-  <a href="/" class="fixed top-4 right-4 z-50 bg-card backdrop-blur-sm border border-card-border text-card hover:text-primary hover:border-primary px-4 py-2 rounded-lg flex items-center transition hover:bg-card-hover">
+  <a href="/" class="fixed top-4 right-4 z-50 bg-card backdrop-blur-sm border border-soft text-strong hover:text-strong hover:border-strong px-4 py-2 rounded-lg flex items-center transition hover:bg-card-hover">
     <i data-feather="arrow-left" class="mr-2 w-4 h-4"></i> Back to Home
   </a>
 
@@ -32,46 +31,46 @@
 
     <!-- Hero -->
     <section class="text-center animate-fadeIn">
-        <h1 class="text-5xl font-bold mb-4 glow-text-primary">Contact</h1>
-        <p class="text-lg max-w-3xl mx-auto text-card">
+        <h1 class="text-5xl font-bold mb-4 glow-text">Contact</h1>
+        <p class="text-lg max-w-3xl mx-auto text-main">
             Get in touch via Discord for inquiries, collaborations, or just a friendly chat.
         </p>
     </section>
 
     <!-- Contact Info -->
-    <section class="frosted-card rounded-xl p-6 md:p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-6 glow-text-primary text-center md:text-left">Ways to Reach Me</h2>
+    <section class="frosted-glass rounded-xl p-6 md:p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-6 glow-text text-center md:text-left">Ways to Reach Me</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
 
             <!-- Discord -->
-            <div class="frosted-card hover-card p-4 md:p-6 rounded-xl transition">
+            <div class="frosted-glass hover:bg-card-hover p-4 md:p-6 rounded-xl transition">
                 <div class="flex items-center mb-3">
-                    <i data-feather="message-circle" class="icon-card mr-3"></i>
-                    <h3 class="card-title">Discord</h3>
+                    <i data-feather="message-circle" class="mr-3"></i>
+                    <h3 class="font-semibold text-main">Discord</h3>
                 </div>
-                <p class="text-card mb-3 md:mb-4 text-sm md:text-base">
+                <p class="text-main mb-3 md:mb-4 text-sm md:text-base">
                     The best way to contact me. I'm active daily and respond quickly.
                 </p>
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
-                    <code class="code-block">notdimension</code>
-                    <a href="https://discord.com/users/753556348784083024" target="_blank" class="card-subtitle hover:text-primary flex items-center">
+                    <code class="bg-overlay px-3 py-1 rounded text-strong break-all">notdimension</code>
+                    <a href="https://discord.com/users/753556348784083024" target="_blank" class="text-strong hover:text-strong flex items-center">
                         <i data-feather="external-link" class="mr-1 w-4 h-4"></i> Message
                     </a>
                 </div>
             </div>
 
             <!-- Email -->
-            <div class="frosted-card hover-card p-4 md:p-6 rounded-xl transition">
+            <div class="frosted-glass hover:bg-card-hover p-4 md:p-6 rounded-xl transition">
                 <div class="flex items-center mb-3">
-                    <i data-feather="mail" class="icon-card mr-3"></i>
-                    <h3 class="card-title">Email</h3>
+                    <i data-feather="mail" class="mr-3"></i>
+                    <h3 class="font-semibold text-main">Email</h3>
                 </div>
-                <p class="text-card mb-3 md:mb-4 text-sm md:text-base">
+                <p class="text-main mb-3 md:mb-4 text-sm md:text-base">
                     For formal communication, though responses may be slower.
                 </p>
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
-                    <code class="code-block">notdimension@gmail.com</code>
-                    <a href="mailto:notdimension@gmail.com" class="card-subtitle hover:text-primary flex items-center">
+                    <code class="bg-overlay px-3 py-1 rounded text-strong break-all">notdimension@gmail.com</code>
+                    <a href="mailto:notdimension@gmail.com" class="text-strong hover:text-strong flex items-center">
                         <i data-feather="send" class="mr-1 w-4 h-4"></i> Send
                     </a>
                 </div>
@@ -81,45 +80,45 @@
     </section>
 
     <!-- Community Servers -->
-    <section class="frosted-card rounded-xl p-6 md:p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-6 glow-text-primary text-center md:text-left">Community Servers</h2>
-        <p class="text-card text-sm md:text-lg mb-4 md:mb-6 text-center md:text-left">
+    <section class="frosted-glass rounded-xl p-6 md:p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-6 glow-text text-center md:text-left">Community Servers</h2>
+        <p class="text-main text-sm md:text-lg mb-4 md:mb-6 text-center md:text-left">
             I'm active in these Discord servers; feel free to join and ask if I'm around.
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="frosted-card hover-card p-4 md:p-5 rounded-xl transition flex flex-col items-center text-center">
+            <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="frosted-glass hover:bg-card-hover p-4 md:p-5 rounded-xl transition flex flex-col items-center text-center">
                 <img src="images/icons/shady.png" alt="ShadySMP" class="w-14 h-14 md:w-16 md:h-16 rounded-full mb-2 md:mb-3">
-                <h4 class="card-title">ShadySMP</h4>
-                <p class="card-subtitle">Discord Server</p>
+                <h4 class="font-semibold text-main">ShadySMP</h4>
+                <p class="text-accent">Discord Server</p>
             </a>
-            <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="frosted-card hover-card p-4 md:p-5 rounded-xl transition flex flex-col items-center text-center">
+            <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="frosted-glass hover:bg-card-hover p-4 md:p-5 rounded-xl transition flex flex-col items-center text-center">
                 <img src="images/icons/smpfinder.png" alt="SMP Finder" class="w-14 h-14 md:w-16 md:h-16 rounded-full mb-2 md:mb-3">
-                <h4 class="card-title">SMP Finder</h4>
-                <p class="card-subtitle">Discord Server</p>
+                <h4 class="font-semibold text-main">SMP Finder</h4>
+                <p class="text-accent">Discord Server</p>
             </a>
-            <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="frosted-card hover-card p-4 md:p-5 rounded-xl transition flex flex-col items-center text-center">
+            <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="frosted-glass hover:bg-card-hover p-4 md:p-5 rounded-xl transition flex flex-col items-center text-center">
                 <img src="images/icons/collective.png" alt="Discord Collective" class="w-14 h-14 md:w-16 md:h-16 rounded-full mb-2 md:mb-3">
-                <h4 class="card-title">Discord Collective</h4>
-                <p class="card-subtitle">Discord Server</p>
+                <h4 class="font-semibold text-main">Discord Collective</h4>
+                <p class="text-accent">Discord Server</p>
             </a>
         </div>
     </section>
 
     <!-- Response Times -->
-    <section class="frosted-card rounded-xl p-6 md:p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-6 glow-text-primary text-center md:text-left">Typical Response Times</h2>
-        <div class="space-y-4 text-card text-sm md:text-base">
+    <section class="frosted-glass rounded-xl p-6 md:p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-6 glow-text text-center md:text-left">Typical Response Times</h2>
+        <div class="space-y-4 text-main text-sm md:text-base">
             <div class="flex justify-between items-center">
                 <span>Discord (Active Hours)</span>
-                <span class="card-subtitle font-semibold">Within minutes</span>
+                <span class="text-strong font-semibold">Within minutes</span>
             </div>
             <div class="flex justify-between items-center">
                 <span>Discord (Off‑peak)</span>
-                <span class="card-subtitle font-semibold">Within hours</span>
+                <span class="text-strong font-semibold">Within hours</span>
             </div>
             <div class="flex justify-between items-center">
                 <span>Email</span>
-                <span class="card-subtitle font-semibold">1–2 business days</span>
+                <span class="text-strong font-semibold">1–2 business days</span>
             </div>
         </div>
     </section>
@@ -136,3 +135,4 @@
   </script>
 </body>
 </html>
+
