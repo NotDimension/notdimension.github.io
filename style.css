@@ -1,26 +1,26 @@
-<link rel="stylesheet" href="forest-theme.css?v=3.0">
-
 /* ===============================
    GLOBAL THEME VARIABLES
-   Dark Forest + Fog + Vibrant Greens
-   version: 3.0
+   Dark Forest + Strong Contrast
+   version: 3.1
 ================================ */
 :root {
     /* Backgrounds */
-    --bg-main: #0a100e;                    
-    --bg-overlay: rgba(18, 36, 30, 0.6);   
-    --bg-card: rgba(26, 46, 38, 0.60);      
-    --bg-card-hover: rgba(38, 62, 50, 0.85);
+    --bg-main: #0b1311;                           /* deep forest base */
+    --bg-overlay: rgba(15, 25, 20, 0.75);         /* darker fog overlay */
 
-    /* Text */
-    --text-main: #e3eee8;                  
-    --text-muted: #98b8aa;                 
-    --text-accent: #78a78f;                
-    --text-strong: #cfe8de;                
+    /* Cards with stronger opacity */
+    --bg-card: rgba(30, 50, 40, 0.80);
+    --bg-card-hover: rgba(42, 70, 55, 0.95);
 
-    /* Borders & effects */
-    --border-soft: rgba(120, 169, 150, 0.25);
-    --glow: rgba(120, 169, 150, 0.40);
+    /* Text colors */
+    --text-main: #edf6f1;                         /* bright fog text */
+    --text-muted: #b2c6bb;                        /* softer muted */
+    --text-accent: #8ec8a0;                       /* vibrant green accent */
+    --text-strong: #d4ece3;                       /* strong highlight */
+
+    /* Borders & glow */
+    --border-soft: rgba(145, 190, 165, 0.35);
+    --glow: rgba(145, 190, 165, 0.45);
 }
 
 /* ===============================
@@ -103,8 +103,8 @@ body {
 ================================ */
 .frosted-glass {
     background: var(--bg-card);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px) saturate(150%);
+    -webkit-backdrop-filter: blur(12px) saturate(150%);
     border: 1px solid var(--border-soft);
 }
 
