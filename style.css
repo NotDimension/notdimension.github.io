@@ -140,3 +140,17 @@ i[data-feather] {
         align-items: flex-start;
     }
 }
+
+
+/* ===============================
+   SOCIAL ICONS
+================================ */
+.social-icons a {
+    color: var(--text-accent);
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.social-icons a:hover {
+    color: var(--text-strong);
+    transform: translateY(-2px);
+}
