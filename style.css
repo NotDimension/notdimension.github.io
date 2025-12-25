@@ -1,20 +1,23 @@
 /* ===============================
    GLOBAL THEME VARIABLES
+   Forest Rain Theme
 ================================ */
 :root {
-    --bg-main: #0d0c0b;
-    --bg-overlay: rgba(20, 22, 21, 0.6);
-    --bg-card: rgba(28, 32, 30, 0.65);
-    --bg-card-hover: rgba(40, 46, 43, 0.85);
+    /* Backgrounds */
+    --bg-main: #0b1411;                  /* deep forest shadow */
+    --bg-overlay: rgba(16, 32, 24, 0.65); /* misty rain overlay */
+    --bg-card: rgba(22, 40, 30, 0.65);    /* pine glass card */
+    --bg-card-hover: rgba(34, 60, 45, 0.85);
 
-    --text-main: #e6ebe8;
-    --text-muted: #b6c0ba;
-    --text-accent: #9fb7ac;
-    --text-strong: #d7e3dc;
+    /* Text */
+    --text-main: #e4efe9;                /* fog-lit white */
+    --text-muted: #a8bdb2;               /* moss-muted */
+    --text-accent: #8fb3a1;              /* eucalyptus green */
+    --text-strong: #d4ebe0;              /* rain highlights */
 
-    --border-soft: rgba(159, 183, 172, 0.25);
-
-    --glow: rgba(159, 183, 172, 0.5);
+    /* Borders & effects */
+    --border-soft: rgba(143, 179, 161, 0.28);
+    --glow: rgba(143, 179, 161, 0.45);
 }
 
 /* ===============================
@@ -41,7 +44,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #121514;
+    background: #0f1a16;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -54,7 +57,7 @@ body {
 }
 
 /* ===============================
-   UTILITY CLASSES (THE KEY FIX)
+   UTILITY CLASSES
 ================================ */
 .bg-main {
     background-color: var(--bg-main);
@@ -97,13 +100,13 @@ body {
 ================================ */
 .frosted-glass {
     background: var(--bg-card);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     border: 1px solid var(--border-soft);
 }
 
 .glow-text {
-    text-shadow: 0 0 12px var(--glow);
+    text-shadow: 0 0 14px var(--glow);
 }
 
 .animate-fadeIn {
@@ -141,7 +144,6 @@ i[data-feather] {
     }
 }
 
-
 /* ===============================
    SOCIAL ICONS
 ================================ */
@@ -154,12 +156,17 @@ i[data-feather] {
     color: var(--text-strong);
     transform: translateY(-2px);
 }
+
 /* ===============================
    SOCIAL CARDS
 ================================ */
 .social-card {
+    background-color: var(--bg-card);
     color: var(--text-main);
-    transition: background-color .25s ease, transform .25s ease, box-shadow .25s ease;
+    border: 1px solid var(--border-soft);
+    transition: background-color 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
 }
 
 .social-card:hover {
@@ -168,7 +175,12 @@ i[data-feather] {
     box-shadow: 0 0 18px var(--glow);
 }
 
-/* Force all social icons to follow theme color */
+/* Force all social icons to follow forest theme */
 .social-card img {
-    filter: brightness(0) saturate(100%) invert(79%) sepia(8%) saturate(352%) hue-rotate(108deg);
+    filter: brightness(0)
+            saturate(100%)
+            invert(82%)
+            sepia(12%)
+            saturate(420%)
+            hue-rotate(115deg);
 }
