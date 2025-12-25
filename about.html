@@ -1,167 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | NotDimension</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | NotDimension</title>
+<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
-<body class="bg-[#0d0c0b] text-[#f0ebe7] min-h-screen relative">
-  <!-- Background video -->
-  <div class="fixed inset-0 z-[-10] overflow-hidden">
+
+<body class="bg-main text-main min-h-screen relative">
+
+<!-- Background video -->
+<div class="fixed inset-0 z-[-10] overflow-hidden">
     <video autoplay muted loop playsinline class="w-full h-full object-cover">
-      <source src="background.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+        <source src="background.mp4" type="video/mp4">
     </video>
     <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
-    <div class="absolute inset-0 opacity-20" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1IiBmaWxsPSIjMDAwMDAwIj48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMxMTExMTEiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')"></div>
-  </div>
+    <div class="absolute inset-0 opacity-20"></div>
+</div>
+
 <custom-navbar></custom-navbar>
 
 <!-- Back Button -->
-<a href="/" class="fixed top-4 right-4 z-50 bg-[#1c1917]/80 backdrop-blur-sm border border-[#d6bfa7]/30 text-[#d6bfa7] hover:text-[#e0c8af] hover:border-[#e0c8af]/50 px-4 py-2 rounded-lg flex items-center transition hover:bg-[#262320]/90">
-  <i data-feather="arrow-left" class="mr-2 w-4 h-4"></i> Back to Home
+<a href="/" class="fixed top-4 right-4 z-50 bg-card backdrop-blur-sm border border-soft text-accent hover:text-strong hover:border-soft px-4 py-2 rounded-lg flex items-center transition bg-card-hover">
+<i data-feather="arrow-left" class="mr-2"></i> Back to Home
 </a>
-<main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
 
 <main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
-    <!-- Hero -->
-    <section class="text-center animate-fadeIn">
-        <h1 class="text-5xl font-bold mb-4 text-[#e0c8af] glow-text">About Me</h1>
-        <p class="text-xl text-[#f5efe9] max-w-3xl mx-auto">
-            I'm a dedicated Minecraft server developer from South Africa, passionate about community growth and technical innovation.
-        </p>
-    </section>
 
-    <!-- Details -->
-    <section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
-        <div class="grid md:grid-cols-2 gap-12">
-            <div>
-                <h2 class="text-3xl font-bold mb-6 text-[#e0c8af] glow-text">Background</h2>
-                <p class="text-lg leading-relaxed text-[#f5efe9]">
-                    I've been managing Minecraft servers for several months, starting as a community helper and progressing to server ownership and senior roles.
-                    My focus has always been on creating engaging, harmonious environments where players can enjoy the game together.
-                </p>
-                <div class="mt-8 p-5 bg-[#1c1917]/50 rounded-xl">
-                    <h3 class="text-xl font-semibold mb-3 text-[#e0c8af]">Core Principles</h3>
-                    <ul class="space-y-3 text-[#f5efe9]">
-                        <li class="flex items-start"><i data-feather="check" class="text-[#d6bfa7] mr-3 mt-1"></i> Community‑first decision making</li>
-                        <li class="flex items-start"><i data-feather="check" class="text-[#d6bfa7] mr-3 mt-1"></i> Transparency in communication</li>
-                        <li class="flex items-start"><i data-feather="check" class="text-[#d6bfa7] mr-3 mt-1"></i> Continuous learning & improvement</li>
-                        <li class="flex items-start"><i data-feather="check" class="text-[#d6bfa7] mr-3 mt-1"></i> High‑quality, stable technical infrastructure</li>
-                    </ul>
-                </div>
-            </div>
-
-     <div>
-            <h2 class="text-3xl font-bold mb-6 text-[#e0c8af] glow-text">Timeline</h2>
-            <div class="space-y-6">
-
-                <div class="border-l-4 border-[#d6bfa7] pl-5 py-2">
-                    <h4 class="font-bold text-[#f5efe9]">May 2025</h4>
-                    <ul class="text-[#d6bfa7] space-y-1 ml-4">
-                        <li>➡ Started first moderation role, learning community dynamics.</li>
-                    </ul>
-                </div>
-
-                <div class="border-l-4 border-[#d6bfa7] pl-5 py-2">
-                    <h4 class="font-bold text-[#f5efe9]">June 2025</h4>
-                    <ul class="text-[#d6bfa7] space-y-1 ml-4">
-                        <li>➡ Joined CashflowSMP as Owner.</li>
-                    </ul>
-                </div>
-
-                <div class="border-l-4 border-[#d6bfa7] pl-5 py-2">
-                    <h4 class="font-bold text-[#f5efe9]">July 2025</h4>
-                    <ul class="text-[#d6bfa7] space-y-1 ml-4">
-                        <li>➡ Joined PrismSMP as Admin.</li>
-                    </ul>
-                </div>
-
-                <div class="border-l-4 border-[#d6bfa7] pl-5 py-2">
-                    <h4 class="font-bold text-[#f5efe9]">August 2025</h4>
-                    <ul class="text-[#d6bfa7] space-y-1 ml-4">
-                        <li>➡ Promoted to Owner at PrismSMP.</li>
-                        <li>➡ Created OceanMC.</li>
-                        <li>➡ Joined Nebular SMP as Overseer.</li>
-                    </ul>
-                </div>
-
-                <div class="border-l-4 border-[#d6bfa7] pl-5 py-2">
-                    <h4 class="font-bold text-[#f5efe9]">September 2025</h4>
-                    <ul class="text-[#d6bfa7] space-y-1 ml-4">
-                        <li>➡ Promoted to Co-Owner at Nebular SMP.</li>
-                        <li>➡ SMP Finder: Promoted to Trial Senior Moderator.</li>
-                    </ul>
-                </div>
-
-                <div class="border-l-4 border-[#d6bfa7] pl-5 py-2">
-                    <h4 class="font-bold text-[#f5efe9]">October 2025</h4>
-                    <ul class="text-[#d6bfa7] space-y-1 ml-4">
-                        <li>➡ Left Nebular SMP.</li>
-                    </ul>
-                </div>
-
-                <div class="border-l-4 border-[#d6bfa7] pl-5 py-2">
-                    <h4 class="font-bold text-[#f5efe9]">November 2025</h4>
-                    <ul class="text-[#d6bfa7] space-y-1 ml-4">
-                        <li>➡ ShatterMC: Jr. Mod → Sr. Admin (left 20th Nov).</li>
-                        <li>➡ Briefly joined BonkMC (25th Nov–7th Dec).</li>
-                        <li>➡ Became Co-Owner at ShadySMP (25th Nov).</li>
-                    </ul>
-                </div>
-
-                <div class="border-l-4 border-[#d6bfa7] pl-5 py-2">
-                    <h4 class="font-bold text-[#f5efe9]">December 2025</h4>
-                    <ul class="text-[#d6bfa7] space-y-1 ml-4">
-                        <li>➡ Closed OceanMC.</li>
-                        <li>➡ Left PrismSMP.</li>
-                        <li>➡ Joined NoMercy as Helper (10th Dec).</li>
-                        <li>➡ Promoted to Manager at Discord Collective (13th Dec).</li>
-                    </ul>
-                </div>
-
-                <div class="border-l-4 border-[#d6bfa7] pl-5 py-2">
-                    <h4 class="font-bold text-[#f5efe9]">Ongoing</h4>
-                    <ul class="text-[#d6bfa7] space-y-1 ml-4">
-                        <li>➡ Active as Co-Owner at ShadySMP.</li>
-                        <li>➡ Continuing SMP Finder staff roles.</li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </div>
+<!-- Hero -->
+<section class="text-center animate-fadeIn">
+<h1 class="text-5xl font-bold mb-4 text-strong glow-text">About Me</h1>
+<p class="text-xl text-main max-w-3xl mx-auto">
+I'm a dedicated Minecraft server developer from South Africa, passionate about community growth and technical innovation.
+</p>
 </section>
-    <!-- Personal Interests -->
-    <section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-8 text-[#e0c8af] glow-text">Beyond Servers</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-[#1c1917]/60 p-5 rounded-xl hover:bg-[#262320]/70 transition">
-                <i data-feather="headphones" class="text-[#d6bfa7] w-8 h-8 mb-3"></i>
-                <h3 class="text-lg font-semibold text-[#f5efe9] mb-2">Music</h3>
-                <p class="text-[#d6bfa7] text-sm">Listening to diverse genres; discovering new tracks daily. || Favourite artist is Brent Faiyaz. Addicted to RNB </p>
-            </div>
-            <div class="bg-[#1c1917]/60 p-5 rounded-xl hover:bg-[#262320]/70 transition">
-                <i data-feather="cpu" class="text-[#d6bfa7] w-8 h-8 mb-3"></i>
-                <h3 class="text-lg font-semibold text-[#f5efe9] mb-2">Gaming</h3>
-                <p class="text-[#d6bfa7] text-sm">Exploring various PC and console games beyond Minecraft. || Favourite games: Terraria, Cricket22, Fifa22</p>
-            </div>
-            <div class="bg-[#1c1917]/60 p-5 rounded-xl hover:bg-[#262320]/70 transition">
-                <i data-feather="smartphone" class="text-[#d6bfa7] w-8 h-8 mb-3"></i>
-                <h3 class="text-lg font-semibold text-[#f5efe9] mb-2">Tech Exploration</h3>
-                <p class="text-[#d6bfa7] text-sm">Following latest software, hardware, and development trends.</p>
-            </div>
-            <div class="bg-[#1c1917]/60 p-5 rounded-xl hover:bg-[#262320]/70 transition">
-                <i data-feather="circle" class="text-[#d6bfa7] w-8 h-8"></i>
-                <h3 class="text-lg font-semibold text-[#f5efe9] mb-2">Sports</h3>
-                <p class="text-[#d6bfa7] text-sm">Love playing and watching sports. || Favourite Sports: Cricket, Football & Rugby</p>
-            </div>
-        </div>
-    </section>
+
+<!-- Details -->
+<section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
+<div class="grid md:grid-cols-2 gap-12">
+
+<div>
+<h2 class="text-3xl font-bold mb-6 text-strong glow-text">Background</h2>
+<p class="text-lg leading-relaxed text-main">
+I've been managing Minecraft servers for several months, starting as a community helper and progressing to server ownership and senior roles.
+My focus has always been on creating engaging, harmonious environments where players can enjoy the game together.
+</p>
+
+<div class="mt-8 p-5 bg-card rounded-xl">
+<h3 class="text-xl font-semibold mb-3 text-strong">Core Principles</h3>
+<ul class="space-y-3 text-main">
+<li class="flex items-start"><i data-feather="check" class="text-accent mr-3 mt-1"></i> Community-first decision making</li>
+<li class="flex items-start"><i data-feather="check" class="text-accent mr-3 mt-1"></i> Transparency in communication</li>
+<li class="flex items-start"><i data-feather="check" class="text-accent mr-3 mt-1"></i> Continuous learning & improvement</li>
+<li class="flex items-start"><i data-feather="check" class="text-accent mr-3 mt-1"></i> High-quality, stable technical infrastructure</li>
+</ul>
+</div>
+</div>
+
+<div>
+<h2 class="text-3xl font-bold mb-6 text-strong glow-text">Timeline</h2>
+
+<div class="space-y-6">
+<div class="border-l-4 border-soft pl-5 py-2">
+<h4 class="font-bold text-main">May 2025</h4>
+<ul class="text-accent ml-4">
+<li>➡ Started first moderation role, learning community dynamics.</li>
+</ul>
+</div>
+
+<div class="border-l-4 border-soft pl-5 py-2">
+<h4 class="font-bold text-main">June 2025</h4>
+<ul class="text-accent ml-4">
+<li>➡ Joined CashflowSMP as Owner.</li>
+</ul>
+</div>
+
+<div class="border-l-4 border-soft pl-5 py-2">
+<h4 class="font-bold text-main">July 2025</h4>
+<ul class="text-accent ml-4">
+<li>➡ Joined PrismSMP as Admin.</li>
+</ul>
+</div>
+
+<div class="border-l-4 border-soft pl-5 py-2">
+<h4 class="font-bold text-main">August 2025</h4>
+<ul class="text-accent ml-4">
+<li>➡ Promoted to Owner at PrismSMP.</li>
+<li>➡ Created OceanMC.</li>
+<li>➡ Joined Nebular SMP as Overseer.</li>
+</ul>
+</div>
+
+<div class="border-l-4 border-soft pl-5 py-2">
+<h4 class="font-bold text-main">September 2025</h4>
+<ul class="text-accent ml-4">
+<li>➡ Promoted to Co-Owner at Nebular SMP.</li>
+<li>➡ SMP Finder: Promoted to Trial Senior Moderator.</li>
+</ul>
+</div>
+
+<div class="border-l-4 border-soft pl-5 py-2">
+<h4 class="font-bold text-main">October 2025</h4>
+<ul class="text-accent ml-4">
+<li>➡ Left Nebular SMP.</li>
+</ul>
+</div>
+
+<div class="border-l-4 border-soft pl-5 py-2">
+<h4 class="font-bold text-main">November 2025</h4>
+<ul class="text-accent ml-4">
+<li>➡ ShatterMC: Jr. Mod → Sr. Admin (left 20th Nov).</li>
+<li>➡ Briefly joined BonkMC (25th Nov–7th Dec).</li>
+<li>➡ Became Co-Owner at ShadySMP (25th Nov).</li>
+</ul>
+</div>
+
+<div class="border-l-4 border-soft pl-5 py-2">
+<h4 class="font-bold text-main">December 2025</h4>
+<ul class="text-accent ml-4">
+<li>➡ Closed OceanMC.</li>
+<li>➡ Left PrismSMP.</li>
+<li>➡ Joined NoMercy as Helper (10th Dec).</li>
+<li>➡ Promoted to Manager at Discord Collective (13th Dec).</li>
+</ul>
+</div>
+
+<div class="border-l-4 border-soft pl-5 py-2">
+<h4 class="font-bold text-main">Ongoing</h4>
+<ul class="text-accent ml-4">
+<li>➡ Active as Co-Owner at ShadySMP.</li>
+<li>➡ Continuing SMP Finder staff roles.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Interests -->
+<section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
+<h2 class="text-3xl font-bold mb-8 text-strong glow-text">Beyond Servers</h2>
+
+<div class="grid md:grid-cols-3 gap-6">
+<div class="bg-card p-5 rounded-xl bg-card-hover transition">
+<i data-feather="headphones" class="text-accent w-8 h-8 mb-3"></i>
+<h3 class="text-lg font-semibold text-main mb-2">Music</h3>
+<p class="text-accent text-sm">Favourite artist: Brent Faiyaz — addicted to RNB</p>
+</div>
+
+<div class="bg-card p-5 rounded-xl bg-card-hover transition">
+<i data-feather="cpu" class="text-accent w-8 h-8 mb-3"></i>
+<h3 class="text-lg font-semibold text-main mb-2">Gaming</h3>
+<p class="text-accent text-sm">Terraria, Cricket22, FIFA22</p>
+</div>
+
+<div class="bg-card p-5 rounded-xl bg-card-hover transition">
+<i data-feather="smartphone" class="text-accent w-8 h-8 mb-3"></i>
+<h3 class="text-lg font-semibold text-main mb-2">Tech</h3>
+<p class="text-accent text-sm">Exploring software, hardware & development trends</p>
+</div>
+</div>
+</section>
+
 </main>
 
 <custom-footer></custom-footer>
@@ -169,8 +171,8 @@
 <script src="components/navbar.js"></script>
 <script src="components/footer.js"></script>
 <script src="script.js"></script>
-<script>
-    feather.replace();
-</script>
+<script>feather.replace();</script>
+
 </body>
 </html>
+
