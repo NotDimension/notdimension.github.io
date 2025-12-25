@@ -1,10 +1,9 @@
-
 body {
     margin: 0;
     padding: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    background: #0d0c0b;
-    color: #f0ebe7;
+    background: #0f1311; /* foggy dark green */
+    color: #e6ebe8; /* soft off-white */
     overflow-x: hidden;
 }
 
@@ -14,53 +13,60 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #1a1816;
+    background: #141917;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #d6bfa7;
+    background: #6f8a7a; /* muted sage */
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #e0c8af;
+    background: #8fa79a;
 }
 
-/* Enhancements */
+/* Glass effect – toned down blur */
 .frosted-glass {
-    background: rgba(28, 25, 23, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(214, 191, 167, 0.2);
+    background: rgba(22, 28, 25, 0.55);
+    backdrop-filter: blur(6px); /* reduced from 12px */
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(143, 167, 154, 0.25);
 }
 
+/* Subtle glow (not warm) */
 .glow-text {
-    text-shadow: 0 0 15px rgba(224, 200, 175, 0.7);
+    text-shadow: 0 0 12px rgba(143, 167, 154, 0.35);
 }
 
+/* Pulse animation – softer */
 .pulse-animation {
     animation: pulse 3s infinite;
 }
 
 @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 10px rgba(214, 191, 167, 0.6); }
-    50% { box-shadow: 0 0 20px rgba(214, 191, 167, 0.9); }
+    0%, 100% { box-shadow: 0 0 8px rgba(143, 167, 154, 0.35); }
+    50% { box-shadow: 0 0 14px rgba(143, 167, 154, 0.55); }
+}
+
+.hover-grow {
+    transition: transform 0.3s ease;
 }
 
 .hover-grow:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
+/* Fade-in stays clean */
 .animate-fadeIn {
-    animation: fadeIn 1s ease-out;
+    animation: fadeIn 0.9s ease-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Icon additions */
+/* Section headers */
 .section-header {
     display: flex;
     align-items: center;
@@ -72,21 +78,17 @@ body {
     width: 32px;
     height: 32px;
     stroke-width: 2;
-    color: #d6bfa7;
+    color: #8fa79a;
 }
 
-/* Current Roles section icons */
-#current-roles i {
-    color: #d6bfa7;
-    margin-right: 0.5rem;
-}
-
-/* Skills section icons */
+/* Icons consistency */
+#current-roles i,
 #skills i {
-    color: #d6bfa7;
+    color: #8fa79a;
     margin-right: 0.5rem;
 }
-/* Ensure icons are visible */
+
+/* Ensure feather icons render properly */
 i[data-feather] {
     display: inline-block;
     vertical-align: middle;
@@ -96,11 +98,12 @@ i[data-feather] {
     fill: none;
 }
 
-/* Explore More section */
+/* Interactive blocks */
 .bg-gradient-to-br {
     transition: all 0.3s ease;
 }
-/* Responsive adjustments */
+
+/* Responsive */
 @media (max-width: 768px) {
     .section-header {
         flex-direction: column;
