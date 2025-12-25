@@ -1,23 +1,24 @@
 /* ===============================
    GLOBAL THEME VARIABLES
-   Forest Rain Theme
+   Dark Forest + Fog + Vibrant Greens
+   version: 3.0
 ================================ */
 :root {
     /* Backgrounds */
-    --bg-main: #0b1411;                  /* deep forest shadow */
-    --bg-overlay: rgba(16, 32, 24, 0.65); /* misty rain overlay */
-    --bg-card: rgba(22, 40, 30, 0.65);    /* pine glass card */
-    --bg-card-hover: rgba(34, 60, 45, 0.85);
+    --bg-main: #0a100e;                    
+    --bg-overlay: rgba(18, 36, 30, 0.6);   
+    --bg-card: rgba(26, 46, 38, 0.60);      
+    --bg-card-hover: rgba(38, 62, 50, 0.85);
 
     /* Text */
-    --text-main: #e4efe9;                /* fog-lit white */
-    --text-muted: #a8bdb2;               /* moss-muted */
-    --text-accent: #8fb3a1;              /* eucalyptus green */
-    --text-strong: #d4ebe0;              /* rain highlights */
+    --text-main: #e3eee8;                  
+    --text-muted: #98b8aa;                 
+    --text-accent: #78a78f;                
+    --text-strong: #cfe8de;                
 
     /* Borders & effects */
-    --border-soft: rgba(143, 179, 161, 0.28);
-    --glow: rgba(143, 179, 161, 0.45);
+    --border-soft: rgba(120, 169, 150, 0.25);
+    --glow: rgba(120, 169, 150, 0.40);
 }
 
 /* ===============================
@@ -44,7 +45,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #0f1a16;
+    background: #0d1411;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -100,17 +101,17 @@ body {
 ================================ */
 .frosted-glass {
     background: var(--bg-card);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--border-soft);
 }
 
 .glow-text {
-    text-shadow: 0 0 14px var(--glow);
+    text-shadow: 0 0 16px var(--glow);
 }
 
 .animate-fadeIn {
-    animation: fadeIn 0.9s ease-out;
+    animation: fadeIn 1s ease-out;
 }
 
 @keyframes fadeIn {
@@ -172,15 +173,14 @@ i[data-feather] {
 .social-card:hover {
     background-color: var(--bg-card-hover);
     transform: translateY(-2px);
-    box-shadow: 0 0 18px var(--glow);
+    box-shadow: 0 0 20px var(--glow);
 }
 
-/* Force all social icons to follow forest theme */
 .social-card img {
     filter: brightness(0)
             saturate(100%)
-            invert(82%)
-            sepia(12%)
-            saturate(420%)
+            invert(80%)
+            sepia(15%)
+            saturate(550%)
             hue-rotate(115deg);
 }
