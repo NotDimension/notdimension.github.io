@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
-<body class="bg-page text-page min-h-screen relative">
+<body class="bg-main text-main min-h-screen relative">
 
   <!-- Background video -->
   <div class="fixed inset-0 z-[-10] overflow-hidden">
@@ -17,14 +17,13 @@
       <source src="background.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
-    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
-    <div class="absolute inset-0 opacity-20" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMxMTExMTEiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')"></div>
+    <div class="absolute inset-0 bg-overlay"></div>
   </div>
 
   <custom-navbar></custom-navbar>
 
   <!-- Back Button -->
-  <a href="/" class="fixed top-4 right-4 z-50 bg-card backdrop-blur-sm border border-card-border text-card hover:text-primary hover:border-primary px-4 py-2 rounded-lg flex items-center transition hover:bg-card-hover">
+  <a href="/" class="fixed top-4 right-4 z-50 bg-card backdrop-blur-sm border border-soft text-strong hover:text-strong hover:border-strong px-4 py-2 rounded-lg flex items-center transition hover:bg-card-hover">
     <i data-feather="arrow-left" class="mr-2 w-4 h-4"></i> Back to Home
   </a>
 
@@ -32,126 +31,130 @@
 
     <!-- Hero -->
     <section class="text-center animate-fadeIn">
-        <h1 class="text-5xl font-bold mb-4 glow-text-primary">Projects</h1>
-        <p class="text-xl max-w-3xl mx-auto text-card">
+        <h1 class="text-5xl font-bold mb-4 glow-text">Projects</h1>
+        <p class="text-xl max-w-3xl mx-auto text-main">
             A showcase of Minecraft server projects I’ve been involved with, along with personal creative work.
         </p>
     </section>
 
     <!-- Live Projects -->
-    <section class="frosted-card rounded-xl p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-8 glow-text-primary">Live Projects</h2>
+    <section class="frosted-glass rounded-xl p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-8 glow-text">Live Projects</h2>
         <div class="grid md:grid-cols-3 gap-8">
-            <div class="frosted-card hover-card p-6 rounded-xl transition">
+
+            <div class="frosted-glass hover:bg-card-hover p-6 rounded-xl transition">
                 <div class="flex items-center mb-4">
                     <img src="images/icons/shady.png" alt="ShadySMP" class="w-12 h-12 rounded-full">
                     <div class="ml-4">
-                        <h3 class="card-title">ShadySMP</h3>
-                        <p class="card-subtitle">Co‑Owner, Development & Staff Lead</p>
+                        <h3 class="font-semibold text-main text-2xl">ShadySMP</h3>
+                        <p class="text-accent">Co‑Owner, Development & Staff Lead</p>
                     </div>
                 </div>
-                <p class="text-card mb-4">
+                <p class="text-main mb-4">
                     A community‑oriented SMP with custom plugins, events, and a growing player base.
                 </p>
                 <div class="flex justify-between">
-                    <span class="card-subtitle">Status: <strong class="text-active">Active</strong></span>
-                    <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="card-subtitle hover:text-primary flex items-center">
+                    <span class="text-accent">Status: <strong class="text-green-400">Active</strong></span>
+                    <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="text-accent hover:text-strong flex items-center">
                         <i data-feather="link" class="mr-1 w-4 h-4"></i> Discord
                     </a>
                 </div>
             </div>
 
-            <div class="frosted-card hover-card p-6 rounded-xl transition">
+            <div class="frosted-glass hover:bg-card-hover p-6 rounded-xl transition">
                 <div class="flex items-center mb-4">
                     <img src="images/icons/smpfinder.png" alt="SMP Finder" class="w-12 h-12 rounded-full">
                     <div class="ml-4">
-                        <h3 class="card-title">SMP Finder</h3>
-                        <p class="card-subtitle">Moderator</p>
+                        <h3 class="font-semibold text-main text-2xl">SMP Finder</h3>
+                        <p class="text-accent">Moderator</p>
                     </div>
                 </div>
-                <p class="text-card mb-4">
+                <p class="text-main mb-4">
                     A large Discord server helping players find, partner and join SMPs.
                 </p>
                 <div class="flex justify-between">
-                    <span class="card-subtitle">Status: <strong class="text-active">Active</strong></span>
-                    <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="card-subtitle hover:text-primary flex items-center">
+                    <span class="text-accent">Status: <strong class="text-green-400">Active</strong></span>
+                    <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="text-accent hover:text-strong flex items-center">
                         <i data-feather="link" class="mr-1 w-4 h-4"></i> Discord
                     </a>
                 </div>
             </div>
 
-            <div class="frosted-card hover-card p-6 rounded-xl transition">
+            <div class="frosted-glass hover:bg-card-hover p-6 rounded-xl transition">
                 <div class="flex items-center mb-4">
                     <img src="images/icons/collective.png" alt="Discord Collective" class="w-12 h-12 rounded-full">
                     <div class="ml-4">
-                        <h3 class="card-title">Discord Collective</h3>
-                        <p class="card-subtitle">Manager & Community Organizer</p>
+                        <h3 class="font-semibold text-main text-2xl">Discord Collective</h3>
+                        <p class="text-accent">Manager & Community Organizer</p>
                     </div>
                 </div>
-                <p class="text-card mb-4">
+                <p class="text-main mb-4">
                     A server focused on Community and Events.
                 </p>
                 <div class="flex justify-between">
-                    <span class="card-subtitle">Status: <strong class="text-active">Active</strong></span>
-                    <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="card-subtitle hover:text-primary flex items-center">
+                    <span class="text-accent">Status: <strong class="text-green-400">Active</strong></span>
+                    <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="text-accent hover:text-strong flex items-center">
                         <i data-feather="link" class="mr-1 w-4 h-4"></i> Discord
                     </a>
                 </div>
             </div>
+
         </div>
     </section>
 
     <!-- Technical Creations -->
-    <section class="frosted-card rounded-xl p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-8 glow-text-primary">Technical Creations</h2>
+    <section class="frosted-glass rounded-xl p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-8 glow-text">Technical Creations</h2>
         <div class="grid md:grid-cols-2 gap-8">
-            <div class="frosted-card hover-card p-6 rounded-xl transition">
+
+            <div class="frosted-glass hover:bg-card-hover p-6 rounded-xl transition">
                 <div class="flex items-center mb-4">
-                    <i data-feather="code" class="icon-card"></i>
-                    <h3 class="card-title">Plugin Configurations</h3>
+                    <i data-feather="code" class="mr-3 text-accent w-8 h-8"></i>
+                    <h3 class="font-semibold text-main text-2xl">Plugin Configurations</h3>
                 </div>
-                <p class="text-card mb-4">
+                <p class="text-main mb-4">
                     Custom YAML & JSON configurations for plugins like EssentialsX, LuckPerms, and more.
                 </p>
-                <div class="flex">
-                    <span class="card-subtitle">Examples: Economy, Ranks, Custom Items</span>
-                </div>
+                <span class="text-accent">Examples: Economy, Ranks, Custom Items</span>
             </div>
 
-            <div class="frosted-card hover-card p-6 rounded-xl transition">
+            <div class="frosted-glass hover:bg-card-hover p-6 rounded-xl transition">
                 <div class="flex items-center mb-4">
-                    <i data-feather="file-text" class="icon-card"></i>
-                    <h3 class="card-title">Custom Documentation</h3>
+                    <i data-feather="file-text" class="mr-3 text-accent w-8 h-8"></i>
+                    <h3 class="font-semibold text-main text-2xl">Custom Documentation</h3>
                 </div>
-                <p class="text-card mb-4">
+                <p class="text-main mb-4">
                     Comprehensive server guides, staff handbooks, and community rules.
                 </p>
-                <div class="flex">
-                    <span class="card-subtitle">Used in multiple SMPs and public servers</span>
-                </div>
+                <span class="text-accent">Used in multiple SMPs and public servers</span>
             </div>
+
         </div>
     </section>
 
     <!-- Archived Projects -->
-    <section class="frosted-card rounded-xl p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-8 glow-text-primary">Archived Projects</h2>
+    <section class="frosted-glass rounded-xl p-8 shadow-xl animate-fadeIn">
+        <h2 class="text-3xl font-bold mb-8 glow-text">Archived Projects</h2>
         <div class="grid md:grid-cols-3 gap-6">
-            <div class="frosted-card p-5 rounded-xl hover-card transition">
-                <h4 class="card-title">Prism SMP</h4>
-                <p class="card-subtitle">Owner (700 members)</p>
-                <p class="text-card mt-2">Left in November 2025</p>
+
+            <div class="frosted-glass hover:bg-card-hover p-5 rounded-xl transition">
+                <h4 class="font-semibold text-main">Prism SMP</h4>
+                <p class="text-accent text-sm">Owner (700 members)</p>
+                <p class="text-main text-xs mt-2">Left in November 2025</p>
             </div>
-            <div class="frosted-card p-5 rounded-xl hover-card transition">
-                <h4 class="card-title">OceanMC</h4>
-                <p class="card-subtitle">Owner (300 members)</p>
-                <p class="text-card mt-2">Closed in December 2025</p>
+
+            <div class="frosted-glass hover:bg-card-hover p-5 rounded-xl transition">
+                <h4 class="font-semibold text-main">OceanMC</h4>
+                <p class="text-accent text-sm">Owner (300 members)</p>
+                <p class="text-main text-xs mt-2">Closed in December 2025</p>
             </div>
-            <div class="frosted-card p-5 rounded-xl hover-card transition">
-                <h4 class="card-title">SteakySMP</h4>
-                <p class="card-subtitle">Co‑Owner (1.5k members)</p>
-                <p class="text-card mt-2">Left in October 2025</p>
+
+            <div class="frosted-glass hover:bg-card-hover p-5 rounded-xl transition">
+                <h4 class="font-semibold text-main">SteakySMP</h4>
+                <p class="text-accent text-sm">Co‑Owner (1.5k members)</p>
+                <p class="text-main text-xs mt-2">Left in October 2025</p>
             </div>
+
         </div>
     </section>
 
