@@ -1,3 +1,23 @@
+:root {
+    /* Base colors */
+    --bg-base: #0d0c0b;
+    --bg-overlay: rgba(22, 28, 25, 0.55);
+    --text-main: #e6ebe8;
+    --text-muted: #a3ada6;
+    
+    /* Accent and highlights */
+    --accent-main: #8fa79a;
+    --accent-hover: #aabcb4;
+    --accent-light: #cdded5;
+
+    /* Borders & UI */
+    --border-light: rgba(143, 167, 154, 0.25);
+    --scrollbar-track: #141917;
+    --scrollbar-thumb: #6f8a7a;
+    --scrollbar-thumb-hover: #8fa79a;
+}
+
+
 body {
     margin: 0;
     padding: 0;
