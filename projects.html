@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 <body class="bg-[#0d0c0b] text-[#f0ebe7] min-h-screen relative">
+
   <!-- Background video -->
   <div class="fixed inset-0 z-[-10] overflow-hidden">
     <video autoplay muted loop playsinline class="w-full h-full object-cover">
@@ -19,15 +20,16 @@
     <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
     <div class="absolute inset-0 opacity-20" style="background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1IiBoZWlnaHQ9IjUiPgo8cmVjdCB3aWR0aD0iNSIgaGVpZ2h0PSI1Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDVMNSAwWk02IDRMNCA2Wk0tMSAxTDEgLTFaIiBzdHJva2U9IiMxMTExMTEiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=')"></div>
   </div>
-<custom-navbar></custom-navbar>
 
-<!-- Back Button -->
-<a href="/" class="fixed top-4 right-4 z-50 bg-[#1c1917]/80 backdrop-blur-sm border border-[#d6bfa7]/30 text-[#d6bfa7] hover:text-[#e0c8af] hover:border-[#e0c8af]/50 px-4 py-2 rounded-lg flex items-center transition hover:bg-[#262320]/90">
-  <i data-feather="arrow-left" class="mr-2 w-4 h-4"></i> Back to Home
-</a>
-<main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">    
+  <custom-navbar></custom-navbar>
 
-<main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
+  <!-- Back Button -->
+  <a href="/" class="fixed top-4 right-4 z-50 bg-[#1c1917]/80 backdrop-blur-sm border border-[#d6bfa7]/30 text-[#d6bfa7] hover:text-[#e0c8af] hover:border-[#e0c8af]/50 px-4 py-2 rounded-lg flex items-center transition hover:bg-[#262320]/90">
+    <i data-feather="arrow-left" class="mr-2 w-4 h-4"></i> Back to Home
+  </a>
+
+  <main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
+
     <!-- Hero -->
     <section class="text-center animate-fadeIn">
         <h1 class="text-5xl font-bold mb-4 text-[#e0c8af] glow-text">Projects</h1>
@@ -35,6 +37,7 @@
             A showcase of Minecraft server projects I’ve been involved with, along with personal creative work.
         </p>
     </section>
+
     <!-- Live Projects -->
     <section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
         <h2 class="text-3xl font-bold mb-8 text-[#e0c8af] glow-text">Live Projects</h2>
@@ -97,7 +100,8 @@
             </div>
         </div>
     </section>
-<!-- Technical Creations -->
+
+    <!-- Technical Creations -->
     <section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
         <h2 class="text-3xl font-bold mb-8 text-[#e0c8af] glow-text">Technical Creations</h2>
         <div class="grid md:grid-cols-2 gap-8">
@@ -150,15 +154,16 @@
             </div>
         </div>
     </section>
-</main>
 
-<custom-footer></custom-footer>
+  </main>
 
-<script src="components/navbar.js"></script>
-<script src="components/footer.js"></script>
-<script src="script.js"></script>
-<script>
-    feather.replace();
-</script>
+  <custom-footer></custom-footer>
+
+  <script src="components/navbar.js"></script>
+  <script src="components/footer.js"></script>
+  <script src="script.js"></script>
+  <script>
+      feather.replace();
+  </script>
 </body>
 </html>
