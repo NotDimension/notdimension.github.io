@@ -1,26 +1,26 @@
 /* ===============================
    GLOBAL THEME VARIABLES
-   Dark Forest + Strong Contrast
-   version: 3.1
+   Olive Forest + Gray Frosted Cards
+   version: 3.2
 ================================ */
 :root {
     /* Backgrounds */
-    --bg-main: #0b1311;                           /* deep forest base */
-    --bg-overlay: rgba(15, 25, 20, 0.75);         /* darker fog overlay */
+    --bg-main: #0d1210;                          /* very dark forest base */
+    --bg-overlay: rgba(20, 24, 22, 0.70);        /* dark subtle fog */
 
-    /* Cards with stronger opacity */
-    --bg-card: rgba(30, 50, 40, 0.80);
-    --bg-card-hover: rgba(42, 70, 55, 0.95);
+    /* Cards */
+    --bg-card: rgba(40, 45, 41, 0.75);           /* grayish see-through */
+    --bg-card-hover: rgba(48, 60, 50, 0.90);     /* subtle olive shade on hover */
 
     /* Text colors */
-    --text-main: #edf6f1;                         /* bright fog text */
-    --text-muted: #b2c6bb;                        /* softer muted */
-    --text-accent: #8ec8a0;                       /* vibrant green accent */
-    --text-strong: #d4ece3;                       /* strong highlight */
+    --text-main: #e8f0eb;                        /* soft light text */
+    --text-muted: #a6b2a6;                       /* muted gray-green */
+    --text-accent: #7c8c6c;                      /* olive green tone */
+    --text-strong: #dce8df;                      /* stronger highlight */
 
     /* Borders & glow */
-    --border-soft: rgba(145, 190, 165, 0.35);
-    --glow: rgba(145, 190, 165, 0.45);
+    --border-soft: rgba(130, 142, 128, 0.35);
+    --glow: rgba(130, 142, 128, 0.42);
 }
 
 /* ===============================
@@ -47,7 +47,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #0d1411;
+    background: #0f1714;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -103,13 +103,13 @@ body {
 ================================ */
 .frosted-glass {
     background: var(--bg-card);
-    backdrop-filter: blur(12px) saturate(150%);
-    -webkit-backdrop-filter: blur(12px) saturate(150%);
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
     border: 1px solid var(--border-soft);
 }
 
 .glow-text {
-    text-shadow: 0 0 16px var(--glow);
+    text-shadow: 0 0 14px var(--glow);
 }
 
 .animate-fadeIn {
@@ -175,14 +175,14 @@ i[data-feather] {
 .social-card:hover {
     background-color: var(--bg-card-hover);
     transform: translateY(-2px);
-    box-shadow: 0 0 20px var(--glow);
+    box-shadow: 0 0 18px var(--glow);
 }
 
 .social-card img {
     filter: brightness(0)
             saturate(100%)
-            invert(80%)
-            sepia(15%)
-            saturate(550%)
-            hue-rotate(115deg);
+            invert(76%)
+            sepia(14%)
+            saturate(360%)
+            hue-rotate(95deg);
 }
