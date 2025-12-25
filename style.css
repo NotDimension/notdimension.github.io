@@ -154,3 +154,21 @@ i[data-feather] {
     color: var(--text-strong);
     transform: translateY(-2px);
 }
+/* ===============================
+   SOCIAL CARDS
+================================ */
+.social-card {
+    color: var(--text-main);
+    transition: background-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+
+.social-card:hover {
+    background-color: var(--bg-card-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px var(--glow);
+}
+
+/* Force all social icons to follow theme color */
+.social-card img {
+    filter: brightness(0) saturate(100%) invert(79%) sepia(8%) saturate(352%) hue-rotate(108deg);
+}
