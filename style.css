@@ -1,32 +1,31 @@
 /* ===============================
    GLOBAL THEME VARIABLES
-   Warm Deep Forest (No Blue)
-   Base: #16400d
+   Warm Forest Glass
+   Base: #16221a / #27351d / #687638
 ================================ */
 :root {
-    /* Core greens (derived only from #16400d) */
-    --green-base: #16400d;          /* pine */
-    --green-dark: #0b1f08;          /* deep shadow */
-    --green-mid: #1e5a14;           /* moss */
-    --green-soft: #2a6b1e;          /* leaf highlight */
+    /* Core forest palette */
+    --green-shadow: #16221a;      /* deepest base */
+    --green-base: #27351d;        /* primary forest */
+    --green-moss: #687638;        /* soft accent */
 
-    /* Backgrounds */
-    --bg-main: #040704;
-    --bg-overlay: rgba(10, 20, 12, 0.80);
+    /* Background layers */
+    --bg-main: #050705;
+    --bg-overlay: rgba(10, 16, 12, 0.78);
 
-    /* Cards */
-    --bg-card: rgba(22, 64, 13, 0.48);
-    --bg-card-hover: rgba(30, 90, 20, 0.68);
+    /* Cards – higher transparency */
+    --bg-card: rgba(39, 53, 29, 0.38);
+    --bg-card-hover: rgba(39, 53, 29, 0.55);
 
-    /* Text (neutral gray, NOT blue) */
-    --text-main: #e4e4e2;           /* warm light gray */
-    --text-muted: #b6b6b1;          /* warm fog gray */
-    --text-accent: #8fc98b;         /* soft warm moss */
-    --text-strong: #f6f6f4;
+    /* Text – warm neutral gray */
+    --text-main: #e6e5e1;
+    --text-muted: #b7b6ae;
+    --text-accent: #8fa56a;
+    --text-strong: #f5f5f2;
 
     /* Borders & glow */
-    --border-soft: rgba(180, 175, 165, 0.22);
-    --glow: rgba(120, 190, 120, 0.32);
+    --border-soft: rgba(190, 185, 170, 0.18);
+    --glow: rgba(160, 175, 120, 0.28);
 }
 
 /* ===============================
@@ -56,19 +55,19 @@ body {
     object-fit: cover;
     z-index: -3;
 
-    /* REMOVE blue tones */
-    filter: saturate(125%) contrast(105%) brightness(90%) hue-rotate(-6deg);
+    /* warm, earthy tuning */
+    filter: saturate(120%) contrast(105%) brightness(92%);
 }
 
-/* Warm forest overlay */
+/* Soft forest overlay */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     background:
         linear-gradient(
-            rgba(22, 64, 13, 0.15),
-            rgba(6, 12, 6, 0.90)
+            rgba(22, 34, 26, 0.12),
+            rgba(8, 12, 9, 0.88)
         );
     z-index: -2;
 }
@@ -81,16 +80,16 @@ body::before {
 }
 
 ::-webkit-scrollbar-track {
-    background: #050805;
+    background: #060806;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--green-mid);
+    background: var(--green-moss);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--green-soft);
+    background: var(--text-strong);
 }
 
 /* ===============================
@@ -113,18 +112,18 @@ body::before {
 .frosted-glass {
     background: linear-gradient(
         180deg,
-        rgba(22, 64, 13, 0.60),
-        rgba(14, 40, 10, 0.45)
+        rgba(39, 53, 29, 0.42),
+        rgba(22, 34, 26, 0.30)
     );
-    backdrop-filter: blur(20px) saturate(125%);
-    -webkit-backdrop-filter: blur(20px) saturate(125%);
+    backdrop-filter: blur(22px) saturate(118%);
+    -webkit-backdrop-filter: blur(22px) saturate(118%);
     border: 1px solid var(--border-soft);
 }
 
 .glow-text {
     text-shadow:
-        0 0 10px rgba(180, 180, 160, 0.25),
-        0 0 26px rgba(90, 160, 90, 0.40);
+        0 0 10px rgba(200, 195, 175, 0.22),
+        0 0 26px rgba(135, 155, 95, 0.35);
 }
 
 .animate-fadeIn {
@@ -192,16 +191,15 @@ i[data-feather] {
     background-color: var(--bg-card-hover);
     transform: translateY(-3px);
     box-shadow:
-        0 10px 35px rgba(0, 0, 0, 0.45),
+        0 10px 30px rgba(0, 0, 0, 0.40),
         0 0 24px var(--glow);
 }
 
 .social-card img {
-    /* neutral gray → green, no blue */
     filter: brightness(0)
             saturate(100%)
-            invert(80%)
-            sepia(22%)
-            saturate(360%)
-            hue-rotate(80deg);
+            invert(78%)
+            sepia(18%)
+            saturate(300%)
+            hue-rotate(75deg);
 }
