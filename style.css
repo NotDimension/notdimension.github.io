@@ -1,25 +1,32 @@
 /* ===============================
    GLOBAL THEME VARIABLES
-   Deep Evergreen Forest
+   Warm Deep Forest (No Blue)
+   Base: #16400d
 ================================ */
 :root {
-    /* Background tones */
-    --bg-main: #060b08;                         /* near-black forest */
-    --bg-overlay: rgba(6, 14, 10, 0.70);        /* heavy forest mist */
+    /* Core greens (derived only from #16400d) */
+    --green-base: #16400d;          /* pine */
+    --green-dark: #0b1f08;          /* deep shadow */
+    --green-mid: #1e5a14;           /* moss */
+    --green-soft: #2a6b1e;          /* leaf highlight */
+
+    /* Backgrounds */
+    --bg-main: #040704;
+    --bg-overlay: rgba(10, 20, 12, 0.80);
 
     /* Cards */
-    --bg-card: rgba(18, 30, 24, 0.55);          /* deep pine glass */
-    --bg-card-hover: rgba(24, 46, 36, 0.75);    /* emerald moss hover */
+    --bg-card: rgba(22, 64, 13, 0.48);
+    --bg-card-hover: rgba(30, 90, 20, 0.68);
 
-    /* Text */
-    --text-main: #e6f2ec;
-    --text-muted: #8fa9a0;
-    --text-accent: #5fa08a;                     /* deep moss green */
-    --text-strong: #f4fffa;
+    /* Text (neutral gray, NOT blue) */
+    --text-main: #e4e4e2;           /* warm light gray */
+    --text-muted: #b6b6b1;          /* warm fog gray */
+    --text-accent: #8fc98b;         /* soft warm moss */
+    --text-strong: #f6f6f4;
 
     /* Borders & glow */
-    --border-soft: rgba(110, 190, 160, 0.22);
-    --glow: rgba(80, 180, 140, 0.35);
+    --border-soft: rgba(180, 175, 165, 0.22);
+    --glow: rgba(120, 190, 120, 0.32);
 }
 
 /* ===============================
@@ -48,19 +55,20 @@ body {
     height: 100vh;
     object-fit: cover;
     z-index: -3;
-    filter: saturate(120%) contrast(105%) brightness(90%);
+
+    /* REMOVE blue tones */
+    filter: saturate(125%) contrast(105%) brightness(90%) hue-rotate(-6deg);
 }
 
-/* Dark forest overlay */
+/* Warm forest overlay */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
     background:
-        radial-gradient(
-            circle at top,
-            rgba(20, 50, 35, 0.15),
-            rgba(6, 14, 10, 0.85)
+        linear-gradient(
+            rgba(22, 64, 13, 0.15),
+            rgba(6, 12, 6, 0.90)
         );
     z-index: -2;
 }
@@ -73,16 +81,16 @@ body::before {
 }
 
 ::-webkit-scrollbar-track {
-    background: #050a08;
+    background: #050805;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--text-accent);
+    background: var(--green-mid);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--text-strong);
+    background: var(--green-soft);
 }
 
 /* ===============================
@@ -105,18 +113,18 @@ body::before {
 .frosted-glass {
     background: linear-gradient(
         180deg,
-        rgba(20, 40, 32, 0.60),
-        rgba(12, 24, 20, 0.45)
+        rgba(22, 64, 13, 0.60),
+        rgba(14, 40, 10, 0.45)
     );
-    backdrop-filter: blur(18px) saturate(120%);
-    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    backdrop-filter: blur(20px) saturate(125%);
+    -webkit-backdrop-filter: blur(20px) saturate(125%);
     border: 1px solid var(--border-soft);
 }
 
 .glow-text {
     text-shadow:
-        0 0 14px rgba(100, 220, 170, 0.30),
-        0 0 36px rgba(40, 120, 90, 0.40);
+        0 0 10px rgba(180, 180, 160, 0.25),
+        0 0 26px rgba(90, 160, 90, 0.40);
 }
 
 .animate-fadeIn {
@@ -126,7 +134,7 @@ body::before {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(18px);
     }
     to {
         opacity: 1;
@@ -185,14 +193,15 @@ i[data-feather] {
     transform: translateY(-3px);
     box-shadow:
         0 10px 35px rgba(0, 0, 0, 0.45),
-        0 0 28px var(--glow);
+        0 0 24px var(--glow);
 }
 
 .social-card img {
+    /* neutral gray → green, no blue */
     filter: brightness(0)
             saturate(100%)
-            invert(78%)
-            sepia(20%)
-            saturate(420%)
-            hue-rotate(120deg);
+            invert(80%)
+            sepia(22%)
+            saturate(360%)
+            hue-rotate(80deg);
 }
