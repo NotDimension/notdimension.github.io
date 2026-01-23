@@ -1,223 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>NotDimension | Portfolio</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NotDimension // Neural Link</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Fira+Code:wght@300;500&display=swap');
+        
+        :root {
+            --neon-purple: #9333ea;
+            --neon-blue: #3b82f6;
+            --terminal-green: #10b981;
+        }
+
+        body {
+            font-family: 'Space+Grotesk', sans-serif;
+            background: #020202;
+            cursor: crosshair;
+        }
+
+        .mono { font-family: 'Fira Code', monospace; }
+
+        /* Cyberpunk HUD Border */
+        .hud-border {
+            position: fixed;
+            inset: 0;
+            border: 1px solid rgba(147, 51, 234, 0.2);
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .hud-corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-purple);
+        }
+
+        /* Scanline Effect */
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 99;
+            background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(147, 51, 234, 0.05) 50%, rgba(0,0,0,0) 100%);
+            opacity: 0.1;
+            position: fixed;
+            bottom: 100%;
+            animation: scanline 8s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% { bottom: 100%; }
+            100% { bottom: -100%; }
+        }
+
+        .terminal-window {
+            background: rgba(10, 10, 15, 0.8);
+            border-left: 2px solid var(--neon-purple);
+            backdrop-filter: blur(10px);
+        }
+
+        .role-glitch:hover {
+            text-shadow: 2px 0 #ff00c1, -2px 0 #00fff9;
+            animation: glitch-anim 0.2s infinite;
+        }
+
+        @keyframes glitch-anim {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+    </style>
 </head>
-<body class="bg-main text-main min-h-screen relative overflow-x-hidden">
+<body class="text-gray-300">
 
-<div id="vanta-bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -20;"></div>
-<div class="mouse-glow" id="glow" style="z-index: -10;"></div>
-
-<div class="fixed inset-0 z-[-15] overflow-hidden">
-  <img src="background.png" alt="Background" class="w-full h-full object-cover opacity-30">
-  <div class="absolute inset-0 bg-overlay"></div>
+<div id="vanta-canvas" class="fixed inset-0 z-0"></div>
+<div class="scanline"></div>
+<div class="hud-border">
+    <div class="hud-corner top-0 left-0 border-r-0 border-b-0"></div>
+    <div class="hud-corner top-0 right-0 border-l-0 border-b-0"></div>
+    <div class="hud-corner bottom-0 left-0 border-r-0 border-t-0"></div>
+    <div class="hud-corner bottom-0 right-0 border-l-0 border-t-0"></div>
 </div>
 
-<custom-navbar class="relative z-50"></custom-navbar>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 min-h-screen">
+    
+    <aside class="lg:col-span-1 border-r border-white/5 flex flex-col items-center py-8 space-y-12 bg-black/20 backdrop-blur-md">
+        <div class="w-12 h-12 rounded-full border border-purple-500 flex items-center justify-center text-purple-500 font-bold">ND</div>
+        <nav class="flex flex-col space-y-8 text-gray-500">
+            <a href="#home" class="hover:text-purple-400 transition-colors rotate-90 lg:rotate-0"><i data-feather="home"></i></a>
+            <a href="#status" class="hover:text-purple-400 transition-colors"><i data-feather="activity"></i></a>
+            <a href="#skills" class="hover:text-purple-400 transition-colors"><i data-feather="cpu"></i></a>
+            <a href="#contact" class="hover:text-purple-400 transition-colors"><i data-feather="terminal"></i></a>
+        </nav>
+    </aside>
 
-<main class="relative z-20 max-w-6xl mx-auto px-4 py-12 space-y-24">
+    <main class="lg:col-span-11 p-4 lg:p-12 space-y-12">
+        
+        <header class="flex flex-col md:flex-row justify-between items-end border-b border-purple-500/30 pb-6">
+            <div>
+                <h1 class="text-7xl font-black italic tracking-tighter text-white uppercase overflow-hidden">
+                    NotDimension<span class="text-purple-500">.</span>
+                </h1>
+                <div class="flex items-center gap-4 mt-2 mono text-purple-400">
+                    <span class="px-2 py-1 bg-purple-500/10 border border-purple-500/20 text-xs">V.2.0.26</span>
+                    <span class="text-sm">STATUS: ACTIVE // SOUTH_AFRICA</span>
+                </div>
+            </div>
+            <div class="hidden md:block text-right mono text-xs text-gray-500">
+                <p>LAT: -26.1307 | LONG: 27.9033</p>
+                <p id="clock">00:00:00 UTC</p>
+            </div>
+        </header>
 
-  <section class="flex flex-col md:flex-row items-center gap-8 reveal">
-    <img src="images/profile.png" alt="Profile" class="rounded-full w-40 h-40 border-4 border-soft shadow-lg pulse-animation object-cover">
-    <div class="text-center md:text-left">
-      <h1 class="text-5xl font-bold mb-2 text-strong glow-text">NotDimension</h1>
-      <p class="text-xl mb-1 rounded-full bg-card px-4 py-1 inline-block text-accent border border-soft">Minecraft Server Developer</p>
-      <p class="text-muted text-sm ml-2">South Africa</p>
-      <div class="flex justify-center md:justify-start gap-4 mt-4 text-accent social-icons">
-        <a href="https://discord.com/users/753556348784083024" target="_blank"><i data-feather="message-circle"></i></a>
-        <a href="https://www.youtube.com/@NotDimension" target="_blank"><i data-feather="youtube"></i></a>
-        <a href="https://github.com/NotDimension" target="_blank"><i data-feather="github"></i></a>
-        <a href="https://steamcommunity.com/id/notdimension" target="_blank"><i data-feather="cpu"></i></a>
-        <a href="https://namemc.com/profile/NotDimension.1" target="_blank"><i data-feather="box"></i></a>
-      </div>
-    </div>
-  </section>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <div class="lg:col-span-2 space-y-8">
+                <section id="status" class="terminal-window p-6 rounded-sm border border-white/10">
+                    <div class="flex items-center gap-2 mb-6 border-b border-white/5 pb-2">
+                        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        <h2 class="mono text-sm uppercase tracking-widest text-gray-400">Current Deployment</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-white/5 border border-white/5 group hover:border-purple-500/50 transition-all cursor-pointer">
+                            <p class="mono text-[10px] text-purple-500">ID: 01_SHADY</p>
+                            <h3 class="text-xl font-bold group-hover:text-purple-400 transition-colors uppercase">ShadySMP</h3>
+                            <p class="text-xs text-gray-500 mt-1">CO-OWNER // 450+ NEURAL LINKS</p>
+                        </div>
+                        <div class="p-4 bg-white/5 border border-white/5 group hover:border-blue-500/50 transition-all cursor-pointer">
+                            <p class="mono text-[10px] text-blue-500">ID: 02_SMPF</p>
+                            <h3 class="text-xl font-bold group-hover:text-blue-400 transition-colors uppercase">SMP Finder</h3>
+                            <p class="text-xs text-gray-500 mt-1">MODERATOR // 27K+ NEURAL LINKS</p>
+                        </div>
+                    </div>
+                </section>
 
-  <section class="frosted-glass rounded-xl p-8 shadow-2xl reveal">
-    <div class="section-header mb-4">
-      <i data-feather="user"></i>
-      <h2 class="text-3xl font-bold text-strong glow-text">About Me</h2>
-    </div>
-    <p class="text-main text-lg leading-relaxed">
-      Minecraft server developer specializing in plugin configuration, staff management, and community engagement. Experienced in growing servers from small communities to hundreds of members, focusing on creating good gameplay experience.
-    </p>
-  </section>
+                <section id="skills" class="terminal-window p-6 rounded-sm border border-white/10">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-2">
+                            <i data-feather="cpu" class="text-purple-500 w-4 h-4"></i>
+                            <h2 class="mono text-sm uppercase tracking-widest text-gray-400">Skill_Tree.sys</h2>
+                        </div>
+                        <span class="mono text-[10px] text-gray-600">ENCRYPTION: AES-256</span>
+                    </div>
 
-  <section id="current-roles" class="reveal">
-    <div class="section-header mb-6">
-      <i data-feather="award"></i>
-      <h2 class="text-3xl font-bold text-strong glow-text">Current Roles</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="social-card p-6 rounded-xl hover-tilt text-center">
-        <img src="images/icons/shady.png" class="w-16 h-16 rounded-full mb-3 mx-auto" alt="Shady">
-        <h3 class="text-xl font-semibold mb-1 text-main">ShadySMP</h3>
-        <p class="text-accent mb-3">Co-Owner (450 Members)</p>
-        <a href="https://discord.gg/Jg48d8xbcD" class="flex items-center justify-center text-accent text-sm" target="_blank"><i data-feather="link" class="mr-1 w-4 h-4"></i> Discord</a>
-      </div>
-      <div class="social-card p-6 rounded-xl hover-tilt text-center">
-        <img src="images/icons/smpfinder.png" class="w-16 h-16 rounded-full mb-3 mx-auto" alt="SMP Finder">
-        <h3 class="text-xl font-semibold mb-1 text-main">SMP Finder</h3>
-        <p class="text-accent mb-3">Moderator (27k members)</p>
-        <a href="https://discord.gg/cuP8bPZgYv" class="flex items-center justify-center text-accent text-sm" target="_blank"><i data-feather="link" class="mr-1 w-4 h-4"></i> Discord</a>
-      </div>
-      <div class="social-card p-6 rounded-xl hover-tilt text-center">
-        <img src="images/icons/collective.png" class="w-16 h-16 rounded-full mb-3 mx-auto" alt="Collective">
-        <h3 class="text-xl font-semibold mb-1 text-main">Discord Collective</h3>
-        <p class="text-accent mb-3">Manager (60 members)</p>
-        <a href="https://discord.gg/nUMJ52Pycj" class="flex items-center justify-center text-accent text-sm" target="_blank"><i data-feather="link" class="mr-1 w-4 h-4"></i> Discord</a>
-      </div>
-    </div>
-  </section>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mono text-xs">
+                        <div class="space-y-2">
+                            <p class="text-purple-500">> CORE</p>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>- Server_Admin</li>
+                                <li>- Staff_Coord</li>
+                                <li>- Community_Eng</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-blue-500">> DEV</p>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>- YAML_JSON</li>
+                                <li>- Java_MOOC [60%]</li>
+                                <li>- Debug_Log</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-emerald-500">> DESIGN</p>
+                            <ul class="text-gray-400 space-y-1">
+                                <li>- UI_UX_Redesign</li>
+                                <li>- Motion_GFX</li>
+                                <li>- Branding</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
 
-  <section class="reveal">
-    <div class="section-header mb-6">
-      <i data-feather="clock"></i>
-      <h2 class="text-3xl font-bold text-strong glow-text">Previous Roles</h2>
-    </div>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-      <div class="social-card p-4 rounded-xl hover-tilt flex flex-col items-center text-center">
-        <img src="images/icons/prism.png" class="w-14 h-14 rounded-full mb-2" alt="Prism"><h3 class="text-lg font-semibold">Prism SMP</h3><p class="text-accent text-sm">Owner (700)</p>
-      </div>
-      <div class="social-card p-4 rounded-xl hover-tilt flex flex-col items-center text-center">
-        <img src="images/icons/shatter.png" class="w-14 h-14 rounded-full mb-2" alt="Shatter"><h3 class="text-lg font-semibold">ShatterMC</h3><p class="text-accent text-sm">Sr. Admin (260)</p>
-      </div>
-      <div class="social-card p-4 rounded-xl hover-tilt flex flex-col items-center text-center">
-        <img src="images/icons/ocean.png" class="w-14 h-14 rounded-full mb-2" alt="Ocean"><h3 class="text-lg font-semibold">OceanMC</h3><p class="text-accent text-sm">Owner (300)</p>
-      </div>
-      <div class="social-card p-4 rounded-xl hover-tilt flex flex-col items-center text-center">
-        <img src="images/icons/steaky.png" class="w-14 h-14 rounded-full mb-2" alt="Steaky"><h3 class="text-lg font-semibold">SteakySMP</h3><p class="text-accent text-sm">Co-Owner (1.5k)</p>
-      </div>
-      <div class="social-card p-4 rounded-xl hover-tilt flex flex-col items-center text-center">
-        <img src="images/icons/bonk.png" class="w-14 h-14 rounded-full mb-2" alt="Bonk"><h3 class="text-lg font-semibold">BonkMC</h3><p class="text-accent text-sm">Moderator (4.6k)</p>
-      </div>
-      <div class="social-card p-4 rounded-xl hover-tilt flex flex-col items-center text-center">
-        <img src="images/icons/nebular.png" class="w-14 h-14 rounded-full mb-2" alt="Nebular"><h3 class="text-lg font-semibold">Nebular SMP</h3><p class="text-accent text-sm">Co-Owner (200)</p>
-      </div>
-    </div>
-  </section>
+            <div class="lg:col-span-1 space-y-8">
+                <section class="terminal-window p-6 border border-white/10 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-2 opacity-10">
+                        <i data-feather="user" class="w-32 h-32"></i>
+                    </div>
+                    <h2 class="mono text-xs text-purple-500 mb-4 tracking-tighter uppercase">// BIOMETRICS</h2>
+                    <p class="text-sm leading-relaxed text-gray-400">
+                        Specialist in high-density Minecraft architectures. Architecting gameplay loops for massive player concurrency.
+                    </p>
+                    <div class="mt-6 pt-6 border-t border-white/5 flex gap-4">
+                        <a href="#" class="p-2 bg-white/5 hover:bg-purple-500/20 rounded-full transition-all"><i data-feather="message-circle" class="w-4 h-4"></i></a>
+                        <a href="#" class="p-2 bg-white/5 hover:bg-purple-500/20 rounded-full transition-all"><i data-feather="github" class="w-4 h-4"></i></a>
+                        <a href="#" class="p-2 bg-white/5 hover:bg-purple-500/20 rounded-full transition-all"><i data-feather="youtube" class="w-4 h-4"></i></a>
+                    </div>
+                </section>
 
-  <section id="skills" class="frosted-glass rounded-xl p-8 shadow-2xl reveal">
-    <div class="section-header mb-8">
-      <i data-feather="tool"></i>
-      <h2 class="text-3xl font-bold text-strong glow-text">Skills & Responsibilities</h2>
-    </div>
-    <div class="grid md:grid-cols-2 gap-x-12 gap-y-10">
-      <div>
-        <h3 class="text-xl font-semibold mb-6 text-strong flex items-center gap-3"><i data-feather="star" class="text-accent"></i> Core Expertise</h3>
-        <ul class="space-y-4">
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="server" class="text-accent"></i> <span>Server Administration</span></li>
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="users" class="text-accent"></i> <span>Staff Management</span></li>
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="message-circle" class="text-accent"></i> <span>Community Engagement</span></li>
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="code" class="text-accent"></i> <span>Technical Skills</span></li>
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="file-text" class="text-accent"></i> <span>Logs Management</span></li>
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="image" class="text-accent"></i> <span>Graphic Design</span></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-xl font-semibold mb-6 text-strong flex items-center gap-3"><i data-feather="list" class="text-accent"></i> Daily Tasks</h3>
-        <ul class="space-y-4">
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="activity" class="text-accent"></i> <span>Server maintenance & monitoring</span></li>
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="users" class="text-accent"></i> <span>Staff coordination & training</span></li>
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="box" class="text-accent"></i> <span>Plugin installation & configuration</span></li>
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="calendar" class="text-accent"></i> <span>Community engagement & events</span></li>
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="search" class="text-accent"></i> <span>Server logs analysis & debugging</span></li>
-          <li class="list-item-reveal flex items-center gap-4"><i data-feather="edit-3" class="text-accent"></i> <span>Creating graphics & promo materials</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
+                <section class="terminal-window p-6 border border-white/10">
+                    <h2 class="mono text-[10px] text-gray-500 mb-4 uppercase">System Upgrade Progress</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-[10px] mono mb-1">
+                                <span>JAVA_LEARNING</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="h-1 bg-white/5 w-full">
+                                <div class="h-full bg-purple-500 shadow-[0_0_10px_#9333ea]" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[10px] mono mb-1">
+                                <span>OOP_ARCHITECT</span>
+                                <span>40%</span>
+                            </div>
+                            <div class="h-1 bg-white/5 w-full">
+                                <div class="h-full bg-blue-500 shadow-[0_0_10px_#3b82f6]" style="width: 40%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
 
-  <section class="reveal">
-    <div class="section-header mb-6">
-      <i data-feather="code"></i>
-      <h2 class="text-3xl font-bold text-strong glow-text">Currently Working On</h2>
-    </div>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="social-card p-8 rounded-xl hover-tilt">
-        <h3 class="text-2xl font-bold mb-2 text-strong">MOOC Java Programming</h3>
-        <p class="text-accent text-lg mb-4">Learning foundations through University of Helsinki.</p>
-        <p class="font-bold text-accent uppercase tracking-widest text-xs">ETA: 3 months</p>
-      </div>
-      <div class="social-card p-8 rounded-xl hover-tilt">
-        <h3 class="text-2xl font-bold mb-2 text-strong">Object-Oriented Java</h3>
-        <p class="text-accent text-lg mb-4">Deep dive into advanced OOP architectural patterns.</p>
-        <p class="font-bold text-accent uppercase tracking-widest text-xs">ETA: 2 months</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="reveal">
-    <div class="section-header mb-6"><i data-feather="share-2"></i><h2 class="text-3xl font-bold text-strong glow-text">Socials</h2></div>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      <a href="https://discord.com/users/753556348784083024" target="_blank" class="social-card p-5 rounded-xl flex items-center gap-3 hover-tilt">
-        <img src="https://cdn.simpleicons.org/discord" width="24"> <span class="font-bold">Discord</span>
-      </a>
-      <a href="https://github.com/NotDimension" target="_blank" class="social-card p-5 rounded-xl flex items-center gap-3 hover-tilt">
-        <img src="https://cdn.simpleicons.org/github" width="24"> <span class="font-bold">Github</span>
-      </a>
-      <a href="https://www.youtube.com/@NotDimension" target="_blank" class="social-card p-5 rounded-xl flex items-center gap-3 hover-tilt">
-        <img src="https://cdn.simpleicons.org/youtube" width="24"> <span class="font-bold">YouTube</span>
-      </a>
-      <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="social-card p-5 rounded-xl flex items-center gap-3 hover-tilt">
-        <img src="https://cdn.simpleicons.org/namemc" width="24"> <span class="font-bold">NameMC</span>
-      </a>
-    </div>
-  </section>
-
-</main>
-
-<custom-footer class="relative z-50"></custom-footer>
-
-<script src="components/navbar.js"></script>
-<script src="components/footer.js"></script>
+        <footer class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20">
+            <a href="projects.html" class="mono text-center py-4 border border-white/5 hover:bg-purple-500/10 hover:border-purple-500 transition-all">PROJECTS_MNTR</a>
+            <a href="about.html" class="mono text-center py-4 border border-white/5 hover:bg-purple-500/10 hover:border-purple-500 transition-all">USER_BIO</a>
+            <a href="contact.html" class="mono text-center py-4 border border-white/5 hover:bg-purple-500/10 hover:border-purple-500 transition-all">COMM_CHANNEL</a>
+            <a href="#" class="mono text-center py-4 border border-white/5 hover:bg-purple-500/10 hover:border-purple-500 transition-all">SECURE_EXIT</a>
+        </footer>
+    </main>
+</div>
 
 <script>
-  feather.replace();
+    feather.replace();
 
-  // Mouse Glow logic
-  const glow = document.getElementById('glow');
-  window.addEventListener('mousemove', e => {
-    glow.style.setProperty('--x', e.clientX + 'px');
-    glow.style.setProperty('--y', e.clientY + 'px');
-  });
-
-  // Reveal Logic (Intersection Observer)
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        entry.target.classList.remove('out');
-      } else if (entry.boundingClientRect.top < 0) {
-        entry.target.classList.add('out');
-        entry.target.classList.remove('active');
-      }
+    // Vanta Net Effect (More complex/web-like)
+    VANTA.NET({
+        el: "#vanta-canvas",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x9333ea,
+        backgroundColor: 0x020202,
+        points: 12.00,
+        maxDistance: 24.00,
+        spacing: 16.00
     });
-  }, { threshold: 0.1 });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Vanta BG Init
-  VANTA.GLOBE({
-    el: "#vanta-bg",
-    mouseControls: true,
-    touchControls: true,
-    gyroControls: false,
-    minHeight: 200.00,
-    minWidth: 200.00,
-    scale: 1.00,
-    scaleMobile: 1.00,
-    color: 0x9333ea,
-    backgroundColor: 0x050505,
-    size: 0.6
-  });
+    // Digital Clock
+    function updateClock() {
+        const now = new Date();
+        document.getElementById('clock').innerText = now.toISOString().split('T')[1].split('.')[0] + ' UTC';
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
 </script>
 
 </body>
