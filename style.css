@@ -1,13 +1,12 @@
-/* ===============================
+/* ============================================================
    GLOBAL THEME VARIABLES
-   Arctic Sunset Glass
-   Base: #0a0f1c / #2c3e50 / #e74c3c
-================================ */
+   Arctic Sunset Glass - Dynamic Edition
+   ============================================================ */
 :root {
     /* Core arctic palette */
     --blue-shadow: #0a0f1c;      /* deepest base (dark blue) */
     --blue-base: #2c3e50;        /* primary arctic (mid-blue) */
-    --pink-accent: #e74c3c;        /* soft accent (vibrant pink/red) */
+    --pink-accent: #e74c3c;      /* soft accent (vibrant pink/red) */
 
     /* Background layers */
     --bg-main: #03040a;
@@ -20,16 +19,21 @@
     /* Text – cool neutral gray/white */
     --text-main: #e6e5e1;
     --text-muted: #b7b6ae;
-    --text-accent: #e74c3c; /* Matches the sky pink/red */
+    --text-accent: #e74c3c; 
     --text-strong: #f5f5f2;
 
     /* Borders & glow */
     --border-soft: rgba(170, 185, 190, 0.18);
-    --glow: rgba(231, 76, 60, 0.28); /* Matches the pink/red accent */
+    --glow: rgba(231, 76, 60, 0.28); 
+    
+    /* Animation Constants */
+    --mouse-glow-size: 45%;
+    --reveal-speed: 0.8s;
+    --tilt-speed: 0.3s;
 }
 
 /* ===============================
-   BASE
+   BASE & RESET
 ================================ */
 * {
     box-sizing: border-box;
@@ -42,10 +46,67 @@ body {
     color: var(--text-main);
     overflow-x: hidden;
     background-color: var(--bg-main);
+    line-height: 1.6;
 }
 
 /* ===============================
-   VIDEO BACKGROUND
+   DYNAMIC INTERACTIVE EFFECTS
+================================ */
+
+/* The Interactive Background Glow (Mouse Follow) */
+.mouse-glow {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    background: radial-gradient(
+        circle at var(--x, 50%) var(--y, 50%), 
+        var(--glow) 0%, 
+        transparent var(--mouse-glow-size)
+    );
+    z-index: -1;
+    transition: background 0.1s ease;
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all var(--reveal-speed) cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Global Hover Tilt & Lift */
+.hover-tilt {
+    transition: transform var(--tilt-speed) ease, 
+                box-shadow var(--tilt-speed) ease, 
+                border-color var(--tilt-speed) ease !important;
+    will-change: transform;
+}
+
+.hover-tilt:hover {
+    transform: translateY(-8px) scale(1.01) !important;
+    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6), 0 0 20px var(--glow) !important;
+    border-color: var(--pink-accent) !important;
+    z-index: 10;
+}
+
+/* Hero Profile Image Float */
+.pulse-animation {
+    animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+
+/* ===============================
+   VIDEO & OVERLAY
 ================================ */
 .bg-video {
     position: fixed;
@@ -54,21 +115,17 @@ body {
     height: 100vh;
     object-fit: cover;
     z-index: -3;
-
-    /* cold, icy tuning */
     filter: saturate(110%) contrast(100%) brightness(100%);
 }
 
-/* Soft arctic overlay */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background:
-        linear-gradient(
-            rgba(10, 15, 25, 0.12),
-            rgba(4, 6, 12, 0.88)
-        );
+    background: linear-gradient(
+        rgba(10, 15, 25, 0.12),
+        rgba(4, 6, 12, 0.88)
+    );
     z-index: -2;
 }
 
@@ -84,7 +141,7 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--blue-base); /* Changed to use the base blue */
+    background: var(--blue-base);
     border-radius: 5px;
 }
 
@@ -107,7 +164,7 @@ body::before {
 .border-soft { border-color: var(--border-soft); }
 
 /* ===============================
-   EFFECTS
+   FROSTED GLASS & HEADERS
 ================================ */
 .frosted-glass {
     background: linear-gradient(
@@ -120,34 +177,43 @@ body::before {
     border: 1px solid var(--border-soft);
 }
 
+.section-header {
+    margin-bottom: 2.5rem !important;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
 .glow-text {
-    text-shadow:
-        0 0 10px rgba(220, 230, 250, 0.22),
-        0 0 26px rgba(231, 76, 60, 0.35); /* Glow now uses the pink accent */
-}
-
-.animate-fadeIn {
-    animation: fadeIn 1s ease-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    text-shadow: 
+        0 0 10px rgba(220, 230, 250, 0.15), 
+        0 0 20px var(--glow);
 }
 
 /* ===============================
-   ICONS
+   SOCIAL CARDS & ICONS
 ================================ */
+.social-card {
+    background-color: var(--bg-card);
+    color: var(--text-main);
+    border: 1px solid var(--border-soft);
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.social-card:hover {
+    background-color: var(--bg-card-hover);
+}
+
+.social-card img {
+    filter: brightness(0) saturate(100%) invert(90%) sepia(10%) saturate(150%) hue-rotate(180deg);
+}
+
 i[data-feather] {
-    width: 1em;
-    height: 1em;
+    width: 1.2em;
+    height: 1.2em;
     stroke: currentColor;
+    stroke-width: 2;
     vertical-align: middle;
 }
 
@@ -155,51 +221,11 @@ i[data-feather] {
    RESPONSIVE
 ================================ */
 @media (max-width: 768px) {
+    .section-header {
+        margin-bottom: 1.5rem !important;
+    }
     .mobile-stack {
         flex-direction: column;
         align-items: flex-start;
     }
-}
-
-/* ===============================
-   SOCIAL ICONS
-================================ */
-.social-icons a {
-    color: var(--text-accent);
-    transition: color 0.25s ease, transform 0.25s ease;
-}
-
-.social-icons a:hover {
-    color: var(--text-strong);
-    transform: translateY(-2px);
-}
-
-/* ===============================
-   SOCIAL CARDS
-================================ */
-.social-card {
-    background-color: var(--bg-card);
-    color: var(--text-main);
-    border: 1px solid var(--border-soft);
-    transition:
-        background-color 0.25s ease,
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.social-card:hover {
-    background-color: var(--bg-card-hover);
-    transform: translateY(-3px);
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.40),
-        0 0 24px var(--glow);
-}
-
-.social-card img {
-    filter: brightness(0)
-            saturate(100%)
-            invert(90%) /* Adjusted filter for white/light icons */
-            sepia(10%)
-            saturate(150%)
-            hue-rotate(180deg); /* Tune for a cool icon color, not green */
 }
