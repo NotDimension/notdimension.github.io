@@ -3,303 +3,229 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>NotDimension</title>
+    <title>NotDimension | Technical Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Outfit:wght@200;400;900&display=swap');
         
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            margin: 0;
-            overflow-x: hidden;
-        }
-
-        #bg-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            z-index: -1;
-        }
-
-        .bento-grid {
-            max-width: 1400px;
-            margin: 40px auto;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            grid-auto-rows: minmax(140px, auto);
-            gap: 20px;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 32px;
-            padding: 30px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-5px);
-        }
-
-        /* Responsive Grid Spans */
-        .col-12 { grid-column: span 12; }
-        .col-8 { grid-column: span 8; }
-        .col-6 { grid-column: span 6; }
-        .col-4 { grid-column: span 4; }
-        .row-2 { grid-row: span 2; }
-
-        @media (max-width: 1024px) {
-            .col-8, .col-4, .col-6 { grid-column: span 12; }
-        }
-
-        .status-badge {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 6px 14px;
-            border-radius: 100px;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: fit-content;
-        }
-
-        .skill-pill {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 8px 16px;
-            border-radius: 16px;
-            font-size: 13px;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .progress-container { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 10px 0; }
-        .progress-bar { height: 100%; background: #fff; border-radius: 10px; transition: width 1s ease; }
+        :root { --accent: #ffffff; --bg: #050505; }
+        body { background: var(--bg); color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
         
-        .role-logo {
-            width: 44px; height: 44px;
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: 800; font-size: 18px;
-            border: 1px solid rgba(255,255,255,0.1);
+        /* Interactive Map Background */
+        #map-canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.4; pointer-events: none; }
+        
+        .section { min-height: 100vh; padding: 100px 10%; display: flex; flex-direction: column; justify-content: center; position: relative; }
+        .huge-text { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3rem, 10vw, 8rem); font-weight: 900; line-height: 0.8; letter-spacing: -0.05em; }
+        
+        .role-node { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            padding: 40px; 
+            border-radius: 40px; 
+            transition: 0.5s; 
+            backdrop-filter: blur(10px);
         }
+        .role-node:hover { border-color: #fff; transform: translateX(20px); background: rgba(255,255,255,0.08); }
+        
+        .progress-line { height: 2px; background: rgba(255,255,255,0.1); width: 100%; position: relative; margin-top: 10px; }
+        .progress-fill { height: 100%; background: #fff; width: 0; transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1); }
+
+        .sidebar-nav { position: fixed; right: 40px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 20px; }
+        .nav-dot { width: 12px; height: 12px; border: 2px solid #fff; border-radius: 50%; transition: 0.3s; }
+        .nav-dot.active { background: #fff; transform: scale(1.5); }
     </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
+    <canvas id="map-canvas"></canvas>
 
-    <div class="bento-grid">
-        
-        <div class="glass-card col-8 row-2 justify-between" data-tilt>
-            <div class="flex justify-between items-start">
-                <img src="images/profile.png" alt="NotDimension" class="w-32 h-32 rounded-3xl border-2 border-white/10 shadow-2xl">
-                <div class="status-badge text-green-400 flex items-center gap-2">
-                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> Open to Projects
-                </div>
-            </div>
-            <div class="mt-8">
-                <h1 class="text-7xl font-extrabold tracking-tighter mb-4">NotDimension</h1>
-                <p class="text-xl text-white/50 max-w-lg leading-relaxed">
-                    Building servers and growing communities. I handle the tech so you can focus on the play.
+    <nav class="sidebar-nav">
+        <div class="nav-dot active" data-sec="hero"></div>
+        <div class="nav-dot" data-sec="active"></div>
+        <div class="nav-dot" data-sec="tech"></div>
+        <div class="nav-dot" data-sec="history"></div>
+    </nav>
+
+    <section class="section" id="hero">
+        <div class="flex flex-col md:flex-row items-center gap-12">
+            <img src="images/profile.png" alt="NotDimension" class="w-64 h-64 rounded-[60px] border-4 border-white/10 shadow-2xl rotate-3">
+            <div>
+                <span class="text-xs font-black tracking-[0.5em] uppercase opacity-40 mb-4 block">System Architect</span>
+                <h1 class="huge-text mb-8">NotDimension</h1>
+                <p class="text-2xl text-white/50 max-w-2xl leading-relaxed">
+                    I design technical ecosystems for high-performance Minecraft communities. Currently building at ShadySMP.
                 </p>
-                <div class="flex gap-4 mt-8">
-                    <a href="mailto:contact@notdimension.com" class="px-8 py-3 bg-white text-black font-bold rounded-2xl hover:bg-white/90 transition">Hit Me Up</a>
+                <div class="mt-12 flex gap-6">
+                    <a href="https://discord.com" class="px-10 py-5 bg-white text-black font-black rounded-full text-lg">Discord</a>
+                    <a href="https://github.com" class="px-10 py-5 border border-white/20 font-black rounded-full text-lg hover:bg-white/5">Github</a>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="glass-card col-4 row-2">
-            <h2 class="text-xs font-black uppercase tracking-widest text-white/30 mb-6">Find Me</h2>
-            <div class="grid grid-cols-2 gap-4 flex-grow">
-                <a href="https://discord.com" class="glass-card p-6 items-center justify-center hover:bg-white hover:text-black transition group">
-                    <i data-feather="message-square" class="mb-2"></i><span class="text-[10px] font-bold">DISCORD</span>
-                </a>
-                <a href="https://github.com" class="glass-card p-6 items-center justify-center hover:bg-white hover:text-black transition">
-                    <i data-feather="github" class="mb-2"></i><span class="text-[10px] font-bold">GITHUB</span>
-                </a>
-                <a href="https://youtube.com" class="glass-card p-6 items-center justify-center hover:bg-white hover:text-black transition">
-                    <i data-feather="youtube" class="mb-2"></i><span class="text-[10px] font-bold">YOUTUBE</span>
-                </a>
-                <a href="https://roblox.com" class="glass-card p-6 items-center justify-center hover:bg-white hover:text-black transition">
-                    <i data-feather="play" class="mb-2"></i><span class="text-[10px] font-bold">ROBLOX</span>
-                </a>
+    <section class="section" id="active">
+        <h2 class="text-xs font-black tracking-[0.5em] uppercase opacity-40 mb-12">Current Operations</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="role-node">
+                <div class="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6 text-green-400 font-black text-2xl">S</div>
+                <h3 class="text-3xl font-bold mb-2">ShadySMP</h3>
+                <p class="text-white/40 uppercase text-xs font-black tracking-widest">Co-Owner (450)</p>
+            </div>
+            <div class="role-node">
+                <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 text-blue-400 font-black text-2xl">F</div>
+                <h3 class="text-3xl font-bold mb-2">SMP Finder</h3>
+                <p class="text-white/40 uppercase text-xs font-black tracking-widest">Moderator (27k)</p>
+            </div>
+            <div class="role-node">
+                <div class="w-16 h-16 bg-red-500/10 rounded-2xl flex items-center justify-center mb-6 text-red-400 font-black text-2xl">C</div>
+                <h3 class="text-3xl font-bold mb-2">Collective</h3>
+                <p class="text-white/40 uppercase text-xs font-black tracking-widest">Manager (60)</p>
             </div>
         </div>
+    </section>
 
-        <div class="glass-card col-6 row-2">
-            <h2 class="text-2xl font-extrabold mb-8 flex items-center gap-3">
-                <i data-feather="zap"></i> My Arsenal
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="space-y-3">
-                    <h3 class="text-[10px] font-black text-white/30 uppercase tracking-widest mb-4">Main Focus</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill">Server Admin</span>
-                        <span class="skill-pill">Staff Lead</span>
-                        <span class="skill-pill">Tech Config</span>
-                        <span class="skill-pill">Graphic Design</span>
-                    </div>
+    <section class="section" id="tech">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div>
+                <h2 class="huge-text mb-12">ARSENAL</h2>
+                <div class="flex flex-wrap gap-4">
+                    <span class="px-8 py-4 bg-white/5 border border-white/10 rounded-3xl font-bold">Server Admin</span>
+                    <span class="px-8 py-4 bg-white/5 border border-white/10 rounded-3xl font-bold">YAML Config</span>
+                    <span class="px-8 py-4 bg-white/5 border border-white/10 rounded-3xl font-bold">Staff Mgmt</span>
+                    <span class="px-8 py-4 bg-white/5 border border-white/10 rounded-3xl font-bold">Logs Analysis</span>
+                    <span class="px-8 py-4 bg-white/5 border border-white/10 rounded-3xl font-bold">UI/UX</span>
                 </div>
-                <div class="space-y-4">
-                    <h3 class="text-[10px] font-black text-white/30 uppercase tracking-widest">What I do daily</h3>
-                    <ul class="text-sm space-y-3 font-medium">
-                        <li class="flex items-center gap-3 text-white/60"><i data-feather="check" class="w-4 h-4 text-white"></i> Plugin setup & fixes</li>
-                        <li class="flex items-center gap-3 text-white/60"><i data-feather="check" class="w-4 h-4 text-white"></i> Staff training</li>
-                        <li class="flex items-center gap-3 text-white/60"><i data-feather="check" class="w-4 h-4 text-white"></i> Performance monitoring</li>
-                        <li class="flex items-center gap-3 text-white/60"><i data-feather="check" class="w-4 h-4 text-white"></i> Managing server logs</li>
-                    </ul>
+            </div>
+            <div class="space-y-12">
+                <h2 class="text-xs font-black tracking-[0.5em] uppercase opacity-40">Development Path</h2>
+                <div class="learning-card">
+                    <div class="flex justify-between font-bold mb-4"><span>Java MOOC</span><span>75%</span></div>
+                    <div class="progress-line"><div class="progress-fill" style="width: 75%"></div></div>
+                    <p class="text-xs mt-4 opacity-40 italic">ETA: 3 Months</p>
+                </div>
+                <div class="learning-card">
+                    <div class="flex justify-between font-bold mb-4"><span>OOP Architecture</span><span>40%</span></div>
+                    <div class="progress-line"><div class="progress-fill" style="width: 40%"></div></div>
+                    <p class="text-xs mt-4 opacity-40 italic">ETA: 2 Months</p>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="glass-card col-6">
-            <h2 class="text-xs font-black uppercase tracking-widest text-white/30 mb-6">Learning Path</h2>
-            <div class="space-y-6">
+    <section class="section" id="history">
+        <h2 class="huge-text text-right mb-20 opacity-10">HISTORY</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="role-node flex items-center gap-8">
+                <div class="text-5xl font-black opacity-10">01</div>
                 <div>
-                    <div class="flex justify-between text-xs font-bold mb-2 text-white/80">
-                        <span>Java MOOC</span>
-                        <span>75%</span>
-                    </div>
-                    <div class="progress-container"><div class="progress-bar" style="width: 75%"></div></div>
+                    <h4 class="text-2xl font-bold">Prism SMP</h4>
+                    <p class="text-white/40">Owner (700)</p>
                 </div>
+            </div>
+            <div class="role-node flex items-center gap-8">
+                <div class="text-5xl font-black opacity-10">02</div>
                 <div>
-                    <div class="flex justify-between text-xs font-bold mb-2 text-white/80">
-                        <span>Object-Oriented Java</span>
-                        <span>40%</span>
-                    </div>
-                    <div class="progress-container"><div class="progress-bar" style="width: 40%"></div></div>
+                    <h4 class="text-2xl font-bold">ShatterMC</h4>
+                    <p class="text-white/40">Sr. Admin (260)</p>
+                </div>
+            </div>
+            <div class="role-node flex items-center gap-8">
+                <div class="text-5xl font-black opacity-10">03</div>
+                <div>
+                    <h4 class="text-2xl font-bold">SteakySMP</h4>
+                    <p class="text-white/40">Co-Owner (1.5k)</p>
+                </div>
+            </div>
+            <div class="role-node flex items-center gap-8">
+                <div class="text-5xl font-black opacity-10">04</div>
+                <div>
+                    <h4 class="text-2xl font-bold">BonkMC</h4>
+                    <p class="text-white/40">Moderator (4.6k)</p>
                 </div>
             </div>
         </div>
-
-        <div class="glass-card col-6">
-            <h2 class="text-xs font-black uppercase tracking-widest text-white/30 mb-6">Where I am now</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="role-logo bg-green-500/10 text-green-400">S</div>
-                    <div><p class="font-bold text-sm">ShadySMP</p><p class="text-[10px] text-white/40">Co-Owner</p></div>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="role-logo bg-blue-500/10 text-blue-400">F</div>
-                    <div><p class="font-bold text-sm">SMP Finder</p><p class="text-[10px] text-white/40">Moderator</p></div>
-                </div>
-                <div class="flex items-center gap-3">
-                    <div class="role-logo bg-red-500/10 text-red-400">C</div>
-                    <div><p class="font-bold text-sm">Collective</p><p class="text-[10px] text-white/40">Manager</p></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="glass-card col-12">
-            <h2 class="text-xs font-black uppercase tracking-widest text-white/30 mb-8">Previous Experience</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-                <div class="space-y-2">
-                    <div class="role-logo bg-purple-500/10 text-purple-400">P</div>
-                    <p class="font-bold text-sm">Prism SMP</p>
-                    <p class="text-[10px] text-white/40">Owner</p>
-                </div>
-                <div class="space-y-2">
-                    <div class="role-logo bg-orange-500/10 text-orange-400">S</div>
-                    <p class="font-bold text-sm">ShatterMC</p>
-                    <p class="text-[10px] text-white/40">Sr. Admin</p>
-                </div>
-                <div class="space-y-2">
-                    <div class="role-logo bg-blue-500/10 text-blue-400">O</div>
-                    <p class="font-bold text-sm">OceanMC</p>
-                    <p class="text-[10px] text-white/40">Owner</p>
-                </div>
-                <div class="space-y-2">
-                    <div class="role-logo bg-yellow-500/10 text-yellow-400">S</div>
-                    <p class="font-bold text-sm">SteakySMP</p>
-                    <p class="text-[10px] text-white/40">Co-Owner</p>
-                </div>
-                <div class="space-y-2">
-                    <div class="role-logo bg-pink-500/10 text-pink-400">B</div>
-                    <p class="font-bold text-sm">BonkMC</p>
-                    <p class="text-[10px] text-white/40">Moderator</p>
-                </div>
-                <div class="space-y-2">
-                    <div class="role-logo bg-indigo-500/10 text-indigo-400">N</div>
-                    <p class="font-bold text-sm">Nebular</p>
-                    <p class="text-[10px] text-white/40">Co-Owner</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
+    </section>
 
     <script>
         feather.replace();
-        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 5, speed: 400, glare: true, "max-glare": 0.1 });
-
-        const canvas = document.getElementById('bg-canvas');
+        
+        // Interactive Node Map Logic
+        const canvas = document.getElementById('map-canvas');
         const ctx = canvas.getContext('2d');
-        let particles = [];
-        let mouse = { x: null, y: null };
-
-        function init() {
+        let points = [];
+        
+        function resize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-            particles = [];
-            for(let i=0; i<80; i++) {
-                particles.push({
-                    x: Math.random()*canvas.width,
-                    y: Math.random()*canvas.height,
-                    size: Math.random()*1.5 + 0.5,
-                    vx: (Math.random()-0.5)*0.5,
-                    vy: (Math.random()-0.5)*0.5
+            initPoints();
+        }
+        
+        function initPoints() {
+            points = [];
+            for(let i=0; i<50; i++) {
+                points.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    originX: Math.random() * canvas.width,
+                    originY: Math.random() * canvas.height,
+                    vx: Math.random() - 0.5,
+                    vy: Math.random() - 0.5
                 });
             }
         }
-
-        function animate() {
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            particles.forEach((p, i) => {
+        
+        function draw() {
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            ctx.lineWidth = 0.5;
+            
+            points.forEach((p, i) => {
                 p.x += p.vx; p.y += p.vy;
                 if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-                if (mouse.x) {
-                    let dx = mouse.x - p.x;
-                    let dy = mouse.y - p.y;
-                    let dist = Math.sqrt(dx*dx + dy*dy);
-                    if (dist < 200) {
-                        p.x += dx * 0.01;
-                        p.y += dy * 0.01;
+                
+                points.forEach((p2, j) => {
+                    if(i === j) return;
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if(dist < 200) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
                     }
-                }
-
-                ctx.fillStyle = 'rgba(255,255,255,0.4)';
-                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
-
-                for(let j=i+1; j<particles.length; j++) {
-                    let p2 = particles[j];
-                    let d = Math.sqrt((p.x-p2.x)**2 + (p.y-p2.y)**2);
-                    if(d < 120) {
-                        ctx.strokeStyle = `rgba(255,255,255,${0.2 - d/600})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
-                    }
-                }
+                });
             });
-            requestAnimationFrame(animate);
+            requestAnimationFrame(draw);
         }
 
-        window.addEventListener('resize', init);
-        window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
-        init(); animate();
+        window.addEventListener('resize', resize);
+        resize(); draw();
+
+        // Scroll Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.utils.toArray('.role-node').forEach(node => {
+            gsap.from(node, {
+                scrollTrigger: node,
+                y: 50, opacity: 0, duration: 1, ease: "power4.out"
+            });
+        });
+
+        // Navigation Highlight
+        window.addEventListener('scroll', () => {
+            let current = "";
+            document.querySelectorAll('section').forEach(sec => {
+                const secTop = sec.offsetTop;
+                if (pageYOffset >= secTop - 200) { current = sec.getAttribute('id'); }
+            });
+            document.querySelectorAll('.nav-dot').forEach(dot => {
+                dot.classList.remove('active');
+                if(dot.getAttribute('data-sec') === current) dot.classList.add('active');
+            });
+        });
     </script>
 </body>
 </html>
