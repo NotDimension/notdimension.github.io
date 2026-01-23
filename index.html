@@ -3,228 +3,394 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>NotDimension | Technical Portfolio</title>
+    <title>NotDimension</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Outfit:wght@200;400;900&display=swap');
-        
-        :root { --accent: #ffffff; --bg: #050505; }
-        body { background: var(--bg); color: #fff; font-family: 'Outfit', sans-serif; overflow-x: hidden; }
-        
-        /* Interactive Map Background */
-        #map-canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.4; pointer-events: none; }
-        
-        .section { min-height: 100vh; padding: 100px 10%; display: flex; flex-direction: column; justify-content: center; position: relative; }
-        .huge-text { font-family: 'Space Grotesk', sans-serif; font-size: clamp(3rem, 10vw, 8rem); font-weight: 900; line-height: 0.8; letter-spacing: -0.05em; }
-        
-        .role-node { 
-            background: rgba(255,255,255,0.03); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            padding: 40px; 
-            border-radius: 40px; 
-            transition: 0.5s; 
-            backdrop-filter: blur(10px);
-        }
-        .role-node:hover { border-color: #fff; transform: translateX(20px); background: rgba(255,255,255,0.08); }
-        
-        .progress-line { height: 2px; background: rgba(255,255,255,0.1); width: 100%; position: relative; margin-top: 10px; }
-        .progress-fill { height: 100%; background: #fff; width: 0; transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1); }
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
 
-        .sidebar-nav { position: fixed; right: 40px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 20px; }
-        .nav-dot { width: 12px; height: 12px; border: 2px solid #fff; border-radius: 50%; transition: 0.3s; }
-        .nav-dot.active { background: #fff; transform: scale(1.5); }
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;600;800&family=Space+Grotesk:wght@700&display=swap');
+        
+        :root {
+            --bg: #000000;
+            --accent: #ffffff;
+            --glass: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--bg); 
+            color: #fff; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            overflow-x: hidden;
+        }
+
+        /* Full Screen Background Logic */
+        #interactive-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #0a0a0a 0%, #000 100%);
+        }
+
+        .canvas-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Typography & Layout */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(4rem, 12vw, 12rem);
+            line-height: 0.8;
+            letter-spacing: -0.04em;
+        }
+
+        .section-padding { padding: 160px 0; }
+
+        /* Component Styling */
+        .glass-box {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 48px;
+            padding: 60px;
+            transition: border 0.4s ease;
+        }
+
+        .glass-box:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .role-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .role-card:hover {
+            background: rgba(255,255,255,0.06);
+            transform: scale(1.02) translateX(10px);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        .logo-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 24px;
+            font-weight: 800;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .social-button:hover {
+            background: #fff;
+            color: #000;
+            transform: translateY(-5px);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 100px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: #fff;
+            width: 0%;
+            box-shadow: 0 0 20px rgba(255,255,255,0.4);
+        }
+
+        /* Animations */
+        .reveal { opacity: 0; transform: translateY(30px); }
     </style>
 </head>
 <body>
 
-    <canvas id="map-canvas"></canvas>
+    <div id="interactive-bg"></div>
+    <canvas id="canvas-dots" class="canvas-overlay"></canvas>
 
-    <nav class="sidebar-nav">
-        <div class="nav-dot active" data-sec="hero"></div>
-        <div class="nav-dot" data-sec="active"></div>
-        <div class="nav-dot" data-sec="tech"></div>
-        <div class="nav-dot" data-sec="history"></div>
-    </nav>
+    <div class="main-container">
 
-    <section class="section" id="hero">
-        <div class="flex flex-col md:flex-row items-center gap-12">
-            <img src="images/profile.png" alt="NotDimension" class="w-64 h-64 rounded-[60px] border-4 border-white/10 shadow-2xl rotate-3">
-            <div>
-                <span class="text-xs font-black tracking-[0.5em] uppercase opacity-40 mb-4 block">System Architect</span>
-                <h1 class="huge-text mb-8">NotDimension</h1>
-                <p class="text-2xl text-white/50 max-w-2xl leading-relaxed">
-                    I design technical ecosystems for high-performance Minecraft communities. Currently building at ShadySMP.
-                </p>
-                <div class="mt-12 flex gap-6">
-                    <a href="https://discord.com" class="px-10 py-5 bg-white text-black font-black rounded-full text-lg">Discord</a>
-                    <a href="https://github.com" class="px-10 py-5 border border-white/20 font-black rounded-full text-lg hover:bg-white/5">Github</a>
+        <section class="section-padding flex flex-col items-center text-center">
+            <div class="reveal mb-12" data-tilt>
+                <img src="images/profile.png" alt="NotDimension" class="w-48 h-48 md:w-64 md:h-64 rounded-[50px] border-4 border-white/10 shadow-2xl">
+            </div>
+            <h1 class="hero-title reveal">NotDimension</h1>
+            <p class="text-xl md:text-3xl text-white/40 mt-8 max-w-3xl font-light reveal">
+                Minecraft Developer and Community Manager. I run the tech and the people for some of the biggest SMPs.
+            </p>
+            <div class="mt-12 flex gap-4 reveal">
+                <div class="px-6 py-2 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-xs font-black uppercase tracking-widest">
+                    Available for Projects
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" id="active">
-        <h2 class="text-xs font-black tracking-[0.5em] uppercase opacity-40 mb-12">Current Operations</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="role-node">
-                <div class="w-16 h-16 bg-green-500/10 rounded-2xl flex items-center justify-center mb-6 text-green-400 font-black text-2xl">S</div>
-                <h3 class="text-3xl font-bold mb-2">ShadySMP</h3>
-                <p class="text-white/40 uppercase text-xs font-black tracking-widest">Co-Owner (450)</p>
+        <section class="section-padding">
+            <p class="text-[10px] font-black tracking-[0.4em] text-white/20 uppercase mb-12 reveal">Current Roles</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="role-card reveal">
+                    <div class="logo-wrapper">
+                        <img src="images/shady_logo.png" alt="ShadySMP" onerror="this.parentElement.innerHTML='S'">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold">ShadySMP</h3>
+                        <p class="text-white/40 font-bold uppercase text-[10px] tracking-widest">Co-Owner (450)</p>
+                    </div>
+                </div>
+                <div class="role-card reveal">
+                    <div class="logo-wrapper">
+                        <img src="images/finder_logo.png" alt="SMP Finder" onerror="this.parentElement.innerHTML='F'">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold">SMP Finder</h3>
+                        <p class="text-white/40 font-bold uppercase text-[10px] tracking-widest">Moderator (27k)</p>
+                    </div>
+                </div>
+                <div class="role-card reveal">
+                    <div class="logo-wrapper">
+                        <img src="images/collective_logo.png" alt="Collective" onerror="this.parentElement.innerHTML='C'">
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold">Collective</h3>
+                        <p class="text-white/40 font-bold uppercase text-[10px] tracking-widest">Manager (60)</p>
+                    </div>
+                </div>
             </div>
-            <div class="role-node">
-                <div class="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mb-6 text-blue-400 font-black text-2xl">F</div>
-                <h3 class="text-3xl font-bold mb-2">SMP Finder</h3>
-                <p class="text-white/40 uppercase text-xs font-black tracking-widest">Moderator (27k)</p>
-            </div>
-            <div class="role-node">
-                <div class="w-16 h-16 bg-red-500/10 rounded-2xl flex items-center justify-center mb-6 text-red-400 font-black text-2xl">C</div>
-                <h3 class="text-3xl font-bold mb-2">Collective</h3>
-                <p class="text-white/40 uppercase text-xs font-black tracking-widest">Manager (60)</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" id="tech">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
-            <div>
-                <h2 class="huge-text mb-12">ARSENAL</h2>
-                <div class="flex flex-wrap gap-4">
-                    <span class="px-8 py-4 bg-white/5 border border-white/10 rounded-3xl font-bold">Server Admin</span>
-                    <span class="px-8 py-4 bg-white/5 border border-white/10 rounded-3xl font-bold">YAML Config</span>
-                    <span class="px-8 py-4 bg-white/5 border border-white/10 rounded-3xl font-bold">Staff Mgmt</span>
-                    <span class="px-8 py-4 bg-white/5 border border-white/10 rounded-3xl font-bold">Logs Analysis</span>
-                    <span class="px-8 py-4 bg-white/5 border border-white/10 rounded-3xl font-bold">UI/UX</span>
+        <section class="section-padding">
+            <div class="glass-box reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                    <div>
+                        <h2 class="text-5xl font-extrabold tracking-tighter mb-8">What I Do</h2>
+                        <div class="flex flex-wrap gap-3 mb-12">
+                            <span class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold">Server Admin</span>
+                            <span class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold">Staff Mgmt</span>
+                            <span class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold">Tech Skills</span>
+                            <span class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold">YAML Config</span>
+                            <span class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold">Logs Mgmt</span>
+                            <span class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold">Graphic Design</span>
+                        </div>
+                        <ul class="space-y-6">
+                            <li class="flex items-center gap-4 text-white/50"><i data-feather="check" class="text-white"></i> Maintenance & monitoring</li>
+                            <li class="flex items-center gap-4 text-white/50"><i data-feather="check" class="text-white"></i> Staff coordination & training</li>
+                            <li class="flex items-center gap-4 text-white/50"><i data-feather="check" class="text-white"></i> Plugin setup & config</li>
+                            <li class="flex items-center gap-4 text-white/50"><i data-feather="check" class="text-white"></i> Debugging server logs</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-5xl font-extrabold tracking-tighter mb-8">Learning</h2>
+                        <div class="space-y-12">
+                            <div>
+                                <div class="flex justify-between font-bold text-sm"><span>Java MOOC</span><span>75%</span></div>
+                                <div class="progress-container"><div class="progress-bar" data-target="75%"></div></div>
+                                <p class="text-[10px] text-white/30 uppercase font-black">ETA: 3 Months</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between font-bold text-sm"><span>Object-Oriented Java</span><span>40%</span></div>
+                                <div class="progress-container"><div class="progress-bar" data-target="40%"></div></div>
+                                <p class="text-[10px] text-white/30 uppercase font-black">ETA: 2 Months</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="space-y-12">
-                <h2 class="text-xs font-black tracking-[0.5em] uppercase opacity-40">Development Path</h2>
-                <div class="learning-card">
-                    <div class="flex justify-between font-bold mb-4"><span>Java MOOC</span><span>75%</span></div>
-                    <div class="progress-line"><div class="progress-fill" style="width: 75%"></div></div>
-                    <p class="text-xs mt-4 opacity-40 italic">ETA: 3 Months</p>
-                </div>
-                <div class="learning-card">
-                    <div class="flex justify-between font-bold mb-4"><span>OOP Architecture</span><span>40%</span></div>
-                    <div class="progress-line"><div class="progress-fill" style="width: 40%"></div></div>
-                    <p class="text-xs mt-4 opacity-40 italic">ETA: 2 Months</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section" id="history">
-        <h2 class="huge-text text-right mb-20 opacity-10">HISTORY</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div class="role-node flex items-center gap-8">
-                <div class="text-5xl font-black opacity-10">01</div>
-                <div>
-                    <h4 class="text-2xl font-bold">Prism SMP</h4>
-                    <p class="text-white/40">Owner (700)</p>
+        <section class="section-padding">
+            <p class="text-[10px] font-black tracking-[0.4em] text-white/20 uppercase mb-12 reveal">Previous Roles</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="role-card reveal">
+                    <div class="logo-wrapper"><img src="images/prism_logo.png" alt="Prism" onerror="this.parentElement.innerHTML='P'"></div>
+                    <div><h4 class="text-xl font-bold">Prism SMP</h4><p class="text-white/40 text-[10px] font-black uppercase">Owner (700 Members)</p></div>
+                </div>
+                <div class="role-card reveal">
+                    <div class="logo-wrapper"><img src="images/shatter_logo.png" alt="Shatter" onerror="this.parentElement.innerHTML='S'"></div>
+                    <div><h4 class="text-xl font-bold">ShatterMC</h4><p class="text-white/40 text-[10px] font-black uppercase">Sr. Admin (260 Members)</p></div>
+                </div>
+                <div class="role-card reveal">
+                    <div class="logo-wrapper"><img src="images/ocean_logo.png" alt="Ocean" onerror="this.parentElement.innerHTML='O'"></div>
+                    <div><h4 class="text-xl font-bold">OceanMC</h4><p class="text-white/40 text-[10px] font-black uppercase">Owner (300 Members)</p></div>
+                </div>
+                <div class="role-card reveal">
+                    <div class="logo-wrapper"><img src="images/steaky_logo.png" alt="Steaky" onerror="this.parentElement.innerHTML='S'"></div>
+                    <div><h4 class="text-xl font-bold">SteakySMP</h4><p class="text-white/40 text-[10px] font-black uppercase">Co-Owner (1.5k Members)</p></div>
+                </div>
+                <div class="role-card reveal">
+                    <div class="logo-wrapper"><img src="images/bonk_logo.png" alt="Bonk" onerror="this.parentElement.innerHTML='B'"></div>
+                    <div><h4 class="text-xl font-bold">BonkMC</h4><p class="text-white/40 text-[10px] font-black uppercase">Moderator (4.6k Members)</p></div>
+                </div>
+                <div class="role-card reveal">
+                    <div class="logo-wrapper"><img src="images/nebular_logo.png" alt="Nebular" onerror="this.parentElement.innerHTML='N'"></div>
+                    <div><h4 class="text-xl font-bold">Nebular</h4><p class="text-white/40 text-[10px] font-black uppercase">Co-Owner (200 Members)</p></div>
                 </div>
             </div>
-            <div class="role-node flex items-center gap-8">
-                <div class="text-5xl font-black opacity-10">02</div>
-                <div>
-                    <h4 class="text-2xl font-bold">ShatterMC</h4>
-                    <p class="text-white/40">Sr. Admin (260)</p>
-                </div>
+        </section>
+
+        <section class="section-padding">
+            <p class="text-[10px] font-black tracking-[0.4em] text-white/20 uppercase mb-12 reveal">Socials & Connect</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 reveal">
+                <a href="https://discord.com" class="social-button"><i data-feather="message-square"></i> Discord</a>
+                <a href="https://github.com" class="social-button"><i data-feather="github"></i> Github</a>
+                <a href="https://youtube.com" class="social-button"><i data-feather="youtube"></i> YouTube</a>
+                <a href="https://roblox.com" class="social-button"><i data-feather="play"></i> Roblox</a>
+                <a href="https://steamcommunity.com" class="social-button"><i data-feather="monitor"></i> Steam</a>
+                <a href="https://namemc.com" class="social-button"><i data-feather="box"></i> NameMC</a>
+                <a href="#" class="social-button"><i data-feather="music"></i> Spotify</a>
+                <a href="mailto:contact@notdimension.com" class="social-button"><i data-feather="mail"></i> Email</a>
             </div>
-            <div class="role-node flex items-center gap-8">
-                <div class="text-5xl font-black opacity-10">03</div>
-                <div>
-                    <h4 class="text-2xl font-bold">SteakySMP</h4>
-                    <p class="text-white/40">Co-Owner (1.5k)</p>
-                </div>
+        </section>
+
+        <footer class="py-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center opacity-40 text-[10px] font-black tracking-widest reveal">
+            <p>NOTDIMENSION © 2024</p>
+            <div class="flex gap-8 mt-4 md:mt-0">
+                <a href="about.html" class="hover:text-white transition">ABOUT</a>
+                <a href="projects.html" class="hover:text-white transition">PROJECTS</a>
             </div>
-            <div class="role-node flex items-center gap-8">
-                <div class="text-5xl font-black opacity-10">04</div>
-                <div>
-                    <h4 class="text-2xl font-bold">BonkMC</h4>
-                    <p class="text-white/40">Moderator (4.6k)</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </footer>
+
+    </div>
 
     <script>
         feather.replace();
         
-        // Interactive Node Map Logic
-        const canvas = document.getElementById('map-canvas');
-        const ctx = canvas.getContext('2d');
-        let points = [];
-        
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            initPoints();
-        }
-        
-        function initPoints() {
-            points = [];
-            for(let i=0; i<50; i++) {
-                points.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    originX: Math.random() * canvas.width,
-                    originY: Math.random() * canvas.height,
-                    vx: Math.random() - 0.5,
-                    vy: Math.random() - 0.5
-                });
-            }
-        }
-        
-        function draw() {
-            ctx.clearRect(0,0,canvas.width, canvas.height);
-            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-            ctx.lineWidth = 0.5;
-            
-            points.forEach((p, i) => {
-                p.x += p.vx; p.y += p.vy;
-                if(p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if(p.y < 0 || p.y > canvas.height) p.vy *= -1;
-                
-                points.forEach((p2, j) => {
-                    if(i === j) return;
-                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if(dist < 200) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                });
-            });
-            requestAnimationFrame(draw);
-        }
-
-        window.addEventListener('resize', resize);
-        resize(); draw();
-
-        // Scroll Animations
+        // GSAP Animations
         gsap.registerPlugin(ScrollTrigger);
-        
-        gsap.utils.toArray('.role-node').forEach(node => {
-            gsap.from(node, {
-                scrollTrigger: node,
-                y: 50, opacity: 0, duration: 1, ease: "power4.out"
+
+        // Reveal animations for all sections
+        document.querySelectorAll('.reveal').forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 90%",
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1.2,
+                ease: "power4.out"
             });
         });
 
-        // Navigation Highlight
-        window.addEventListener('scroll', () => {
-            let current = "";
-            document.querySelectorAll('section').forEach(sec => {
-                const secTop = sec.offsetTop;
-                if (pageYOffset >= secTop - 200) { current = sec.getAttribute('id'); }
+        // Progress bar animation
+        document.querySelectorAll('.progress-bar').forEach((bar) => {
+            gsap.to(bar, {
+                scrollTrigger: {
+                    trigger: bar,
+                    start: "top 90%",
+                },
+                width: bar.getAttribute('data-target'),
+                duration: 2,
+                ease: "expo.out"
             });
-            document.querySelectorAll('.nav-dot').forEach(dot => {
-                dot.classList.remove('active');
-                if(dot.getAttribute('data-sec') === current) dot.classList.add('active');
+        });
+
+        // Interactive Background Canvas
+        const canvas = document.getElementById('canvas-dots');
+        const ctx = canvas.getContext('2d');
+        let dots = [];
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            dots = [];
+            for(let i=0; i<60; i++) {
+                dots.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5
+                });
+            }
+        }
+
+        function drawDots() {
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            ctx.fillStyle = "rgba(255,255,255,0.2)";
+            
+            dots.forEach((d, i) => {
+                d.x += d.vx; d.y += d.vy;
+                if(d.x < 0 || d.x > canvas.width) d.vx *= -1;
+                if(d.y < 0 || d.y > canvas.height) d.vy *= -1;
+                
+                ctx.beginPath();
+                ctx.arc(d.x, d.y, 1.5, 0, Math.PI*2);
+                ctx.fill();
+
+                for(let j=i+1; j<dots.length; j++) {
+                    let d2 = dots[j];
+                    let dist = Math.hypot(d.x - d2.x, d.y - d2.y);
+                    if(dist < 180) {
+                        ctx.strokeStyle = `rgba(255,255,255,${0.1 - dist/1800})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(d.x, d.y);
+                        ctx.lineTo(d2.x, d2.y);
+                        ctx.stroke();
+                    }
+                }
             });
+            requestAnimationFrame(drawDots);
+        }
+
+        window.addEventListener('resize', initCanvas);
+        initCanvas(); drawDots();
+
+        // Tilt effect
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 10, speed: 400, glare: true, "max-glare": 0.2
         });
     </script>
 </body>
