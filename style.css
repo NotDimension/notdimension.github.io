@@ -1,205 +1,189 @@
 /* ===============================
-   GLOBAL THEME VARIABLES
-   Arctic Sunset Glass
-   Base: #0a0f1c / #2c3e50 / #e74c3c
+   GLOBAL THEME VARIABLES
+   Arctic Sunset Glass
 ================================ */
 :root {
-    /* Core arctic palette */
-    --blue-shadow: #0a0f1c;      /* deepest base (dark blue) */
-    --blue-base: #2c3e50;        /* primary arctic (mid-blue) */
-    --pink-accent: #e74c3c;        /* soft accent (vibrant pink/red) */
+  --blue-shadow: #0a0f1c;
+  --blue-base: #2c3e50;
+  --pink-accent: #e74c3c;
 
-    /* Background layers */
-    --bg-main: #03040a;
-    --bg-overlay: rgba(10, 15, 25, 0.78);
+  --bg-main: #03040a;
+  --bg-overlay: rgba(10, 15, 25, 0.78);
 
-    /* Cards – higher transparency */
-    --bg-card: rgba(44, 62, 80, 0.38);
-    --bg-card-hover: rgba(44, 62, 80, 0.55);
+  --bg-card: rgba(44, 62, 80, 0.42);
+  --bg-card-hover: rgba(44, 62, 80, 0.58);
 
-    /* Text – cool neutral gray/white */
-    --text-main: #e6e5e1;
-    --text-muted: #b7b6ae;
-    --text-accent: #e74c3c; /* Matches the sky pink/red */
-    --text-strong: #f5f5f2;
+  --text-main: #e6e5e1;
+  --text-muted: #b7b6ae;
+  --text-accent: #e74c3c;
+  --text-strong: #f5f5f2;
 
-    /* Borders & glow */
-    --border-soft: rgba(170, 185, 190, 0.18);
-    --glow: rgba(231, 76, 60, 0.28); /* Matches the pink/red accent */
+  --border-soft: rgba(170, 185, 190, 0.18);
+  --glow: rgba(231, 76, 60, 0.35);
 }
 
 /* ===============================
-   BASE
+   BASE RESET
 ================================ */
-* {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    color: var(--text-main);
-    overflow-x: hidden;
-    background-color: var(--bg-main);
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 /* ===============================
-   VIDEO BACKGROUND
+   BACKGROUND IMAGE / VIDEO
 ================================ */
-.bg-video {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -3;
-
-    /* cold, icy tuning */
-    filter: saturate(110%) contrast(100%) brightness(100%);
+.bg-video,
+.bg-image {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -3;
+  filter: saturate(110%) contrast(100%) brightness(100%);
 }
 
-/* Soft arctic overlay */
+/* Overlay */
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background:
-        linear-gradient(
-            rgba(10, 15, 25, 0.12),
-            rgba(4, 6, 12, 0.88)
-        );
-    z-index: -2;
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(
+    rgba(10, 15, 25, 0.18),
+    rgba(4, 6, 12, 0.88)
+  );
+  z-index: -2;
+  pointer-events: none;
 }
 
 /* ===============================
-   SCROLLBAR
+   SCROLLBAR
 ================================ */
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
-
 ::-webkit-scrollbar-track {
-    background: #060806;
+  background: #060806;
 }
-
 ::-webkit-scrollbar-thumb {
-    background: var(--blue-base); /* Changed to use the base blue */
-    border-radius: 5px;
+  background: var(--blue-base);
+  border-radius: 6px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--text-strong);
+  background: var(--text-strong);
+}
+
+/* Firefox */
+* {
+  scrollbar-color: var(--blue-base) #060806;
+  scrollbar-width: thin;
 }
 
 /* ===============================
-   UTILITY CLASSES
+   UTILITY CLASSES
 ================================ */
-.bg-main { background-color: var(--bg-main); }
-.bg-overlay { background-color: var(--bg-overlay); }
-.bg-card { background-color: var(--bg-card); }
+.bg-main { background-color: var(--bg-main) !important; }
+.bg-card { background-color: var(--bg-card) !important; }
 
-.text-main { color: var(--text-main); }
-.text-muted { color: var(--text-muted); }
-.text-accent { color: var(--text-accent); }
-.text-strong { color: var(--text-strong); }
-
-.border-soft { border-color: var(--border-soft); }
+.text-main { color: var(--text-main) !important; }
+.text-muted { color: var(--text-muted) !important; }
+.text-accent { color: var(--text-accent) !important; }
+.text-strong { color: var(--text-strong) !important; }
 
 /* ===============================
-   EFFECTS
+   FROSTED GLASS (FIXED)
 ================================ */
 .frosted-glass {
-    background: linear-gradient(
-        180deg,
-        rgba(44, 62, 80, 0.42),
-        rgba(10, 15, 25, 0.30)
-    );
-    backdrop-filter: blur(22px) saturate(118%);
-    -webkit-backdrop-filter: blur(22px) saturate(118%);
-    border: 1px solid var(--border-soft);
+  background: linear-gradient(
+    180deg,
+    rgba(44, 62, 80, 0.45),
+    rgba(10, 15, 25, 0.32)
+  );
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+
+  /* Glass effect */
+  backdrop-filter: blur(18px) saturate(120%);
+  -webkit-backdrop-filter: blur(18px) saturate(120%);
+
+  /* Firefox fallback */
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.04),
+    0 12px 30px rgba(0,0,0,0.35);
 }
 
+/* ===============================
+   TEXT GLOW
+================================ */
 .glow-text {
-    text-shadow:
-        0 0 10px rgba(220, 230, 250, 0.22),
-        0 0 26px rgba(231, 76, 60, 0.35); /* Glow now uses the pink accent */
+  text-shadow:
+    0 0 12px rgba(220, 230, 250, 0.25),
+    0 0 32px var(--glow);
 }
 
+/* ===============================
+   ANIMATIONS
+================================ */
 .animate-fadeIn {
-    animation: fadeIn 1s ease-out;
+  animation: fadeIn 0.9s ease-out both;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(18px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===============================
-   ICONS
+   ICONS
 ================================ */
 i[data-feather] {
-    width: 1em;
-    height: 1em;
-    stroke: currentColor;
-    vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  stroke: currentColor;
+  vertical-align: middle;
 }
 
 /* ===============================
-   RESPONSIVE
-================================ */
-@media (max-width: 768px) {
-    .mobile-stack {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-
-/* ===============================
-   SOCIAL ICONS
-================================ */
-.social-icons a {
-    color: var(--text-accent);
-    transition: color 0.25s ease, transform 0.25s ease;
-}
-
-.social-icons a:hover {
-    color: var(--text-strong);
-    transform: translateY(-2px);
-}
-
-/* ===============================
-   SOCIAL CARDS
+   SOCIAL CARDS
 ================================ */
 .social-card {
-    background-color: var(--bg-card);
-    color: var(--text-main);
-    border: 1px solid var(--border-soft);
-    transition:
-        background-color 0.25s ease,
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  transition: all 0.25s ease;
 }
 
 .social-card:hover {
-    background-color: var(--bg-card-hover);
-    transform: translateY(-3px);
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.40),
-        0 0 24px var(--glow);
+  background: var(--bg-card-hover);
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 36px rgba(0,0,0,0.45),
+    0 0 26px var(--glow);
 }
 
-.social-card img {
-    filter: brightness(0)
-            saturate(100%)
-            invert(90%) /* Adjusted filter for white/light icons */
-            sepia(10%)
-            saturate(150%)
-            hue-rotate(180deg); /* Tune for a cool icon color, not green */
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .mobile-stack {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
