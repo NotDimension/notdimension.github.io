@@ -3,172 +3,253 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>NotDimension | Technical Architect</title>
+    <title>NotDimension | Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+    <style>
+        /* Extra polish for layout density and background */
+        body { background: #000; overflow-x: hidden; }
+        #hero-canvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .container {
+            max-width: 1500px;
+            margin: 60px auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 25px;
+        }
+        .bento-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 40px;
+            padding: 40px;
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .bento-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            transform: scale(1.01);
+        }
+        .role-icon {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.05);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800; border: 1px solid rgba(255,255,255,0.1);
+        }
+        /* Grid Spanning */
+        .col-6 { grid-column: span 6; }
+        .col-4 { grid-column: span 4; }
+        .col-3 { grid-column: span 3; }
+        .col-8 { grid-column: span 8; }
+        .row-2 { grid-row: span 2; }
+        
+        @media (max-width: 1024px) {
+            .col-6, .col-4, .col-3, .col-8 { grid-column: span 12; }
+        }
+
+        .caps-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.4);
+            font-weight: 800;
+            margin-bottom: 20px;
+            display: block;
+        }
+    </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
+    <canvas id="hero-canvas"></canvas>
 
     <div class="container">
         
-        <div class="card span-2 row-2 justify-between" data-tilt data-tilt-max="2" data-tilt-glare data-tilt-max-glare="0.1">
+        <div class="bento-card col-8 row-2 flex flex-col justify-between">
             <div class="flex justify-between items-start">
-                <div class="relative group">
-                    <img src="images/profile.png" alt="NotDimension" class="w-36 h-36 rounded-[40px] border-2 border-white/10 group-hover:rotate-3 transition-transform duration-500">
-                </div>
-                <div class="status-pill">
-                    <span class="dot animate-pulse"></span> AVAILABLE FOR WORK
+                <img src="images/profile.png" alt="Profile" class="w-32 h-32 rounded-[35px] border-2 border-white/10 shadow-2xl">
+                <div class="flex gap-3">
+                    <div class="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold text-green-400 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> AVAILABLE FOR WORK
+                    </div>
                 </div>
             </div>
-            <div>
-                <h1 class="mb-4 text-white">Not<br>Dimension</h1>
-                <p class="text-xl text-[var(--text-muted)] max-w-md leading-relaxed">
-                    Minecraft Server Developer & Community Architect. Crafting immersive experiences through high-performance administration and technical design.
+            <div class="mt-12">
+                <h1 class="text-8xl font-black text-white tracking-tighter leading-none mb-6">NOT<br>DIMENSION</h1>
+                <p class="text-2xl text-white/50 max-w-xl leading-relaxed">
+                    Minecraft Server Developer & Community Architect. Specialized in high-density community growth and technical systems.
                 </p>
-                <div class="mt-8 flex gap-4">
-                    <a href="mailto:contact@notdimension.com" class="btn-main">Contact Me</a>
+                <div class="flex gap-5 mt-10">
+                    <a href="mailto:contact@notdimension.com" class="px-10 py-4 bg-white text-black font-black rounded-full hover:bg-white/90 transition shadow-xl shadow-white/5">Contact Me</a>
+                    <a href="#history" class="px-10 py-4 bg-white/5 text-white font-black rounded-full border border-white/10 hover:bg-white/10 transition">View History</a>
                 </div>
             </div>
         </div>
 
-        <div class="card row-2" data-tilt>
-            <p class="caps mb-6">Network Hub</p>
-            <div class="grid grid-cols-2 gap-4 h-full content-start">
-                <a href="https://discord.com/users/753556348784083024" class="social-link"><i data-feather="message-circle"></i><span class="caps">Discord</span></a>
-                <a href="https://github.com/NotDimension" class="social-link"><i data-feather="github"></i><span class="caps">Github</span></a>
-                <a href="https://www.youtube.com/@NotDimension" class="social-link"><i data-feather="youtube"></i><span class="caps">YouTube</span></a>
-                <a href="https://www.roblox.com/users/665215157/profile" class="social-link"><i data-feather="play"></i><span class="caps">Roblox</span></a>
-                <a href="https://steamcommunity.com/id/notdimension" class="social-link"><i data-feather="monitor"></i><span class="caps">Steam</span></a>
-                <a href="https://namemc.com/profile/NotDimension.1" class="social-link"><i data-feather="box"></i><span class="caps">NameMC</span></a>
-                <a href="#" class="social-link"><i data-feather="music"></i><span class="caps">Spotify</span></a>
-                <a href="#" class="social-link"><i data-feather="share-2"></i><span class="caps">Connect</span></a>
+        <div class="bento-card col-4 row-2">
+            <span class="caps-label">Network</span>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="https://discord.com" class="flex flex-col items-center justify-center p-8 bg-white/5 rounded-[30px] border border-white/5 hover:bg-white hover:text-black transition group">
+                    <i data-feather="message-square" class="mb-3"></i><span class="text-[10px] font-bold uppercase">Discord</span>
+                </a>
+                <a href="https://github.com" class="flex flex-col items-center justify-center p-8 bg-white/5 rounded-[30px] border border-white/5 hover:bg-white hover:text-black transition group">
+                    <i data-feather="github" class="mb-3"></i><span class="text-[10px] font-bold uppercase">Github</span>
+                </a>
+                <a href="https://youtube.com" class="flex flex-col items-center justify-center p-8 bg-white/5 rounded-[30px] border border-white/5 hover:bg-white hover:text-black transition group">
+                    <i data-feather="youtube" class="mb-3"></i><span class="text-[10px] font-bold uppercase">YouTube</span>
+                </a>
+                <a href="https://spotify.com" class="flex flex-col items-center justify-center p-8 bg-white/5 rounded-[30px] border border-white/5 hover:bg-white hover:text-black transition group">
+                    <i data-feather="music" class="mb-3"></i><span class="text-[10px] font-bold uppercase">Spotify</span>
+                </a>
+                <a href="https://roblox.com" class="flex flex-col items-center justify-center p-8 bg-white/5 rounded-[30px] border border-white/5 hover:bg-white hover:text-black transition group">
+                    <i data-feather="play" class="mb-3"></i><span class="text-[10px] font-bold uppercase">Roblox</span>
+                </a>
+                <a href="https://namemc.com" class="flex flex-col items-center justify-center p-8 bg-white/5 rounded-[30px] border border-white/5 hover:bg-white hover:text-black transition group">
+                    <i data-feather="box" class="mb-3"></i><span class="text-[10px] font-bold uppercase">NameMC</span>
+                </a>
             </div>
         </div>
 
-        <div class="card" data-tilt>
-            <p class="caps mb-6">Active Roles</p>
+        <div class="bento-card col-4">
+            <span class="caps-label">Current Positions</span>
             <div class="space-y-6">
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-bold text-white">S</div>
-                    <div><p class="font-bold text-white">ShadySMP</p><p class="muted uppercase text-[9px]">Co-Owner (450)</p></div>
+                <div class="flex items-center gap-5 p-4 bg-white/5 rounded-2xl border border-white/5">
+                    <div class="role-icon text-purple-400">S</div>
+                    <div><p class="font-bold text-white text-lg leading-tight">ShadySMP</p><p class="text-xs text-white/40">Co-Owner (450)</p></div>
                 </div>
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-bold text-white">F</div>
-                    <div><p class="font-bold text-white">SMP Finder</p><p class="muted uppercase text-[9px]">Moderator (27k)</p></div>
+                <div class="flex items-center gap-5 p-4 bg-white/5 rounded-2xl border border-white/5">
+                    <div class="role-icon text-blue-400">F</div>
+                    <div><p class="font-bold text-white text-lg leading-tight">SMP Finder</p><p class="text-xs text-white/40">Moderator (27k)</p></div>
                 </div>
-                <div class="flex items-center gap-4">
-                    <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-bold text-white">C</div>
-                    <div><p class="font-bold text-white">Collective</p><p class="muted uppercase text-[9px]">Manager (60)</p></div>
+                <div class="flex items-center gap-5 p-4 bg-white/5 rounded-2xl border border-white/5">
+                    <div class="role-icon text-green-400">C</div>
+                    <div><p class="font-bold text-white text-lg leading-tight">Collective</p><p class="text-xs text-white/40">Manager (60)</p></div>
                 </div>
             </div>
         </div>
 
-        <div class="card span-3 row-2" data-tilt data-tilt-max="1">
-            <div class="flex justify-between items-center mb-10">
-                <h2 class="text-3xl text-white">Technical Arsenal</h2>
-                <i data-feather="cpu" class="text-white/20 w-8 h-8"></i>
+        <div class="bento-card col-8 row-2">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-4xl font-black text-white">TECHNICAL ARSENAL</h2>
+                <i data-feather="cpu" class="text-white/20 w-10 h-10"></i>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-8">
-                    <div>
-                        <p class="caps mb-4">Core Expertise</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-tag">Server Administration</span>
-                            <span class="skill-tag">Staff Management</span>
-                            <span class="skill-tag">Community Engagement</span>
-                            <span class="skill-tag">Technical Skills</span>
-                            <span class="skill-tag">Logs Management</span>
-                            <span class="skill-tag">Graphic Design</span>
-                            <span class="skill-tag">YAML Config</span>
-                        </div>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <span class="caps-label">Core Expertise</span>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold hover:bg-white hover:text-black transition cursor-default">Server Admin</span>
+                        <span class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold hover:bg-white hover:text-black transition cursor-default">Staff Mgmt</span>
+                        <span class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold hover:bg-white hover:text-black transition cursor-default">YAML Config</span>
+                        <span class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold hover:bg-white hover:text-black transition cursor-default">Logs Analysis</span>
+                        <span class="px-5 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold hover:bg-white hover:text-black transition cursor-default">UI/UX Graphics</span>
                     </div>
-                    <div>
-                        <p class="caps mb-4">Development Progress</p>
-                        <div class="space-y-6">
-                            <div>
-                                <div class="flex justify-between text-[10px] font-black tracking-widest uppercase text-white"><span>Java MOOC Programming</span><span>75%</span></div>
-                                <div class="progress-track"><div class="progress-fill" style="width: 75%"></div></div>
-                                <p class="text-[9px] muted mt-1 italic">ETA: 3 Months</p>
+                    
+                    <div class="mt-12 space-y-8">
+                        <span class="caps-label">Current Studies</span>
+                        <div>
+                            <div class="flex justify-between text-[10px] font-black mb-3"><span>JAVA MOOC</span><span>75%</span></div>
+                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-white w-[75%]"></div>
                             </div>
-                            <div>
-                                <div class="flex justify-between text-[10px] font-black tracking-widest uppercase text-white"><span>Object-Oriented Java</span><span>40%</span></div>
-                                <div class="progress-track"><div class="progress-fill" style="width: 40%"></div></div>
-                                <p class="text-[9px] muted mt-1 italic">ETA: 2 Months</p>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[10px] font-black mb-3"><span>OOP ARCHITECTURE</span><span>40%</span></div>
+                            <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                                <div class="h-full bg-white w-[40%]"></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="bg-white/5 rounded-[32px] p-8 border border-white/5 h-fit">
-                    <p class="caps mb-6">Daily Operations</p>
-                    <ul class="space-y-4 text-sm font-medium text-[var(--text-muted)]">
-                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Server maintenance & monitoring</span></li>
-                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Staff coordination & training</span></li>
-                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Plugin installation & configuration</span></li>
-                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Community engagement & events</span></li>
-                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Server logs analysis & debugging</span></li>
-                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Creating graphics & promo materials</span></li>
+                
+                <div class="p-8 bg-white/5 rounded-[35px] border border-white/5">
+                    <span class="caps-label">Daily Operations</span>
+                    <ul class="space-y-5">
+                        <li class="flex items-center gap-4 text-white/70 text-sm"><i data-feather="check-circle" class="w-4 h-4 text-white"></i> Performance Monitoring</li>
+                        <li class="flex items-center gap-4 text-white/70 text-sm"><i data-feather="check-circle" class="w-4 h-4 text-white"></i> Staff Training</li>
+                        <li class="flex items-center gap-4 text-white/70 text-sm"><i data-feather="check-circle" class="w-4 h-4 text-white"></i> Plugin Optimization</li>
+                        <li class="flex items-center gap-4 text-white/70 text-sm"><i data-feather="check-circle" class="w-4 h-4 text-white"></i> Community Events</li>
+                        <li class="flex items-center gap-4 text-white/70 text-sm"><i data-feather="check-circle" class="w-4 h-4 text-white"></i> Debugging & Logs</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="card row-2" data-tilt>
-            <p class="caps mb-6">Previous Roles</p>
-            <div class="scroll-y space-y-4 h-[420px]">
-                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
-                    <p class="font-bold text-white">Prism SMP</p>
-                    <p class="muted text-xs uppercase tracking-tight">Owner (700 Members)</p>
+        <div id="history" class="bento-card col-12">
+            <span class="caps-label">Previous Leadership</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-8 bg-white/5 rounded-3xl border border-white/5 hover:border-white/20 transition group">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="role-icon text-orange-400">P</div>
+                        <i data-feather="external-link" class="w-4 h-4 text-white/0 group-hover:text-white/40 transition"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-xl">Prism SMP</h3>
+                    <p class="text-white/40 text-sm mt-1">Owner (700 Members)</p>
                 </div>
-                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
-                    <p class="font-bold text-white">ShatterMC</p>
-                    <p class="muted text-xs uppercase tracking-tight">Sr. Admin (260 Members)</p>
+                <div class="p-8 bg-white/5 rounded-3xl border border-white/5 hover:border-white/20 transition group">
+                    <div class="role-icon text-red-400 mb-6">S</div>
+                    <h3 class="font-bold text-white text-xl">ShatterMC</h3>
+                    <p class="text-white/40 text-sm mt-1">Sr. Admin (260 Members)</p>
                 </div>
-                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
-                    <p class="font-bold text-white">OceanMC</p>
-                    <p class="muted text-xs uppercase tracking-tight">Owner (300 Members)</p>
+                <div class="p-8 bg-white/5 rounded-3xl border border-white/5 hover:border-white/20 transition group">
+                    <div class="role-icon text-cyan-400 mb-6">O</div>
+                    <h3 class="font-bold text-white text-xl">OceanMC</h3>
+                    <p class="text-white/40 text-sm mt-1">Owner (300 Members)</p>
                 </div>
-                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
-                    <p class="font-bold text-white">SteakySMP</p>
-                    <p class="muted text-xs uppercase tracking-tight">Co-Owner (1.5k Members)</p>
+                <div class="p-8 bg-white/5 rounded-3xl border border-white/5 hover:border-white/20 transition group">
+                    <div class="role-icon text-yellow-400 mb-6">S</div>
+                    <h3 class="font-bold text-white text-xl">SteakySMP</h3>
+                    <p class="text-white/40 text-sm mt-1">Co-Owner (1.5k Members)</p>
                 </div>
-                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
-                    <p class="font-bold text-white">BonkMC</p>
-                    <p class="muted text-xs uppercase tracking-tight">Moderator (4.6k Members)</p>
+                <div class="p-8 bg-white/5 rounded-3xl border border-white/5 hover:border-white/20 transition group">
+                    <div class="role-icon text-pink-400 mb-6">B</div>
+                    <h3 class="font-bold text-white text-xl">BonkMC</h3>
+                    <p class="text-white/40 text-sm mt-1">Moderator (4.6k Members)</p>
                 </div>
-                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
-                    <p class="font-bold text-white">Nebular</p>
-                    <p class="muted text-xs uppercase tracking-tight">Co-Owner (200 Members)</p>
+                <div class="p-8 bg-white/5 rounded-3xl border border-white/5 hover:border-white/20 transition group">
+                    <div class="role-icon text-indigo-400 mb-6">N</div>
+                    <h3 class="font-bold text-white text-xl">Nebular</h3>
+                    <p class="text-white/40 text-sm mt-1">Co-Owner (200 Members)</p>
                 </div>
             </div>
         </div>
 
-        <div class="card span-2" data-tilt>
-            <p class="caps mb-4">Philosophy</p>
-            <h2 class="text-xl text-white mb-2 italic">"Crafting immersive Minecraft experiences through high-performance administration."</h2>
-            <p class="muted text-sm">Focusing on the intersection of technical architecture and community design to build sustainable, high-density server environments.</p>
-        </div>
-
-        <a href="about.html" class="card justify-center items-center group hover:bg-white transition-all duration-500">
-            <i data-feather="user" class="w-8 h-8 group-hover:text-black transition-colors"></i>
-            <span class="caps mt-3 group-hover:text-black">About Me</span>
+        <a href="about.html" class="bento-card col-6 group hover:bg-white transition-all duration-700">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h4 class="text-3xl font-black group-hover:text-black">About Me</h4>
+                    <p class="text-white/40 group-hover:text-black/60">My journey, philosophy, and background.</p>
+                </div>
+                <i data-feather="arrow-right" class="w-10 h-10 group-hover:text-black"></i>
+            </div>
         </a>
-
-        <a href="projects.html" class="card justify-center items-center group hover:bg-white transition-all duration-500">
-            <i data-feather="folder" class="w-8 h-8 group-hover:text-black transition-colors"></i>
-            <span class="caps mt-3 group-hover:text-black">Projects</span>
+        <a href="projects.html" class="bento-card col-6 group hover:bg-white transition-all duration-700">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h4 class="text-3xl font-black group-hover:text-black">Projects</h4>
+                    <p class="text-white/40 group-hover:text-black/60">Java MOOC & OOP Architecture deep dives.</p>
+                </div>
+                <i data-feather="arrow-right" class="w-10 h-10 group-hover:text-black"></i>
+            </div>
         </a>
 
     </div>
 
     <script>
         feather.replace();
-        VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+        VanillaTilt.init(document.querySelectorAll(".bento-card"), {
+            max: 3, speed: 400, glare: true, "max-glare": 0.1
+        });
 
-        const canvas = document.getElementById('bg-canvas');
+        const canvas = document.getElementById('hero-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
         let mouse = { x: null, y: null };
@@ -177,12 +258,13 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            for (let i = 0; i < 110; i++) {
+            for (let i = 0; i < 120; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.4,
-                    vy: (Math.random() - 0.5) * 0.4
+                    vx: (Math.random() - 0.5) * 0.3,
+                    vy: (Math.random() - 0.5) * 0.3,
+                    radius: Math.random() * 1.5 + 1
                 });
             }
         }
@@ -194,26 +276,24 @@
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
                 
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-                ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI * 2); ctx.fill();
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2); ctx.fill();
 
                 for (let j = i + 1; j < particles.length; j++) {
                     const p2 = particles[j];
-                    const dx = p.x - p2.x; const dy = p.y - p2.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 140) {
-                        ctx.strokeStyle = `rgba(255,255,255,${0.8 - dist/140})`;
-                        ctx.lineWidth = 0.2;
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 150) {
+                        ctx.strokeStyle = `rgba(255,255,255,${0.15 - dist/150})`;
+                        ctx.lineWidth = 0.5;
                         ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
                     }
                 }
                 
                 if (mouse.x) {
-                    const mdx = p.x - mouse.x; const mdy = p.y - mouse.y;
-                    const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-                    if (mdist < 180) {
-                        ctx.strokeStyle = `rgba(255,255,255,${0.4 - mdist/180})`;
-                        ctx.lineWidth = 0.4;
+                    const mDist = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+                    if (mDist < 200) {
+                        ctx.strokeStyle = `rgba(255,255,255,${0.3 - mDist/200})`;
+                        ctx.lineWidth = 0.8;
                         ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
                     }
                 }
