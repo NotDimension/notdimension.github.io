@@ -10,13 +10,25 @@
 <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
-  /* --- CUSTOM ANIMATION STYLES --- */
+  /* --- GLOBAL ANIMATION & GLOW SETTINGS --- */
   :root {
-    --glow-color: rgba(147, 51, 234, 0.15);
+    /* Change your glow color here (Globally) */
+    --glow-color: rgba(147, 51, 234, 0.2); 
+    --glow-size: 45%;
+    --reveal-speed: 0.8s;
+    --tilt-speed: 0.3s;
   }
 
   body {
     background-color: #000;
+  }
+
+  /* Space under all section headers to prevent overlap during animations */
+  .section-header {
+    margin-bottom: 2rem !important; 
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
   }
 
   /* The Interactive Background Glow */
@@ -25,7 +37,7 @@
     top: 0; left: 0;
     width: 100%; height: 100%;
     pointer-events: none;
-    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), var(--glow-color) 0%, transparent 50%);
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), var(--glow-color) 0%, transparent var(--glow-size));
     z-index: -5;
   }
 
@@ -33,7 +45,7 @@
   .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all var(--reveal-speed) cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .reveal.active {
@@ -43,20 +55,23 @@
 
   /* Hover Tilt Effect for Cards */
   .hover-tilt {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform var(--tilt-speed) ease, box-shadow var(--tilt-speed) ease, border-color var(--tilt-speed) ease;
+    will-change: transform; /* Performance boost for animations */
   }
   .hover-tilt:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 30px -10px rgba(147, 51, 234, 0.4);
-    border-color: rgba(147, 51, 234, 0.5);
+    box-shadow: 0 20px 40px -15px var(--glow-color);
+    border-color: var(--glow-color);
+    z-index: 20;
   }
 
-  /* Smooth reveal for list items */
+  /* List item hover slide */
   .list-item-reveal {
     transition: transform 0.3s ease;
   }
   .list-item-reveal:hover {
     transform: translateX(10px);
+    color: #fff;
   }
 </style>
 </head>
@@ -72,7 +87,7 @@
 
 <custom-navbar></custom-navbar>
 
-<main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
+<main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-16">
 
   <section class="flex flex-col md:flex-row items-center gap-8 reveal">
     <img src="images/profile.png" alt="Profile" class="rounded-full w-40 h-40 border-4 border-soft shadow-lg pulse-animation">
@@ -104,9 +119,9 @@
       <i data-feather="award"></i>
       <h2 class="text-3xl font-bold text-strong glow-text">Current Roles</h2>
     </div>
-    <div class="grid md:grid-cols-3 gap-4">
+    <div class="grid md:grid-cols-3 gap-6">
       <div class="bg-card p-4 rounded-lg hover-tilt border border-transparent">
-        <img src="images/icons/shady.png" class="w-16 h-16 rounded-full mb-2 mx-auto" alt="Lunex">
+        <img src="images/icons/shady.png" class="w-16 h-16 rounded-full mb-4 mx-auto" alt="Lunex">
         <h3 class="text-xl font-semibold mb-2 text-center text-main">ShadySMP</h3>
         <p class="mb-2 text-center text-accent">Co-Owner (450 Members)</p>
         <a href="https://discord.gg/Jg48d8xbcD" class="flex items-center justify-center text-accent" target="_blank">
@@ -115,7 +130,7 @@
       </div>
 
       <div class="bg-card p-4 rounded-lg hover-tilt border border-transparent">
-        <img src="images/icons/smpfinder.png" class="w-16 h-16 rounded-full mb-2 mx-auto" alt="SMP Finder">
+        <img src="images/icons/smpfinder.png" class="w-16 h-16 rounded-full mb-4 mx-auto" alt="SMP Finder">
         <h3 class="text-xl font-semibold mb-2 text-center text-main">SMP Finder</h3>
         <p class="mb-2 text-center text-accent">Moderator (27k members)</p>
         <a href="https://discord.gg/cuP8bPZgYv" class="flex items-center justify-center text-accent" target="_blank">
@@ -124,7 +139,7 @@
       </div>
 
       <div class="bg-card p-4 rounded-lg hover-tilt border border-transparent">
-        <img src="images/icons/collective.png" class="w-16 h-16 rounded-full mb-2 mx-auto" alt="OceanMC">
+        <img src="images/icons/collective.png" class="w-16 h-16 rounded-full mb-4 mx-auto" alt="OceanMC">
         <h3 class="text-xl font-semibold mb-2 text-center text-main">Discord Collective</h3>
         <p class="mb-2 text-center text-accent">Manager (60 members)</p>
         <a href="https://discord.gg/nUMJ52Pycj" class="flex items-center justify-center text-accent" target="_blank">
@@ -139,7 +154,7 @@
       <i data-feather="clock"></i>
       <h2 class="text-3xl font-bold text-strong glow-text">Previous Roles</h2>
     </div>
-    <div class="grid md:grid-cols-3 gap-4">
+    <div class="grid md:grid-cols-3 gap-6">
       <div class="bg-card p-4 rounded-lg hover-tilt border border-transparent">
         <img src="images/icons/prism.png" class="w-16 h-16 rounded-full mb-2 mx-auto" alt="Prism SMP">
         <h3 class="text-xl font-semibold mb-2 text-center text-main">Prism SMP</h3>
@@ -202,12 +217,12 @@
       <h2 class="text-3xl font-bold text-strong glow-text">Skills & Responsibilities</h2>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-6">
+    <div class="grid md:grid-cols-2 gap-8">
       <div>
-        <h3 class="text-xl font-semibold mb-3 text-strong flex items-center">
+        <h3 class="text-xl font-semibold mb-4 text-strong flex items-center">
           <i data-feather="star" class="mr-2"></i>Core Expertise
         </h3>
-        <ul class="space-y-2 text-main">
+        <ul class="space-y-3 text-main">
           <li class="flex items-start list-item-reveal"><i data-feather="server" class="text-accent mr-2 mt-1"></i>Server Administration</li>
           <li class="flex items-start list-item-reveal"><i data-feather="users" class="text-accent mr-2 mt-1"></i>Staff Management</li>
           <li class="flex items-start list-item-reveal"><i data-feather="message-circle" class="text-accent mr-2 mt-1"></i>Community Engagement</li>
@@ -218,10 +233,10 @@
       </div>
 
       <div>
-        <h3 class="text-xl font-semibold mb-3 text-strong flex items-center">
+        <h3 class="text-xl font-semibold mb-4 text-strong flex items-center">
           <i data-feather="list" class="mr-2"></i>Daily Tasks
         </h3>
-        <ul class="space-y-2 text-main">
+        <ul class="space-y-3 text-main">
           <li class="flex items-start list-item-reveal"><i data-feather="activity" class="text-accent mr-2 mt-1"></i>Server maintenance & monitoring</li>
           <li class="flex items-start list-item-reveal"><i data-feather="users" class="text-accent mr-2 mt-1"></i>Staff coordination & training</li>
           <li class="flex items-start list-item-reveal"><i data-feather="package" class="text-accent mr-2 mt-1"></i>Plugin installation & configuration</li>
@@ -239,27 +254,27 @@
       <h2 class="text-3xl font-bold text-strong glow-text">Currently Working On</h2>
     </div>
 
-    <div class="flex flex-col md:flex-row gap-6">
-      <div class="flex-1 bg-card rounded-xl p-5 shadow-lg hover-tilt border border-transparent flex flex-col justify-between">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-card rounded-xl p-6 shadow-lg hover-tilt border border-transparent flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold mb-2 text-main flex items-center">
             <i data-feather="book" class="mr-2"></i>MOOC Java Programming I & II
           </h3>
           <p class="text-accent">Learning Java programming through online courses.</p>
-          <p class="mt-3 font-bold text-accent">ETA: 3 months</p>
+          <p class="mt-4 font-bold text-accent">ETA: 3 months</p>
         </div>
         <a href="https://java-programming.mooc.fi/" target="_blank" class="mt-4 flex items-center text-accent">
           <i data-feather="external-link" class="mr-2 w-4 h-4"></i> Course Link
         </a>
       </div>
 
-      <div class="flex-1 bg-card rounded-xl p-5 shadow-lg hover-tilt border border-transparent flex flex-col justify-between">
+      <div class="bg-card rounded-xl p-6 shadow-lg hover-tilt border border-transparent flex flex-col justify-between">
         <div>
           <h3 class="text-xl font-semibold mb-2 text-main flex items-center">
             <i data-feather="code" class="mr-2"></i>Object-Oriented Java Course
           </h3>
           <p class="text-accent">Developing object-oriented programming skills in Java.</p>
-          <p class="mt-3 font-bold text-accent">ETA: 2 months</p>
+          <p class="mt-4 font-bold text-accent">ETA: 2 months</p>
         </div>
         <a href="https://www.coursera.org/learn/object-oriented-java" target="_blank" class="mt-4 flex items-center text-accent">
           <i data-feather="external-link" class="mr-2 w-4 h-4"></i> Course Link
@@ -269,12 +284,12 @@
   </section>
 
   <section class="frosted-glass rounded-lg p-6 shadow-xl reveal">
-    <div class="section-header mb-4 flex items-center gap-2">
-      <i data-feather="share-2" class="text-accent w-6 h-6"></i>
+    <div class="section-header">
+      <i data-feather="share-2" class="text-accent"></i>
       <h2 class="text-3xl font-bold text-strong glow-text">Socials</h2>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
       <a href="https://discord.com/users/753556348784083024" target="_blank" class="social-card bg-card p-4 rounded-lg flex items-center gap-3 hover-tilt border border-transparent">
         <img src="https://cdn.simpleicons.org/discord" width="26">
         <span class="text-main font-semibold">Discord</span>
@@ -311,17 +326,16 @@
       <i data-feather="layers"></i>
       <h2 class="text-3xl font-bold text-strong glow-text">Explore More</h2>
     </div>
-    <p class="text-main text-lg mb-6">Discover detailed information about my projects, contact options, and more.</p>
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-3 gap-8">
       <a href="projects.html" class="bg-card p-6 rounded-xl transition group border border-soft hover:border-strong hover-tilt">
         <div class="flex items-center mb-4">
           <i data-feather="folder" class="text-accent w-10 h-10 mr-4"></i>
           <div>
             <h3 class="text-2xl font-semibold text-main">Projects</h3>
-            <p class="text-muted">Live & archived server work</p>
+            <p class="text-muted text-sm">Live & archived work</p>
           </div>
         </div>
-        <p class="text-main">A showcase of Minecraft server projects, technical configurations, and creative documentation.</p>
+        <p class="text-main">A showcase of Minecraft server projects and technical configurations.</p>
         <div class="mt-4 flex items-center text-accent">
           <span>View details</span>
           <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
@@ -333,10 +347,10 @@
           <i data-feather="mail" class="text-accent w-10 h-10 mr-4"></i>
           <div>
             <h3 class="text-2xl font-semibold text-main">Contact</h3>
-            <p class="text-muted">Get in touch & community servers</p>
+            <p class="text-muted text-sm">Get in touch</p>
           </div>
         </div>
-        <p class="text-main">Preferred contact methods, response times, and links to community Discord servers.</p>
+        <p class="text-main">Preferred contact methods and Discord server links.</p>
         <div class="mt-4 flex items-center text-accent">
           <span>Reach out</span>
           <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
@@ -348,10 +362,10 @@
           <i data-feather="user" class="text-accent w-10 h-10 mr-4"></i>
           <div>
             <h3 class="text-2xl font-semibold text-main">About Me</h3>
-            <p class="text-muted">Background, timeline & interests</p>
+            <p class="text-muted text-sm">Background & journey</p>
           </div>
         </div>
-        <p class="text-main">Learn about my journey, core principles, and personal interests beyond Minecraft.</p>
+        <p class="text-main">Learn about my journey and personal interests beyond Minecraft.</p>
         <div class="mt-4 flex items-center text-accent">
           <span>Read more</span>
           <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
@@ -371,29 +385,27 @@
 <script>
   feather.replace();
 
-  // 1. Mouse Glow Tracking
+  // Mouse Glow logic using CSS Variables
   const glow = document.getElementById('glow');
   window.addEventListener('mousemove', e => {
     glow.style.setProperty('--x', e.clientX + 'px');
     glow.style.setProperty('--y', e.clientY + 'px');
   });
 
-  // 2. Scroll Reveal Logic
+  // Reveal Logic
   const revealElements = document.querySelectorAll('.reveal');
   const revealOnScroll = () => {
     revealElements.forEach(el => {
       const rect = el.getBoundingClientRect();
-      // Elements reveal slightly before they hit the middle of the screen
       if (rect.top < window.innerHeight - 80) {
         el.classList.add('active');
       }
     });
   };
   window.addEventListener('scroll', revealOnScroll);
-  // Run on initial load to catch elements already in view
   revealOnScroll();
 
-  // Vanta Background
+  // Vanta BG check
   if(document.getElementById('vanta-bg')){
     VANTA.GLOBE({
       el: "#vanta-bg",
