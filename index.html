@@ -1,273 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>NotDimension | Portfolio</title>
-<link rel="stylesheet" href="style.css">
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
-    
-    body {
-        font-family: 'Inter', sans-serif;
-        background-color: #000;
-        scroll-behavior: smooth;
-    }
-
-    .glass-card {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(15px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .glass-card:hover {
-        background: rgba(255, 255, 255, 0.07);
-        border-color: rgba(255, 255, 255, 0.3);
-        transform: translateY(-5px);
-    }
-
-    .text-outline {
-        -webkit-text-stroke: 1px rgba(255,255,255,0.3);
-        color: transparent;
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #000; }
-    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-</style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NotDimension | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="text-white overflow-x-hidden">
+<body>
 
-<div id="vanta-bg" class="fixed inset-0 z-0"></div>
-<div class="mouse-glow" id="glow"></div>
+    <div class="bento-grid">
 
-<nav class="fixed top-0 w-full z-50 py-6 px-10 flex justify-between items-center bg-black/20 backdrop-blur-md border-b border-white/5">
-    <div class="text-2xl font-black tracking-tighter">NOT<span class="text-gray-500">DIMENSION</span></div>
-    <div class="flex gap-8 text-sm font-medium tracking-widest uppercase">
-        <a href="#about" class="hover:text-gray-400 transition-colors">About</a>
-        <a href="#projects" class="hover:text-gray-400 transition-colors">Projects</a>
-        <a href="#contact" class="hover:text-gray-400 transition-colors">Contact</a>
-    </div>
-</nav>
-
-<main class="relative z-10 pt-32 pb-20 max-w-7xl mx-auto px-6 space-y-40">
-
-    <section id="home" class="reveal flex flex-col items-center text-center py-20">
-        <div class="relative mb-10">
-            <div class="absolute inset-0 bg-white blur-3xl opacity-10 rounded-full"></div>
-            <img src="images/profile.png" alt="Profile" class="relative w-48 h-48 rounded-full border border-white/20 grayscale hover:grayscale-0 transition-all duration-700 object-cover">
+        <div class="card col-span-2 row-span-2 justify-between reveal">
+            <div class="flex justify-between items-start">
+                <img src="images/profile.png" alt="Profile" class="w-24 h-24 rounded-full border-4 border-[var(--bg-main)] shadow-lg object-cover">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Theme">
+                    <i data-feather="moon" id="theme-icon"></i>
+                </button>
+            </div>
+            <div>
+                <h1 class="text-5xl font-black tracking-tighter mb-2">NotDimension</h1>
+                <p class="text-[var(--text-secondary)] text-lg mb-4">Minecraft Server Developer & Community Architect.</p>
+                <div class="flex gap-2">
+                    <a href="#contact" class="bg-[var(--accent)] text-white px-6 py-2 rounded-full font-bold text-sm hover:opacity-90 transition">Contact Me</a>
+                    <div class="flex items-center gap-2 px-4 py-2 bg-[var(--bg-main)] rounded-full border border-[var(--border)]">
+                        <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="text-xs font-bold text-[var(--text-secondary)]">AVAILABLE FOR WORK</span>
+                    </div>
+                </div>
+            </div>
         </div>
-        <h1 class="text-8xl md:text-9xl font-black tracking-tighter mb-4 uppercase">Developer</h1>
-        <p class="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-            Crafting immersive Minecraft experiences through high-performance administration and technical architecture. Based in South Africa.
-        </p>
-    </section>
 
-    <section id="about" class="reveal space-y-20">
-        <div class="flex items-center gap-6">
-            <h2 class="text-5xl font-black uppercase">About Me</h2>
-            <div class="h-px flex-1 bg-white/10"></div>
+        <div class="card row-span-2 reveal delay-1">
+            <h2 class="text-xl font-bold mb-4">Socials</h2>
+            <div class="grid grid-cols-2 gap-3 h-full">
+                <a href="https://discord.com/users/753556348784083024" target="_blank" class="flex flex-col items-center justify-center p-3 bg-[var(--bg-main)] rounded-xl hover:bg-[#5865F2] hover:text-white transition group">
+                    <i data-feather="message-circle"></i>
+                    <span class="text-[10px] mt-1 font-bold">Discord</span>
+                </a>
+                <a href="https://github.com/NotDimension" target="_blank" class="flex flex-col items-center justify-center p-3 bg-[var(--bg-main)] rounded-xl hover:bg-[#333] hover:text-white transition">
+                    <i data-feather="github"></i>
+                    <span class="text-[10px] mt-1 font-bold">Github</span>
+                </a>
+                <a href="https://www.youtube.com/@NotDimension" target="_blank" class="flex flex-col items-center justify-center p-3 bg-[var(--bg-main)] rounded-xl hover:bg-[#FF0000] hover:text-white transition">
+                    <i data-feather="youtube"></i>
+                    <span class="text-[10px] mt-1 font-bold">YouTube</span>
+                </a>
+                <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="flex flex-col items-center justify-center p-3 bg-[var(--bg-main)] rounded-xl hover:bg-[#171a21] hover:text-white transition">
+                    <i data-feather="monitor"></i>
+                    <span class="text-[10px] mt-1 font-bold">Steam</span>
+                </a>
+                <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="flex flex-col items-center justify-center p-3 bg-[var(--bg-main)] rounded-xl hover:bg-[#12bba4] hover:text-white transition">
+                    <i data-feather="box"></i>
+                    <span class="text-[10px] mt-1 font-bold">NameMC</span>
+                </a>
+                <a href="#" target="_blank" class="flex flex-col items-center justify-center p-3 bg-[var(--bg-main)] rounded-xl hover:bg-[#1DB954] hover:text-white transition">
+                    <i data-feather="music"></i>
+                    <span class="text-[10px] mt-1 font-bold">Spotify</span>
+                </a>
+            </div>
         </div>
-        
-        <div class="grid lg:grid-cols-2 gap-16">
-            <div class="glass-card p-10 rounded-3xl">
-                <p class="text-2xl leading-relaxed font-light italic">
-                    "Specializing in plugin configuration, staff management, and community engagement. Growing servers from small communities to hundreds of members."
-                </p>
+
+        <div class="card reveal delay-2 overflow-y-auto">
+            <h2 class="text-xl font-bold mb-4 flex items-center gap-2"><i data-feather="zap" class="text-[var(--accent)] w-5"></i> Current Roles</h2>
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <img src="images/icons/shady.png" class="w-10 h-10 rounded-full bg-gray-800">
+                    <div><h4 class="font-bold text-sm">ShadySMP</h4><p class="text-[10px] text-muted">Co-Owner (450)</p></div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <img src="images/icons/smpfinder.png" class="w-10 h-10 rounded-full bg-gray-800">
+                    <div><h4 class="font-bold text-sm">SMP Finder</h4><p class="text-[10px] text-muted">Moderator (27k)</p></div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <img src="images/icons/collective.png" class="w-10 h-10 rounded-full bg-gray-800">
+                    <div><h4 class="font-bold text-sm">Collective</h4><p class="text-[10px] text-muted">Manager (60)</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card col-span-2 row-span-2 reveal delay-3">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Technical Arsenal</h2>
+                <i data-feather="cpu" class="text-[var(--accent)] w-6 h-6"></i>
             </div>
             
-            <div class="grid grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-gray-500 uppercase text-xs tracking-widest mb-6">Expertise</h3>
-                    <ul class="space-y-3 font-medium">
-                        <li>Server Administration</li>
-                        <li>Staff Management</li>
-                        <li>Community Engagement</li>
-                        <li>Technical Skills</li>
-                        <li>Logs Management</li>
-                        <li>Graphic Design</li>
+            <div class="grid grid-cols-2 gap-8 h-full">
+                <div class="bg-[var(--bg-main)] p-5 rounded-2xl">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-[var(--accent)] mb-4">Core Expertise</h3>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 text-green-500"></i> Server Administration</li>
+                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 text-green-500"></i> Staff Management</li>
+                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 text-green-500"></i> Community Engagement</li>
+                        <li class="flex items-center gap-2"><i data-feather="check" class="w-4 h-4 text-green-500"></i> Plugin Config (YAML)</li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="text-gray-500 uppercase text-xs tracking-widest mb-6">Execution</h3>
-                    <ul class="space-y-3 font-medium">
-                        <li>Performance Monitoring</li>
-                        <li>Staff Coordination</li>
-                        <li>Plugin Configuration</li>
-                        <li>Event Management</li>
-                        <li>Log Debugging</li>
-                        <li>Promotional UI/UX</li>
+                <div class="bg-[var(--bg-main)] p-5 rounded-2xl">
+                    <h3 class="text-sm font-bold uppercase tracking-widest text-[var(--accent)] mb-4">Daily Operations</h3>
+                    <ul class="space-y-3 text-sm font-medium">
+                        <li class="flex items-center gap-2"><i data-feather="activity" class="w-4 h-4 text-blue-500"></i> Performance Monitoring</li>
+                        <li class="flex items-center gap-2"><i data-feather="terminal" class="w-4 h-4 text-blue-500"></i> Log Analysis & Debug</li>
+                        <li class="flex items-center gap-2"><i data-feather="users" class="w-4 h-4 text-blue-500"></i> Staff Coordination</li>
+                        <li class="flex items-center gap-2"><i data-feather="image" class="w-4 h-4 text-blue-500"></i> UI/UX & Graphics</li>
                     </ul>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="reveal space-y-12">
-        <h2 class="text-5xl font-black uppercase text-center">Experience</h2>
-        
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="glass-card p-8 rounded-2xl text-center">
-                <img src="images/icons/shady.png" class="w-16 h-16 rounded-full mx-auto mb-4 grayscale hover:grayscale-0 transition-all">
-                <h4 class="text-xl font-bold">ShadySMP</h4>
-                <p class="text-gray-500 text-sm">Co-Owner (450 Members)</p>
-            </div>
-            <div class="glass-card p-8 rounded-2xl text-center">
-                <img src="images/icons/smpfinder.png" class="w-16 h-16 rounded-full mx-auto mb-4 grayscale hover:grayscale-0 transition-all">
-                <h4 class="text-xl font-bold">SMP Finder</h4>
-                <p class="text-gray-500 text-sm">Moderator (27k Members)</p>
-            </div>
-            <div class="glass-card p-8 rounded-2xl text-center">
-                <img src="images/icons/collective.png" class="w-16 h-16 rounded-full mx-auto mb-4 grayscale hover:grayscale-0 transition-all">
-                <h4 class="text-xl font-bold">Discord Collective</h4>
-                <p class="text-gray-500 text-sm">Manager (60 Members)</p>
-            </div>
-        </div>
-
-        <div class="flex overflow-x-auto gap-6 pb-6 pt-10 no-scrollbar">
-            <div class="min-w-[250px] glass-card p-6 rounded-xl">
-                <h5 class="font-bold">Prism SMP</h5>
-                <p class="text-xs text-gray-500">Owner (700)</p>
-            </div>
-            <div class="min-w-[250px] glass-card p-6 rounded-xl">
-                <h5 class="font-bold">ShatterMC</h5>
-                <p class="text-xs text-gray-500">Sr. Admin (260)</p>
-            </div>
-            <div class="min-w-[250px] glass-card p-6 rounded-xl">
-                <h5 class="font-bold">OceanMC</h5>
-                <p class="text-xs text-gray-500">Owner (300)</p>
-            </div>
-            <div class="min-w-[250px] glass-card p-6 rounded-xl">
-                <h5 class="font-bold">SteakySMP</h5>
-                <p class="text-xs text-gray-500">Co-Owner (1.5k)</p>
-            </div>
-            <div class="min-w-[250px] glass-card p-6 rounded-xl">
-                <h5 class="font-bold">BonkMC</h5>
-                <p class="text-xs text-gray-500">Moderator (4.6k)</p>
-            </div>
-            <div class="min-w-[250px] glass-card p-6 rounded-xl">
-                <h5 class="font-bold">Nebular SMP</h5>
-                <p class="text-xs text-gray-500">Co-Owner (200)</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="reveal space-y-20">
-        <div class="flex items-center gap-6">
-            <div class="h-px flex-1 bg-white/10"></div>
-            <h2 class="text-5xl font-black uppercase">Projects</h2>
-        </div>
-        
-        <div class="grid md:grid-cols-2 gap-12">
-            <div class="glass-card p-10 rounded-3xl group">
-                <h3 class="text-4xl font-black mb-2 uppercase">MOOC Java</h3>
-                <p class="text-gray-400 mb-6">Mastering software engineering through University of Helsinki's curriculum.</p>
-                <div class="w-full bg-white/10 h-1 overflow-hidden">
-                    <div class="bg-white h-full" style="width: 75%"></div>
+        <div class="card row-span-2 reveal delay-4 overflow-hidden flex flex-col">
+            <h2 class="text-xl font-bold mb-2">History</h2>
+            <p class="text-xs text-muted mb-4">Scroll to see more</p>
+            <div class="overflow-y-auto pr-2 space-y-4 flex-1 custom-scrollbar">
+                <div class="p-3 bg-[var(--bg-main)] rounded-xl">
+                    <div class="flex items-center gap-3 mb-1">
+                        <img src="images/icons/prism.png" class="w-8 h-8 rounded-full bg-gray-700">
+                        <span class="font-bold">Prism SMP</span>
+                    </div>
+                    <p class="text-xs text-muted">Owner (700 Members)</p>
                 </div>
-                <p class="mt-4 text-xs font-bold uppercase tracking-widest">Status: 75% Complete</p>
-            </div>
-            <div class="glass-card p-10 rounded-3xl group">
-                <h3 class="text-4xl font-black mb-2 uppercase">Object Oriented</h3>
-                <p class="text-gray-400 mb-6">Designing modular and scalable architectures for server-side environments.</p>
-                <div class="w-full bg-white/10 h-1 overflow-hidden">
-                    <div class="bg-white h-full" style="width: 40%"></div>
+                <div class="p-3 bg-[var(--bg-main)] rounded-xl">
+                    <div class="flex items-center gap-3 mb-1">
+                        <img src="images/icons/shatter.png" class="w-8 h-8 rounded-full bg-gray-700">
+                        <span class="font-bold">ShatterMC</span>
+                    </div>
+                    <p class="text-xs text-muted">Sr. Admin (260 Members)</p>
                 </div>
-                <p class="mt-4 text-xs font-bold uppercase tracking-widest">Status: 40% Complete</p>
+                <div class="p-3 bg-[var(--bg-main)] rounded-xl">
+                    <div class="flex items-center gap-3 mb-1">
+                        <img src="images/icons/ocean.png" class="w-8 h-8 rounded-full bg-gray-700">
+                        <span class="font-bold">OceanMC</span>
+                    </div>
+                    <p class="text-xs text-muted">Owner (300 Members)</p>
+                </div>
+                <div class="p-3 bg-[var(--bg-main)] rounded-xl">
+                    <div class="flex items-center gap-3 mb-1">
+                        <img src="images/icons/steaky.png" class="w-8 h-8 rounded-full bg-gray-700">
+                        <span class="font-bold">SteakySMP</span>
+                    </div>
+                    <p class="text-xs text-muted">Co-Owner (1.5k Members)</p>
+                </div>
+                <div class="p-3 bg-[var(--bg-main)] rounded-xl">
+                    <div class="flex items-center gap-3 mb-1">
+                        <img src="images/icons/bonk.png" class="w-8 h-8 rounded-full bg-gray-700">
+                        <span class="font-bold">BonkMC</span>
+                    </div>
+                    <p class="text-xs text-muted">Moderator (4.6k Members)</p>
+                </div>
+                <div class="p-3 bg-[var(--bg-main)] rounded-xl">
+                    <div class="flex items-center gap-3 mb-1">
+                        <img src="images/icons/nebular.png" class="w-8 h-8 rounded-full bg-gray-700">
+                        <span class="font-bold">Nebular</span>
+                    </div>
+                    <p class="text-xs text-muted">Co-Owner (200 Members)</p>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="contact" class="reveal text-center space-y-12">
-        <h2 class="text-8xl font-black text-outline uppercase">Connect</h2>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-            <a href="https://discord.com/users/753556348784083024" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center gap-2">
-                <i data-feather="message-circle"></i><span class="text-[10px] font-bold uppercase">Discord</span>
-            </a>
-            <a href="https://github.com/NotDimension" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center gap-2">
-                <i data-feather="github"></i><span class="text-[10px] font-bold uppercase">Github</span>
-            </a>
-            <a href="https://www.youtube.com/@NotDimension" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center gap-2">
-                <i data-feather="youtube"></i><span class="text-[10px] font-bold uppercase">YouTube</span>
-            </a>
-            <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center gap-2">
-                <i data-feather="monitor"></i><span class="text-[10px] font-bold uppercase">Steam</span>
-            </a>
-            <a href="https://www.roblox.com/users/665215157/profile" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center gap-2">
-                <i data-feather="play"></i><span class="text-[10px] font-bold uppercase">Roblox</span>
-            </a>
-            <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center gap-2">
-                <i data-feather="box"></i><span class="text-[10px] font-bold uppercase">NameMC</span>
-            </a>
-            <a href="#" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center gap-2">
-                <i data-feather="music"></i><span class="text-[10px] font-bold uppercase">Spotify</span>
-            </a>
-        </div>
-        
-        <div class="pt-20">
-            <a href="mailto:your@email.com" class="text-3xl font-light underline underline-offset-8 hover:text-gray-400 transition-all">
-                letstalk@notdimension.com
-            </a>
-        </div>
-    </section>
+        <a href="projects.html" class="card reveal delay-3 group relative cursor-pointer overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-purple-900 to-black opacity-0 group-hover:opacity-100 transition duration-500"></div>
+            <div class="relative z-10">
+                <i data-feather="folder" class="w-8 h-8 mb-4 text-[var(--accent)]"></i>
+                <h2 class="text-2xl font-bold">Projects</h2>
+                <p class="text-sm text-muted">Java MOOC & OOP Architecture.</p>
+                <div class="mt-4 flex items-center text-xs font-bold uppercase tracking-widest group-hover:translate-x-2 transition">
+                    View All <i data-feather="arrow-right" class="w-3 h-3 ml-2"></i>
+                </div>
+            </div>
+        </a>
 
-</main>
+        <a href="about.html" class="card reveal delay-4 cursor-pointer hover:bg-[var(--accent)] hover:text-white group transition-colors">
+            <i data-feather="user" class="w-8 h-8 mb-4 group-hover:text-white text-[var(--accent)]"></i>
+            <h2 class="text-2xl font-bold">About Me</h2>
+            <p class="text-sm text-muted group-hover:text-white/80">My journey, philosophy, and background.</p>
+        </a>
 
-<footer class="py-10 text-center text-xs text-gray-600 uppercase tracking-widest border-t border-white/5">
-    &copy; 2026 NotDimension. All Rights Reserved.
-</footer>
+        <a href="https://www.roblox.com/users/665215157/profile" target="_blank" class="card flex flex-row items-center justify-between reveal delay-4 cursor-pointer hover:bg-black hover:text-white transition">
+            <div class="flex items-center gap-3">
+                <i data-feather="play" class="fill-current"></i>
+                <span class="font-bold">Roblox</span>
+            </div>
+            <i data-feather="external-link" class="w-4 h-4 opacity-50"></i>
+        </a>
 
-<script>
-    feather.replace();
+    </div>
 
-    // Vanta Background (Minimalist Net)
-    VANTA.NET({
-        el: "#vanta-bg",
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
-        color: 0xffffff,
-        backgroundColor: 0x0,
-        points: 8.00,
-        maxDistance: 20.00,
-        spacing: 18.00
-    });
+    <script>
+        feather.replace();
 
-    // Simple Reveal On Scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = "1";
-                entry.target.style.transform = "translateY(0)";
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const body = document.body;
+            const icon = document.getElementById('theme-icon');
+            
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                icon.setAttribute('data-feather', 'sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                icon.setAttribute('data-feather', 'moon');
+                localStorage.setItem('theme', 'dark');
             }
-        });
-    }, { threshold: 0.1 });
+            feather.replace();
+        }
 
-    document.querySelectorAll('.reveal').forEach(el => {
-        el.style.opacity = "0";
-        el.style.transform = "translateY(50px)";
-        el.style.transition = "all 1s cubic-bezier(0.19, 1, 0.22, 1)";
-        observer.observe(el);
-    });
-
-    // Mouse Glow
-    const glow = document.getElementById('glow');
-    window.addEventListener('mousemove', e => {
-        glow.style.left = e.clientX + 'px';
-        glow.style.top = e.clientY + 'px';
-    });
-</script>
-
+        // Check LocalStorage on load
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
+    </script>
 </body>
 </html>
