@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>NotDimension | Portfolio</title>
+    <title>NotDimension | Technical Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -11,190 +11,185 @@
 </head>
 <body>
 
-    <div class="ambient-light">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        <div class="orb orb-3"></div>
+    <div class="bg-ambient">
+        <div class="glow-orb" style="top: -10%; left: -10%; background: rgba(124, 58, 237, 0.2);"></div>
+        <div class="glow-orb" style="bottom: -10%; right: -10%; background: rgba(59, 130, 246, 0.2); animation-delay: -5s;"></div>
     </div>
 
     <div class="bento-container">
-
-        <div class="glass-card col-span-2 row-span-2 justify-between" data-tilt data-tilt-max="3" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2">
+        
+        <div class="glass-card span-2 row-2 justify-between" data-tilt data-tilt-max="2">
             <div class="flex justify-between items-start">
                 <div class="relative">
-                    <img src="images/profile.png" alt="Profile" class="w-24 h-24 rounded-full border-2 border-white/20 shadow-2xl object-cover">
-                    <div class="absolute bottom-0 right-0 w-6 h-6 bg-green-500 rounded-full border-4 border-[#050505]"></div>
+                    <img src="images/profile.png" alt="Profile" class="w-28 h-28 rounded-3xl object-cover border-2 border-white/10 shadow-2xl">
+                    <div class="absolute -bottom-2 -right-2 bg-green-500 text-[10px] font-black px-2 py-1 rounded-lg border-2 border-[#050505] text-white">ACTIVE</div>
                 </div>
-                <button onclick="document.body.classList.toggle('light-mode')" class="p-3 rounded-full bg-white/5 hover:bg-white/10 transition backdrop-blur-md border border-white/10">
-                    <i data-feather="sun" class="w-5 h-5"></i>
+                <button onclick="document.body.classList.toggle('light-mode')" class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/15 transition">
+                    <i data-feather="moon" class="w-5 h-5"></i>
                 </button>
             </div>
             <div class="mt-8">
-                <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-2">Not<span class="text-gradient">Dimension</span></h1>
-                <p class="text-[var(--text-muted)] text-lg mb-6 max-w-md leading-relaxed">
-                    Crafting immersive Minecraft experiences through high-performance administration, technical architecture, and community design.
+                <h1 class="text-6xl font-extrabold tracking-tighter mb-4 text-gradient">NotDimension</h1>
+                <p class="text-lg text-[var(--text-secondary)] leading-relaxed max-w-md">
+                    Minecraft Server Developer & Community Architect. Crafting high-performance digital environments through technical precision and leadership.
                 </p>
-                <div class="flex gap-4">
-                    <a href="#contact" class="px-8 py-3 bg-white text-black font-bold rounded-full hover:scale-105 transition shadow-[0_0_20px_rgba(255,255,255,0.3)]">Contact Me</a>
-                    <a href="about.html" class="px-8 py-3 bg-white/5 border border-white/10 text-white font-bold rounded-full hover:bg-white/10 transition backdrop-blur-md">About</a>
+                <div class="flex gap-4 mt-8">
+                    <a href="mailto:contact@notdimension.com" class="btn-action">Hire Me <i data-feather="mail" class="w-4 h-4"></i></a>
+                    <div class="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest">
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                        Available for Work
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="glass-card row-span-2" data-tilt data-tilt-max="5">
-            <div class="flex items-center justify-between mb-4">
-                <h3 class="font-bold text-xl">Network</h3>
-                <i data-feather="share-2" class="w-5 h-5 text-[var(--text-muted)]"></i>
-            </div>
+        <div class="glass-card row-2" data-tilt data-tilt-max="5">
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2"><i data-feather="link" class="w-5 text-[var(--accent-main)]"></i> Socials</h3>
             <div class="grid grid-cols-2 gap-3 h-full content-start">
-                <a href="https://discord.com/users/753556348784083024" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-[#5865F2] hover:text-white transition group border border-white/5">
-                    <i data-feather="message-circle" class="mb-2"></i><span class="text-[10px] font-bold uppercase tracking-wider">Discord</span>
+                <a href="https://discord.com/users/753556348784083024" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-[#5865F2] transition group border border-white/5">
+                    <i data-feather="message-circle" class="mb-1"></i><span class="text-[10px] font-bold uppercase">Discord</span>
                 </a>
-                <a href="https://github.com/NotDimension" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-black hover:text-white transition group border border-white/5">
-                    <i data-feather="github" class="mb-2"></i><span class="text-[10px] font-bold uppercase tracking-wider">Github</span>
+                <a href="https://github.com/NotDimension" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-black transition group border border-white/5">
+                    <i data-feather="github" class="mb-1"></i><span class="text-[10px] font-bold uppercase">Github</span>
                 </a>
-                <a href="https://www.youtube.com/@NotDimension" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-[#FF0000] hover:text-white transition group border border-white/5">
-                    <i data-feather="youtube" class="mb-2"></i><span class="text-[10px] font-bold uppercase tracking-wider">YouTube</span>
+                <a href="https://www.youtube.com/@NotDimension" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-[#FF0000] transition group border border-white/5">
+                    <i data-feather="youtube" class="mb-1"></i><span class="text-[10px] font-bold uppercase">YouTube</span>
                 </a>
-                <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-[#171a21] hover:text-white transition group border border-white/5">
-                    <i data-feather="monitor" class="mb-2"></i><span class="text-[10px] font-bold uppercase tracking-wider">Steam</span>
+                <a href="https://www.roblox.com/users/665215157/profile" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-white hover:text-black transition group border border-white/5">
+                    <i data-feather="play" class="mb-1"></i><span class="text-[10px] font-bold uppercase">Roblox</span>
                 </a>
-                <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-[#12bba4] hover:text-white transition group border border-white/5">
-                    <i data-feather="box" class="mb-2"></i><span class="text-[10px] font-bold uppercase tracking-wider">NameMC</span>
+                <a href="https://steamcommunity.com/id/notdimension" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-[#171a21] transition group border border-white/5">
+                    <i data-feather="monitor" class="mb-1"></i><span class="text-[10px] font-bold uppercase">Steam</span>
                 </a>
-                <a href="https://www.roblox.com/users/665215157/profile" target="_blank" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-black hover:text-white transition group border border-white/5">
-                    <i data-feather="play" class="mb-2"></i><span class="text-[10px] font-bold uppercase tracking-wider">Roblox</span>
+                <a href="https://namemc.com/profile/NotDimension.1" class="flex flex-col items-center justify-center p-4 bg-white/5 rounded-2xl hover:bg-[#12bba4] transition group border border-white/5">
+                    <i data-feather="box" class="mb-1"></i><span class="text-[10px] font-bold uppercase">NameMC</span>
                 </a>
             </div>
         </div>
 
         <div class="glass-card" data-tilt data-tilt-max="5">
-            <h3 class="font-bold text-lg mb-4 flex items-center gap-2"><div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div> Active Roles</h3>
-            <div class="space-y-2">
-                <div class="role-item">
-                    <img src="images/icons/shady.png" class="w-10 h-10 rounded-full bg-white/10">
-                    <div><div class="font-bold text-sm">ShadySMP</div><div class="text-[10px] text-[var(--text-muted)]">Co-Owner (450)</div></div>
+            <h3 class="font-bold text-lg mb-4 flex items-center gap-2 text-[var(--accent-main)]">
+                <i data-feather="zap" class="w-4 h-4"></i> Current Roles
+            </h3>
+            <div class="space-y-4">
+                <div class="flex items-center justify-between p-3 bg-white/5 rounded-2xl border border-white/5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center text-[10px] font-bold">SH</div>
+                        <div><p class="font-bold text-xs">ShadySMP</p><p class="text-[9px] muted uppercase">Co-Owner (450)</p></div>
+                    </div>
                 </div>
-                <div class="role-item">
-                    <img src="images/icons/smpfinder.png" class="w-10 h-10 rounded-full bg-white/10">
-                    <div><div class="font-bold text-sm">SMP Finder</div><div class="text-[10px] text-[var(--text-muted)]">Moderator (27k)</div></div>
-                </div>
-                <div class="role-item">
-                    <img src="images/icons/collective.png" class="w-10 h-10 rounded-full bg-white/10">
-                    <div><div class="font-bold text-sm">Collective</div><div class="text-[10px] text-[var(--text-muted)]">Manager (60)</div></div>
+                <div class="flex items-center justify-between p-3 bg-white/5 rounded-2xl border border-white/5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-[10px] font-bold">SF</div>
+                        <div><p class="font-bold text-xs">SMP Finder</p><p class="text-[9px] muted uppercase">Moderator (27k)</p></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="glass-card col-span-2 row-span-2" data-tilt data-tilt-startX="0" data-tilt-startY="0">
-            <div class="mb-6 border-b border-white/10 pb-4 flex justify-between items-end">
-                <div>
-                    <h3 class="font-bold text-2xl">Technical Arsenal</h3>
-                    <p class="text-sm text-[var(--text-muted)]">Capabilities & Responsibilities</p>
-                </div>
-                <i data-feather="cpu" class="w-6 h-6 text-purple-400"></i>
+        <div class="glass-card span-3 row-2" data-tilt data-tilt-max="1">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-black">Technical Arsenal</h3>
+                <i data-feather="cpu" class="text-[var(--accent-main)]"></i>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] mb-4">Core Expertise</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill"><i data-feather="server" class="w-3 h-3"></i> Server Admin</span>
-                        <span class="skill-pill"><i data-feather="users" class="w-3 h-3"></i> Staff Mgmt</span>
-                        <span class="skill-pill"><i data-feather="message-circle" class="w-3 h-3"></i> Community</span>
-                        <span class="skill-pill"><i data-feather="file-text" class="w-3 h-3"></i> Log Analysis</span>
-                        <span class="skill-pill"><i data-feather="image" class="w-3 h-3"></i> Graphic Design</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <h4 class="text-xs font-bold uppercase tracking-tighter text-[var(--accent-main)]">Core Capabilities</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Server Administration</span>
+                        <span class="skill-tag">Staff Management</span>
+                        <span class="skill-tag">Community Engagement</span>
+                        <span class="skill-tag">Technical Skills</span>
+                        <span class="skill-tag">Logs Management</span>
+                        <span class="skill-tag">Graphic Design</span>
                     </div>
-                    
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] mt-6 mb-4">Development</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-pill border-purple-500/30 text-purple-300">YAML Config</span>
-                        <span class="skill-pill border-purple-500/30 text-purple-300">Java (Learning)</span>
-                        <span class="skill-pill border-purple-500/30 text-purple-300">JSON</span>
-                        <span class="skill-pill border-purple-500/30 text-purple-300">Plugin Debugging</span>
+                    <div class="mt-8 space-y-4">
+                        <h4 class="text-xs font-bold uppercase tracking-tighter text-blue-400">Education Path</h4>
+                        <div class="progress-container">
+                            <div class="flex justify-between text-[10px] font-bold mb-1"><span>Java MOOC Programming</span><span>75%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
+                        </div>
+                        <div class="progress-container">
+                            <div class="flex justify-between text-[10px] font-bold mb-1"><span>Object-Oriented Java</span><span>40%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 40%; background: #3b82f6;"></div></div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="bg-white/5 rounded-xl p-4 border border-white/5">
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-[var(--text-muted)] mb-3">Daily Operations</h4>
-                    <ul class="space-y-3 text-sm text-[var(--text-muted)]">
-                        <li class="flex items-center gap-3"><i data-feather="activity" class="w-4 h-4 text-green-400"></i> Server maintenance & monitoring</li>
-                        <li class="flex items-center gap-3"><i data-feather="users" class="w-4 h-4 text-blue-400"></i> Staff coordination & training</li>
-                        <li class="flex items-center gap-3"><i data-feather="box" class="w-4 h-4 text-yellow-400"></i> Plugin installation & config</li>
-                        <li class="flex items-center gap-3"><i data-feather="calendar" class="w-4 h-4 text-pink-400"></i> Community engagement & events</li>
-                        <li class="flex items-center gap-3"><i data-feather="edit-3" class="w-4 h-4 text-purple-400"></i> Creating graphics & promo materials</li>
+                <div class="bg-black/20 rounded-3xl p-6 border border-white/5 h-fit">
+                    <h4 class="text-xs font-bold uppercase tracking-tighter text-green-400 mb-6">Daily Operations</h4>
+                    <ul class="space-y-4 text-sm font-medium">
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-green-500 mt-0.5"></i> <span>Server maintenance & monitoring</span></li>
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-green-500 mt-0.5"></i> <span>Staff coordination & training</span></li>
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-green-500 mt-0.5"></i> <span>Plugin installation & configuration</span></li>
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-green-500 mt-0.5"></i> <span>Community engagement & events</span></li>
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-green-500 mt-0.5"></i> <span>Server logs analysis & debugging</span></li>
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-green-500 mt-0.5"></i> <span>Creating graphics & promo materials</span></li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="glass-card row-span-2" data-tilt data-tilt-max="3">
-            <h3 class="font-bold text-lg mb-2">Legacy</h3>
-            <p class="text-xs text-[var(--text-muted)] mb-4">Previous Leadership Roles</p>
-            <div class="overflow-y-auto pr-2 space-y-2 h-[200px] custom-scrollbar">
-                <div class="p-3 bg-white/5 rounded-lg border border-white/5 hover:bg-white/10 transition">
-                    <div class="flex items-center gap-3"><img src="images/icons/prism.png" class="w-8 h-8 rounded-full"><span class="font-bold text-sm">Prism SMP</span></div>
-                    <p class="text-[10px] text-[var(--text-muted)] mt-1 ml-11">Owner (700 Members)</p>
+        <div class="glass-card row-2 flex flex-col" data-tilt data-tilt-max="3">
+            <h3 class="text-xl font-bold mb-2">Legacy</h3>
+            <p class="text-[10px] muted mb-6 uppercase tracking-widest">Scroll History</p>
+            <div class="scroll-area space-y-4 h-[350px]">
+                <div class="p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-[var(--accent-main)] transition">
+                    <p class="font-bold text-sm">Prism SMP</p>
+                    <p class="text-[10px] muted">Owner (700 Members)</p>
                 </div>
-                <div class="p-3 bg-white/5 rounded-lg border border-white/5 hover:bg-white/10 transition">
-                    <div class="flex items-center gap-3"><img src="images/icons/shatter.png" class="w-8 h-8 rounded-full"><span class="font-bold text-sm">ShatterMC</span></div>
-                    <p class="text-[10px] text-[var(--text-muted)] mt-1 ml-11">Sr. Admin (260 Members)</p>
+                <div class="p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-[var(--accent-main)] transition">
+                    <p class="font-bold text-sm">ShatterMC</p>
+                    <p class="text-[10px] muted">Sr. Admin (260 Members)</p>
                 </div>
-                <div class="p-3 bg-white/5 rounded-lg border border-white/5 hover:bg-white/10 transition">
-                    <div class="flex items-center gap-3"><img src="images/icons/ocean.png" class="w-8 h-8 rounded-full"><span class="font-bold text-sm">OceanMC</span></div>
-                    <p class="text-[10px] text-[var(--text-muted)] mt-1 ml-11">Owner (300 Members)</p>
+                <div class="p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-[var(--accent-main)] transition">
+                    <p class="font-bold text-sm">OceanMC</p>
+                    <p class="text-[10px] muted">Owner (300 Members)</p>
                 </div>
-                <div class="p-3 bg-white/5 rounded-lg border border-white/5 hover:bg-white/10 transition">
-                    <div class="flex items-center gap-3"><img src="images/icons/steaky.png" class="w-8 h-8 rounded-full"><span class="font-bold text-sm">SteakySMP</span></div>
-                    <p class="text-[10px] text-[var(--text-muted)] mt-1 ml-11">Co-Owner (1.5k Members)</p>
+                <div class="p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-[var(--accent-main)] transition">
+                    <p class="font-bold text-sm">SteakySMP</p>
+                    <p class="text-[10px] muted">Co-Owner (1.5k Members)</p>
                 </div>
-                 <div class="p-3 bg-white/5 rounded-lg border border-white/5 hover:bg-white/10 transition">
-                    <div class="flex items-center gap-3"><img src="images/icons/bonk.png" class="w-8 h-8 rounded-full"><span class="font-bold text-sm">BonkMC</span></div>
-                    <p class="text-[10px] text-[var(--text-muted)] mt-1 ml-11">Moderator (4.6k Members)</p>
+                <div class="p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-[var(--accent-main)] transition">
+                    <p class="font-bold text-sm">BonkMC</p>
+                    <p class="text-[10px] muted">Moderator (4.6k Members)</p>
                 </div>
-                 <div class="p-3 bg-white/5 rounded-lg border border-white/5 hover:bg-white/10 transition">
-                    <div class="flex items-center gap-3"><img src="images/icons/nebular.png" class="w-8 h-8 rounded-full"><span class="font-bold text-sm">Nebular</span></div>
-                    <p class="text-[10px] text-[var(--text-muted)] mt-1 ml-11">Co-Owner (200 Members)</p>
+                <div class="p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-[var(--accent-main)] transition">
+                    <p class="font-bold text-sm">Nebular</p>
+                    <p class="text-[10px] muted">Co-Owner (200 Members)</p>
                 </div>
             </div>
         </div>
 
-        <a href="projects.html" class="glass-card col-span-2 group cursor-pointer relative overflow-hidden" data-tilt data-tilt-max="2">
-            <div class="absolute inset-0 bg-gradient-to-r from-purple-900/40 to-blue-900/40 opacity-0 group-hover:opacity-100 transition duration-500"></div>
-            <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                <div>
-                    <h3 class="font-bold text-2xl mb-1">Current Studies</h3>
-                    <p class="text-[var(--text-muted)] text-sm">Java MOOC & Object-Oriented Architecture</p>
-                </div>
-                <div class="flex gap-4 w-full md:w-auto">
-                    <div class="flex-1 md:w-40 bg-black/40 rounded-lg p-3 border border-white/10">
-                        <div class="flex justify-between text-[10px] uppercase font-bold mb-1 text-purple-300"><span>Java MOOC</span><span>75%</span></div>
-                        <div class="h-1 bg-white/10 rounded-full overflow-hidden"><div class="h-full bg-purple-500 w-3/4"></div></div>
-                    </div>
-                    <div class="flex-1 md:w-40 bg-black/40 rounded-lg p-3 border border-white/10">
-                        <div class="flex justify-between text-[10px] uppercase font-bold mb-1 text-blue-300"><span>OOP Arch</span><span>40%</span></div>
-                        <div class="h-1 bg-white/10 rounded-full overflow-hidden"><div class="h-full bg-blue-500 w-2/5"></div></div>
-                    </div>
-                </div>
-                <div class="bg-white text-black rounded-full p-3 group-hover:rotate-45 transition duration-300">
-                    <i data-feather="arrow-right"></i>
-                </div>
-            </div>
+        <a href="about.html" class="glass-card justify-center items-center group cursor-pointer hover:bg-[var(--accent-main)] hover:text-white transition-all">
+            <i data-feather="user" class="w-8 h-8 mb-2 group-hover:scale-110 transition"></i>
+            <h4 class="font-bold">About Me</h4>
+            <p class="text-[10px] muted group-hover:text-white/80">My Journey & Vision</p>
+        </a>
+
+        <a href="projects.html" class="glass-card justify-center items-center group cursor-pointer hover:bg-blue-600 hover:text-white transition-all">
+            <i data-feather="folder" class="w-8 h-8 mb-2 group-hover:scale-110 transition"></i>
+            <h4 class="font-bold">Projects</h4>
+            <p class="text-[10px] muted group-hover:text-white/80">Architecture & MOOCs</p>
         </a>
 
     </div>
 
     <script>
+        // Initialize Feather Icons
         feather.replace();
         
-        // Initialize VanillaTilt on elements with data-tilt
+        // Initialize VanillaTilt for the glass cards
         VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
-            max: 3,
+            max: 5,
             speed: 400,
             glare: true,
             "max-glare": 0.1,
-            scale: 1.02
         });
+
+        // Sticky Navigation for Theme Toggle state (Optional storage)
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        }
     </script>
 </body>
 </html>
