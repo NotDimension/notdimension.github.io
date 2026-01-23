@@ -1,221 +1,221 @@
-/* ============================================================
-   GLOBAL THEME VARIABLES
-   Arctic Sunset Glass - Dynamic Edition
-   ============================================================ */
+/* --- [1] GLOBAL DEFAULTS & IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 :root {
-    /* Core arctic palette */
-    --blue-shadow: #0a0f1c;      /* deepest base (dark blue) */
-    --blue-base: #2c3e50;        /* primary arctic (mid-blue) */
-    --pink-accent: #e74c3c;      /* soft accent (vibrant pink/red) */
-
-    /* Background layers */
-    --bg-main: #03040a;
-    --bg-overlay: rgba(10, 15, 25, 0.78);
-
-    /* Cards – higher transparency */
-    --bg-card: rgba(44, 62, 80, 0.38);
-    --bg-card-hover: rgba(44, 62, 80, 0.55);
-
-    /* Text – cool neutral gray/white */
-    --text-main: #e6e5e1;
-    --text-muted: #b7b6ae;
-    --text-accent: var(--pink-accent); 
-    --text-strong: #f5f5f2;
-
-    /* Borders & glow - ADHERES TO PINK ACCENT */
-    --border-soft: rgba(170, 185, 190, 0.18);
-    --glow: rgba(231, 76, 60, 0.28); 
-    --glow-secondary: rgba(231, 76, 60, 0.15);
-    
-    /* Animation & Interaction Settings */
-    --mouse-glow-size: 45%;
-    --reveal-speed: 0.8s;
-    --tilt-speed: 0.3s;
+  --accent: #9333ea;
+  --accent-glow: rgba(147, 51, 234, 0.35);
+  --bg-dark: #050505;
+  --card-bg: rgba(20, 20, 20, 0.7);
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-strong: #ffffff;
+  --border: rgba(255, 255, 255, 0.1);
+  --glass-blur: 12px;
+  --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ===============================
-   BASE & RESET
-================================ */
 * {
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    color: var(--text-main);
-    overflow-x: hidden;
-    background-color: var(--bg-main);
-    line-height: 1.6;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* ===============================
-   DYNAMIC INTERACTIVE EFFECTS
-================================ */
+/* --- [2] CUSTOM SCROLLBAR --- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border-radius: 5px;
+  border: 2px solid #0a0a0a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
 
-/* The Interactive Background Glow (Mouse Follow) */
-/* Adheres to --glow variable */
+/* --- [3] BACKGROUND LAYERS & MOUSE GLOW --- */
+#vanta-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -15;
+}
+
+.bg-overlay {
+  background: linear-gradient(to bottom, rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.4), rgba(5, 5, 5, 0.9));
+  pointer-events: none;
+}
+
 .mouse-glow {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    background: radial-gradient(
-        circle at var(--x, 50%) var(--y, 50%), 
-        var(--glow) 0%, 
-        transparent var(--mouse-glow-size)
-    );
-    z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), var(--accent-glow) 0%, transparent 45%);
+  z-index: -5;
+  will-change: transform;
 }
 
-/* Scroll Reveal Animation */
+/* --- [4] APPEAR/DISAPPEAR ANIMATIONS --- */
 .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all var(--reveal-speed) cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
 }
 
+/* State when block is in center of screen */
 .reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
-/* Global Hover Tilt & Lift */
-/* Adheres to --pink-accent for border and --glow for shadow */
-.hover-tilt {
-    transition: transform var(--tilt-speed) ease, 
-                box-shadow var(--tilt-speed) ease, 
-                border-color var(--tilt-speed) ease !important;
-    will-change: transform;
-    border: 1px solid var(--border-soft);
+/* State when block is scrolled PAST (Disappears) */
+.reveal.out {
+  opacity: 0;
+  transform: translateY(-40px) scale(0.95);
+}
+
+/* --- [5] CORE COMPONENTS & GLASS --- */
+.frosted-glass {
+  background: var(--card-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+}
+
+.social-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(4px);
+  transition: var(--transition);
+  position: relative;
+  z-index: 5;
+}
+
+/* Role Icons / Server Logos Fix */
+.social-card img {
+  display: block;
+  z-index: 20;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+  object-fit: contain;
 }
 
 .hover-tilt:hover {
-    transform: translateY(-8px) scale(1.01) !important;
-    box-shadow: 0 20px 40px -15px rgba(0,0,0,0.6), 0 0 25px var(--glow) !important;
-    border-color: var(--pink-accent) !important;
-    background-color: var(--bg-card-hover) !important;
-    z-index: 10;
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--accent);
+  background: rgba(147, 51, 234, 0.05);
+  box-shadow: 0 25px 50px -12px var(--accent-glow);
 }
 
-/* Hero Profile Image Float */
-.pulse-animation {
-    animation: float 5s ease-in-out infinite;
-    box-shadow: 0 0 30px var(--glow-secondary);
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
-}
-
-/* ===============================
-   VIDEO & OVERLAY
-================================ */
-.bg-video {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -3;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(
-        rgba(10, 15, 25, 0.12),
-        rgba(4, 6, 12, 0.88)
-    );
-    z-index: -2;
-}
-
-/* ===============================
-   SCROLLBAR
-================================ */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #060806;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--blue-base);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--text-strong);
-}
-
-/* ===============================
-   FROSTED GLASS & HEADERS
-================================ */
-.frosted-glass {
-    background: linear-gradient(
-        180deg,
-        rgba(44, 62, 80, 0.42),
-        rgba(10, 15, 25, 0.30)
-    );
-    backdrop-filter: blur(22px) saturate(118%);
-    -webkit-backdrop-filter: blur(22px) saturate(118%);
-    border: 1px solid var(--border-soft);
-}
-
-.section-header {
-    margin-bottom: 2.5rem !important;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-/* Text Glow adheres to the theme color */
+/* --- [6] TEXT STYLES & UTILS --- */
 .glow-text {
-    text-shadow: 
-        0 0 10px rgba(220, 230, 250, 0.15), 
-        0 0 20px var(--glow);
+  text-shadow: 0 0 20px var(--accent-glow);
 }
 
-/* ===============================
-   SOCIAL CARDS & ICONS
-================================ */
-.social-card {
-    background-color: var(--bg-card);
-    color: var(--text-main);
-    border: 1px solid var(--border-soft);
-    transition: all 0.25s ease;
-    text-decoration: none;
-}
-
-.social-card img {
-    filter: brightness(0) saturate(100%) invert(90%) sepia(10%) saturate(150%) hue-rotate(180deg);
-}
-
-i[data-feather] {
-    width: 1.2em;
-    height: 1.2em;
-    stroke: currentColor;
-    stroke-width: 2;
-    vertical-align: middle;
-}
-
-/* ===============================
-   UTILITY CLASSES
-================================ */
-.bg-main { background-color: var(--bg-main); }
-.bg-overlay { background-color: var(--bg-overlay); }
-.bg-card { background-color: var(--bg-card); }
+.text-accent { color: var(--accent); }
 .text-main { color: var(--text-main); }
 .text-muted { color: var(--text-muted); }
-.text-accent { color: var(--text-accent); }
 .text-strong { color: var(--text-strong); }
-.border-soft { border-color: var(--border-soft); }
+.bg-card { background: var(--card-bg); }
+.border-soft { border-color: var(--border); }
 
-@media (max-width: 768px) {
-    .section-header { margin-bottom: 1.5rem !important; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
 }
+
+.section-header i {
+  color: var(--accent);
+  filter: drop-shadow(0 0 5px var(--accent));
+}
+
+/* --- [7] ANIMATIONS --- */
+.pulse-animation {
+  animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    box-shadow: 0 0 0 0 rgba(147, 51, 234, 0.4); 
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% { 
+    box-shadow: 0 0 30px 10px rgba(147, 51, 234, 0.2); 
+    border-color: var(--accent);
+  }
+}
+
+.social-icons a {
+  transition: var(--transition);
+}
+
+.social-icons a:hover {
+  color: #fff;
+  transform: scale(1.2) translateY(-3px);
+  filter: drop-shadow(0 0 8px var(--accent));
+}
+
+/* --- [8] LISTS & NAVIGATION --- */
+.list-item-reveal {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: var(--transition);
+}
+
+.list-item-reveal:hover {
+  transform: translateX(10px);
+  color: var(--text-strong);
+}
+
+/* Navbar Customization */
+custom-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* --- [9] RESPONSIVE BREAKPOINTS --- */
+@media (max-width: 768px) {
+  .reveal {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  main {
+    padding-top: 2rem;
+    space-y: 4rem;
+  }
+  
+  .text-6xl {
+    font-size: 3rem;
+  }
+}
+
+/* --- [10] MISC UTILS --- */
+.overflow-hidden { overflow: hidden; }
+.z-10 { z-index: 10; }
+.z-minus { z-index: -10; }
+.object-cover { object-fit: cover; }
+.w-full { width: 100%; }
+.h-full { height: 100%; }
