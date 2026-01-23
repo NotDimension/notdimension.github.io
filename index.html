@@ -11,9 +11,12 @@
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 </head>
-<body class="bg-[#050505]">
+<body>
 
-<div id="vanta-canvas" class="fixed inset-0 z-[-1]"></div>
+<video autoplay muted loop playsinline class="bg-video">
+    <source src="images/background.mp4" type="video/mp4">
+</video>
+<div id="vanta-canvas" class="fixed inset-0 z-[-1] opacity-40"></div>
 <div id="cursor"></div>
 
 <custom-navbar></custom-navbar>
@@ -22,63 +25,57 @@
 
     <section class="flex flex-col md:flex-row items-center gap-10 reveal">
         <div class="relative group">
-            <div class="absolute -inset-1 bg-indigo-500 rounded-full blur opacity-25 group-hover:opacity-60 transition duration-1000"></div>
-            <img src="images/profile.png" alt="Profile" class="relative rounded-full w-44 h-44 border-4 border-white/10 shadow-2xl">
+            <div class="absolute -inset-1 bg-[#e74c3c] rounded-full blur opacity-25 group-hover:opacity-60 transition duration-1000"></div>
+            <img src="images/profile.png" alt="Profile" class="relative rounded-full w-44 h-44 border-4 border-white/10 shadow-2xl object-cover">
         </div>
         <div class="text-center md:text-left">
             <h1 class="text-6xl font-black mb-2 text-white glow-text tracking-tight">NotDimension</h1>
-            <div class="text-2xl text-indigo-400 font-medium h-8">
+            <div class="text-2xl text-[#e74c3c] font-medium h-8">
                 <span id="typed"></span>
             </div>
-            <p class="text-gray-500 mt-2 flex items-center justify-center md:justify-start gap-2">
+            <p class="text-gray-400 mt-2 flex items-center justify-center md:justify-start gap-2">
                 <i data-feather="map-pin" class="w-4 h-4"></i> South Africa
             </p>
-            <div class="flex gap-5 mt-6 justify-center md:justify-start">
-                <a href="https://discord.com/users/753556348784083024" target="_blank" class="hover:text-indigo-400 transition-colors"><i data-feather="message-circle"></i></a>
-                <a href="https://www.youtube.com/@NotDimension" target="_blank" class="hover:text-indigo-400 transition-colors"><i data-feather="youtube"></i></a>
-                <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="hover:text-indigo-400 transition-colors"><i data-feather="cpu"></i></a>
-                <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="hover:text-indigo-400 transition-colors"><i data-feather="box"></i></a>
-            </div>
         </div>
     </section>
 
     <section class="frosted-glass rounded-2xl p-8 reveal">
         <div class="flex items-center gap-3 mb-6">
-            <i data-feather="user" class="text-indigo-400"></i>
+            <i data-feather="user" class="text-[#e74c3c]"></i>
             <h2 class="text-3xl font-bold text-white">About Me</h2>
         </div>
         <p class="text-xl text-gray-300 leading-relaxed">
-            Minecraft server developer specializing in plugin configuration, staff management, and community engagement. Experienced in growing servers from small communities to hundreds of members, focusing on creating good gameplay experience.
+            Minecraft server developer specializing in <span class="text-white font-semibold">plugin configuration</span>, staff management, and community engagement. Experienced in growing servers from small communities to hundreds of members.
         </p>
     </section>
 
-    <section id="current-roles" class="reveal">
+    <section class="reveal">
         <div class="flex items-center gap-3 mb-8">
-            <i data-feather="award" class="text-indigo-400"></i>
+            <i data-feather="award" class="text-[#e74c3c]"></i>
             <h2 class="text-3xl font-bold text-white">Current Roles</h2>
         </div>
         <div class="grid md:grid-cols-3 gap-6">
             <div class="frosted-glass p-6 rounded-xl text-center">
-                <img src="images/icons/shady.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-indigo-500/30" alt="Lunex">
+                <img src="images/icons/shady.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-[#e74c3c]/30">
                 <h3 class="text-xl font-bold text-white">ShadySMP</h3>
-                <p class="text-indigo-400 mb-4">Co-Owner (450 Members)</p>
-                <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="inline-flex items-center text-sm bg-white/5 px-4 py-2 rounded-lg hover:bg-indigo-500 transition-colors">
+                <p class="text-[#e74c3c] mb-4 text-sm">Co-Owner (450 Members)</p>
+                <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="inline-flex items-center text-sm bg-white/5 px-4 py-2 rounded-lg hover:bg-[#e74c3c] transition-colors">
                     <i data-feather="link" class="mr-2 w-4 h-4"></i> Discord
                 </a>
             </div>
             <div class="frosted-glass p-6 rounded-xl text-center">
-                <img src="images/icons/smpfinder.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-indigo-500/30" alt="SMP Finder">
+                <img src="images/icons/smpfinder.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-[#e74c3c]/30">
                 <h3 class="text-xl font-bold text-white">SMP Finder</h3>
-                <p class="text-indigo-400 mb-4">Moderator (27k members)</p>
-                <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="inline-flex items-center text-sm bg-white/5 px-4 py-2 rounded-lg hover:bg-indigo-500 transition-colors">
+                <p class="text-[#e74c3c] mb-4 text-sm">Moderator (27k members)</p>
+                <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="inline-flex items-center text-sm bg-white/5 px-4 py-2 rounded-lg hover:bg-[#e74c3c] transition-colors">
                     <i data-feather="link" class="mr-2 w-4 h-4"></i> Discord
                 </a>
             </div>
             <div class="frosted-glass p-6 rounded-xl text-center">
-                <img src="images/icons/collective.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-indigo-500/30" alt="OceanMC">
+                <img src="images/icons/collective.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-[#e74c3c]/30">
                 <h3 class="text-xl font-bold text-white">Discord Collective</h3>
-                <p class="text-indigo-400 mb-4">Manager (60 members)</p>
-                <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="inline-flex items-center text-sm bg-white/5 px-4 py-2 rounded-lg hover:bg-indigo-500 transition-colors">
+                <p class="text-[#e74c3c] mb-4 text-sm">Manager (60 members)</p>
+                <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="inline-flex items-center text-sm bg-white/5 px-4 py-2 rounded-lg hover:bg-[#e74c3c] transition-colors">
                     <i data-feather="link" class="mr-2 w-4 h-4"></i> Discord
                 </a>
             </div>
@@ -87,200 +84,144 @@
 
     <section class="reveal">
         <div class="flex items-center gap-3 mb-8">
-            <i data-feather="clock" class="text-indigo-400"></i>
+            <i data-feather="clock" class="text-[#e74c3c]"></i>
             <h2 class="text-3xl font-bold text-white">Previous Roles</h2>
         </div>
         <div class="grid md:grid-cols-3 gap-4">
-            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/prism.png" class="w-12 h-12 rounded-full" alt="Prism SMP">
-                <div><h4 class="font-bold text-white">Prism SMP</h4><p class="text-xs text-indigo-400">Owner (700 members)</p></div>
-            </div>
-            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/shatter.png" class="w-12 h-12 rounded-full" alt="ShatterMC">
-                <div><h4 class="font-bold text-white">ShatterMC</h4><p class="text-xs text-indigo-400">Senior Admin (260 members)</p></div>
-            </div>
-            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/ocean.png" class="w-12 h-12 rounded-full" alt="OceanMC">
-                <div><h4 class="font-bold text-white">OceanMC</h4><p class="text-xs text-indigo-400">Owner (300 members)</p></div>
-            </div>
-            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/steaky.png" class="w-12 h-12 rounded-full" alt="SteakySMP">
-                <div><h4 class="font-bold text-white">SteakySMP</h4><p class="text-xs text-indigo-400">Co-Owner (1.5k members)</p></div>
-            </div>
-            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/bonk.png" class="w-12 h-12 rounded-full" alt="BonkMC">
-                <div><h4 class="font-bold text-white">BonkMC</h4><p class="text-xs text-indigo-400">Moderator (4.6k members)</p></div>
-            </div>
-            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/nebular.png" class="w-12 h-12 rounded-full" alt="Nebular SMP">
-                <div><h4 class="font-bold text-white">Nebular SMP</h4><p class="text-xs text-indigo-400">Overseer/Co-Owner (200 members)</p></div>
-            </div>
+            <a href="https://discord.gg/prism" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4 hover:scale-[1.02] transition-transform">
+                <img src="images/icons/prism.png" class="w-12 h-12 rounded-full">
+                <div><h4 class="font-bold text-white">Prism SMP</h4><p class="text-xs text-[#e74c3c]">Owner (700 members)</p></div>
+            </a>
+            <a href="https://discord.gg/shatter" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4 hover:scale-[1.02] transition-transform">
+                <img src="images/icons/shatter.png" class="w-12 h-12 rounded-full">
+                <div><h4 class="font-bold text-white">ShatterMC</h4><p class="text-xs text-[#e74c3c]">Senior Admin (260 members)</p></div>
+            </a>
+            <a href="https://discord.gg/ocean" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4 hover:scale-[1.02] transition-transform">
+                <img src="images/icons/ocean.png" class="w-12 h-12 rounded-full">
+                <div><h4 class="font-bold text-white">OceanMC</h4><p class="text-xs text-[#e74c3c]">Owner (300 members)</p></div>
+            </a>
+            <a href="https://discord.gg/steaky" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4 hover:scale-[1.02] transition-transform">
+                <img src="images/icons/steaky.png" class="w-12 h-12 rounded-full">
+                <div><h4 class="font-bold text-white">SteakySMP</h4><p class="text-xs text-[#e74c3c]">Co-Owner (1.5k members)</p></div>
+            </a>
+            <a href="https://discord.gg/bonk" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4 hover:scale-[1.02] transition-transform">
+                <img src="images/icons/bonk.png" class="w-12 h-12 rounded-full">
+                <div><h4 class="font-bold text-white">BonkMC</h4><p class="text-xs text-[#e74c3c]">Moderator (4.6k members)</p></div>
+            </a>
+            <a href="https://discord.gg/nebular" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4 hover:scale-[1.02] transition-transform">
+                <img src="images/icons/nebular.png" class="w-12 h-12 rounded-full">
+                <div><h4 class="font-bold text-white">Nebular SMP</h4><p class="text-xs text-[#e74c3c]">Overseer (200 members)</p></div>
+            </a>
         </div>
     </section>
 
-    <section id="skills" class="reveal">
-        <div class="flex items-center gap-3 mb-8">
-            <i data-feather="tool" class="text-indigo-400"></i>
-            <h2 class="text-3xl font-bold text-white">Skills & Responsibilities</h2>
-        </div>
+    <section class="reveal">
         <div class="grid md:grid-cols-2 gap-8">
             <div class="frosted-glass p-8 rounded-2xl">
-                <h3 class="text-xl font-bold mb-6 text-white flex items-center"><i data-feather="star" class="mr-2 text-indigo-400"></i>Core Expertise</h3>
+                <h3 class="text-xl font-bold mb-6 text-white flex items-center"><i data-feather="star" class="mr-2 text-[#e74c3c]"></i>Core Expertise</h3>
                 <ul class="space-y-4">
-                    <li class="flex items-start text-gray-300"><i data-feather="server" class="text-indigo-400 mr-3 w-5 mt-1"></i>Server Administration</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="users" class="text-indigo-400 mr-3 w-5 mt-1"></i>Staff Management</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="message-circle" class="text-indigo-400 mr-3 w-5 mt-1"></i>Community Engagement</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="code" class="text-indigo-400 mr-3 w-5 mt-1"></i>Technical Skills</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="file-text" class="text-indigo-400 mr-3 w-5 mt-1"></i>Logs Management</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="image" class="text-indigo-400 mr-3 w-5 mt-1"></i>Graphic Design</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Server Administration</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Staff Management</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Community Engagement</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Technical Skills</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Logs Management</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Graphic Design</li>
                 </ul>
             </div>
             <div class="frosted-glass p-8 rounded-2xl">
-                <h3 class="text-xl font-bold mb-6 text-white flex items-center"><i data-feather="list" class="mr-2 text-indigo-400"></i>Daily Tasks</h3>
+                <h3 class="text-xl font-bold mb-6 text-white flex items-center"><i data-feather="list" class="mr-2 text-[#e74c3c]"></i>Daily Tasks</h3>
                 <ul class="space-y-4">
-                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-indigo-400 mr-3 w-5 mt-1"></i>Server maintenance & monitoring</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="users" class="text-indigo-400 mr-3 w-5 mt-1"></i>Staff coordination & training</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="package" class="text-indigo-400 mr-3 w-5 mt-1"></i>Plugin installation & configuration</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="calendar" class="text-indigo-400 mr-3 w-5 mt-1"></i>Community engagement & events</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="search" class="text-indigo-400 mr-3 w-5 mt-1"></i>Server logs analysis & debugging</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="pen-tool" class="text-indigo-400 mr-3 w-5 mt-1"></i>Creating graphics & promo materials</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Server maintenance & monitoring</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Staff coordination & training</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Plugin installation & configuration</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Community engagement & events</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Server logs analysis & debugging</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Creating graphics & promo materials</li>
                 </ul>
             </div>
         </div>
     </section>
 
     <section class="reveal">
-        <div class="flex items-center gap-3 mb-8">
-            <i data-feather="code" class="text-indigo-400"></i>
-            <h2 class="text-3xl font-bold text-white">Currently Working On</h2>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="frosted-glass p-6 rounded-xl flex flex-col justify-between">
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-2 flex items-center"><i data-feather="book" class="mr-2"></i>MOOC Java Programming</h3>
-                    <p class="text-gray-400">Learning Java programming through online courses.</p>
-                </div>
-                <div class="mt-6 flex justify-between items-center">
-                    <span class="text-indigo-400 font-bold">ETA: 3 months</span>
-                    <a href="https://java-programming.mooc.fi/" target="_blank" class="flex items-center text-sm hover:underline"><i data-feather="external-link" class="mr-1 w-4 h-4"></i> Course</a>
-                </div>
-            </div>
-            <div class="frosted-glass p-6 rounded-xl flex flex-col justify-between">
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-2 flex items-center"><i data-feather="code" class="mr-2"></i>Object-Oriented Java</h3>
-                    <p class="text-gray-400">Developing object-oriented programming skills in Java.</p>
-                </div>
-                <div class="mt-6 flex justify-between items-center">
-                    <span class="text-indigo-400 font-bold">ETA: 2 months</span>
-                    <a href="https://www.coursera.org/learn/object-oriented-java" target="_blank" class="flex items-center text-sm hover:underline"><i data-feather="external-link" class="mr-1 w-4 h-4"></i> Course</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="reveal">
-        <div class="flex items-center gap-3 mb-8">
-            <i data-feather="share-2" class="text-indigo-400"></i>
-            <h2 class="text-3xl font-bold text-white">Socials</h2>
-        </div>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-            <a href="https://discord.com/users/753556348784083024" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
+            <a href="https://discord.com/users/753556348784083024" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
                 <img src="https://cdn.simpleicons.org/discord/white" width="24">
                 <span class="text-xs font-bold">Discord</span>
             </a>
-            <a href="https://www.youtube.com/@NotDimension" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
+            <a href="https://www.youtube.com/@NotDimension" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
                 <img src="https://cdn.simpleicons.org/youtube/white" width="24">
                 <span class="text-xs font-bold">YouTube</span>
+            </a>
+            <a href="https://github.com/NotDimension" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
+                <img src="https://cdn.simpleicons.org/github/white" width="24">
+                <span class="text-xs font-bold">GitHub</span>
+            </a>
+            <a href="https://namemc.com/profile/NotDimension.1" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
+                <img src="https://cdn.simpleicons.org/namemc/white" width="24">
+                <span class="text-xs font-bold">NameMC</span>
+            </a>
+            <a href="https://steamcommunity.com/id/notdimension" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
+                <img src="https://cdn.simpleicons.org/steam/white" width="24">
+                <span class="text-xs font-bold">Steam</span>
             </a>
             <a href="#" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
                 <img src="https://cdn.simpleicons.org/spotify/white" width="24">
                 <span class="text-xs font-bold">Spotify</span>
             </a>
-            <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/steam/white" width="24">
-                <span class="text-xs font-bold">Steam</span>
-            </a>
-            <a href="https://www.roblox.com/users/665215157/profile" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
+            <a href="#" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
                 <img src="https://cdn.simpleicons.org/roblox/white" width="24">
                 <span class="text-xs font-bold">Roblox</span>
-            </a>
-            <a href="https://github.com/NotDimension" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/github/white" width="24">
-                <span class="text-xs font-bold">GitHub</span>
-            </a>
-            <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/namemc/white" width="24">
-                <span class="text-xs font-bold">NameMC</span>
             </a>
         </div>
     </section>
 
-    <section class="reveal pb-20">
-        <div class="flex items-center gap-3 mb-8">
-            <i data-feather="layers" class="text-indigo-400"></i>
-            <h2 class="text-3xl font-bold text-white">Explore More</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-6">
-            <a href="projects.html" class="frosted-glass p-8 rounded-2xl group">
-                <i data-feather="folder" class="text-indigo-400 w-10 h-10 mb-4 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-2xl font-bold text-white mb-2">Projects</h3>
-                <p class="text-gray-400 text-sm">A showcase of Minecraft server projects, technical configurations, and creative documentation.</p>
-                <div class="mt-6 flex items-center text-indigo-400 font-bold text-sm">VIEW DETAILS <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></div>
-            </a>
-            <a href="contact.html" class="frosted-glass p-8 rounded-2xl group">
-                <i data-feather="mail" class="text-indigo-400 w-10 h-10 mb-4 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-2xl font-bold text-white mb-2">Contact</h3>
-                <p class="text-gray-400 text-sm">Preferred contact methods, response times, and links to community Discord servers.</p>
-                <div class="mt-6 flex items-center text-indigo-400 font-bold text-sm">REACH OUT <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></div>
-            </a>
-            <a href="about.html" class="frosted-glass p-8 rounded-2xl group">
-                <i data-feather="user" class="text-indigo-400 w-10 h-10 mb-4 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-2xl font-bold text-white mb-2">About Me</h3>
-                <p class="text-gray-400 text-sm">Learn about my journey, core principles, and personal interests beyond Minecraft.</p>
-                <div class="mt-6 flex items-center text-indigo-400 font-bold text-sm">READ MORE <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></div>
-            </a>
-        </div>
+    <section class="reveal pb-20 grid md:grid-cols-3 gap-6">
+        <a href="projects.html" class="frosted-glass p-8 rounded-2xl group">
+            <i data-feather="folder" class="text-[#e74c3c] w-10 h-10 mb-4"></i>
+            <h3 class="text-2xl font-bold text-white mb-2">Projects</h3>
+            <p class="text-gray-400 text-sm">View my technical configurations.</p>
+        </a>
+        <a href="contact.html" class="frosted-glass p-8 rounded-2xl group">
+            <i data-feather="mail" class="text-[#e74c3c] w-10 h-10 mb-4"></i>
+            <h3 class="text-2xl font-bold text-white mb-2">Contact</h3>
+            <p class="text-gray-400 text-sm">Get in touch for collaborations.</p>
+        </a>
+        <a href="about.html" class="frosted-glass p-8 rounded-2xl group">
+            <i data-feather="user" class="text-[#e74c3c] w-10 h-10 mb-4"></i>
+            <h3 class="text-2xl font-bold text-white mb-2">About</h3>
+            <p class="text-gray-400 text-sm">Learn more about my history.</p>
+        </a>
     </section>
 
 </main>
 
 <custom-footer></custom-footer>
 
-<script src="components/navbar.js"></script>
-<script src="components/footer.js"></script>
-
 <script>
     feather.replace();
 
-    // Vanta Background
+    // Vanta with Arctic Sunset Pink Colors
     VANTA.GLOBE({
         el: "#vanta-canvas",
         mouseControls: true,
         scale: 1.0,
-        color: 0x6366f1,
-        backgroundColor: 0x050505
+        color: 0xe74c3c,
+        backgroundColor: 0x03040a
     });
 
-    // Typing effect
     new Typed('#typed', {
-        strings: ['Minecraft Server Developer', 'Staff Manager', 'Java Student', 'Community Expert'],
+        strings: ['Server Developer', 'Staff Manager', 'Java Student'],
         typeSpeed: 50,
         backSpeed: 30,
         loop: true
     });
 
-    // Custom Cursor
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
-    document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
-        el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
-    });
 
-    // Scroll reveal observer
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('active');
@@ -289,5 +230,7 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
+<script src="components/navbar.js"></script>
+<script src="components/footer.js"></script>
 </body>
 </html>
