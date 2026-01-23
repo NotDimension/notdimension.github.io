@@ -9,237 +9,125 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 </head>
-<body class="bg-[#03040a]">
+<body>
 
 <div id="cursor"></div>
-
-<custom-navbar></custom-navbar>
 
 <main class="relative z-10 max-w-6xl mx-auto px-4 py-16 space-y-20">
 
     <section class="flex flex-col md:flex-row items-center gap-10 reveal">
         <div class="relative group">
             <div class="absolute -inset-1 bg-[#e74c3c] rounded-full blur opacity-25 group-hover:opacity-60 transition duration-1000"></div>
-            <img src="images/profile.png" alt="Profile" class="relative rounded-full w-44 h-44 border-4 border-white/10 shadow-2xl object-cover">
+            <img src="images/profile.png" class="relative rounded-full w-44 h-44 border-4 border-white/10 shadow-2xl">
         </div>
         <div class="text-center md:text-left">
             <h1 class="text-6xl font-black mb-2 text-white glow-text tracking-tight">NotDimension</h1>
-            <div class="text-2xl text-[#e74c3c] font-medium h-8">
-                <span id="typed"></span>
-            </div>
+            <div class="text-2xl text-[#e74c3c] font-medium h-8"><span id="typed"></span></div>
             <p class="text-gray-400 mt-2 flex items-center justify-center md:justify-start gap-2">
                 <i data-feather="map-pin" class="w-4 h-4"></i> South Africa
             </p>
-            <div class="flex gap-5 mt-6 justify-center md:justify-start">
-                <a href="https://discord.com/users/753556348784083024" target="_blank" class="hover:text-[#e74c3c] transition-colors"><i data-feather="message-circle"></i></a>
-                <a href="https://www.youtube.com/@NotDimension" target="_blank" class="hover:text-[#e74c3c] transition-colors"><i data-feather="youtube"></i></a>
-                <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="hover:text-[#e74c3c] transition-colors"><i data-feather="cpu"></i></a>
-                <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="hover:text-[#e74c3c] transition-colors"><i data-feather="box"></i></a>
-            </div>
         </div>
     </section>
 
     <section class="frosted-glass rounded-2xl p-8 reveal">
-        <div class="flex items-center gap-3 mb-6">
-            <i data-feather="user" class="text-[#e74c3c]"></i>
-            <h2 class="text-3xl font-bold text-white">About Me</h2>
-        </div>
-        <p class="text-xl text-gray-300 leading-relaxed">
-            Minecraft server developer specializing in <span class="text-white font-semibold">plugin configuration</span>, staff management, and community engagement. Experienced in growing servers from small communities to hundreds of members, focusing on creating good gameplay experience.
+        <h2 class="text-3xl font-bold text-white mb-4 flex items-center gap-2">
+            <i data-feather="user" class="text-[#e74c3c]"></i> About Me
+        </h2>
+        <p class="text-xl text-gray-300">
+            Minecraft server developer specializing in <span class="text-white font-semibold">plugin configuration</span>, staff management, and community engagement.
         </p>
     </section>
 
-    <section class="reveal">
-        <div class="flex items-center gap-3 mb-8">
-            <i data-feather="award" class="text-[#e74c3c]"></i>
-            <h2 class="text-3xl font-bold text-white">Current Roles</h2>
+    <section class="reveal grid md:grid-cols-3 gap-6">
+        <div class="frosted-glass p-6 rounded-xl text-center">
+            <img src="images/icons/shady.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-[#e74c3c]/30">
+            <h3 class="text-xl font-bold text-white">ShadySMP</h3>
+            <p class="text-[#e74c3c] mb-4 text-sm">Co-Owner (450 Members)</p>
+            <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="bg-white/5 px-4 py-2 rounded-lg hover:bg-[#e74c3c] transition-colors">Discord</a>
         </div>
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="frosted-glass p-6 rounded-xl text-center">
-                <img src="images/icons/shady.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-[#e74c3c]/30">
-                <h3 class="text-xl font-bold text-white">ShadySMP</h3>
-                <p class="text-[#e74c3c] mb-4 text-sm">Co-Owner (450 Members)</p>
-                <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="inline-flex items-center text-sm bg-white/5 px-4 py-2 rounded-lg hover:bg-[#e74c3c] transition-colors">
-                    <i data-feather="link" class="mr-2 w-4 h-4"></i> Discord
-                </a>
-            </div>
-            <div class="frosted-glass p-6 rounded-xl text-center">
-                <img src="images/icons/smpfinder.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-[#e74c3c]/30">
-                <h3 class="text-xl font-bold text-white">SMP Finder</h3>
-                <p class="text-[#e74c3c] mb-4 text-sm">Moderator (27k members)</p>
-                <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="inline-flex items-center text-sm bg-white/5 px-4 py-2 rounded-lg hover:bg-[#e74c3c] transition-colors">
-                    <i data-feather="link" class="mr-2 w-4 h-4"></i> Discord
-                </a>
-            </div>
-            <div class="frosted-glass p-6 rounded-xl text-center">
-                <img src="images/icons/collective.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-[#e74c3c]/30">
-                <h3 class="text-xl font-bold text-white">Discord Collective</h3>
-                <p class="text-[#e74c3c] mb-4 text-sm">Manager (60 members)</p>
-                <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="inline-flex items-center text-sm bg-white/5 px-4 py-2 rounded-lg hover:bg-[#e74c3c] transition-colors">
-                    <i data-feather="link" class="mr-2 w-4 h-4"></i> Discord
-                </a>
-            </div>
+        <div class="frosted-glass p-6 rounded-xl text-center">
+            <img src="images/icons/smpfinder.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-[#e74c3c]/30">
+            <h3 class="text-xl font-bold text-white">SMP Finder</h3>
+            <p class="text-[#e74c3c] mb-4 text-sm">Moderator (27k members)</p>
+            <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="bg-white/5 px-4 py-2 rounded-lg hover:bg-[#e74c3c] transition-colors">Discord</a>
+        </div>
+        <div class="frosted-glass p-6 rounded-xl text-center">
+            <img src="images/icons/collective.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-[#e74c3c]/30">
+            <h3 class="text-xl font-bold text-white">Discord Collective</h3>
+            <p class="text-[#e74c3c] mb-4 text-sm">Manager (60 members)</p>
+            <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="bg-white/5 px-4 py-2 rounded-lg hover:bg-[#e74c3c] transition-colors">Discord</a>
         </div>
     </section>
 
     <section class="reveal">
-        <div class="flex items-center gap-3 mb-8">
-            <i data-feather="clock" class="text-[#e74c3c]"></i>
-            <h2 class="text-3xl font-bold text-white">Previous Roles</h2>
-        </div>
+        <h2 class="text-3xl font-bold text-white mb-8 flex items-center gap-2">
+            <i data-feather="clock" class="text-[#e74c3c]"></i> Previous Roles
+        </h2>
         <div class="grid md:grid-cols-3 gap-4">
             <a href="https://discord.gg/prism-smp-919934305881440266" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/prism.png" class="w-12 h-12 rounded-full" alt="Prism">
+                <img src="images/icons/prism.png" class="w-12 h-12 rounded-full">
                 <div><h4 class="font-bold text-white">Prism SMP</h4><p class="text-xs text-[#e74c3c]">Owner (700 members)</p></div>
             </a>
             <a href="https://discord.gg/shattermc-1042106646899478638" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/shatter.png" class="w-12 h-12 rounded-full" alt="Shatter">
+                <img src="images/icons/shatter.png" class="w-12 h-12 rounded-full">
                 <div><h4 class="font-bold text-white">ShatterMC</h4><p class="text-xs text-[#e74c3c]">Senior Admin (260 members)</p></div>
             </a>
             <a href="https://discord.gg/oceanmc-985160862568415252" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/ocean.png" class="w-12 h-12 rounded-full" alt="Ocean">
+                <img src="images/icons/ocean.png" class="w-12 h-12 rounded-full">
                 <div><h4 class="font-bold text-white">OceanMC</h4><p class="text-xs text-[#e74c3c]">Owner (300 members)</p></div>
             </a>
             <a href="https://discord.gg/steakysmp-918915447435444224" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/steaky.png" class="w-12 h-12 rounded-full" alt="Steaky">
+                <img src="images/icons/steaky.png" class="w-12 h-12 rounded-full">
                 <div><h4 class="font-bold text-white">SteakySMP</h4><p class="text-xs text-[#e74c3c]">Co-Owner (1.5k members)</p></div>
             </a>
             <a href="https://discord.gg/bonkmc-882298715878207518" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/bonk.png" class="w-12 h-12 rounded-full" alt="Bonk">
+                <img src="images/icons/bonk.png" class="w-12 h-12 rounded-full">
                 <div><h4 class="font-bold text-white">BonkMC</h4><p class="text-xs text-[#e74c3c]">Moderator (4.6k members)</p></div>
             </a>
             <a href="https://discord.gg/nebularsmp-1052216447545389086" target="_blank" class="frosted-glass p-4 rounded-xl flex items-center gap-4">
-                <img src="images/icons/nebular.png" class="w-12 h-12 rounded-full" alt="Nebular">
+                <img src="images/icons/nebular.png" class="w-12 h-12 rounded-full">
                 <div><h4 class="font-bold text-white">Nebular SMP</h4><p class="text-xs text-[#e74c3c]">Overseer (200 members)</p></div>
             </a>
         </div>
     </section>
 
-    <section id="skills" class="reveal">
-        <div class="flex items-center gap-3 mb-8">
-            <i data-feather="tool" class="text-[#e74c3c]"></i>
-            <h2 class="text-3xl font-bold text-white">Skills & Responsibilities</h2>
+    <section class="reveal grid md:grid-cols-2 gap-8">
+        <div class="frosted-glass p-8 rounded-2xl">
+            <h3 class="text-xl font-bold mb-6 text-white flex items-center gap-2"><i data-feather="star" class="text-[#e74c3c]"></i> Core Expertise</h3>
+            <ul class="space-y-4 text-gray-300">
+                <li>Server Administration</li><li>Staff Management</li><li>Community Engagement</li><li>Technical Skills</li><li>Logs Management</li><li>Graphic Design</li>
+            </ul>
         </div>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="frosted-glass p-8 rounded-2xl">
-                <h3 class="text-xl font-bold mb-6 text-white flex items-center"><i data-feather="star" class="mr-2 text-[#e74c3c]"></i>Core Expertise</h3>
-                <ul class="space-y-4">
-                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Server Administration</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Staff Management</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Community Engagement</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Technical Skills</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Logs Management</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="check" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Graphic Design</li>
-                </ul>
-            </div>
-            <div class="frosted-glass p-8 rounded-2xl">
-                <h3 class="text-xl font-bold mb-6 text-white flex items-center"><i data-feather="list" class="mr-2 text-[#e74c3c]"></i>Daily Tasks</h3>
-                <ul class="space-y-4">
-                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Server maintenance & monitoring</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Staff coordination & training</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Plugin installation & configuration</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Community engagement & events</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Server logs analysis & debugging</li>
-                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-[#e74c3c] mr-3 w-5 mt-1"></i>Creating graphics & promo materials</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="reveal">
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-            <a href="https://discord.com/users/753556348784083024" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/discord/white" width="24"><span class="text-xs font-bold">Discord</span>
-            </a>
-            <a href="https://www.youtube.com/@NotDimension" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/youtube/white" width="24"><span class="text-xs font-bold">YouTube</span>
-            </a>
-            <a href="https://github.com/NotDimension" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/github/white" width="24"><span class="text-xs font-bold">GitHub</span>
-            </a>
-            <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/namemc/white" width="24"><span class="text-xs font-bold">NameMC</span>
-            </a>
-            <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/steam/white" width="24"><span class="text-xs font-bold">Steam</span>
-            </a>
-            <a href="#" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/spotify/white" width="24"><span class="text-xs font-bold">Spotify</span>
-            </a>
-            <a href="https://www.roblox.com/users/665215157/profile" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/roblox/white" width="24"><span class="text-xs font-bold">Roblox</span>
-            </a>
-        </div>
-    </section>
-
-    <section class="reveal pb-20">
-        <div class="grid md:grid-cols-3 gap-6">
-            <a href="projects.html" class="frosted-glass p-8 rounded-2xl group">
-                <i data-feather="folder" class="text-[#e74c3c] w-10 h-10 mb-4 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-2xl font-bold text-white mb-2">Projects</h3>
-                <p class="text-gray-400 text-sm">A showcase of Minecraft server projects and technical configurations.</p>
-            </a>
-            <a href="contact.html" class="frosted-glass p-8 rounded-2xl group">
-                <i data-feather="mail" class="text-[#e74c3c] w-10 h-10 mb-4 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-2xl font-bold text-white mb-2">Contact</h3>
-                <p class="text-gray-400 text-sm">Reach out for management or development inquiries.</p>
-            </a>
-            <a href="about.html" class="frosted-glass p-8 rounded-2xl group">
-                <i data-feather="user" class="text-[#e74c3c] w-10 h-10 mb-4 group-hover:scale-110 transition-transform"></i>
-                <h3 class="text-2xl font-bold text-white mb-2">About Me</h3>
-                <p class="text-gray-400 text-sm">More details about my journey and experience.</p>
-            </a>
+        <div class="frosted-glass p-8 rounded-2xl">
+            <h3 class="text-xl font-bold mb-6 text-white flex items-center gap-2"><i data-feather="list" class="text-[#e74c3c]"></i> Daily Tasks</h3>
+            <ul class="space-y-4 text-gray-300">
+                <li>Server maintenance & monitoring</li><li>Staff coordination & training</li><li>Plugin configuration</li><li>Community events</li><li>Logs analysis</li><li>Graphic design</li>
+            </ul>
         </div>
     </section>
 
 </main>
 
-<custom-footer></custom-footer>
-
-<script src="components/navbar.js"></script>
-<script src="components/footer.js"></script>
-
 <script>
     feather.replace();
+    new Typed('#typed', { strings: ['Server Developer', 'Staff Manager', 'Java Student'], typeSpeed: 50, loop: true });
 
-    // Typing effect
-    new Typed('#typed', {
-        strings: ['Minecraft Server Developer', 'Staff Manager', 'Java Student'],
-        typeSpeed: 50,
-        backSpeed: 30,
-        loop: true
-    });
-
-    // Custom Cursor logic
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
 
-    // Handle Hover scaling for links
+    // HIDE CURSOR ON LINKS
     document.querySelectorAll('a, button').forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(2.5)';
-            cursor.style.backgroundColor = 'rgba(231, 76, 60, 0.5)';
-        });
-        el.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-            cursor.style.backgroundColor = 'rgba(231, 76, 60, 0.3)';
-        });
+        el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hidden'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hidden'));
     });
 
-    // Scroll reveal observer
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
     }, { threshold: 0.1 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
