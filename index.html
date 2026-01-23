@@ -10,87 +10,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <style>
-        :root {
-            --accent: #6366f1;
-        }
-        
-        body {
-            cursor: none;
-            scroll-behavior: smooth;
-            background-color: #050505;
-        }
-
-        /* Custom Cursor */
-        .custom-cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.15s ease-out;
-            mix-blend-mode: difference;
-        }
-
-        /* Advanced Glassmorphism */
-        .frosted-glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .frosted-glass:hover {
-            border: 1px solid rgba(99, 102, 241, 0.5);
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            transform: translateY(-5px);
-        }
-
-        /* Scroll Reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .glow-text {
-            text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
-        }
-
-        #vanta-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        .social-card {
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .social-card:hover {
-            background: rgba(99, 102, 241, 0.1);
-            border-color: var(--accent);
-            transform: scale(1.05);
-        }
-    </style>
 </head>
-<body class="text-gray-200 min-h-screen">
+<body class="bg-[#050505]">
 
-<div id="vanta-canvas"></div>
-<div class="custom-cursor" id="cursor"></div>
+<div id="vanta-canvas" class="fixed inset-0 z-[-1]"></div>
+<div id="cursor"></div>
 
 <custom-navbar></custom-navbar>
 
@@ -124,7 +48,7 @@
             <h2 class="text-3xl font-bold text-white">About Me</h2>
         </div>
         <p class="text-xl text-gray-300 leading-relaxed">
-            Minecraft server developer specializing in <span class="text-white font-semibold">plugin configuration</span>, staff management, and community engagement. Experienced in growing servers from small communities to hundreds of members, focusing on creating good gameplay experience.
+            Minecraft server developer specializing in plugin configuration, staff management, and community engagement. Experienced in growing servers from small communities to hundreds of members, focusing on creating good gameplay experience.
         </p>
     </section>
 
@@ -135,14 +59,13 @@
         </div>
         <div class="grid md:grid-cols-3 gap-6">
             <div class="frosted-glass p-6 rounded-xl text-center">
-                <img src="images/icons/shady.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-indigo-500/30" alt="ShadySMP">
+                <img src="images/icons/shady.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-indigo-500/30" alt="Lunex">
                 <h3 class="text-xl font-bold text-white">ShadySMP</h3>
                 <p class="text-indigo-400 mb-4">Co-Owner (450 Members)</p>
                 <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="inline-flex items-center text-sm bg-white/5 px-4 py-2 rounded-lg hover:bg-indigo-500 transition-colors">
                     <i data-feather="link" class="mr-2 w-4 h-4"></i> Discord
                 </a>
             </div>
-
             <div class="frosted-glass p-6 rounded-xl text-center">
                 <img src="images/icons/smpfinder.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-indigo-500/30" alt="SMP Finder">
                 <h3 class="text-xl font-bold text-white">SMP Finder</h3>
@@ -151,9 +74,8 @@
                     <i data-feather="link" class="mr-2 w-4 h-4"></i> Discord
                 </a>
             </div>
-
             <div class="frosted-glass p-6 rounded-xl text-center">
-                <img src="images/icons/collective.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-indigo-500/30" alt="Collective">
+                <img src="images/icons/collective.png" class="w-16 h-16 rounded-full mb-4 mx-auto border-2 border-indigo-500/30" alt="OceanMC">
                 <h3 class="text-xl font-bold text-white">Discord Collective</h3>
                 <p class="text-indigo-400 mb-4">Manager (60 members)</p>
                 <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="inline-flex items-center text-sm bg-white/5 px-4 py-2 rounded-lg hover:bg-indigo-500 transition-colors">
@@ -169,47 +91,29 @@
             <h2 class="text-3xl font-bold text-white">Previous Roles</h2>
         </div>
         <div class="grid md:grid-cols-3 gap-4">
-            <div class="frosted-glass p-5 rounded-xl flex items-center gap-4">
-                <img src="images/icons/prism.png" class="w-12 h-12 rounded-full" alt="Prism">
-                <div>
-                    <h4 class="font-bold text-white">Prism SMP</h4>
-                    <p class="text-xs text-indigo-400">Owner (700 members)</p>
-                </div>
+            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
+                <img src="images/icons/prism.png" class="w-12 h-12 rounded-full" alt="Prism SMP">
+                <div><h4 class="font-bold text-white">Prism SMP</h4><p class="text-xs text-indigo-400">Owner (700 members)</p></div>
             </div>
-            <div class="frosted-glass p-5 rounded-xl flex items-center gap-4">
-                <img src="images/icons/shatter.png" class="w-12 h-12 rounded-full" alt="Shatter">
-                <div>
-                    <h4 class="font-bold text-white">ShatterMC</h4>
-                    <p class="text-xs text-indigo-400">Senior Admin (260 members)</p>
-                </div>
+            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
+                <img src="images/icons/shatter.png" class="w-12 h-12 rounded-full" alt="ShatterMC">
+                <div><h4 class="font-bold text-white">ShatterMC</h4><p class="text-xs text-indigo-400">Senior Admin (260 members)</p></div>
             </div>
-            <div class="frosted-glass p-5 rounded-xl flex items-center gap-4">
-                <img src="images/icons/ocean.png" class="w-12 h-12 rounded-full" alt="Ocean">
-                <div>
-                    <h4 class="font-bold text-white">OceanMC</h4>
-                    <p class="text-xs text-indigo-400">Owner (300 members)</p>
-                </div>
+            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
+                <img src="images/icons/ocean.png" class="w-12 h-12 rounded-full" alt="OceanMC">
+                <div><h4 class="font-bold text-white">OceanMC</h4><p class="text-xs text-indigo-400">Owner (300 members)</p></div>
             </div>
-            <div class="frosted-glass p-5 rounded-xl flex items-center gap-4">
-                <img src="images/icons/steaky.png" class="w-12 h-12 rounded-full" alt="Steaky">
-                <div>
-                    <h4 class="font-bold text-white">SteakySMP</h4>
-                    <p class="text-xs text-indigo-400">Co-Owner (1.5k members)</p>
-                </div>
+            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
+                <img src="images/icons/steaky.png" class="w-12 h-12 rounded-full" alt="SteakySMP">
+                <div><h4 class="font-bold text-white">SteakySMP</h4><p class="text-xs text-indigo-400">Co-Owner (1.5k members)</p></div>
             </div>
-            <div class="frosted-glass p-5 rounded-xl flex items-center gap-4">
-                <img src="images/icons/bonk.png" class="w-12 h-12 rounded-full" alt="Bonk">
-                <div>
-                    <h4 class="font-bold text-white">BonkMC</h4>
-                    <p class="text-xs text-indigo-400">Moderator (4.6k members)</p>
-                </div>
+            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
+                <img src="images/icons/bonk.png" class="w-12 h-12 rounded-full" alt="BonkMC">
+                <div><h4 class="font-bold text-white">BonkMC</h4><p class="text-xs text-indigo-400">Moderator (4.6k members)</p></div>
             </div>
-            <div class="frosted-glass p-5 rounded-xl flex items-center gap-4">
-                <img src="images/icons/nebular.png" class="w-12 h-12 rounded-full" alt="Nebular">
-                <div>
-                    <h4 class="font-bold text-white">Nebular SMP</h4>
-                    <p class="text-xs text-indigo-400">Overseer (200 members)</p>
-                </div>
+            <div class="frosted-glass p-4 rounded-xl flex items-center gap-4">
+                <img src="images/icons/nebular.png" class="w-12 h-12 rounded-full" alt="Nebular SMP">
+                <div><h4 class="font-bold text-white">Nebular SMP</h4><p class="text-xs text-indigo-400">Overseer/Co-Owner (200 members)</p></div>
             </div>
         </div>
     </section>
@@ -221,29 +125,25 @@
         </div>
         <div class="grid md:grid-cols-2 gap-8">
             <div class="frosted-glass p-8 rounded-2xl">
-                <h3 class="text-xl font-bold mb-6 flex items-center text-white">
-                    <i data-feather="star" class="mr-2 text-yellow-500"></i>Core Expertise
-                </h3>
+                <h3 class="text-xl font-bold mb-6 text-white flex items-center"><i data-feather="star" class="mr-2 text-indigo-400"></i>Core Expertise</h3>
                 <ul class="space-y-4">
-                    <li class="flex items-center text-gray-300"><i data-feather="check-circle" class="text-indigo-400 mr-3 w-5"></i>Server Administration</li>
-                    <li class="flex items-center text-gray-300"><i data-feather="check-circle" class="text-indigo-400 mr-3 w-5"></i>Staff Management</li>
-                    <li class="flex items-center text-gray-300"><i data-feather="check-circle" class="text-indigo-400 mr-3 w-5"></i>Community Engagement</li>
-                    <li class="flex items-center text-gray-300"><i data-feather="check-circle" class="text-indigo-400 mr-3 w-5"></i>Technical Setup</li>
-                    <li class="flex items-center text-gray-300"><i data-feather="check-circle" class="text-indigo-400 mr-3 w-5"></i>Logs Management</li>
-                    <li class="flex items-center text-gray-300"><i data-feather="check-circle" class="text-indigo-400 mr-3 w-5"></i>Graphic Design</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="server" class="text-indigo-400 mr-3 w-5 mt-1"></i>Server Administration</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="users" class="text-indigo-400 mr-3 w-5 mt-1"></i>Staff Management</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="message-circle" class="text-indigo-400 mr-3 w-5 mt-1"></i>Community Engagement</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="code" class="text-indigo-400 mr-3 w-5 mt-1"></i>Technical Skills</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="file-text" class="text-indigo-400 mr-3 w-5 mt-1"></i>Logs Management</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="image" class="text-indigo-400 mr-3 w-5 mt-1"></i>Graphic Design</li>
                 </ul>
             </div>
             <div class="frosted-glass p-8 rounded-2xl">
-                <h3 class="text-xl font-bold mb-6 flex items-center text-white">
-                    <i data-feather="list" class="mr-2 text-indigo-400"></i>Daily Tasks
-                </h3>
+                <h3 class="text-xl font-bold mb-6 text-white flex items-center"><i data-feather="list" class="mr-2 text-indigo-400"></i>Daily Tasks</h3>
                 <ul class="space-y-4">
-                    <li class="flex items-center text-gray-300"><i data-feather="activity" class="text-indigo-400 mr-3 w-5"></i>Maintenance & Monitoring</li>
-                    <li class="flex items-center text-gray-300"><i data-feather="users" class="text-indigo-400 mr-3 w-5"></i>Staff Coordination</li>
-                    <li class="flex items-center text-gray-300"><i data-feather="package" class="text-indigo-400 mr-3 w-5"></i>Plugin Configuration</li>
-                    <li class="flex items-center text-gray-300"><i data-feather="calendar" class="text-indigo-400 mr-3 w-5"></i>Community Events</li>
-                    <li class="flex items-center text-gray-300"><i data-feather="search" class="text-indigo-400 mr-3 w-5"></i>Logs Analysis</li>
-                    <li class="flex items-center text-gray-300"><i data-feather="pen-tool" class="text-indigo-400 mr-3 w-5"></i>Promo Materials</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="activity" class="text-indigo-400 mr-3 w-5 mt-1"></i>Server maintenance & monitoring</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="users" class="text-indigo-400 mr-3 w-5 mt-1"></i>Staff coordination & training</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="package" class="text-indigo-400 mr-3 w-5 mt-1"></i>Plugin installation & configuration</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="calendar" class="text-indigo-400 mr-3 w-5 mt-1"></i>Community engagement & events</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="search" class="text-indigo-400 mr-3 w-5 mt-1"></i>Server logs analysis & debugging</li>
+                    <li class="flex items-start text-gray-300"><i data-feather="pen-tool" class="text-indigo-400 mr-3 w-5 mt-1"></i>Creating graphics & promo materials</li>
                 </ul>
             </div>
         </div>
@@ -251,34 +151,28 @@
 
     <section class="reveal">
         <div class="flex items-center gap-3 mb-8">
-            <i data-feather="terminal" class="text-indigo-400"></i>
+            <i data-feather="code" class="text-indigo-400"></i>
             <h2 class="text-3xl font-bold text-white">Currently Working On</h2>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
-            <div class="frosted-glass p-6 rounded-2xl">
-                <h3 class="text-xl font-bold text-white mb-2 flex items-center">
-                    <i data-feather="book" class="mr-2 w-5"></i> MOOC Java Programming
-                </h3>
-                <p class="text-gray-400 mb-4">Learning Java programming through online courses.</p>
-                <div class="bg-white/10 h-2 rounded-full overflow-hidden">
-                    <div class="bg-indigo-500 h-full w-[60%]"></div>
+            <div class="frosted-glass p-6 rounded-xl flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center"><i data-feather="book" class="mr-2"></i>MOOC Java Programming</h3>
+                    <p class="text-gray-400">Learning Java programming through online courses.</p>
                 </div>
-                <div class="flex justify-between mt-4 items-center">
-                    <span class="text-xs font-bold text-indigo-400">ETA: 3 MONTHS</span>
-                    <a href="https://java-programming.mooc.fi/" target="_blank" class="text-xs hover:underline text-gray-300">Course Link</a>
+                <div class="mt-6 flex justify-between items-center">
+                    <span class="text-indigo-400 font-bold">ETA: 3 months</span>
+                    <a href="https://java-programming.mooc.fi/" target="_blank" class="flex items-center text-sm hover:underline"><i data-feather="external-link" class="mr-1 w-4 h-4"></i> Course</a>
                 </div>
             </div>
-            <div class="frosted-glass p-6 rounded-2xl">
-                <h3 class="text-xl font-bold text-white mb-2 flex items-center">
-                    <i data-feather="code" class="mr-2 w-5"></i> Object-Oriented Java
-                </h3>
-                <p class="text-gray-400 mb-4">Developing object-oriented programming skills in Java.</p>
-                <div class="bg-white/10 h-2 rounded-full overflow-hidden">
-                    <div class="bg-purple-500 h-full w-[40%]"></div>
+            <div class="frosted-glass p-6 rounded-xl flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center"><i data-feather="code" class="mr-2"></i>Object-Oriented Java</h3>
+                    <p class="text-gray-400">Developing object-oriented programming skills in Java.</p>
                 </div>
-                <div class="flex justify-between mt-4 items-center">
-                    <span class="text-xs font-bold text-purple-400">ETA: 2 MONTHS</span>
-                    <a href="https://www.coursera.org/learn/object-oriented-java" target="_blank" class="text-xs hover:underline text-gray-300">Course Link</a>
+                <div class="mt-6 flex justify-between items-center">
+                    <span class="text-indigo-400 font-bold">ETA: 2 months</span>
+                    <a href="https://www.coursera.org/learn/object-oriented-java" target="_blank" class="flex items-center text-sm hover:underline"><i data-feather="external-link" class="mr-1 w-4 h-4"></i> Course</a>
                 </div>
             </div>
         </div>
@@ -287,35 +181,35 @@
     <section class="reveal">
         <div class="flex items-center gap-3 mb-8">
             <i data-feather="share-2" class="text-indigo-400"></i>
-            <h2 class="text-3xl font-bold text-white">Social Connections</h2>
+            <h2 class="text-3xl font-bold text-white">Socials</h2>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
             <a href="https://discord.com/users/753556348784083024" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/discord/white" width="24" height="24">
+                <img src="https://cdn.simpleicons.org/discord/white" width="24">
                 <span class="text-xs font-bold">Discord</span>
             </a>
             <a href="https://www.youtube.com/@NotDimension" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/youtube/white" width="24" height="24">
+                <img src="https://cdn.simpleicons.org/youtube/white" width="24">
                 <span class="text-xs font-bold">YouTube</span>
             </a>
-            <a href="#" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/spotify/white" width="24" height="24">
+            <a href="#" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
+                <img src="https://cdn.simpleicons.org/spotify/white" width="24">
                 <span class="text-xs font-bold">Spotify</span>
             </a>
             <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/steam/white" width="24" height="24">
+                <img src="https://cdn.simpleicons.org/steam/white" width="24">
                 <span class="text-xs font-bold">Steam</span>
             </a>
             <a href="https://www.roblox.com/users/665215157/profile" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/roblox/white" width="24" height="24">
+                <img src="https://cdn.simpleicons.org/roblox/white" width="24">
                 <span class="text-xs font-bold">Roblox</span>
             </a>
             <a href="https://github.com/NotDimension" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/github/white" width="24" height="24">
-                <span class="text-xs font-bold">Github</span>
+                <img src="https://cdn.simpleicons.org/github/white" width="24">
+                <span class="text-xs font-bold">GitHub</span>
             </a>
             <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="social-card p-4 rounded-xl flex flex-col items-center gap-2">
-                <img src="https://cdn.simpleicons.org/namemc/white" width="24" height="24">
+                <img src="https://cdn.simpleicons.org/namemc/white" width="24">
                 <span class="text-xs font-bold">NameMC</span>
             </a>
         </div>
@@ -330,26 +224,20 @@
             <a href="projects.html" class="frosted-glass p-8 rounded-2xl group">
                 <i data-feather="folder" class="text-indigo-400 w-10 h-10 mb-4 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-2xl font-bold text-white mb-2">Projects</h3>
-                <p class="text-gray-400 text-sm">A showcase of technical server configurations and creative work.</p>
-                <div class="mt-6 flex items-center text-indigo-400 font-bold text-sm">
-                    VIEW DETAILS <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
-                </div>
+                <p class="text-gray-400 text-sm">A showcase of Minecraft server projects, technical configurations, and creative documentation.</p>
+                <div class="mt-6 flex items-center text-indigo-400 font-bold text-sm">VIEW DETAILS <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></div>
             </a>
             <a href="contact.html" class="frosted-glass p-8 rounded-2xl group">
                 <i data-feather="mail" class="text-indigo-400 w-10 h-10 mb-4 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-2xl font-bold text-white mb-2">Contact</h3>
-                <p class="text-gray-400 text-sm">Reach out for collaborations, staff work, or inquiries.</p>
-                <div class="mt-6 flex items-center text-indigo-400 font-bold text-sm">
-                    GET IN TOUCH <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
-                </div>
+                <p class="text-gray-400 text-sm">Preferred contact methods, response times, and links to community Discord servers.</p>
+                <div class="mt-6 flex items-center text-indigo-400 font-bold text-sm">REACH OUT <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></div>
             </a>
             <a href="about.html" class="frosted-glass p-8 rounded-2xl group">
                 <i data-feather="user" class="text-indigo-400 w-10 h-10 mb-4 group-hover:scale-110 transition-transform"></i>
                 <h3 class="text-2xl font-bold text-white mb-2">About Me</h3>
-                <p class="text-gray-400 text-sm">Learn more about my journey, timeline, and core principles.</p>
-                <div class="mt-6 flex items-center text-indigo-400 font-bold text-sm">
-                    READ MORE <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
-                </div>
+                <p class="text-gray-400 text-sm">Learn about my journey, core principles, and personal interests beyond Minecraft.</p>
+                <div class="mt-6 flex items-center text-indigo-400 font-bold text-sm">READ MORE <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i></div>
             </a>
         </div>
     </section>
@@ -360,7 +248,6 @@
 
 <script src="components/navbar.js"></script>
 <script src="components/footer.js"></script>
-<script src="script.js"></script>
 
 <script>
     feather.replace();
@@ -369,45 +256,38 @@
     VANTA.GLOBE({
         el: "#vanta-canvas",
         mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.00,
-        minWidth: 200.00,
-        scale: 1.00,
-        scaleMobile: 1.00,
+        scale: 1.0,
         color: 0x6366f1,
-        size: 0.90,
         backgroundColor: 0x050505
     });
 
-    // Typed text logic
+    // Typing effect
     new Typed('#typed', {
-        strings: ['Minecraft Server Developer', 'Staff Management Specialist', 'Java Developer in Training', 'Community Growth Expert'],
+        strings: ['Minecraft Server Developer', 'Staff Manager', 'Java Student', 'Community Expert'],
         typeSpeed: 50,
         backSpeed: 30,
         loop: true
     });
 
-    // Custom Cursor Logic
+    // Custom Cursor
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', (e) => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
-
     document.querySelectorAll('a, button').forEach(el => {
         el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(2.5)');
         el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
     });
 
-    // Scroll Reveal Logic
-    const reveals = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
+    // Scroll reveal observer
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('active');
         });
     }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
-    reveals.forEach(reveal => revealObserver.
+</body>
+</html>
