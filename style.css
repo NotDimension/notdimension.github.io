@@ -1,7 +1,7 @@
 /* ===============================
-    GLOBAL THEME VARIABLES
-    Arctic Sunset Glass
-    Base: #0a0f1c / #2c3e50 / #e74c3c
+   GLOBAL THEME VARIABLES
+   Arctic Sunset Glass
+   Base: #0a0f1c / #2c3e50 / #e74c3c
 ================================ */
 :root {
     /* Core arctic palette */
@@ -26,13 +26,10 @@
     /* Borders & glow */
     --border-soft: rgba(170, 185, 190, 0.18);
     --glow: rgba(231, 76, 60, 0.28); /* Matches the pink/red accent */
-    
-    /* Animation Variables */
-    --accent: #6366f1; /* Kept for cursor logic */
 }
 
 /* ===============================
-    BASE
+   BASE
 ================================ */
 * {
     box-sizing: border-box;
@@ -45,11 +42,11 @@ body {
     color: var(--text-main);
     overflow-x: hidden;
     background-color: var(--bg-main);
-    cursor: none; /* Hide default cursor to use the custom one */
+    cursor: none; /* Required for custom cursor */
 }
 
 /* ===============================
-    CUSTOM CURSOR
+   NEW FEATURE: CUSTOM CURSOR
 ================================ */
 #cursor {
     width: 20px;
@@ -64,7 +61,7 @@ body {
 }
 
 /* ===============================
-    VIDEO BACKGROUND
+   VIDEO BACKGROUND
 ================================ */
 .bg-video {
     position: fixed;
@@ -92,7 +89,7 @@ body::before {
 }
 
 /* ===============================
-    SCROLLBAR
+   SCROLLBAR
 ================================ */
 ::-webkit-scrollbar {
     width: 10px;
@@ -103,7 +100,7 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--blue-base); /* Changed to use the base blue */
+    background: var(--blue-base); 
     border-radius: 5px;
 }
 
@@ -112,7 +109,21 @@ body::before {
 }
 
 /* ===============================
-    UTILITY CLASSES
+   NEW FEATURE: SCROLL REVEAL
+================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===============================
+   UTILITY CLASSES
 ================================ */
 .bg-main { background-color: var(--bg-main); }
 .bg-overlay { background-color: var(--bg-overlay); }
@@ -126,7 +137,7 @@ body::before {
 .border-soft { border-color: var(--border-soft); }
 
 /* ===============================
-    EFFECTS & ANIMATIONS
+   EFFECTS
 ================================ */
 .frosted-glass {
     background: linear-gradient(
@@ -140,42 +151,17 @@ body::before {
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Added hover lift to frosted glass */
+/* Added active hover effect to your glass cards */
 .frosted-glass:hover {
     border: 1px solid rgba(231, 76, 60, 0.4);
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--glow);
 }
 
 .glow-text {
     text-shadow:
         0 0 10px rgba(220, 230, 250, 0.22),
-        0 0 26px rgba(231, 76, 60, 0.35); /* Glow now uses the pink accent */
-}
-
-/* Progress Bars for Learning section */
-.progress-bar {
-    height: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    transition: width 1.5s ease-in-out;
-}
-
-/* Scroll Reveal Logic */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+        0 0 26px rgba(231, 76, 60, 0.35); 
 }
 
 .animate-fadeIn {
@@ -194,7 +180,7 @@ body::before {
 }
 
 /* ===============================
-    ICONS
+   ICONS
 ================================ */
 i[data-feather] {
     width: 1em;
@@ -204,7 +190,7 @@ i[data-feather] {
 }
 
 /* ===============================
-    RESPONSIVE
+   RESPONSIVE
 ================================ */
 @media (max-width: 768px) {
     .mobile-stack {
@@ -214,7 +200,7 @@ i[data-feather] {
 }
 
 /* ===============================
-    SOCIAL ICONS
+   SOCIAL ICONS
 ================================ */
 .social-icons a {
     color: var(--text-accent);
@@ -227,7 +213,7 @@ i[data-feather] {
 }
 
 /* ===============================
-    SOCIAL CARDS
+   SOCIAL CARDS
 ================================ */
 .social-card {
     background-color: var(--bg-card);
@@ -250,8 +236,8 @@ i[data-feather] {
 .social-card img {
     filter: brightness(0)
             saturate(100%)
-            invert(90%) /* Adjusted filter for white/light icons */
+            invert(90%) 
             sepia(10%)
             saturate(150%)
-            hue-rotate(180deg); /* Tune for a cool icon color, not green */
+            hue-rotate(180deg);
 }
