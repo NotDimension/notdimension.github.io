@@ -3,214 +3,227 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>NotDimension | Technical Portfolio</title>
+    <title>NotDimension | Technical Architect</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
 </head>
 <body>
 
-    <canvas id="canvas-bg"></canvas>
+    <canvas id="bg-canvas"></canvas>
 
-    <div class="bento-container">
+    <div class="container">
         
-        <div class="card col-span-2 row-span-2 justify-between">
+        <div class="card span-2 row-2 justify-between" data-tilt data-tilt-max="2" data-tilt-glare data-tilt-max-glare="0.1">
             <div class="flex justify-between items-start">
-                <img src="images/profile.png" alt="Profile" class="w-32 h-32 rounded-3xl object-cover border-2 border-white/10">
-                <button onclick="document.body.classList.toggle('light-mode')" class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
-                    <i data-feather="sun"></i>
-                </button>
+                <div class="relative group">
+                    <img src="images/profile.png" alt="NotDimension" class="w-36 h-36 rounded-[40px] border-2 border-white/10 group-hover:rotate-3 transition-transform duration-500">
+                </div>
+                <div class="status-pill">
+                    <span class="dot animate-pulse"></span> AVAILABLE FOR WORK
+                </div>
             </div>
             <div>
-                <h1 class="text-7xl font-extrabold tracking-tighter mb-4">NotDimension</h1>
-                <p class="text-xl text-[var(--text-dim)] max-w-lg mb-8">
-                    Minecraft Server Developer & Community Architect. Specialized in technical architecture, high-performance administration, and systems design.
+                <h1 class="mb-4 text-white">Not<br>Dimension</h1>
+                <p class="text-xl text-[var(--text-muted)] max-w-md leading-relaxed">
+                    Minecraft Server Developer & Community Architect. Crafting immersive experiences through high-performance administration and technical design.
                 </p>
-                <div class="flex gap-4">
-                    <a href="mailto:contact@notdimension.com" class="px-8 py-4 bg-white text-black font-bold rounded-full hover:scale-105 transition">Contact Me</a>
-                    <div class="px-6 py-4 bg-white/5 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest flex items-center">
-                        <span class="status-dot"></span> Available for Work
-                    </div>
+                <div class="mt-8 flex gap-4">
+                    <a href="mailto:contact@notdimension.com" class="btn-main">Contact Me</a>
                 </div>
             </div>
         </div>
 
-        <div class="card row-span-2">
-            <h2 class="text-xl font-bold mb-8">Network</h2>
-            <div class="grid grid-cols-2 gap-4">
-                <a href="https://discord.com/users/753556348784083024" class="p-6 bg-white/5 rounded-2xl border border-white/5 flex flex-col items-center hover:bg-white/10 transition">
-                    <i data-feather="message-square" class="mb-2"></i><span class="text-[10px] font-bold">DISCORD</span>
-                </a>
-                <a href="https://github.com/NotDimension" class="p-6 bg-white/5 rounded-2xl border border-white/5 flex flex-col items-center hover:bg-white/10 transition">
-                    <i data-feather="github" class="mb-2"></i><span class="text-[10px] font-bold">GITHUB</span>
-                </a>
-                <a href="https://www.youtube.com/@NotDimension" class="p-6 bg-white/5 rounded-2xl border border-white/5 flex flex-col items-center hover:bg-white/10 transition">
-                    <i data-feather="youtube" class="mb-2"></i><span class="text-[10px] font-bold">YOUTUBE</span>
-                </a>
-                <a href="https://www.roblox.com/users/665215157/profile" class="p-6 bg-white/5 rounded-2xl border border-white/5 flex flex-col items-center hover:bg-white/10 transition">
-                    <i data-feather="play" class="mb-2"></i><span class="text-[10px] font-bold">ROBLOX</span>
-                </a>
+        <div class="card row-2" data-tilt>
+            <p class="caps mb-6">Network Hub</p>
+            <div class="grid grid-cols-2 gap-4 h-full content-start">
+                <a href="https://discord.com/users/753556348784083024" class="social-link"><i data-feather="message-circle"></i><span class="caps">Discord</span></a>
+                <a href="https://github.com/NotDimension" class="social-link"><i data-feather="github"></i><span class="caps">Github</span></a>
+                <a href="https://www.youtube.com/@NotDimension" class="social-link"><i data-feather="youtube"></i><span class="caps">YouTube</span></a>
+                <a href="https://www.roblox.com/users/665215157/profile" class="social-link"><i data-feather="play"></i><span class="caps">Roblox</span></a>
+                <a href="https://steamcommunity.com/id/notdimension" class="social-link"><i data-feather="monitor"></i><span class="caps">Steam</span></a>
+                <a href="https://namemc.com/profile/NotDimension.1" class="social-link"><i data-feather="box"></i><span class="caps">NameMC</span></a>
+                <a href="#" class="social-link"><i data-feather="music"></i><span class="caps">Spotify</span></a>
+                <a href="#" class="social-link"><i data-feather="share-2"></i><span class="caps">Connect</span></a>
             </div>
         </div>
 
-        <div class="card">
-            <h2 class="text-sm font-bold text-[var(--text-dim)] uppercase tracking-widest mb-6">Active Roles</h2>
-            <div class="space-y-4">
+        <div class="card" data-tilt>
+            <p class="caps mb-6">Active Roles</p>
+            <div class="space-y-6">
                 <div class="flex items-center gap-4">
-                    <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center font-bold">S</div>
-                    <div><p class="font-bold text-sm">ShadySMP</p><p class="text-[10px] text-[var(--text-dim)]">Co-Owner (450)</p></div>
+                    <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-bold text-white">S</div>
+                    <div><p class="font-bold text-white">ShadySMP</p><p class="muted uppercase text-[9px]">Co-Owner (450)</p></div>
                 </div>
                 <div class="flex items-center gap-4">
-                    <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center font-bold">S</div>
-                    <div><p class="font-bold text-sm">SMP Finder</p><p class="text-[10px] text-[var(--text-dim)]">Moderator (27k)</p></div>
+                    <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-bold text-white">F</div>
+                    <div><p class="font-bold text-white">SMP Finder</p><p class="muted uppercase text-[9px]">Moderator (27k)</p></div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-bold text-white">C</div>
+                    <div><p class="font-bold text-white">Collective</p><p class="muted uppercase text-[9px]">Manager (60)</p></div>
                 </div>
             </div>
         </div>
 
-        <div class="card col-span-2 row-span-2">
-            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3">
-                <i data-feather="tool"></i> Technical Arsenal
-            </h2>
-            <div class="grid grid-cols-2 gap-8">
-                <div>
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-[var(--text-dim)] mb-4">Core Expertise</h3>
-                    <div class="flex flex-wrap">
-                        <span class="skill-tag">Server Admin</span>
-                        <span class="skill-tag">Staff Mgmt</span>
-                        <span class="skill-tag">Community Engagement</span>
-                        <span class="skill-tag">Technical Skills</span>
-                        <span class="skill-tag">Logs Mgmt</span>
-                        <span class="skill-tag">Graphic Design</span>
+        <div class="card span-3 row-2" data-tilt data-tilt-max="1">
+            <div class="flex justify-between items-center mb-10">
+                <h2 class="text-3xl text-white">Technical Arsenal</h2>
+                <i data-feather="cpu" class="text-white/20 w-8 h-8"></i>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-8">
+                    <div>
+                        <p class="caps mb-4">Core Expertise</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">Server Administration</span>
+                            <span class="skill-tag">Staff Management</span>
+                            <span class="skill-tag">Community Engagement</span>
+                            <span class="skill-tag">Technical Skills</span>
+                            <span class="skill-tag">Logs Management</span>
+                            <span class="skill-tag">Graphic Design</span>
+                            <span class="skill-tag">YAML Config</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="caps mb-4">Development Progress</p>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between text-[10px] font-black tracking-widest uppercase text-white"><span>Java MOOC Programming</span><span>75%</span></div>
+                                <div class="progress-track"><div class="progress-fill" style="width: 75%"></div></div>
+                                <p class="text-[9px] muted mt-1 italic">ETA: 3 Months</p>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-[10px] font-black tracking-widest uppercase text-white"><span>Object-Oriented Java</span><span>40%</span></div>
+                                <div class="progress-track"><div class="progress-fill" style="width: 40%"></div></div>
+                                <p class="text-[9px] muted mt-1 italic">ETA: 2 Months</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div>
-                    <h3 class="text-xs font-bold uppercase tracking-widest text-[var(--text-dim)] mb-4">Daily Operations</h3>
-                    <ul class="text-sm space-y-3">
-                        <li>Server maintenance & monitoring</li>
-                        <li>Staff coordination & training</li>
-                        <li>Plugin installation & configuration</li>
-                        <li>Server logs analysis & debugging</li>
+                <div class="bg-white/5 rounded-[32px] p-8 border border-white/5 h-fit">
+                    <p class="caps mb-6">Daily Operations</p>
+                    <ul class="space-y-4 text-sm font-medium text-[var(--text-muted)]">
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Server maintenance & monitoring</span></li>
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Staff coordination & training</span></li>
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Plugin installation & configuration</span></li>
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Community engagement & events</span></li>
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Server logs analysis & debugging</span></li>
+                        <li class="flex items-start gap-3"><i data-feather="check-circle" class="w-4 h-4 text-white mt-0.5"></i> <span>Creating graphics & promo materials</span></li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="mt-12 pt-8 border-t border-white/5">
-                <h3 class="text-xs font-bold uppercase tracking-widest text-[var(--text-dim)] mb-6">Currently Working On</h3>
-                <div class="grid grid-cols-2 gap-8">
-                    <div>
-                        <div class="flex justify-between text-[10px] font-bold"><span>JAVA MOOC PROGRAMMING</span><span>75%</span></div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 75%"></div></div>
-                        <p class="text-[9px] mt-2 text-[var(--text-dim)]">ETA: 3 MONTHS</p>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-[10px] font-bold"><span>OBJECT-ORIENTED JAVA</span><span>40%</span></div>
-                        <div class="progress-bar"><div class="progress-fill" style="width: 40%"></div></div>
-                        <p class="text-[9px] mt-2 text-[var(--text-dim)]">ETA: 2 MONTHS</p>
-                    </div>
+        </div>
+
+        <div class="card row-2" data-tilt>
+            <p class="caps mb-6">Previous Roles</p>
+            <div class="scroll-y space-y-4 h-[420px]">
+                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
+                    <p class="font-bold text-white">Prism SMP</p>
+                    <p class="muted text-xs uppercase tracking-tight">Owner (700 Members)</p>
+                </div>
+                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
+                    <p class="font-bold text-white">ShatterMC</p>
+                    <p class="muted text-xs uppercase tracking-tight">Sr. Admin (260 Members)</p>
+                </div>
+                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
+                    <p class="font-bold text-white">OceanMC</p>
+                    <p class="muted text-xs uppercase tracking-tight">Owner (300 Members)</p>
+                </div>
+                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
+                    <p class="font-bold text-white">SteakySMP</p>
+                    <p class="muted text-xs uppercase tracking-tight">Co-Owner (1.5k Members)</p>
+                </div>
+                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
+                    <p class="font-bold text-white">BonkMC</p>
+                    <p class="muted text-xs uppercase tracking-tight">Moderator (4.6k Members)</p>
+                </div>
+                <div class="p-5 bg-white/5 rounded-2xl border border-white/5 hover:border-white/20 transition-all duration-300">
+                    <p class="font-bold text-white">Nebular</p>
+                    <p class="muted text-xs uppercase tracking-tight">Co-Owner (200 Members)</p>
                 </div>
             </div>
         </div>
 
-        <div class="card row-span-2 overflow-hidden">
-            <h2 class="text-xl font-bold mb-6">Legacy</h2>
-            <div class="overflow-y-auto space-y-4 pr-2 h-[400px]">
-                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <p class="font-bold text-sm">Prism SMP</p>
-                    <p class="text-[10px] text-[var(--text-dim)]">Owner (700 Members)</p>
-                </div>
-                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <p class="font-bold text-sm">ShatterMC</p>
-                    <p class="text-[10px] text-[var(--text-dim)]">Sr. Admin (260 Members)</p>
-                </div>
-                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <p class="font-bold text-sm">OceanMC</p>
-                    <p class="text-[10px] text-[var(--text-dim)]">Owner (300 Members)</p>
-                </div>
-                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <p class="font-bold text-sm">SteakySMP</p>
-                    <p class="text-[10px] text-[var(--text-dim)]">Co-Owner (1.5k Members)</p>
-                </div>
-                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <p class="font-bold text-sm">BonkMC</p>
-                    <p class="text-[10px] text-[var(--text-dim)]">Moderator (4.6k Members)</p>
-                </div>
-                <div class="p-4 bg-white/5 rounded-2xl border border-white/5">
-                    <p class="font-bold text-sm">Nebular</p>
-                    <p class="text-[10px] text-[var(--text-dim)]">Co-Owner (200 Members)</p>
-                </div>
-            </div>
+        <div class="card span-2" data-tilt>
+            <p class="caps mb-4">Philosophy</p>
+            <h2 class="text-xl text-white mb-2 italic">"Crafting immersive Minecraft experiences through high-performance administration."</h2>
+            <p class="muted text-sm">Focusing on the intersection of technical architecture and community design to build sustainable, high-density server environments.</p>
         </div>
 
-        <a href="about.html" class="card justify-center items-center hover:bg-white hover:text-black transition">
-            <i data-feather="user" class="mb-2"></i>
-            <span class="font-bold uppercase tracking-widest text-[10px]">About Me</span>
+        <a href="about.html" class="card justify-center items-center group hover:bg-white transition-all duration-500">
+            <i data-feather="user" class="w-8 h-8 group-hover:text-black transition-colors"></i>
+            <span class="caps mt-3 group-hover:text-black">About Me</span>
         </a>
 
-        <a href="projects.html" class="card justify-center items-center hover:bg-white hover:text-black transition">
-            <i data-feather="folder" class="mb-2"></i>
-            <span class="font-bold uppercase tracking-widest text-[10px]">Projects</span>
+        <a href="projects.html" class="card justify-center items-center group hover:bg-white transition-all duration-500">
+            <i data-feather="folder" class="w-8 h-8 group-hover:text-black transition-colors"></i>
+            <span class="caps mt-3 group-hover:text-black">Projects</span>
         </a>
 
     </div>
 
     <script>
         feather.replace();
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
 
-        // --- INTERACTIVE BACKGROUND ENGINE ---
-        const canvas = document.getElementById('canvas-bg');
+        const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
         let mouse = { x: null, y: null };
 
-        window.addEventListener('resize', initCanvas);
-        window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-
-        function initCanvas() {
+        function init() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i < 110; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    size: Math.random() * 2,
-                    speedX: Math.random() * 0.5 - 0.25,
-                    speedY: Math.random() * 0.5 - 0.25
+                    vx: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * 0.4
                 });
             }
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.x += p.speedX;
-                p.y += p.speedY;
-                if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+            particles.forEach((p, i) => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+                ctx.beginPath(); ctx.arc(p.x, p.y, 1, 0, Math.PI * 2); ctx.fill();
 
-                ctx.fillStyle = 'rgba(255,255,255,0.5)';
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Draw lines to mouse
-                let dx = mouse.x - p.x;
-                let dy = mouse.y - p.y;
-                let dist = Math.sqrt(dx*dx + dy*dy);
-                if (dist < 150) {
-                    ctx.strokeStyle = `rgba(255,255,255,${1 - dist/150})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.beginPath();
-                    ctx.moveTo(p.x, p.y);
-                    ctx.lineTo(mouse.x, mouse.y);
-                    ctx.stroke();
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x; const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 140) {
+                        ctx.strokeStyle = `rgba(255,255,255,${0.8 - dist/140})`;
+                        ctx.lineWidth = 0.2;
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+                    }
+                }
+                
+                if (mouse.x) {
+                    const mdx = p.x - mouse.x; const mdy = p.y - mouse.y;
+                    const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                    if (mdist < 180) {
+                        ctx.strokeStyle = `rgba(255,255,255,${0.4 - mdist/180})`;
+                        ctx.lineWidth = 0.4;
+                        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+                    }
                 }
             });
             requestAnimationFrame(animate);
         }
 
-        initCanvas();
-        animate();
+        window.addEventListener('resize', init);
+        window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
+        init(); animate();
     </script>
 </body>
 </html>
