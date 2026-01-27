@@ -65,7 +65,7 @@
           </a>
         </div>
       </div>
- 
+
       <!-- Email -->
       <div class="contact-card bg-card p-6 rounded-xl border border-soft hover-lift">
         <div class="flex items-start gap-4 mb-4">
@@ -81,8 +81,8 @@
           For formal communication, though responses may take 1-2 business days.
         </p>
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <code class="bg-overlay px-4 py-2 rounded-lg text-strong font-mono text-sm break-all"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1d73726979747078736e7472735d7a707c7471337e7270">[email&#160;protected]</a></code>
-          <a href="/cdn-cgi/l/email-protection#aec0c1dacac7c3cbc0ddc7c1c0eec9c3cfc7c280cdc1c3" class="px-4 py-2 bg-accent text-white rounded-lg hover:scale-105 transition-transform flex items-center gap-2 font-medium">
+          <code class="bg-overlay px-4 py-2 rounded-lg text-strong font-mono text-sm break-all">notdimension@gmail.com</code>
+          <a href="mailto:notdimension@gmail.com" class="px-4 py-2 bg-accent text-white rounded-lg hover:scale-105 transition-transform flex items-center gap-2 font-medium">
             <i data-feather="send" class="w-4 h-4"></i> Send
           </a>
         </div>
@@ -135,7 +135,7 @@
     <p class="text-main text-lg mb-6">
       I'm active in these Discord servers — feel free to join and ask if I'm around!
     </p>
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-2 gap-6">
       
       <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="community-card bg-card p-6 rounded-xl border border-soft hover-lift">
         <img src="images/icons/shady.png" alt="ShadySMP" class="w-20 h-20 rounded-full mb-4 mx-auto border-2 border-accent">
@@ -144,16 +144,6 @@
         <div class="mt-4 flex items-center justify-center gap-2 text-muted">
           <i data-feather="users" class="w-4 h-4"></i>
           <span class="text-sm">450 members</span>
-        </div>
-      </a>
-
-      <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="community-card bg-card p-6 rounded-xl border border-soft hover-lift">
-        <img src="images/icons/smpfinder.png" alt="SMP Finder" class="w-20 h-20 rounded-full mb-4 mx-auto border-2 border-accent">
-        <h4 class="font-display font-semibold text-main text-xl text-center">SMP Finder</h4>
-        <p class="text-accent text-center">Senior Moderator</p>
-        <div class="mt-4 flex items-center justify-center gap-2 text-muted">
-          <i data-feather="users" class="w-4 h-4"></i>
-          <span class="text-sm">27k members</span>
         </div>
       </a>
 
@@ -172,7 +162,7 @@
 
 </main>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 feather.replace();
 
 // Particle background
@@ -189,8 +179,8 @@ class Particle {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height;
     this.size = Math.random() * 2 + 1;
-    this.speedX = Math.random() * 0.5 - 0.25;
-    this.speedY = Math.random() * 0.5 - 0.25;
+    this.speedX = Math.random() * 0.4 - 0.2;
+    this.speedY = Math.random() * 0.4 - 0.2;
   }
   
   update() {
@@ -242,8 +232,6 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
       entry.target.classList.add('animate-in');
     }
-  });
-}, observerOptions);
   });
 }, observerOptions);
 
