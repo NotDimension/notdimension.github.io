@@ -4,134 +4,267 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | NotDimension</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 <body class="bg-main text-main min-h-screen relative">
-<!-- Background image -->
+
+<!-- Animated Background with Particles -->
 <div class="fixed inset-0 z-[-10] overflow-hidden">
-  <img src="background.png" alt="Background" class="w-full h-full object-cover">
-  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
-  <div class="absolute inset-0 opacity-20"></div>
+  <img src="background.jpg" alt="Background" class="w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/85"></div>
+  <div class="absolute inset-0 bg-noise"></div>
+  <canvas id="particles" class="absolute inset-0"></canvas>
 </div>
 
-<custom-navbar></custom-navbar>
+<!-- Back Button -->
+<a href="index.html" class="fixed top-6 right-6 z-50 bg-card backdrop-blur-xl border border-soft text-strong hover:border-accent px-5 py-3 rounded-xl flex items-center gap-2 transition-all hover:scale-105 shadow-lg">
+  <i data-feather="arrow-left" class="w-4 h-4"></i> Back to Home
+</a>
 
-<main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
+<main class="relative z-10 max-w-5xl mx-auto px-4 pt-32 pb-12 space-y-16">
 
-  <!-- Back Button -->
-  <a href="/" class="fixed top-4 right-4 z-50 bg-card backdrop-blur-sm border border-soft text-strong hover:text-strong hover:border-strong px-4 py-2 rounded-lg flex items-center transition hover:bg-card-hover">
-    <i data-feather="arrow-left" class="mr-2 w-4 h-4"></i> Back to Home
-  </a>
+  <!-- Hero -->
+  <section class="text-center stagger-item" style="animation-delay: 0.1s">
+    <h1 class="text-6xl md:text-7xl font-display font-black mb-6 glow-text text-strong">Get In Touch</h1>
+    <p class="text-xl max-w-2xl mx-auto text-main leading-relaxed">
+      Have a question or want to collaborate? I'm always open to connecting with the community.
+    </p>
+  </section>
 
-  <main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
+  <!-- Contact Methods -->
+  <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.2s">
+    <div class="section-header mb-8">
+      <i data-feather="send" class="text-accent"></i>
+      <h2 class="text-4xl font-display font-bold glow-text text-strong">Ways to Reach Me</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
 
-    <!-- Hero -->
-    <section class="text-center animate-fadeIn">
-        <h1 class="text-5xl font-bold mb-4 glow-text">Contact</h1>
-        <p class="text-lg max-w-3xl mx-auto text-main">
-            Get in touch via Discord for inquiries, collaborations, or just a friendly chat.
+      <!-- Discord -->
+      <div class="contact-card bg-card p-6 rounded-xl border border-soft hover-lift">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+            <i data-feather="message-circle" class="text-white w-7 h-7"></i>
+          </div>
+          <div>
+            <h3 class="font-display font-semibold text-main text-2xl">Discord</h3>
+            <p class="text-accent text-sm">Recommended</p>
+          </div>
+        </div>
+        <p class="text-main mb-4 leading-relaxed">
+          The best way to contact me. I'm active daily and respond quickly to messages.
         </p>
-    </section>
-
-    <!-- Contact Info -->
-    <section class="frosted-glass rounded-xl p-6 md:p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-6 glow-text text-center md:text-left">Ways to Reach Me</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-
-            <!-- Discord -->
-            <div class="frosted-glass hover:bg-card-hover p-4 md:p-6 rounded-xl transition">
-                <div class="flex items-center mb-3">
-                    <i data-feather="message-circle" class="mr-3"></i>
-                    <h3 class="font-semibold text-main">Discord</h3>
-                </div>
-                <p class="text-main mb-3 md:mb-4 text-sm md:text-base">
-                    The best way to contact me. I'm active daily and respond quickly.
-                </p>
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
-                    <code class="bg-overlay px-3 py-1 rounded text-strong break-all">notdimension</code>
-                    <a href="https://discord.com/users/753556348784083024" target="_blank" class="text-strong hover:text-strong flex items-center">
-                        <i data-feather="external-link" class="mr-1 w-4 h-4"></i> Message
-                    </a>
-                </div>
-            </div>
-
-            <!-- Email -->
-            <div class="frosted-glass hover:bg-card-hover p-4 md:p-6 rounded-xl transition">
-                <div class="flex items-center mb-3">
-                    <i data-feather="mail" class="mr-3"></i>
-                    <h3 class="font-semibold text-main">Email</h3>
-                </div>
-                <p class="text-main mb-3 md:mb-4 text-sm md:text-base">
-                    For formal communication, though responses may be slower.
-                </p>
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-0">
-                    <code class="bg-overlay px-3 py-1 rounded text-strong break-all">notdimension@gmail.com</code>
-                    <a href="mailto:notdimension@gmail.com" class="text-strong hover:text-strong flex items-center">
-                        <i data-feather="send" class="mr-1 w-4 h-4"></i> Send
-                    </a>
-                </div>
-            </div>
-
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <code class="bg-overlay px-4 py-2 rounded-lg text-strong font-mono text-sm">notdimension</code>
+          <a href="https://discord.com/users/753556348784083024" target="_blank" class="px-4 py-2 bg-accent text-white rounded-lg hover:scale-105 transition-transform flex items-center gap-2 font-medium">
+            <i data-feather="external-link" class="w-4 h-4"></i> Message
+          </a>
         </div>
-    </section>
+      </div>
 
-    <!-- Community Servers -->
-    <section class="frosted-glass rounded-xl p-6 md:p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-6 glow-text text-center md:text-left">Community Servers</h2>
-        <p class="text-main text-sm md:text-lg mb-4 md:mb-6 text-center md:text-left">
-            I'm active in these Discord servers; feel free to join and ask if I'm around.
+      <!-- Email -->
+      <div class="contact-card bg-card p-6 rounded-xl border border-soft hover-lift">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+            <i data-feather="mail" class="text-white w-7 h-7"></i>
+          </div>
+          <div>
+            <h3 class="font-display font-semibold text-main text-2xl">Email</h3>
+            <p class="text-accent text-sm">For formal inquiries</p>
+          </div>
+        </div>
+        <p class="text-main mb-4 leading-relaxed">
+          For formal communication, though responses may take 1-2 business days.
         </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="frosted-glass hover:bg-card-hover p-4 md:p-5 rounded-xl transition flex flex-col items-center text-center">
-                <img src="images/icons/shady.png" alt="ShadySMP" class="w-14 h-14 md:w-16 md:h-16 rounded-full mb-2 md:mb-3">
-                <h4 class="font-semibold text-main">ShadySMP</h4>
-                <p class="text-accent">Discord Server</p>
-            </a>
-            <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="frosted-glass hover:bg-card-hover p-4 md:p-5 rounded-xl transition flex flex-col items-center text-center">
-                <img src="images/icons/smpfinder.png" alt="SMP Finder" class="w-14 h-14 md:w-16 md:h-16 rounded-full mb-2 md:mb-3">
-                <h4 class="font-semibold text-main">SMP Finder</h4>
-                <p class="text-accent">Discord Server</p>
-            </a>
-            <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="frosted-glass hover:bg-card-hover p-4 md:p-5 rounded-xl transition flex flex-col items-center text-center">
-                <img src="images/icons/collective.png" alt="Discord Collective" class="w-14 h-14 md:w-16 md:h-16 rounded-full mb-2 md:mb-3">
-                <h4 class="font-semibold text-main">Discord Collective</h4>
-                <p class="text-accent">Discord Server</p>
-            </a>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <code class="bg-overlay px-4 py-2 rounded-lg text-strong font-mono text-sm break-all"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1d73726979747078736e7472735d7a707c7471337e7270">[email&#160;protected]</a></code>
+          <a href="/cdn-cgi/l/email-protection#aec0c1dacac7c3cbc0ddc7c1c0eec9c3cfc7c280cdc1c3" class="px-4 py-2 bg-accent text-white rounded-lg hover:scale-105 transition-transform flex items-center gap-2 font-medium">
+            <i data-feather="send" class="w-4 h-4"></i> Send
+          </a>
         </div>
-    </section>
+      </div>
 
-    <!-- Response Times -->
-    <section class="frosted-glass rounded-xl p-6 md:p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-6 glow-text text-center md:text-left">Typical Response Times</h2>
-        <div class="space-y-4 text-main text-sm md:text-base">
-            <div class="flex justify-between items-center">
-                <span>Discord (Active Hours)</span>
-                <span class="text-strong font-semibold">Within minutes</span>
-            </div>
-            <div class="flex justify-between items-center">
-                <span>Discord (Off‑peak)</span>
-                <span class="text-strong font-semibold">Within hours</span>
-            </div>
-            <div class="flex justify-between items-center">
-                <span>Email</span>
-                <span class="text-strong font-semibold">1–2 business days</span>
-            </div>
+    </div>
+  </section>
+
+  <!-- Response Times -->
+  <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.3s">
+    <div class="section-header mb-8">
+      <i data-feather="clock" class="text-accent"></i>
+      <h2 class="text-4xl font-display font-bold glow-text text-strong">Response Times</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      
+      <div class="response-card bg-card p-6 rounded-xl border border-soft text-center">
+        <div class="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
+          <i data-feather="zap" class="text-green-400 w-6 h-6"></i>
         </div>
-    </section>
+        <h3 class="font-display font-semibold text-main text-lg mb-2">Discord (Active)</h3>
+        <p class="text-accent text-2xl font-bold">Within minutes</p>
+      </div>
 
-  </main>
+      <div class="response-card bg-card p-6 rounded-xl border border-soft text-center">
+        <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center mx-auto mb-4">
+          <i data-feather="watch" class="text-yellow-400 w-6 h-6"></i>
+        </div>
+        <h3 class="font-display font-semibold text-main text-lg mb-2">Discord (Off-peak)</h3>
+        <p class="text-accent text-2xl font-bold">Within hours</p>
+      </div>
 
-  <custom-footer></custom-footer>
+      <div class="response-card bg-card p-6 rounded-xl border border-soft text-center">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center mx-auto mb-4">
+          <i data-feather="calendar" class="text-blue-400 w-6 h-6"></i>
+        </div>
+        <h3 class="font-display font-semibold text-main text-lg mb-2">Email</h3>
+        <p class="text-accent text-2xl font-bold">1–2 days</p>
+      </div>
 
-  <script src="components/navbar.js"></script>
-  <script src="components/footer.js"></script>
-  <script src="script.js"></script>
-  <script>
-      feather.replace();
-  </script>
+    </div>
+  </section>
+
+  <!-- Community Servers -->
+  <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.4s">
+    <div class="section-header mb-8">
+      <i data-feather="users" class="text-accent"></i>
+      <h2 class="text-4xl font-display font-bold glow-text text-strong">Find Me In These Communities</h2>
+    </div>
+    <p class="text-main text-lg mb-6">
+      I'm active in these Discord servers — feel free to join and ask if I'm around!
+    </p>
+    <div class="grid md:grid-cols-3 gap-6">
+      
+      <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="community-card bg-card p-6 rounded-xl border border-soft hover-lift">
+        <img src="images/icons/shady.png" alt="ShadySMP" class="w-20 h-20 rounded-full mb-4 mx-auto border-2 border-accent">
+        <h4 class="font-display font-semibold text-main text-xl text-center">ShadySMP</h4>
+        <p class="text-accent text-center">Co-Owner</p>
+        <div class="mt-4 flex items-center justify-center gap-2 text-muted">
+          <i data-feather="users" class="w-4 h-4"></i>
+          <span class="text-sm">450 members</span>
+        </div>
+      </a>
+
+      <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="community-card bg-card p-6 rounded-xl border border-soft hover-lift">
+        <img src="images/icons/smpfinder.png" alt="SMP Finder" class="w-20 h-20 rounded-full mb-4 mx-auto border-2 border-accent">
+        <h4 class="font-display font-semibold text-main text-xl text-center">SMP Finder</h4>
+        <p class="text-accent text-center">Senior Moderator</p>
+        <div class="mt-4 flex items-center justify-center gap-2 text-muted">
+          <i data-feather="users" class="w-4 h-4"></i>
+          <span class="text-sm">27k members</span>
+        </div>
+      </a>
+
+      <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="community-card bg-card p-6 rounded-xl border border-soft hover-lift">
+        <img src="images/icons/collective.png" alt="Discord Collective" class="w-20 h-20 rounded-full mb-4 mx-auto border-2 border-accent">
+        <h4 class="font-display font-semibold text-main text-xl text-center">Discord Collective</h4>
+        <p class="text-accent text-center">Manager</p>
+        <div class="mt-4 flex items-center justify-center gap-2 text-muted">
+          <i data-feather="users" class="w-4 h-4"></i>
+          <span class="text-sm">60 members</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="relative z-10 border-t border-soft mt-20">
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-muted">© 2025 NotDimension. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="#" class="text-muted hover:text-accent transition">Privacy</a>
+        <a href="#" class="text-muted hover:text-accent transition">Terms</a>
+        <a href="contact.html" class="text-muted hover:text-accent transition">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+feather.replace();
+
+// Particle background
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = [];
+const particleCount = 60;
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2 + 1;
+    this.speedX = Math.random() * 0.5 - 0.25;
+    this.speedY = Math.random() * 0.5 - 0.25;
+  }
+  
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    
+    if (this.x > canvas.width) this.x = 0;
+    if (this.x < 0) this.x = canvas.width;
+    if (this.y > canvas.height) this.y = 0;
+    if (this.y < 0) this.y = canvas.height;
+  }
+  
+  draw() {
+    ctx.fillStyle = 'rgba(93, 163, 199, 0.35)';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < particleCount; i++) {
+  particles.push(new Particle());
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(particle => {
+    particle.update();
+    particle.draw();
+  });
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// Intersection Observer for smooth scroll animations
+const observerOptions = {
+  threshold: 0.2,
+  rootMargin: '0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+      entry.target.classList.add('animate-in');
+    }
+  });
+}, observerOptions);
+  });
+}, observerOptions);
+
+document.querySelectorAll('.stagger-item').forEach(item => {
+  observer.observe(item);
+});
+</script>
+
 </body>
 </html>
-

@@ -4,190 +4,251 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About | NotDimension</title>
-<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
 <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 
 <body class="bg-main text-main min-h-screen relative">
 
-<!-- Background image -->
+<!-- Animated Background with Particles -->
 <div class="fixed inset-0 z-[-10] overflow-hidden">
-  <img src="background.png" alt="Background" class="w-full h-full object-cover">
-  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
-  <div class="absolute inset-0 opacity-20"></div>
+  <img src="background.jpg" alt="Background" class="w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/85"></div>
+  <div class="absolute inset-0 bg-noise"></div>
+  <canvas id="particles" class="absolute inset-0"></canvas>
 </div>
-
-<custom-navbar></custom-navbar>
-
-<main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
 
 <!-- Back Button -->
-<a href="/" class="fixed top-4 right-4 z-50 bg-card backdrop-blur-sm border border-soft text-accent hover:text-strong hover:border-soft px-4 py-2 rounded-lg flex items-center transition bg-card-hover">
-<i data-feather="arrow-left" class="mr-2"></i> Back to Home
+<a href="index.html" class="fixed top-6 right-6 z-50 bg-card backdrop-blur-xl border border-soft text-strong hover:border-accent px-5 py-3 rounded-xl flex items-center gap-2 transition-all hover:scale-105 shadow-lg">
+  <i data-feather="arrow-left" class="w-4 h-4"></i> Back to Home
 </a>
 
-<main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
+<main class="relative z-10 max-w-6xl mx-auto px-4 pt-32 pb-12 space-y-20">
 
 <!-- Hero -->
-<section class="text-center animate-fadeIn">
-<h1 class="text-5xl font-bold mb-4 text-strong glow-text">About Me</h1>
-<p class="text-xl text-main max-w-3xl mx-auto">
-I'm a dedicated Minecraft server developer from South Africa, passionate about community growth and technical innovation.
-</p>
+<section class="text-center stagger-item" style="animation-delay: 0.1s">
+  <h1 class="text-6xl md:text-7xl font-display font-black mb-6 text-strong glow-text">About Me</h1>
+  <p class="text-xl text-main max-w-3xl mx-auto leading-relaxed">
+    I'm a dedicated Minecraft server developer from South Africa, passionate about community growth and technical innovation.
+  </p>
 </section>
 
-<!-- Details -->
-<section class="frosted-glass rounded-lg p-8 shadow-xl animate-fadeIn">
-<div class="grid md:grid-cols-2 gap-12">
+<!-- Background & Principles -->
+<section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.2s">
+  <div class="grid md:grid-cols-2 gap-12">
 
-<div>
-<h2 class="text-3xl font-bold mb-6 text-strong glow-text">Background</h2>
-<p class="text-lg leading-relaxed text-main">
-I've been managing Minecraft servers for several months, starting as a community helper and progressing to server ownership and senior roles.
-My focus has always been on creating engaging, harmonious environments where players can enjoy the game together.
-</p>
+    <div>
+      <div class="section-header mb-6">
+        <i data-feather="user" class="text-accent"></i>
+        <h2 class="text-4xl font-display font-bold text-strong glow-text">Background</h2>
+      </div>
+      <p class="text-lg leading-relaxed text-main mb-8">
+        I've been managing Minecraft servers for several months, starting as a community helper and progressing to server ownership and senior roles. My focus has always been on creating engaging, harmonious environments where players can enjoy the game together.
+      </p>
 
-<div class="mt-8 p-5 bg-card rounded-xl">
-<h3 class="text-xl font-semibold mb-3 text-strong">Core Principles</h3>
-<ul class="space-y-3 text-main">
-<li class="flex items-start"><i data-feather="check" class="text-accent mr-3 mt-1"></i> Community-first decision making</li>
-<li class="flex items-start"><i data-feather="check" class="text-accent mr-3 mt-1"></i> Transparency in communication</li>
-<li class="flex items-start"><i data-feather="check" class="text-accent mr-3 mt-1"></i> Continuous learning & improvement</li>
-<li class="flex items-start"><i data-feather="check" class="text-accent mr-3 mt-1"></i> High-quality, stable technical infrastructure</li>
-</ul>
-</div>
-</div>
+      <div class="p-6 bg-card rounded-xl border border-soft">
+        <h3 class="text-2xl font-display font-semibold mb-4 text-strong flex items-center">
+          <i data-feather="compass" class="mr-3 text-accent"></i>
+          Core Principles
+        </h3>
+        <ul class="space-y-3 text-main">
+          <li class="flex items-start">
+            <i data-feather="check" class="text-accent mr-3 mt-1 flex-shrink-0"></i>
+            <span>Community-first decision making</span>
+          </li>
+          <li class="flex items-start">
+            <i data-feather="check" class="text-accent mr-3 mt-1 flex-shrink-0"></i>
+            <span>Transparency in communication</span>
+          </li>
+          <li class="flex items-start">
+            <i data-feather="check" class="text-accent mr-3 mt-1 flex-shrink-0"></i>
+            <span>Continuous learning & improvement</span>
+          </li>
+          <li class="flex items-start">
+            <i data-feather="check" class="text-accent mr-3 mt-1 flex-shrink-0"></i>
+            <span>High-quality, stable technical infrastructure</span>
+          </li>
+        </ul>
+      </div>
+    </div>
 
-<div>
-<h2 class="text-3xl font-bold mb-6 text-strong glow-text">Timeline</h2>
+    <div>
+      <div class="section-header mb-6">
+        <i data-feather="trending-up" class="text-accent"></i>
+        <h2 class="text-4xl font-display font-bold text-strong glow-text">Journey</h2>
+      </div>
 
-<div class="space-y-6">
-<div class="border-l-4 border-soft pl-5 py-2">
-<h4 class="font-bold text-main">May 2025</h4>
-<ul class="text-accent ml-4">
-<li>➡ Started first moderation role, learning community dynamics.</li>
-</ul>
-</div>
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
 
-<div class="border-l-4 border-soft pl-5 py-2">
-<h4 class="font-bold text-main">June 2025</h4>
-<ul class="text-accent ml-4">
-<li>➡ Joined CashflowSMP as Owner.</li>
-</ul>
-</div>
+        <div class="timeline-item">
+          <div class="timeline-icon bg-gradient-to-br from-blue-400 to-cyan-500 text-white">
+            MAY
+          </div>
+          <div class="timeline-date">May 2025</div>
+          <div class="timeline-content">Started first moderation role, learning community dynamics</div>
+        </div>
 
-<div class="border-l-4 border-soft pl-5 py-2">
-<h4 class="font-bold text-main">July 2025</h4>
-<ul class="text-accent ml-4">
-<li>➡ Joined PrismSMP as Admin.</li>
-</ul>
-</div>
+        <div class="timeline-item">
+          <div class="timeline-icon bg-gradient-to-br from-emerald-400 to-teal-500 text-white">
+            JUN
+          </div>
+          <div class="timeline-date">June 2025</div>
+          <div class="timeline-content">Joined CashflowSMP as Owner</div>
+        </div>
 
-<div class="border-l-4 border-soft pl-5 py-2">
-<h4 class="font-bold text-main">August 2025</h4>
-<ul class="text-accent ml-4">
-<li>➡ Promoted to Owner at PrismSMP.</li>
-<li>➡ Created OceanMC.</li>
-<li>➡ Joined Nebular SMP as Overseer.</li>
-</ul>
-</div>
+        <div class="timeline-item">
+          <div class="timeline-icon bg-gradient-to-br from-purple-400 to-pink-500 text-white">
+            JUL
+          </div>
+          <div class="timeline-date">July 2025</div>
+          <div class="timeline-content">Joined PrismSMP as Admin</div>
+        </div>
 
-<div class="border-l-4 border-soft pl-5 py-2">
-<h4 class="font-bold text-main">September 2025</h4>
-<ul class="text-accent ml-4">
-<li>➡ Promoted to Co-Owner at Nebular SMP.</li>
-<li>➡ SMP Finder: Promoted to Trial Senior Moderator.</li>
-</ul>
-</div>
+        <div class="timeline-item">
+          <div class="timeline-icon bg-gradient-to-br from-orange-400 to-red-500 text-white">
+            AUG
+          </div>
+          <div class="timeline-date">August 2025</div>
+          <div class="timeline-content">
+            <ul>
+              <li>Promoted to Owner at PrismSMP</li>
+              <li>Created OceanMC</li>
+              <li>Joined Nebular SMP as Overseer</li>
+            </ul>
+          </div>
+        </div>
 
-<div class="border-l-4 border-soft pl-5 py-2">
-<h4 class="font-bold text-main">October 2025</h4>
-<ul class="text-accent ml-4">
-<li>➡ Left Nebular SMP.</li>
-</ul>
-</div>
+        <div class="timeline-item">
+          <div class="timeline-icon bg-gradient-to-br from-green-400 to-emerald-500 text-white">
+            SEP
+          </div>
+          <div class="timeline-date">September 2025</div>
+          <div class="timeline-content">
+            <ul>
+              <li>Promoted to Co-Owner at Nebular SMP</li>
+              <li>SMP Finder: Promoted to Trial Senior Moderator</li>
+            </ul>
+          </div>
+        </div>
 
-<div class="border-l-4 border-soft pl-5 py-2">
-<h4 class="font-bold text-main">November 2025</h4>
-<ul class="text-accent ml-4">
-<li>➡ ShatterMC: Jr. Mod → Sr. Admin (left 20th Nov).</li>
-<li>➡ Briefly joined BonkMC (25th Nov–7th Dec).</li>
-<li>➡ Became Co-Owner at ShadySMP (25th Nov).</li>
-</ul>
-</div>
+        <div class="timeline-item">
+          <div class="timeline-icon bg-gradient-to-br from-amber-400 to-orange-500 text-white">
+            OCT
+          </div>
+          <div class="timeline-date">October 2025</div>
+          <div class="timeline-content">Left Nebular SMP</div>
+        </div>
 
-<div class="border-l-4 border-soft pl-5 py-2">
-<h4 class="font-bold text-main">December 2025</h4>
-<ul class="text-accent ml-4">
-<li>➡ Closed OceanMC.</li>
-<li>➡ Left PrismSMP.</li>
-<li>➡ Joined NoMercy as Helper (10th Dec).</li>
-<li>➡ Promoted to Manager at Discord Collective (13th Dec).</li>
-</ul>
-</div>
+        <div class="timeline-item">
+          <div class="timeline-icon bg-gradient-to-br from-rose-400 to-pink-500 text-white">
+            NOV
+          </div>
+          <div class="timeline-date">November 2025</div>
+          <div class="timeline-content">
+            <ul>
+              <li>ShatterMC: Jr. Mod → Sr. Admin (left 20th Nov)</li>
+              <li>Briefly joined BonkMC (25th Nov–7th Dec)</li>
+              <li>Became Co-Owner at ShadySMP (25th Nov)</li>
+            </ul>
+          </div>
+        </div>
 
-<div class="border-l-4 border-soft pl-5 py-2">
-<h4 class="font-bold text-main">Ongoing</h4>
-<ul class="text-accent ml-4">
-<li>➡ Active as Co-Owner at ShadySMP.</li>
-<li>➡ Continuing SMP Finder staff roles.</li>
-</ul>
-</div>
-</div>
-</div>
+        <div class="timeline-item">
+          <div class="timeline-icon bg-gradient-to-br from-indigo-400 to-blue-500 text-white">
+            DEC
+          </div>
+          <div class="timeline-date">December 2025</div>
+          <div class="timeline-content">
+            <ul>
+              <li>Closed OceanMC</li>
+              <li>Left PrismSMP</li>
+              <li>Joined NoMercy as Helper (10th Dec)</li>
+              <li>Promoted to Manager at Discord Collective (13th Dec)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon bg-gradient-to-br from-teal-400 to-cyan-400 text-white animate-pulse-slow">
+            <i data-feather="zap" class="w-5 h-5"></i>
+          </div>
+          <div class="timeline-date">Ongoing</div>
+          <div class="timeline-content">
+            <ul>
+              <li>Active as Co-Owner at ShadySMP</li>
+              <li>Continuing SMP Finder staff roles</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<!-- Interests / Beyond Servers -->
-<section class="frosted-glass rounded-xl p-8 shadow-xl animate-fadeIn">
-  <h2 class="text-3xl font-bold mb-8 glow-text text-strong">Beyond Servers</h2>
+<!-- Beyond Servers -->
+<section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.3s">
+  <div class="section-header mb-8">
+    <i data-feather="heart" class="text-accent"></i>
+    <h2 class="text-4xl font-display font-bold glow-text text-strong">Beyond Servers</h2>
+  </div>
 
   <div class="grid md:grid-cols-3 gap-6">
 
     <!-- Music -->
-    <div class="frosted-glass hover:bg-card-hover p-5 rounded-xl transition flex flex-col items-start">
-      <i data-feather="headphones" class="text-accent w-8 h-8 mb-3"></i>
-      <h3 class="text-lg font-semibold text-main mb-2">Music</h3>
-      <ul class="text-accent text-sm list-none space-y-2">
-        <li class="flex items-center gap-2">
-          <i data-feather="chevron-right" class="w-4 h-4"></i>
-          <span>Favourite artist: <strong>Brent Faiyaz</strong> — addicted to RNB</span>
+    <div class="interest-card bg-card p-6 rounded-xl border border-soft hover-lift">
+      <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-4 mx-auto">
+        <i data-feather="headphones" class="text-white w-8 h-8"></i>
+      </div>
+      <h3 class="text-2xl font-display font-semibold text-main mb-3 text-center">Music</h3>
+      <ul class="text-main space-y-2 text-sm">
+        <li class="flex items-start gap-2">
+          <i data-feather="chevron-right" class="w-4 h-4 text-accent flex-shrink-0 mt-0.5"></i>
+          <span>Favourite artist: <strong class="text-accent">Brent Faiyaz</strong> — addicted to RNB</span>
         </li>
-        <li class="flex items-center gap-2">
-          <i data-feather="chevron-right" class="w-4 h-4"></i>
-          <span>Enjoys <strong>RNB, Lo-fi & Piano</strong> while doing courses or gaming</span>
+        <li class="flex items-start gap-2">
+          <i data-feather="chevron-right" class="w-4 h-4 text-accent flex-shrink-0 mt-0.5"></i>
+          <span>Enjoys <strong class="text-accent">RNB, Lo-fi & Piano</strong> while coding or gaming</span>
         </li>
       </ul>
     </div>
 
     <!-- Gaming -->
-    <div class="frosted-glass hover:bg-card-hover p-5 rounded-xl transition flex flex-col items-start">
-      <i data-feather="cpu" class="text-accent w-8 h-8 mb-3"></i>
-      <h3 class="text-lg font-semibold text-main mb-2">Gaming</h3>
-      <ul class="text-accent text-sm list-none space-y-2">
-        <li class="flex items-center gap-2">
-          <i data-feather="chevron-right" class="w-4 h-4"></i>
-          <span>Favourite titles: <strong>Terraria, FIFA22, Cricket22</strong></span>
+    <div class="interest-card bg-card p-6 rounded-xl border border-soft hover-lift">
+      <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-4 mx-auto">
+        <i data-feather="cpu" class="text-white w-8 h-8"></i>
+      </div>
+      <h3 class="text-2xl font-display font-semibold text-main mb-3 text-center">Gaming</h3>
+      <ul class="text-main space-y-2 text-sm">
+        <li class="flex items-start gap-2">
+          <i data-feather="chevron-right" class="w-4 h-4 text-accent flex-shrink-0 mt-0.5"></i>
+          <span>Favourite titles: <strong class="text-accent">Terraria, FIFA22, Cricket22</strong></span>
         </li>
-        <li class="flex items-center gap-2">
-          <i data-feather="chevron-right" class="w-4 h-4"></i>
-          <span>Loves <strong>Minecraft SMPs</strong> for community and creativity</span>
+        <li class="flex items-start gap-2">
+          <i data-feather="chevron-right" class="w-4 h-4 text-accent flex-shrink-0 mt-0.5"></i>
+          <span>Loves <strong class="text-accent">Minecraft SMPs</strong> for community and creativity</span>
         </li>
       </ul>
     </div>
 
     <!-- Sports -->
-    <div class="frosted-glass hover:bg-card-hover p-5 rounded-xl transition flex flex-col items-start">
-      <i data-feather="activity" class="text-accent w-8 h-8 mb-3"></i>
-      <h3 class="text-lg font-semibold text-main mb-2">Sports</h3>
-      <ul class="text-accent text-sm list-none space-y-2">
-        <li class="flex items-center gap-2">
-          <i data-feather="chevron-right" class="w-4 h-4"></i>
-          <span>Love playing & watching <strong>Cricket, Football & Rugby</strong></span>
+    <div class="interest-card bg-card p-6 rounded-xl border border-soft hover-lift">
+      <div class="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center mb-4 mx-auto">
+        <i data-feather="activity" class="text-white w-8 h-8"></i>
+      </div>
+      <h3 class="text-2xl font-display font-semibold text-main mb-3 text-center">Sports</h3>
+      <ul class="text-main space-y-2 text-sm">
+        <li class="flex items-start gap-2">
+          <i data-feather="chevron-right" class="w-4 h-4 text-accent flex-shrink-0 mt-0.5"></i>
+          <span>Love playing & watching <strong class="text-accent">Cricket, Football & Rugby</strong></span>
         </li>
-        <li class="flex items-center gap-2">
-          <i data-feather="chevron-right" class="w-4 h-4"></i>
+        <li class="flex items-start gap-2">
+          <i data-feather="chevron-right" class="w-4 h-4 text-accent flex-shrink-0 mt-0.5"></i>
           <span>Enjoys following leagues and staying active</span>
         </li>
       </ul>
@@ -196,19 +257,100 @@ My focus has always been on creating engaging, harmonious environments where pla
   </div>
 </section>
 
+</main>
+
+<!-- Footer -->
+<footer class="relative z-10 border-t border-soft mt-24">
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-muted">© 2025 NotDimension. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="#" class="text-muted hover:text-accent transition">Privacy</a>
+        <a href="#" class="text-muted hover:text-accent transition">Terms</a>
+        <a href="contact.html" class="text-muted hover:text-accent transition">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
 <script>
-  feather.replace();
+feather.replace();
+
+// Optimized Particle background
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+
+const particles = [];
+const particleCount = 60;
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2 + 1;
+    this.speedX = Math.random() * 0.4 - 0.2;
+    this.speedY = Math.random() * 0.4 - 0.2;
+  }
+  
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    
+    if (this.x > canvas.width) this.x = 0;
+    if (this.x < 0) this.x = canvas.width;
+    if (this.y > canvas.height) this.y = 0;
+    if (this.y < 0) this.y = canvas.height;
+  }
+  
+  draw() {
+    ctx.fillStyle = 'rgba(93, 163, 199, 0.35)';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < particleCount; i++) {
+  particles.push(new Particle());
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(particle => {
+    particle.update();
+    particle.draw();
+  });
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener('resize', resizeCanvas);
+
+// Intersection Observer for smooth scroll animations
+const observerOptions = {
+  threshold: 0.2,
+  rootMargin: '0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+      entry.target.classList.add('animate-in');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.stagger-item').forEach(item => {
+  observer.observe(item);
+});
 </script>
-
-
-
-<custom-footer></custom-footer>
-
-<script src="components/navbar.js"></script>
-<script src="components/footer.js"></script>
-<script src="script.js"></script>
-<script>feather.replace();</script>
 
 </body>
 </html>
-

@@ -4,171 +4,312 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | NotDimension</title>
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 </head>
 <body class="bg-main text-main min-h-screen relative">
 
-<!-- Background image -->
+<!-- Animated Background with Particles -->
 <div class="fixed inset-0 z-[-10] overflow-hidden">
-  <img src="background.png" alt="Background" class="w-full h-full object-cover">
-  <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/70"></div>
-  <div class="absolute inset-0 opacity-20"></div>
+  <img src="background.jpg" alt="Background" class="w-full h-full object-cover">
+  <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/85"></div>
+  <div class="absolute inset-0 bg-noise"></div>
+  <canvas id="particles" class="absolute inset-0"></canvas>
 </div>
 
-<custom-navbar></custom-navbar>
+<!-- Back Button -->
+<a href="index.html" class="fixed top-6 right-6 z-50 bg-card backdrop-blur-xl border border-soft text-strong hover:border-accent px-5 py-3 rounded-xl flex items-center gap-2 transition-all hover:scale-105 shadow-lg">
+  <i data-feather="arrow-left" class="w-4 h-4"></i> Back to Home
+</a>
 
-<main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
+<main class="relative z-10 max-w-6xl mx-auto px-4 pt-32 pb-12 space-y-20">
 
-  <!-- Back Button -->
-  <a href="/" class="fixed top-4 right-4 z-50 bg-card backdrop-blur-sm border border-soft text-strong hover:text-strong hover:border-strong px-4 py-2 rounded-lg flex items-center transition hover:bg-card-hover">
-    <i data-feather="arrow-left" class="mr-2 w-4 h-4"></i> Back to Home
-  </a>
+  <!-- Hero -->
+  <section class="text-center stagger-item" style="animation-delay: 0.1s">
+    <h1 class="text-6xl md:text-7xl font-display font-black mb-6 glow-text text-strong">Projects</h1>
+    <p class="text-xl max-w-3xl mx-auto text-main leading-relaxed">
+      A showcase of Minecraft server projects I've been involved with, along with personal creative work.
+    </p>
+  </section>
 
-  <main class="relative z-10 max-w-6xl mx-auto px-4 py-12 space-y-12">
+  <!-- Live Projects -->
+  <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.2s">
+    <div class="flex items-center gap-3 mb-8">
+      <div class="w-3 h-3 rounded-full bg-green-400 animate-pulse-slow"></div>
+      <h2 class="text-4xl font-display font-bold glow-text text-strong">Live Projects</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
 
-    <!-- Hero -->
-    <section class="text-center animate-fadeIn">
-        <h1 class="text-5xl font-bold mb-4 glow-text">Projects</h1>
-        <p class="text-xl max-w-3xl mx-auto text-main">
-            A showcase of Minecraft server projects I’ve been involved with, along with personal creative work.
+      <!-- ShadySMP Card -->
+      <div class="project-card bg-card p-6 rounded-xl border border-soft hover-lift">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="images/icons/shady.png" alt="ShadySMP" class="w-16 h-16 rounded-full border-2 border-accent">
+          <div>
+            <h3 class="font-display font-semibold text-main text-2xl">ShadySMP</h3>
+            <p class="text-accent text-sm">Co‑Owner</p>
+          </div>
+        </div>
+        <p class="text-main mb-4 leading-relaxed">
+          A community‑oriented SMP with custom plugins, events, and a growing player base of 450+ members.
         </p>
-    </section>
-
-<section class="frosted-glass rounded-xl p-8 shadow-xl animate-fadeIn">
-    <h2 class="text-3xl font-bold mb-8 glow-text">Live Projects</h2>
-    <div class="grid md:grid-cols-3 gap-8">
-
-        <!-- ShadySMP Card -->
-        <div class="frosted-glass hover:bg-card-hover p-6 rounded-xl transition flex flex-col">
-            <div class="flex items-center mb-4">
-                <img src="images/icons/shady.png" alt="ShadySMP" class="w-12 h-12 rounded-full">
-                <div class="ml-4">
-                    <h3 class="font-semibold text-main text-2xl">ShadySMP</h3>
-                    <p class="text-accent">Co‑Owner, Development & Staff Lead</p>
-                </div>
-            </div>
-            <p class="text-main mb-4">
-                A community‑oriented SMP with custom plugins, events, and a growing player base.
-            </p>
-            <div class="flex justify-between mt-auto">
-                <span class="text-accent">Status: <strong class="text-green-400">Active</strong></span>
-                <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="text-accent hover:text-strong flex items-center">
-                    <i data-feather="link" class="mr-1 w-4 h-4"></i> Discord
-                </a>
-            </div>
+        <div class="flex justify-between items-center">
+          <span class="text-green-400 font-medium flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+            Active
+          </span>
+          <a href="https://discord.gg/Jg48d8xbcD" target="_blank" class="link-button">
+            <i data-feather="link" class="w-4 h-4"></i> Discord
+          </a>
         </div>
+      </div>
 
-        <!-- SMP Finder Card -->
-        <div class="frosted-glass hover:bg-card-hover p-6 rounded-xl transition flex flex-col">
-            <div class="flex items-center mb-4">
-                <img src="images/icons/smpfinder.png" alt="SMP Finder" class="w-12 h-12 rounded-full">
-                <div class="ml-4">
-                    <h3 class="font-semibold text-main text-2xl">SMP Finder</h3>
-                    <p class="text-accent">Moderator</p>
-                </div>
-            </div>
-            <p class="text-main mb-4">
-                A large Discord server helping players find, partner and join SMPs.
-            </p>
-            <div class="flex justify-between mt-auto">
-                <span class="text-accent">Status: <strong class="text-green-400">Active</strong></span>
-                <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="text-accent hover:text-strong flex items-center">
-                    <i data-feather="link" class="mr-1 w-4 h-4"></i> Discord
-                </a>
-            </div>
+      <!-- SMP Finder Card -->
+      <div class="project-card bg-card p-6 rounded-xl border border-soft hover-lift">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="images/icons/smpfinder.png" alt="SMP Finder" class="w-16 h-16 rounded-full border-2 border-accent">
+          <div>
+            <h3 class="font-display font-semibold text-main text-2xl">SMP Finder</h3>
+            <p class="text-accent text-sm">Senior Moderator</p>
+          </div>
         </div>
+        <p class="text-main mb-4 leading-relaxed">
+          A large Discord server helping players find, partner, and join SMPs with 27k+ members.
+        </p>
+        <div class="flex justify-between items-center">
+          <span class="text-green-400 font-medium flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+            Active
+          </span>
+          <a href="https://discord.gg/cuP8bPZgYv" target="_blank" class="link-button">
+            <i data-feather="link" class="w-4 h-4"></i> Discord
+          </a>
+        </div>
+      </div>
 
-        <!-- Discord Collective Card -->
-        <div class="frosted-glass hover:bg-card-hover p-6 rounded-xl transition flex flex-col">
-            <div class="flex items-center mb-4">
-                <img src="images/icons/collective.png" alt="Discord Collective" class="w-12 h-12 rounded-full">
-                <div class="ml-4">
-                    <h3 class="font-semibold text-main text-2xl">Discord Collective</h3>
-                    <p class="text-accent">Manager & Community Organizer</p>
-                </div>
-            </div>
-            <p class="text-main mb-4">
-                A server focused on Community and Events.
-            </p>
-            <div class="flex justify-between mt-auto">
-                <span class="text-accent">Status: <strong class="text-green-400">Active</strong></span>
-                <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="text-accent hover:text-strong flex items-center">
-                    <i data-feather="link" class="mr-1 w-4 h-4"></i> Discord
-                </a>
-            </div>
+      <!-- Discord Collective Card -->
+      <div class="project-card bg-card p-6 rounded-xl border border-soft hover-lift">
+        <div class="flex items-center gap-4 mb-4">
+          <img src="images/icons/collective.png" alt="Discord Collective" class="w-16 h-16 rounded-full border-2 border-accent">
+          <div>
+            <h3 class="font-display font-semibold text-main text-2xl">Discord Collective</h3>
+            <p class="text-accent text-sm">Manager</p>
+          </div>
         </div>
+        <p class="text-main mb-4 leading-relaxed">
+          A server focused on Community and Events with 60+ engaged members.
+        </p>
+        <div class="flex justify-between items-center">
+          <span class="text-green-400 font-medium flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+            Active
+          </span>
+          <a href="https://discord.gg/nUMJ52Pycj" target="_blank" class="link-button">
+            <i data-feather="link" class="w-4 h-4"></i> Discord
+          </a>
+        </div>
+      </div>
 
     </div>
-</section>
+  </section>
 
-    <!-- Technical Creations -->
-    <section class="frosted-glass rounded-xl p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-8 glow-text">Technical Creations</h2>
-        <div class="grid md:grid-cols-2 gap-8">
+  <!-- Technical Creations -->
+  <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.3s">
+    <div class="section-header mb-8">
+      <i data-feather="code" class="text-accent"></i>
+      <h2 class="text-4xl font-display font-bold glow-text text-strong">Technical Creations</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6">
 
-            <div class="frosted-glass hover:bg-card-hover p-6 rounded-xl transition">
-                <div class="flex items-center mb-4">
-                    <i data-feather="code" class="mr-3 text-accent w-8 h-8"></i>
-                    <h3 class="font-semibold text-main text-2xl">Plugin Configurations</h3>
-                </div>
-                <p class="text-main mb-4">
-                    Custom YAML & JSON configurations for plugins like EssentialsX, LuckPerms, and more.
-                </p>
-                <span class="text-accent">Examples: Economy, Ranks, Custom Items</span>
-            </div>
-
-            <div class="frosted-glass hover:bg-card-hover p-6 rounded-xl transition">
-                <div class="flex items-center mb-4">
-                    <i data-feather="file-text" class="mr-3 text-accent w-8 h-8"></i>
-                    <h3 class="font-semibold text-main text-2xl">Custom Documentation</h3>
-                </div>
-                <p class="text-main mb-4">
-                    Comprehensive server guides, staff handbooks, and community rules.
-                </p>
-                <span class="text-accent">Used in multiple SMPs and public servers</span>
-            </div>
-
+      <div class="tech-card bg-card p-6 rounded-xl border border-soft hover-lift">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0">
+            <i data-feather="code" class="text-white w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="font-display font-semibold text-main text-2xl">Plugin Configurations</h3>
+          </div>
         </div>
-    </section>
-
-    <!-- Archived Projects -->
-    <section class="frosted-glass rounded-xl p-8 shadow-xl animate-fadeIn">
-        <h2 class="text-3xl font-bold mb-8 glow-text">Archived Projects</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-
-            <div class="frosted-glass hover:bg-card-hover p-5 rounded-xl transition">
-                <h4 class="font-semibold text-main">Prism SMP</h4>
-                <p class="text-accent text-sm">Owner (700 members)</p>
-                <p class="text-main text-xs mt-2">Left in November 2025</p>
-            </div>
-
-            <div class="frosted-glass hover:bg-card-hover p-5 rounded-xl transition">
-                <h4 class="font-semibold text-main">OceanMC</h4>
-                <p class="text-accent text-sm">Owner (300 members)</p>
-                <p class="text-main text-xs mt-2">Closed in December 2025</p>
-            </div>
-
-            <div class="frosted-glass hover:bg-card-hover p-5 rounded-xl transition">
-                <h4 class="font-semibold text-main">SteakySMP</h4>
-                <p class="text-accent text-sm">Co‑Owner (1.5k members)</p>
-                <p class="text-main text-xs mt-2">Left in October 2025</p>
-            </div>
-
+        <p class="text-main mb-4 leading-relaxed">
+          Custom YAML & JSON configurations for plugins like EssentialsX, LuckPerms, and more.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm">Economy</span>
+          <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">Ranks</span>
+          <span class="px-3 py-1 bg-pink-500/20 text-pink-400 rounded-full text-sm">Custom Items</span>
         </div>
-    </section>
+      </div>
 
-  </main>
+      <div class="tech-card bg-card p-6 rounded-xl border border-soft hover-lift">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center flex-shrink-0">
+            <i data-feather="file-text" class="text-white w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="font-display font-semibold text-main text-2xl">Custom Documentation</h3>
+          </div>
+        </div>
+        <p class="text-main mb-4 leading-relaxed">
+          Comprehensive server guides, staff handbooks, and community rules used across multiple SMPs.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-orange-500/20 text-orange-400 rounded-full text-sm">Guides</span>
+          <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm">Handbooks</span>
+        </div>
+      </div>
 
-  <custom-footer></custom-footer>
+    </div>
+  </section>
 
-  <script src="components/navbar.js"></script>
-  <script src="components/footer.js"></script>
-  <script src="script.js"></script>
-  <script>
-      feather.replace();
-  </script>
+  <!-- Archived Projects -->
+  <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.4s">
+    <div class="section-header mb-8">
+      <i data-feather="archive" class="text-accent"></i>
+      <h2 class="text-4xl font-display font-bold glow-text text-strong">Archived Projects</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+
+      <div class="archived-card bg-card p-5 rounded-xl border border-soft">
+        <img src="images/icons/prism.png" alt="Prism SMP" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft">
+        <h4 class="font-display font-semibold text-main text-center">Prism SMP</h4>
+        <p class="text-accent text-sm text-center">Owner • 700 members</p>
+        <p class="text-muted text-xs text-center mt-2">Left in November 2025</p>
+      </div>
+
+      <div class="archived-card bg-card p-5 rounded-xl border border-soft">
+        <img src="images/icons/ocean.png" alt="OceanMC" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft">
+        <h4 class="font-display font-semibold text-main text-center">OceanMC</h4>
+        <p class="text-accent text-sm text-center">Owner • 300 members</p>
+        <p class="text-muted text-xs text-center mt-2">Closed in December 2025</p>
+      </div>
+
+      <div class="archived-card bg-card p-5 rounded-xl border border-soft">
+        <img src="images/icons/steaky.png" alt="SteakySMP" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft">
+        <h4 class="font-display font-semibold text-main text-center">SteakySMP</h4>
+        <p class="text-accent text-sm text-center">Co‑Owner • 1.5k members</p>
+        <p class="text-muted text-xs text-center mt-2">Left in October 2025</p>
+      </div>
+
+      <div class="archived-card bg-card p-5 rounded-xl border border-soft">
+        <img src="images/icons/shatter.png" alt="ShatterMC" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft">
+        <h4 class="font-display font-semibold text-main text-center">ShatterMC</h4>
+        <p class="text-accent text-sm text-center">Senior Admin • 260 members</p>
+        <p class="text-muted text-xs text-center mt-2">Left in November 2025</p>
+      </div>
+
+      <div class="archived-card bg-card p-5 rounded-xl border border-soft">
+        <img src="images/icons/bonk.png" alt="BonkMC" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft">
+        <h4 class="font-display font-semibold text-main text-center">BonkMC</h4>
+        <p class="text-accent text-sm text-center">Moderator • 4.6k members</p>
+        <p class="text-muted text-xs text-center mt-2">Left in December 2025</p>
+      </div>
+
+      <div class="archived-card bg-card p-5 rounded-xl border border-soft">
+        <img src="images/icons/nebular.png" alt="Nebular SMP" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft">
+        <h4 class="font-display font-semibold text-main text-center">Nebular SMP</h4>
+        <p class="text-accent text-sm text-center">Co-Owner • 200 members</p>
+        <p class="text-muted text-xs text-center mt-2">Left in October 2025</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="relative z-10 border-t border-soft mt-20">
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-muted">© 2025 NotDimension. All rights reserved.</p>
+      <div class="flex gap-6">
+        <a href="#" class="text-muted hover:text-accent transition">Privacy</a>
+        <a href="#" class="text-muted hover:text-accent transition">Terms</a>
+        <a href="contact.html" class="text-muted hover:text-accent transition">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+feather.replace();
+
+// Particle background
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = [];
+const particleCount = 60;
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 2 + 1;
+    this.speedX = Math.random() * 0.5 - 0.25;
+    this.speedY = Math.random() * 0.5 - 0.25;
+  }
+  
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    
+    if (this.x > canvas.width) this.x = 0;
+    if (this.x < 0) this.x = canvas.width;
+    if (this.y > canvas.height) this.y = 0;
+    if (this.y < 0) this.y = canvas.height;
+  }
+  
+  draw() {
+    ctx.fillStyle = 'rgba(93, 163, 199, 0.35)';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < particleCount; i++) {
+  particles.push(new Particle());
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(particle => {
+    particle.update();
+    particle.draw();
+  });
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+// Intersection Observer for smooth scroll animations
+const observerOptions = {
+  threshold: 0.2,
+  rootMargin: '0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+      entry.target.classList.add('animate-in');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.stagger-item').forEach(item => {
+  observer.observe(item);
+});
+</script>
+
 </body>
 </html>
