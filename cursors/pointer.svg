@@ -1,0 +1,26 @@
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stronger outer glow -->
+  <circle cx="14" cy="14" r="13" fill="url(#glow)" opacity="0.6"/>
+  
+  <!-- Inverted Rhombus shape (diamond) -->
+  <path d="M 14 4 L 24 14 L 14 24 L 4 14 Z" 
+        fill="#e8f0f5" 
+        stroke="#5da3c7" 
+        stroke-width="2"
+        stroke-linejoin="round"
+        filter="url(#shadow)"/>
+  
+  <!-- Inner inverted dot -->
+  <circle cx="14" cy="14" r="2" fill="#5da3c7"/>
+  
+  <defs>
+    <radialGradient id="glow">
+      <stop offset="0%" style="stop-color:#7bb8d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5da3c7;stop-opacity:0" />
+    </radialGradient>
+    
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#5da3c7" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+</svg>
