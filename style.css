@@ -1,39 +1,39 @@
 /* ===============================
-   SERENE OCEAN THEME
-   Enhanced Animations & Performance
+   OBSIDIAN & ONYX THEME
+   Enhanced Dark Aesthetic & Performance
 ================================ */
 :root {
-    /* Ocean-inspired palette from wallpaper */
-    --deep-ocean: #0a1628;
-    --ocean-blue: #1a3a52;
-    --twilight-blue: #2c5f7f;
-    --horizon-teal: #4a8fa8;
-    --soft-teal: #6ba8bb;
-    --mist-gray: #8fa9b8;
+    /* Monochrome & Slate palette */
+    --deep-obsidian: #050505;
+    --onyx-black: #0a0a0a;
+    --charcoal: #121212;
+    --slate-dark: #1e1e1e;
+    --slate-medium: #2d2d2d;
+    --slate-light: #404040;
     
-    /* Accent colors */
-    --accent-primary: #5da3c7;
-    --accent-secondary: #7bb8d4;
-    --accent-warm: #d4956b;
+    /* Accent colors - Silver & Smoke */
+    --accent-primary: #a0a0a0;
+    --accent-secondary: #e0e0e0;
+    --accent-warm: #ffffff;
     
     /* Background layers */
-    --bg-main: #050d17;
-    --bg-overlay: rgba(10, 22, 40, 0.88);
+    --bg-main: #020202;
+    --bg-overlay: rgba(5, 5, 5, 0.92);
     
     /* Cards - optimized transparency */
-    --bg-card: rgba(26, 58, 82, 0.38);
-    --bg-card-hover: rgba(44, 95, 127, 0.55);
+    --bg-card: rgba(30, 30, 30, 0.45);
+    --bg-card-hover: rgba(45, 45, 45, 0.65);
     
-    /* Text - improved contrast */
-    --text-main: #e8f0f5;
-    --text-muted: #9db5c4;
-    --text-accent: #5da3c7;
+    /* Text - maximum readability */
+    --text-main: #d1d1d1;
+    --text-muted: #888888;
+    --text-accent: #ffffff;
     --text-strong: #ffffff;
     
     /* Borders & glow */
-    --border-soft: rgba(107, 168, 187, 0.18);
-    --glow: rgba(93, 163, 199, 0.4);
-    --glow-strong: rgba(123, 184, 212, 0.6);
+    --border-soft: rgba(255, 255, 255, 0.08);
+    --glow: rgba(255, 255, 255, 0.15);
+    --glow-strong: rgba(255, 255, 255, 0.25);
 }
 
 /* ===============================
@@ -69,28 +69,29 @@ a, button, .social-icon, .role-card, .explore-card, .social-card,
 ================================ */
 .bg-noise {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.025;
-    mix-blend-mode: overlay;
+    opacity: 0.035;
+    mix-blend-mode: screen;
 }
 
 /* ===============================
    SCROLLBAR
 ================================ */
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #050d17;
+    background: var(--bg-main);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--accent-primary), var(--twilight-blue));
-    border-radius: 6px;
+    background: linear-gradient(180deg, var(--slate-light), var(--charcoal));
+    border-radius: 5px;
+    border: 1px solid var(--border-soft);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, var(--accent-secondary), var(--horizon-teal));
+    background: var(--accent-primary);
 }
 
 /* ===============================
@@ -113,11 +114,11 @@ a, button, .social-icon, .role-card, .explore-card, .social-card,
 .frosted-glass {
     background: linear-gradient(
         135deg,
-        rgba(26, 58, 82, 0.42),
-        rgba(10, 22, 40, 0.38)
+        rgba(30, 30, 30, 0.5),
+        rgba(5, 5, 5, 0.4)
     );
-    backdrop-filter: blur(16px) saturate(110%);
-    -webkit-backdrop-filter: blur(16px) saturate(110%);
+    backdrop-filter: blur(20px) saturate(100%);
+    -webkit-backdrop-filter: blur(20px) saturate(100%);
     border: 1px solid var(--border-soft);
     position: relative;
     overflow: hidden;
@@ -134,10 +135,10 @@ a, button, .social-icon, .role-card, .explore-card, .social-card,
     background: linear-gradient(
         90deg,
         transparent,
-        rgba(93, 163, 199, 0.08),
+        rgba(255, 255, 255, 0.05),
         transparent
     );
-    transition: left 0.5s ease;
+    transition: left 0.6s ease;
 }
 
 .frosted-glass:hover::before {
@@ -149,102 +150,71 @@ a, button, .social-icon, .role-card, .explore-card, .social-card,
 ================================ */
 .glow-text {
     text-shadow:
-        0 0 20px rgba(93, 163, 199, 0.5),
-        0 0 40px rgba(123, 184, 212, 0.25),
-        0 2px 6px rgba(0, 0, 0, 0.6);
+        0 0 15px rgba(255, 255, 255, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .hero-title {
     letter-spacing: -0.02em;
     line-height: 1.1;
+    color: var(--text-strong);
 }
 
 /* ===============================
-   SNAPPIER ANIMATIONS
+   ANIMATIONS
 ================================ */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUpFade {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes pulse-slow {
-    0%, 100% {
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 1;
-    }
-}
-
-@keyframes slideInLeft {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
 }
 
 .animate-pulse-slow {
-    animation: pulse-slow 2.5s ease-in-out infinite;
+    animation: pulse-slow 3s ease-in-out infinite;
 }
 
 .stagger-item {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
 }
 
 .stagger-item.animate-in {
-    animation: slideUpFade 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation: slideUpFade 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 /* ===============================
    NAVIGATION
 ================================ */
 .nav-logo {
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-                box-shadow 0.25s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                filter 0.3s ease;
+    filter: grayscale(100%) brightness(1.2);
 }
 
 .nav-logo:hover {
-    transform: rotate(360deg) scale(1.08);
-    box-shadow: 0 0 24px var(--glow-strong);
+    transform: rotate(180deg) scale(1.1);
+    filter: grayscale(0%) brightness(1.5);
+    box-shadow: 0 0 20px var(--glow-strong);
 }
 
 .nav-link {
     position: relative;
     font-weight: 500;
     transition: color 0.2s ease;
+    color: var(--text-muted);
+}
+
+.nav-link:hover {
+    color: var(--text-strong);
 }
 
 .nav-link::after {
@@ -253,9 +223,9 @@ a, button, .social-icon, .role-card, .explore-card, .social-card,
     bottom: -4px;
     left: 0;
     width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
-    transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 1px;
+    background: var(--text-accent);
+    transition: width 0.3s ease;
 }
 
 .nav-link:hover::after {
@@ -263,13 +233,14 @@ a, button, .social-icon, .role-card, .explore-card, .social-card,
 }
 
 /* ===============================
-   CARDS & INTERACTIONS - OPTIMIZED
+   CARDS & INTERACTIONS
 ================================ */
 .role-card {
     background-color: var(--bg-card);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     will-change: transform;
+    border: 1px solid var(--border-soft);
 }
 
 .role-card::before {
@@ -277,105 +248,37 @@ a, button, .social-icon, .role-card, .explore-card, .social-card,
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    padding: 2px;
-    background: linear-gradient(135deg, var(--accent-primary), transparent, var(--twilight-blue));
+    padding: 1px;
+    background: linear-gradient(135deg, var(--slate-light), transparent, var(--slate-medium));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    opacity: 0;
+    opacity: 0.5;
     transition: opacity 0.3s ease;
 }
 
-.role-card:hover::before {
-    opacity: 1;
-}
-
 .role-card:hover {
-    transform: translateY(-6px) scale(1.015);
-    box-shadow: 
-        0 16px 32px rgba(0, 0, 0, 0.5),
-        0 0 25px var(--glow);
-}
-
-.role-card-small {
-    background-color: var(--bg-card);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-.role-card-small:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
     background-color: var(--bg-card-hover);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-.work-card {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
+    border-color: var(--slate-light);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.8),
+        0 0 15px var(--glow);
 }
 
 .explore-card {
-    display: block;
-    background-color: var(--bg-card);
+    background-color: var(--charcoal);
     border: 1px solid var(--border-soft);
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     padding: 1.5rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    will-change: transform;
-}
-
-.explore-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(93, 163, 199, 0.12),
-        transparent
-    );
-    transition: left 0.5s ease;
-}
-
-.explore-card:hover::before {
-    left: 100%;
+    transition: all 0.3s ease;
 }
 
 .explore-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--accent-primary);
-    box-shadow: 
-        0 16px 32px rgba(0, 0, 0, 0.5),
-        0 0 25px var(--glow);
-}
-
-/* ===============================
-   HOVER UTILITIES - OPTIMIZED
-================================ */
-.hover-lift {
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), 
-                box-shadow 0.25s ease;
-    will-change: transform;
-}
-
-.hover-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-}
-
-.hover-grow {
-    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-.hover-grow:hover {
-    transform: scale(1.04);
+    border-color: var(--accent-primary);
+    background-color: var(--slate-dark);
 }
 
 /* ===============================
@@ -385,115 +288,49 @@ a, button, .social-icon, .role-card, .explore-card, .social-card,
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background-color: var(--bg-card);
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background-color: var(--charcoal);
     border: 1px solid var(--border-soft);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-.social-icon:hover {
-    background-color: var(--bg-card-hover);
-    border-color: var(--accent-primary);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 18px rgba(93, 163, 199, 0.35);
-}
-
-.social-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1.5rem;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-soft);
-    border-radius: 1rem;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    font-weight: 600;
-    will-change: transform;
-}
-
-.social-card:hover {
-    background-color: var(--bg-card-hover);
-    transform: translateY(-5px);
-    box-shadow: 
-        0 12px 28px rgba(0, 0, 0, 0.4),
-        0 0 20px var(--glow);
-}
-
-.social-card img {
-    filter: brightness(0) saturate(100%) invert(95%);
-    transition: filter 0.25s ease, transform 0.25s ease;
-}
-
-.social-card:hover img {
-    filter: brightness(0) saturate(100%) invert(72%) sepia(28%) saturate(1285%) hue-rotate(159deg);
-    transform: scale(1.08);
-}
-
-/* ===============================
-   BUTTONS & LINKS
-================================ */
-.link-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--text-accent);
-    font-weight: 500;
     transition: all 0.2s ease;
 }
 
-.link-button:hover {
-    color: var(--text-strong);
-    transform: translateX(3px);
+.social-icon:hover {
+    background-color: var(--slate-medium);
+    border-color: var(--accent-primary);
+    transform: scale(1.05);
+}
+
+.social-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-soft);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    transition: all 0.25s ease;
+    filter: grayscale(1);
+}
+
+.social-card:hover {
+    filter: grayscale(0);
+    background-color: var(--bg-card-hover);
+    border-color: var(--text-main);
+    transform: translateY(-4px);
 }
 
 /* ===============================
-   SECTION HEADERS
-================================ */
-.section-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.section-header i {
-    width: 2rem;
-    height: 2rem;
-}
-
-/* ===============================
-   SKILL ITEMS
+   SKILLS & TIMELINE
 ================================ */
 .skill-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    background-color: rgba(26, 58, 82, 0.28);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
 }
 
 .skill-item:hover {
-    background-color: rgba(44, 95, 127, 0.45);
-    transform: translateX(6px);
-}
-
-.skill-item i {
-    width: 1.25rem;
-    height: 1.25rem;
-}
-
-/* ===============================
-   TIMELINE - IMPROVED DESIGN
-================================ */
-.timeline-container {
-    position: relative;
-    padding-left: 2rem;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-color: var(--border-soft);
+    transform: translateX(4px);
 }
 
 .timeline-line {
@@ -501,234 +338,59 @@ a, button, .social-icon, .role-card, .explore-card, .social-card,
     left: 1.5rem;
     top: 0;
     bottom: 0;
-    width: 3px;
+    width: 2px;
     background: linear-gradient(
         180deg,
-        var(--accent-primary),
-        var(--twilight-blue),
-        var(--accent-secondary)
+        var(--slate-light),
+        var(--charcoal),
+        var(--slate-medium)
     );
-    border-radius: 2px;
-}
-
-.timeline-item {
-    position: relative;
-    padding: 1.25rem 0 1.25rem 3rem;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.timeline-item:hover {
-    padding-left: 3.5rem;
 }
 
 .timeline-icon {
-    position: absolute;
-    left: 0;
-    top: 1.25rem;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.875rem;
-    border: 3px solid var(--bg-main);
-    box-shadow: 0 0 0 2px var(--border-soft);
-    transition: all 0.25s ease;
-    z-index: 1;
+    background-color: var(--bg-main);
+    color: var(--text-strong);
+    border: 2px solid var(--slate-medium);
 }
 
 .timeline-item:hover .timeline-icon {
-    transform: scale(1.1);
-    box-shadow: 0 0 0 2px var(--accent-primary), 0 0 15px var(--glow);
-}
-
-.timeline-date {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 600;
-    font-size: 1.125rem;
-    color: var(--text-main);
-    margin-bottom: 0.5rem;
-}
-
-.timeline-content {
-    color: var(--text-accent);
-    line-height: 1.6;
-}
-
-.timeline-content ul {
-    margin: 0.5rem 0 0 0;
-    padding-left: 0;
-    list-style: none;
-}
-
-.timeline-content li {
-    margin: 0.25rem 0;
-    padding-left: 1.25rem;
-    position: relative;
+    border-color: var(--text-main);
+    box-shadow: 0 0 10px var(--glow-strong);
 }
 
 .timeline-content li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
-    color: var(--accent-primary);
-    font-weight: bold;
+    content: '—';
+    color: var(--text-muted);
 }
 
 /* ===============================
-   RESPONSIVE
+   PROJECT CARDS
 ================================ */
-@media (max-width: 768px) {
-    .hero-title {
-        font-size: 3rem !important;
-    }
-    
-    .section-header h2 {
-        font-size: 2rem !important;
-    }
-    
-    .nav-link {
-        display: none;
-    }
-    
-    .social-card {
-        padding: 1rem;
-    }
-    
-    .timeline-container {
-        padding-left: 1rem;
-    }
-    
-    .timeline-item {
-        padding-left: 2.5rem;
-    }
-    
-    .timeline-item:hover {
-        padding-left: 2.75rem;
-    }
-    
-    .timeline-icon {
-        width: 2.5rem;
-        height: 2.5rem;
-        font-size: 0.75rem;
-    }
-}
-
-/* ===============================
-   PROJECT & SPECIALTY CARDS
-================================ */
-.project-card {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
+.project-card, .tech-card, .community-card {
+    background-color: var(--charcoal);
+    border: 1px solid var(--border-soft);
+    transition: all 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 
-        0 16px 32px rgba(0, 0, 0, 0.5),
-        0 0 25px var(--glow);
-}
-
-.tech-card {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-.tech-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-}
-
-.archived-card {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0.88;
-    will-change: transform;
-}
-
-.archived-card:hover {
-    opacity: 1;
-    transform: translateY(-3px);
-    background-color: var(--bg-card-hover);
-}
-
-.contact-card {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-.contact-card:hover {
     transform: translateY(-5px);
-    box-shadow: 
-        0 12px 28px rgba(0, 0, 0, 0.4),
-        0 0 20px var(--glow);
-}
-
-.response-card {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-.response-card:hover {
-    transform: translateY(-3px);
-    background-color: var(--bg-card-hover);
-}
-
-.community-card {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-.community-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 
-        0 16px 32px rgba(0, 0, 0, 0.5),
-        0 0 25px var(--glow);
-}
-
-.interest-card {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-.interest-card:hover {
-    transform: translateY(-5px) scale(1.015);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    border-color: var(--slate-light);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6);
 }
 
 /* ===============================
-   FEATHER ICONS
+   PERFORMANCE & RESPONSIVE
 ================================ */
-i[data-feather] {
-    width: 1em;
-    height: 1em;
-    stroke: currentColor;
-    vertical-align: middle;
-    stroke-width: 2;
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem !important; }
+    .bg-noise { opacity: 0.05; } /* Slightly more visible on mobile to add texture */
 }
 
-/* ===============================
-   PERFORMANCE OPTIMIZATIONS
-================================ */
 @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+    * { animation: none !important; transition: none !important; }
 }
 
-/* GPU acceleration for animated elements */
-.frosted-glass,
-.role-card,
-.explore-card,
-.social-icon,
-.hover-lift,
-.hover-grow {
+.frosted-glass, .role-card, .social-icon {
     transform: translateZ(0);
     backface-visibility: hidden;
-    perspective: 1000px;
 }
