@@ -1,190 +1,174 @@
-/* ===============================
-   OBSIDIAN THEME CORE
-================================ */
+/* =========================================
+   CORE THEME VARIABLES (Obsidian Aesthetic)
+   ========================================= */
 :root {
-    --bg-main: #020202;
-    --bg-card: rgba(18, 18, 18, 0.7);
+    --bg-main: #050505;
+    --bg-card: rgba(15, 15, 15, 0.7);
     --accent-primary: #ffffff;
-    --accent-dim: #404040;
-    --text-main: #d1d1d1;
+    --accent-secondary: #404040;
+    --text-strong: #ffffff;
+    --text-main: #e0e0e0;
     --text-muted: #707070;
-    --text-accent: #ffffff;
     --border-soft: rgba(255, 255, 255, 0.08);
+    --twilight-blue: #1e293b;
+    --horizon-teal: #0f172a;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
+/* Base Styles */
 body {
     background-color: var(--bg-main);
     color: var(--text-main);
     font-family: 'Space Mono', monospace;
     overflow-x: hidden;
-    line-height: 1.6;
 }
 
-.font-display { font-family: 'Orbitron', sans-serif; }
-
-/* ===============================
-   ENTRY & BLUR SYSTEM
-================================ */
-.entry-overlay {
-    position: fixed;
-    inset: 0;
-    background: var(--bg-main);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: opacity 1s ease;
+.font-display {
+    font-family: 'Orbitron', sans-serif;
 }
 
-.entry-overlay.fade-out { opacity: 0; }
-
-.enter-hint {
-    color: var(--text-muted);
-    letter-spacing: 4px;
-    margin-top: 1rem;
-    text-align: center;
-}
-
+/* =========================================
+   BLUR & REVEAL SYSTEM
+   ========================================= */
 #main-wrapper {
     transition: filter 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 1.5s ease;
 }
 
 .is-blurred {
-    filter: blur(50px);
-    transform: scale(1.05);
+    filter: blur(60px) grayscale(1);
     pointer-events: none;
-}
-
-/* ===============================
-   COMPONENTS
-================================ */
-.frosted-glass {
-    background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-soft);
-}
-
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 1rem 0;
-}
-
-.nav-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 2rem;
-}
-
-.nav-link {
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-left: 2rem;
-    transition: color 0.3s;
-}
-
-.nav-link:hover { color: var(--text-accent); }
-
-.hero-section {
+    transform: scale(1.05);
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 60px;
+    overflow: hidden;
 }
 
-.profile-card {
-    padding: 3rem;
-    border-radius: 20px;
+/* =========================================
+   FROSTED CARDS & LAYOUT FIXES
+   ========================================= */
+.frosted-glass {
+    background: var(--bg-card) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--border-soft) !important;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.frosted-glass:hover {
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.bg-card {
+    background: rgba(20, 20, 20, 0.6) !important;
+    border: 1px solid var(--border-soft) !important;
+}
+
+/* Custom Social Cards (Connect Section) */
+.social-card {
+    background: var(--bg-card);
     border: 1px solid var(--border-soft);
-    text-align: center;
-    max-width: 500px;
+    padding: 1.25rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--text-main);
 }
 
-.pfp-border {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 2rem;
-    border-radius: 50%;
-    border: 1px solid var(--accent-dim);
-    padding: 8px;
+.social-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+    border-color: var(--text-muted);
 }
 
-.pfp {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    filter: grayscale(1);
-    transition: filter 0.5s ease;
+/* =========================================
+   TEXT & ELEMENT FIXES
+   ========================================= */
+.text-strong {
+    color: var(--text-strong) !important;
 }
 
-.profile-card:hover .pfp { filter: grayscale(0); }
+.text-muted {
+    color: var(--text-muted) !important;
+}
 
 .glow-text {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
-.social-row {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2rem;
+.bg-main {
+    background-color: var(--bg-main) !important;
 }
 
-.social-icon {
-    color: var(--text-muted);
+/* Profile Image Fixes */
+.pfp-container {
+    position: relative;
+    z-index: 1;
+}
+
+.animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Link Buttons */
+.link-button {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     transition: 0.3s;
 }
 
-.social-icon:hover {
-    color: var(--text-accent);
-    transform: translateY(-3px);
+.link-button:hover {
+    background: var(--text-strong);
+    color: var(--bg-main);
 }
 
-.content-section {
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 0 2rem;
-}
-
-.section-header {
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.role-card, .explore-card {
+/* =========================================
+   EXPLORE CARDS (Bottom Section)
+   ========================================= */
+.explore-card {
     background: var(--bg-card);
     border: 1px solid var(--border-soft);
     padding: 2rem;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    transition: 0.3s;
+    border-radius: 16px;
+    display: block;
+    text-decoration: none;
+    transition: 0.4s;
 }
 
-.role-card:hover { border-color: var(--text-muted); }
-
-.info-grid, .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+.explore-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
-.footer {
-    text-align: center;
-    padding: 4rem 2rem;
-    border-top: 1px solid var(--border-soft);
+/* Background Noise Overlay */
+.bg-noise {
+    background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+    opacity: 0.05;
+    pointer-events: none;
 }
 
-@keyframes pulse-slow {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
+/* Skill Items */
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0.75rem;
+}
+
+.text-accent {
+    color: var(--text-strong) !important;
 }
