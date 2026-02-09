@@ -13,385 +13,407 @@
 </head>
 <body class="bg-main text-main min-h-screen relative">
 
-<!-- Animated Background with Particles -->
-<div class="fixed inset-0 z-[-10] overflow-hidden">
-  <img src="background.jpg" alt="Background" class="w-full h-full object-cover">
-  <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/85"></div>
-  <div class="absolute inset-0 bg-noise"></div>
-  <canvas id="particles" class="absolute inset-0"></canvas>
+<div id="entry-overlay" class="fixed inset-0 bg-black z-[100] flex flex-col items-center justify-center cursor-pointer transition-opacity duration-1000">
+    <div class="text-center">
+        <h1 class="text-5xl md:text-7xl font-display font-black mb-4 text-strong glow-text tracking-widest">NOTDIMENSION</h1>
+        <p class="text-muted font-mono animate-pulse-slow">[ CLICK TO ENTER ]</p>
+    </div>
 </div>
 
-<main class="relative z-10 max-w-6xl mx-auto px-4 pt-20 pb-12 space-y-24">
+<audio id="bg-music" loop>
+    <source src="audio.mp3" type="audio/mpeg">
+</audio>
 
-  <!-- Hero Section with Staggered Animation -->
-  <section class="flex flex-col md:flex-row items-center gap-12 stagger-item" style="animation-delay: 0.1s">
-    <div class="relative group">
-      <div class="absolute -inset-1 bg-gradient-to-r from-accent-primary to-twilight-blue rounded-full blur-xl opacity-60 group-hover:opacity-100 transition duration-400 animate-pulse-slow"></div>
-      <img src="images/profile.png" alt="Profile" class="relative rounded-full w-48 h-48 object-cover border-4 border-strong shadow-2xl hover:scale-105 transition-transform duration-250">
-    </div>
-    <div class="flex-1">
-      <h1 class="text-6xl md:text-7xl font-display font-black mb-4 text-strong glow-text hero-title">
-        <span class="inline-block hover:scale-110 transition-transform cursor-default">N</span><span class="inline-block hover:scale-110 transition-transform cursor-default">o</span><span class="inline-block hover:scale-110 transition-transform cursor-default">t</span><span class="inline-block hover:scale-110 transition-transform cursor-default">D</span><span class="inline-block hover:scale-110 transition-transform cursor-default">i</span><span class="inline-block hover:scale-110 transition-transform cursor-default">m</span><span class="inline-block hover:scale-110 transition-transform cursor-default">e</span><span class="inline-block hover:scale-110 transition-transform cursor-default">n</span><span class="inline-block hover:scale-110 transition-transform cursor-default">s</span><span class="inline-block hover:scale-110 transition-transform cursor-default">i</span><span class="inline-block hover:scale-110 transition-transform cursor-default">o</span><span class="inline-block hover:scale-110 transition-transform cursor-default">n</span>
-      </h1>
-      <div class="inline-block mb-4">
-        <p class="text-xl px-6 py-2.5 rounded-full bg-gradient-to-r from-accent-primary to-horizon-teal text-white font-semibold shadow-lg">
-          Minecraft Server Developer
-        </p>
-      </div>
-      <p class="text-muted text-base mb-5 flex items-center gap-2">
-        <i data-feather="map-pin" class="w-4 h-4"></i>
-        South Africa
-      </p>
-      <div class="flex gap-4 text-accent">
-        <a href="https://discord.com/users/753556348784083024" target="_blank" class="social-icon"><i data-feather="message-circle"></i></a>
-        <a href="https://www.youtube.com/@NotDimension" target="_blank" class="social-icon"><i data-feather="youtube"></i></a>
-        <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="social-icon"><i data-feather="cpu"></i></a>
-        <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="social-icon"><i data-feather="box"></i></a>
-      </div>
-    </div>
-  </section>
+<div id="main-wrapper" class="is-blurred transition-all duration-[1500ms] ease-in-out">
 
-  <!-- About Section -->
-  <section id="about" class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item hover-lift" style="animation-delay: 0.2s">
-    <div class="section-header mb-6">
-      <i data-feather="user" class="text-accent"></i>
-      <h2 class="text-4xl font-display font-bold text-strong glow-text">About Me</h2>
-    </div>
-    <p class="text-main text-lg leading-relaxed">
-      Minecraft server developer specializing in plugin configuration, staff management, and community engagement. Experienced in growing servers from small communities to hundreds of members, focusing on creating exceptional gameplay experiences.
-    </p>
-  </section>
-
-  <!-- Current Roles with Enhanced Cards -->
-  <section id="current-roles" class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.3s">
-    <div class="section-header mb-8">
-      <i data-feather="award" class="text-accent"></i>
-      <h2 class="text-4xl font-display font-bold text-strong glow-text">Current Roles</h2>
-    </div>
-    <div class="grid md:grid-cols-2 gap-6">
-      
-      <div class="role-card bg-card p-6 rounded-xl border border-soft hover-grow">
-        <div class="flex items-center gap-4 mb-4">
-          <img src="images/icons/shady.png" class="w-20 h-20 rounded-full border-2 border-accent" alt="ShadySMP">
-          <div>
-            <h3 class="text-2xl font-display font-semibold text-main">ShadySMP</h3>
-            <p class="text-accent font-medium">Co-Owner</p>
-          </div>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-muted flex items-center gap-2">
-            <i data-feather="users" class="w-4 h-4"></i>
-            450 Members
-          </span>
-          <a href="https://discord.gg/Jg48d8xbcD" class="link-button" target="_blank">
-            <i data-feather="link" class="w-4 h-4"></i> Discord
-          </a>
-        </div>
-      </div>
-
-      <div class="role-card bg-card p-6 rounded-xl border border-soft hover-grow">
-        <div class="flex items-center gap-4 mb-4">
-          <img src="images/icons/collective.png" class="w-20 h-20 rounded-full border-2 border-accent" alt="Discord Collective">
-          <div>
-            <h3 class="text-2xl font-display font-semibold text-main">Discord Collective</h3>
-            <p class="text-accent font-medium">Manager</p>
-          </div>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-muted flex items-center gap-2">
-            <i data-feather="users" class="w-4 h-4"></i>
-            60 Members
-          </span>
-          <a href="https://discord.gg/nUMJ52Pycj" class="link-button" target="_blank">
-            <i data-feather="link" class="w-4 h-4"></i> Discord
-          </a>
-        </div>
-      </div>
-      
-    </div>
-  </section>
-
-  <!-- Previous Roles Grid -->
-  <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.4s">
-    <div class="section-header mb-8">
-      <i data-feather="clock" class="text-accent"></i>
-      <h2 class="text-4xl font-display font-bold text-strong glow-text">Previous Roles</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-5">
-
-      <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
-        <img src="images/icons/prism.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="Prism SMP">
-        <h3 class="text-lg font-display font-semibold text-center text-main mb-1">Prism SMP</h3>
-        <p class="text-center text-accent text-sm mb-3">Owner • 700 members</p>
-        <a href="https://discord.gg/cVBDxNxP5c" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
-          <i data-feather="link" class="w-3 h-3"></i> Discord
-        </a>
-      </div>
-
-      <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
-        <img src="images/icons/shatter.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="ShatterMC">
-        <h3 class="text-lg font-display font-semibold text-center text-main mb-1">ShatterMC</h3>
-        <p class="text-center text-accent text-sm mb-3">Senior Admin • 260 members</p>
-        <a href="https://discord.gg/sfSnvmtFfA" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
-          <i data-feather="link" class="w-3 h-3"></i> Discord
-        </a>
-      </div>
-
-      <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
-        <img src="images/icons/smpfinder.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="SMP Finder">
-        <h3 class="text-lg font-display font-semibold text-center text-main mb-1">SMP Finder</h3>
-        <p class="text-center text-accent text-sm mb-3">Senior Moderator • 27k members</p>
-        <a href="https://discord.gg/cuP8bPZgYv" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
-          <i data-feather="link" class="w-3 h-3"></i> Discord
-        </a>
-      </div>
-
-      <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
-        <img src="images/icons/ocean.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="OceanMC">
-        <h3 class="text-lg font-display font-semibold text-center text-main mb-1">OceanMC</h3>
-        <p class="text-center text-accent text-sm mb-3">Owner • 300 members</p>
-        <a href="https://discord.gg/YEgAUe8UMp" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
-          <i data-feather="link" class="w-3 h-3"></i> Discord
-        </a>
-      </div>
-
-      <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
-        <img src="images/icons/steaky.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="SteakySMP">
-        <h3 class="text-lg font-display font-semibold text-center text-main mb-1">SteakySMP</h3>
-        <p class="text-center text-accent text-sm mb-3">Co-Owner • 1.5k members</p>
-        <a href="https://discord.gg/nGVcVzK6" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
-          <i data-feather="link" class="w-3 h-3"></i> Discord
-        </a>
-      </div>
-
-      <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
-        <img src="images/icons/bonk.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="BonkMC">
-        <h3 class="text-lg font-display font-semibold text-center text-main mb-1">BonkMC</h3>
-        <p class="text-center text-accent text-sm mb-3">Moderator • 4.6k members</p>
-        <a href="https://discord.gg/XV4EGPxHqc" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
-          <i data-feather="link" class="w-3 h-3"></i> Discord
-        </a>
-      </div>
-
-      <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
-        <img src="images/icons/nebular.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="Nebular SMP">
-        <h3 class="text-lg font-display font-semibold text-center text-main mb-1">Nebular SMP</h3>
-        <p class="text-center text-accent text-sm mb-3">Overseer/Co-Owner • 200 members</p>
-        <a href="https://discord.gg/YYwWMXxKAz" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
-          <i data-feather="link" class="w-3 h-3"></i> Discord
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.5s">
-    <div class="section-header mb-8">
-      <i data-feather="tool" class="text-accent"></i>
-      <h2 class="text-4xl font-display font-bold text-strong glow-text">Skills & Responsibilities</h2>
+    <div class="fixed inset-0 z-[-10] overflow-hidden">
+      <img src="background.jpg" alt="Background" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/60 to-black/85"></div>
+      <div class="absolute inset-0 bg-noise"></div>
+      <canvas id="particles" class="absolute inset-0"></canvas>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="skill-section">
-        <h3 class="text-2xl font-display font-semibold mb-4 text-strong flex items-center">
-          <i data-feather="star" class="mr-3 text-accent"></i>Core Expertise
-        </h3>
-        <ul class="space-y-3">
-          <li class="skill-item"><i data-feather="server" class="text-accent"></i><span class="text-main">Server Administration</span></li>
-          <li class="skill-item"><i data-feather="users" class="text-accent"></i><span class="text-main">Staff Management</span></li>
-          <li class="skill-item"><i data-feather="message-circle" class="text-accent"></i><span class="text-main">Community Engagement</span></li>
-          <li class="skill-item"><i data-feather="code" class="text-accent"></i><span class="text-main">Technical Skills</span></li>
-          <li class="skill-item"><i data-feather="file-text" class="text-accent"></i><span class="text-main">Logs Management</span></li>
-          <li class="skill-item"><i data-feather="image" class="text-accent"></i><span class="text-main">Graphic Design</span></li>
-        </ul>
-      </div>
+    <main class="relative z-10 max-w-6xl mx-auto px-4 pt-20 pb-12 space-y-24">
 
-      <div class="skill-section">
-        <h3 class="text-2xl font-display font-semibold mb-4 text-strong flex items-center">
-          <i data-feather="list" class="mr-3 text-accent"></i>Daily Tasks
-        </h3>
-        <ul class="space-y-3">
-          <li class="skill-item"><i data-feather="activity" class="text-accent"></i><span class="text-main">Server maintenance & monitoring</span></li>
-          <li class="skill-item"><i data-feather="users" class="text-accent"></i><span class="text-main">Staff coordination & training</span></li>
-          <li class="skill-item"><i data-feather="package" class="text-accent"></i><span class="text-main">Plugin installation & configuration</span></li>
-          <li class="skill-item"><i data-feather="calendar" class="text-accent"></i><span class="text-main">Community engagement & events</span></li>
-          <li class="skill-item"><i data-feather="search" class="text-accent"></i><span class="text-main">Server logs analysis & debugging</span></li>
-          <li class="skill-item"><i data-feather="pen-tool" class="text-accent"></i><span class="text-main">Creating graphics & promo materials</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
+        <section class="flex flex-col md:flex-row items-center gap-12 stagger-item" style="animation-delay: 0.1s">
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-accent-primary to-twilight-blue rounded-full blur-xl opacity-60 group-hover:opacity-100 transition duration-400 animate-pulse-slow"></div>
+          <img src="images/profile.png" alt="Profile" class="relative rounded-full w-48 h-48 object-cover border-4 border-strong shadow-2xl hover:scale-105 transition-transform duration-250">
+        </div>
+        <div class="flex-1">
+          <h1 class="text-6xl md:text-7xl font-display font-black mb-4 text-strong glow-text hero-title">
+            <span class="inline-block hover:scale-110 transition-transform cursor-default">N</span><span class="inline-block hover:scale-110 transition-transform cursor-default">o</span><span class="inline-block hover:scale-110 transition-transform cursor-default">t</span><span class="inline-block hover:scale-110 transition-transform cursor-default">D</span><span class="inline-block hover:scale-110 transition-transform cursor-default">i</span><span class="inline-block hover:scale-110 transition-transform cursor-default">m</span><span class="inline-block hover:scale-110 transition-transform cursor-default">e</span><span class="inline-block hover:scale-110 transition-transform cursor-default">n</span><span class="inline-block hover:scale-110 transition-transform cursor-default">s</span><span class="inline-block hover:scale-110 transition-transform cursor-default">i</span><span class="inline-block hover:scale-110 transition-transform cursor-default">o</span><span class="inline-block hover:scale-110 transition-transform cursor-default">n</span>
+          </h1>
+          <div class="inline-block mb-4">
+            <p class="text-xl px-6 py-2.5 rounded-full bg-gradient-to-r from-accent-primary to-horizon-teal text-white font-semibold shadow-lg">
+              Minecraft Server Developer
+            </p>
+          </div>
+          <p class="text-muted text-base mb-5 flex items-center gap-2">
+            <i data-feather="map-pin" class="w-4 h-4"></i>
+            South Africa
+          </p>
+          <div class="flex gap-4 text-accent">
+            <a href="https://discord.com/users/753556348784083024" target="_blank" class="social-icon"><i data-feather="message-circle"></i></a>
+            <a href="https://www.youtube.com/@NotDimension" target="_blank" class="social-icon"><i data-feather="youtube"></i></a>
+            <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="social-icon"><i data-feather="cpu"></i></a>
+            <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="social-icon"><i data-feather="box"></i></a>
+          </div>
+        </div>
+      </section>
 
-  <!-- Currently Working On -->
-  <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.6s">
-    <div class="section-header mb-8">
-      <i data-feather="zap" class="text-accent"></i>
-      <h2 class="text-4xl font-display font-bold text-strong glow-text">Currently Working On</h2>
-    </div>
+        <section id="about" class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item hover-lift" style="animation-delay: 0.2s">
+        <div class="section-header mb-6">
+          <i data-feather="user" class="text-accent"></i>
+          <h2 class="text-4xl font-display font-bold text-strong glow-text">About Me</h2>
+        </div>
+      <p class="text-main text-lg leading-relaxed">
+          Minecraft server developer specializing in plugin configuration, staff management, and community engagement. Experienced in growing servers from small communities to hundreds of members, focusing on creating exceptional gameplay experiences.
+      </p>
+      </section>
 
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="work-card bg-card rounded-xl p-6 border border-soft hover-lift">
-        <div class="flex items-start gap-4">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-accent-primary to-accent-secondary flex items-center justify-center flex-shrink-0">
-            <i data-feather="book" class="text-white"></i>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-display font-semibold mb-2 text-main">MOOC Java Programming I & II</h3>
-            <p class="text-muted mb-3">Learning Java programming through comprehensive online courses.</p>
-            <div class="flex items-center justify-between">
-              <span class="text-accent font-medium text-sm">ETA: 3 months</span>
-              <a href="https://java-programming.mooc.fi/" target="_blank" class="link-button">
-                <i data-feather="external-link" class="w-4 h-4"></i> Course
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+        <section id="current-roles" class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.3s">
+        <div class="section-header mb-8">
+          <i data-feather="award" class="text-accent"></i>
+          <h2 class="text-4xl font-display font-bold text-strong glow-text">Current Roles</h2>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          
+          <div class="role-card bg-card p-6 rounded-xl border border-soft hover-grow">
+            <div class="flex items-center gap-4 mb-4">
+              <img src="images/icons/shady.png" class="w-20 h-20 rounded-full border-2 border-accent" alt="ShadySMP">
+              <div>
+                <h3 class="text-2xl font-display font-semibold text-main">ShadySMP</h3>
+                <p class="text-accent font-medium">Co-Owner</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-muted flex items-center gap-2">
+                <i data-feather="users" class="w-4 h-4"></i>
+                450 Members
+              </span>
+              <a href="https://discord.gg/Jg48d8xbcD" class="link-button" target="_blank">
+                <i data-feather="link" class="w-4 h-4"></i> Discord
+              </a>
+          </div>
+          </div>
 
-      <div class="work-card bg-card rounded-xl p-6 border border-soft hover-lift">
-        <div class="flex items-start gap-4">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-twilight-blue to-horizon-teal flex items-center justify-center flex-shrink-0">
-            <i data-feather="code" class="text-white"></i>
-          </div>
-          <div class="flex-1">
-            <h3 class="text-xl font-display font-semibold mb-2 text-main">Object-Oriented Java Course</h3>
-            <p class="text-muted mb-3">Developing object-oriented programming skills in Java.</p>
-            <div class="flex items-center justify-between">
-              <span class="text-accent font-medium text-sm">ETA: 2 months</span>
-              <a href="https://www.coursera.org/learn/object-oriented-java" target="_blank" class="link-button">
-                <i data-feather="external-link" class="w-4 h-4"></i> Course
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <div class="role-card bg-card p-6 rounded-xl border border-soft hover-grow">
+            <div class="flex items-center gap-4 mb-4">
+              <img src="images/icons/collective.png" class="w-20 h-20 rounded-full border-2 border-accent" alt="Discord Collective">
+              <div>
+                <h3 class="text-2xl font-display font-semibold text-main">Discord Collective</h3>
+                <p class="text-accent font-medium">Manager</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-muted flex items-center gap-2">
+                <i data-feather="users" class="w-4 h-4"></i>
+                60 Members
+              </span>
+              <a href="https://discord.gg/nUMJ52Pycj" class="link-button" target="_blank">
+                <i data-feather="link" class="w-4 h-4"></i> Discord
+              </a>
+          </div>
+          </div>
+          
+        </div>
+      </section>
 
-  <!-- Socials Grid -->
-  <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.7s">
-    <div class="section-header mb-8">
-      <i data-feather="share-2" class="text-accent"></i>
-      <h2 class="text-4xl font-display font-bold text-strong glow-text">Connect With Me</h2>
-    </div>
+        <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.4s">
+        <div class="section-header mb-8">
+          <i data-feather="clock" class="text-accent"></i>
+          <h2 class="text-4xl font-display font-bold text-strong glow-text">Previous Roles</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-5">
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <a href="https://discord.com/users/753556348784083024" target="_blank" class="social-card">
-        <img src="https://cdn.simpleicons.org/discord" width="28">
-        <span>Discord</span>
-      </a>
+          <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
+            <img src="images/icons/prism.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="Prism SMP">
+            <h3 class="text-lg font-display font-semibold text-center text-main mb-1">Prism SMP</h3>
+            <p class="text-center text-accent text-sm mb-3">Owner • 700 members</p>
+            <a href="https://discord.gg/cVBDxNxP5c" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
+              <i data-feather="link" class="w-3 h-3"></i> Discord
+            </a>
+          </div>
 
-      <a href="https://www.youtube.com/@NotDimension" target="_blank" class="social-card">
-        <img src="https://cdn.simpleicons.org/youtube" width="28">
-        <span>YouTube</span>
-      </a>
+          <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
+            <img src="images/icons/shatter.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="ShatterMC">
+            <h3 class="text-lg font-display font-semibold text-center text-main mb-1">ShatterMC</h3>
+            <p class="text-center text-accent text-sm mb-3">Senior Admin • 260 members</p>
+            <a href="https://discord.gg/sfSnvmtFfA" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
+              <i data-feather="link" class="w-3 h-3"></i> Discord
+            </a>
+          </div>
 
-      <a href="https://open.spotify.com/user/31z2sjm4nmep3ecjeibav25czjsa" target="_blank" class="social-card">
-        <img src="https://cdn.simpleicons.org/spotify" width="28">
-        <span>Spotify</span>
-      </a>
+          <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
+            <img src="images/icons/smpfinder.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="SMP Finder">
+            <h3 class="text-lg font-display font-semibold text-center text-main mb-1">SMP Finder</h3>
+            <p class="text-center text-accent text-sm mb-3">Senior Moderator • 27k members</p>
+            <a href="https://discord.gg/cuP8bPZgYv" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
+              <i data-feather="link" class="w-3 h-3"></i> Discord
+            </a>
+          </div>
 
-      <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="social-card">
-        <img src="https://cdn.simpleicons.org/steam" width="28">
-        <span>Steam</span>
-      </a>
+          <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
+            <img src="images/icons/ocean.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="OceanMC">
+            <h3 class="text-lg font-display font-semibold text-center text-main mb-1">OceanMC</h3>
+            <p class="text-center text-accent text-sm mb-3">Owner • 300 members</p>
+            <a href="https://discord.gg/YEgAUe8UMp" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
+              <i data-feather="link" class="w-3 h-3"></i> Discord
+            </a>
+          </div>
 
-      <a href="https://www.roblox.com/users/665215157/profile" target="_blank" class="social-card">
-        <img src="https://cdn.simpleicons.org/roblox" width="28">
-        <span>Roblox</span>
-      </a>
+          <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
+            <img src="images/icons/steaky.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="SteakySMP">
+            <h3 class="text-lg font-display font-semibold text-center text-main mb-1">SteakySMP</h3>
+            <p class="text-center text-accent text-sm mb-3">Co-Owner • 1.5k members</p>
+            <a href="https://discord.gg/nGVcVzK6" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
+              <i data-feather="link" class="w-3 h-3"></i> Discord
+            </a>
+          </div>
 
-      <a href="https://github.com/NotDimension" target="_blank" class="social-card">
-        <img src="https://cdn.simpleicons.org/github" width="28">
-        <span>Github</span>
-      </a>
+          <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
+            <img src="images/icons/bonk.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="BonkMC">
+            <h3 class="text-lg font-display font-semibold text-center text-main mb-1">BonkMC</h3>
+            <p class="text-center text-accent text-sm mb-3">Moderator • 4.6k members</p>
+            <a href="https://discord.gg/XV4EGPxHqc" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
+              <i data-feather="link" class="w-3 h-3"></i> Discord
+            </a>
+          </div>
 
-      <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="social-card">
-        <img src="https://cdn.simpleicons.org/namemc" width="28">
-        <span>NameMC</span>
-      </a>
-    </div>
-  </section>
+          <div class="role-card-small bg-card p-5 rounded-xl border border-soft">
+            <img src="images/icons/nebular.png" class="w-16 h-16 rounded-full mb-3 mx-auto border-2 border-soft" alt="Nebular SMP">
+            <h3 class="text-lg font-display font-semibold text-center text-main mb-1">Nebular SMP</h3>
+            <p class="text-center text-accent text-sm mb-3">Overseer/Co-Owner • 200 members</p>
+            <a href="https://discord.gg/YYwWMXxKAz" class="text-accent hover:text-strong flex items-center justify-center gap-1 text-sm" target="_blank">
+              <i data-feather="link" class="w-3 h-3"></i> Discord
+            </a>
+          </div>
 
-  <!-- Explore More CTA -->
-  <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.8s">
-    <div class="section-header mb-8">
-      <i data-feather="layers" class="text-accent"></i>
-      <h2 class="text-4xl font-display font-bold text-strong glow-text">Explore More</h2>
-    </div>
+        </div>
+      </section>
 
-    <p class="text-main text-lg mb-8">
-      Discover detailed information about my projects, contact options, and more.
-    </p>
+        <section id="skills" class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.5s">
+        <div class="section-header mb-8">
+          <i data-feather="tool" class="text-accent"></i>
+          <h2 class="text-4xl font-display font-bold text-strong glow-text">Skills & Responsibilities</h2>
+        </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
-      <a href="projects.html" class="explore-card group">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-accent-primary to-horizon-teal flex items-center justify-center flex-shrink-0">
-            <i data-feather="folder" class="text-white w-6 h-6"></i>
-          </div>
-          <div>
-            <h3 class="text-2xl font-display font-semibold text-main">Projects</h3>
-            <p class="text-muted text-sm">Live & archived server work</p>
-          </div>
-        </div>
-        <p class="text-main mb-4">A showcase of Minecraft server projects, technical configurations, and creative documentation.</p>
-        <div class="flex items-center text-accent font-medium">
-          <span>View details</span>
-          <i data-feather="arrow-right" class="ml-2 w-4 h-4 transform group-hover:translate-x-2 transition-transform"></i>
-        </div>
-      </a>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="skill-section">
+            <h3 class="text-2xl font-display font-semibold mb-4 text-strong flex items-center">
+              <i data-feather="star" class="mr-3 text-accent"></i>Core Expertise
+            </h3>
+            <ul class="space-y-3">
+              <li class="skill-item"><i data-feather="server" class="text-accent"></i><span class="text-main">Server Administration</span></li>
+              <li class="skill-item"><i data-feather="users" class="text-accent"></i><span class="text-main">Staff Management</span></li>
+              <li class="skill-item"><i data-feather="message-circle" class="text-accent"></i><span class="text-main">Community Engagement</span></li>
+              <li class="skill-item"><i data-feather="code" class="text-accent"></i><span class="text-main">Technical Skills</span></li>
+              <li class="skill-item"><i data-feather="file-text" class="text-accent"></i><span class="text-main">Logs Management</span></li>
+              <li class="skill-item"><i data-feather="image" class="text-accent"></i><span class="text-main">Graphic Design</span></li>
+            </ul>
+          </div>
 
-      <a href="contact.html" class="explore-card group">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-twilight-blue to-soft-teal flex items-center justify-center flex-shrink-0">
-            <i data-feather="mail" class="text-white w-6 h-6"></i>
-          </div>
-          <div>
-            <h3 class="text-2xl font-display font-semibold text-main">Contact</h3>
-            <p class="text-muted text-sm">Get in touch & community servers</p>
-          </div>
-        </div>
-        <p class="text-main mb-4">Preferred contact methods, response times, and links to community Discord servers.</p>
-        <div class="flex items-center text-accent font-medium">
-          <span>Reach out</span>
-          <i data-feather="arrow-right" class="ml-2 w-4 h-4 transform group-hover:translate-x-2 transition-transform"></i>
-        </div>
-      </a>
+          <div class="skill-section">
+            <h3 class="text-2xl font-display font-semibold mb-4 text-strong flex items-center">
+              <i data-feather="list" class="mr-3 text-accent"></i>Daily Tasks
+            </h3>
+            <ul class="space-y-3">
+              <li class="skill-item"><i data-feather="activity" class="text-accent"></i><span class="text-main">Server maintenance & monitoring</span></li>
+              <li class="skill-item"><i data-feather="users" class="text-accent"></i><span class="text-main">Staff coordination & training</span></li>
+              <li class="skill-item"><i data-feather="package" class="text-accent"></i><span class="text-main">Plugin installation & configuration</span></li>
+              <li class="skill-item"><i data-feather="calendar" class="text-accent"></i><span class="text-main">Community engagement & events</span></li>
+              <li class="skill-item"><i data-feather="search" class="text-accent"></i><span class="text-main">Server logs analysis & debugging</span></li>
+              <li class="skill-item"><i data-feather="pen-tool" class="text-accent"></i><span class="text-main">Creating graphics & promo materials</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-      <a href="about.html" class="explore-card group">
-        <div class="flex items-start gap-4 mb-4">
-          <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-horizon-teal to-accent-secondary flex items-center justify-center flex-shrink-0">
-            <i data-feather="user" class="text-white w-6 h-6"></i>
-          </div>
-          <div>
-            <h3 class="text-2xl font-display font-semibold text-main">About Me</h3>
-            <p class="text-muted text-sm">Background, timeline & interests</p>
-          </div>
-        </div>
-        <p class="text-main mb-4">Learn about my journey, core principles, and personal interests beyond Minecraft.</p>
-        <div class="flex items-center text-accent font-medium">
-          <span>Read more</span>
-          <i data-feather="arrow-right" class="ml-2 w-4 h-4 transform group-hover:translate-x-2 transition-transform"></i>
-        </div>
-      </a>
-    </div>
-  </section>
+        <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.6s">
+        <div class="section-header mb-8">
+          <i data-feather="zap" class="text-accent"></i>
+          <h2 class="text-4xl font-display font-bold text-strong glow-text">Currently Working On</h2>
+        </div>
 
-</main>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="work-card bg-card rounded-xl p-6 border border-soft hover-lift">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-accent-primary to-accent-secondary flex items-center justify-center flex-shrink-0">
+                <i data-feather="book" class="text-white"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-display font-semibold mb-2 text-main">MOOC Java Programming I & II</h3>
+                <p class="text-muted mb-3">Learning Java programming through comprehensive online courses.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-accent font-medium text-sm">ETA: 3 months</span>
+                  <a href="https://java-programming.mooc.fi/" target="_blank" class="link-button">
+                    <i data-feather="external-link" class="w-4 h-4"></i> Course
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-card bg-card rounded-xl p-6 border border-soft hover-lift">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-twilight-blue to-horizon-teal flex items-center justify-center flex-shrink-0">
+                <i data-feather="code" class="text-white"></i>
+              </div>
+              <div class="flex-1">
+                <h3 class="text-xl font-display font-semibold mb-2 text-main">Object-Oriented Java Course</h3>
+                <p class="text-muted mb-3">Developing object-oriented programming skills in Java.</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-accent font-medium text-sm">ETA: 2 months</span>
+                  <a href="https://www.coursera.org/learn/object-oriented-java" target="_blank" class="link-button">
+                    <i data-feather="external-link" class="w-4 h-4"></i> Course
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.7s">
+        <div class="section-header mb-8">
+          <i data-feather="share-2" class="text-accent"></i>
+          <h2 class="text-4xl font-display font-bold text-strong glow-text">Connect With Me</h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <a href="https://discord.com/users/753556348784083024" target="_blank" class="social-card">
+            <img src="https://cdn.simpleicons.org/discord" width="28">
+            <span>Discord</span>
+          </a>
+
+          <a href="https://www.youtube.com/@NotDimension" target="_blank" class="social-card">
+            <img src="https://cdn.simpleicons.org/youtube" width="28">
+            <span>YouTube</span>
+          </a>
+
+          <a href="https://open.spotify.com/user/31z2sjm4nmep3ecjeibav25czjsa" target="_blank" class="social-card">
+            <img src="https://cdn.simpleicons.org/spotify" width="28">
+            <span>Spotify</span>
+          </a>
+
+          <a href="https://steamcommunity.com/id/notdimension" target="_blank" class="social-card">
+            <img src="https://cdn.simpleicons.org/steam" width="28">
+            <span>Steam</span>
+          </a>
+
+          <a href="https://www.roblox.com/users/665215157/profile" target="_blank" class="social-card">
+            <img src="https://cdn.simpleicons.org/roblox" width="28">
+            <span>Roblox</span>
+          </a>
+
+          <a href="https://github.com/NotDimension" target="_blank" class="social-card">
+            <img src="https://cdn.simpleicons.org/github" width="28">
+            <span>Github</span>
+          </a>
+
+          <a href="https://namemc.com/profile/NotDimension.1" target="_blank" class="social-card">
+            <img src="https://cdn.simpleicons.org/namemc" width="28">
+            <span>NameMC</span>
+          </a>
+        </div>
+      </section>
+
+        <section class="frosted-glass rounded-2xl p-8 shadow-2xl stagger-item" style="animation-delay: 0.8s">
+        <div class="section-header mb-8">
+          <i data-feather="layers" class="text-accent"></i>
+          <h2 class="text-4xl font-display font-bold text-strong glow-text">Explore More</h2>
+        </div>
+
+        <p class="text-main text-lg mb-8">
+          Discover detailed information about my projects, contact options, and more.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <a href="projects.html" class="explore-card group">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-accent-primary to-horizon-teal flex items-center justify-center flex-shrink-0">
+                <i data-feather="folder" class="text-white w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-display font-semibold text-main">Projects</h3>
+                <p class="text-muted text-sm">Live & archived server work</p>
+              </div>
+            </div>
+            <p class="text-main mb-4">A showcase of Minecraft server projects, technical configurations, and creative documentation.</p>
+            <div class="flex items-center text-accent font-medium">
+              <span>View details</span>
+              <i data-feather="arrow-right" class="ml-2 w-4 h-4 transform group-hover:translate-x-2 transition-transform"></i>
+            </div>
+          </a>
+
+          <a href="contact.html" class="explore-card group">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-twilight-blue to-soft-teal flex items-center justify-center flex-shrink-0">
+                <i data-feather="mail" class="text-white w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-display font-semibold text-main">Contact</h3>
+                <p class="text-muted text-sm">Get in touch & community servers</p>
+              </div>
+            </div>
+            <p class="text-main mb-4">Preferred contact methods, response times, and links to community Discord servers.</p>
+            <div class="flex items-center text-accent font-medium">
+              <span>Reach out</span>
+              <i data-feather="arrow-right" class="ml-2 w-4 h-4 transform group-hover:translate-x-2 transition-transform"></i>
+            </div>
+          </a>
+
+          <a href="about.html" class="explore-card group">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 rounded-lg bg-gradient-to-br from-horizon-teal to-accent-secondary flex items-center justify-center flex-shrink-0">
+                <i data-feather="user" class="text-white w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="text-2xl font-display font-semibold text-main">About Me</h3>
+                <p class="text-muted text-sm">Background, timeline & interests</p>
+              </div>
+            </div>
+            <p class="text-main mb-4">Learn about my journey, core principles, and personal interests beyond Minecraft.</p>
+            <div class="flex items-center text-accent font-medium">
+              <span>Read more</span>
+              <i data-feather="arrow-right" class="ml-2 w-4 h-4 transform group-hover:translate-x-2 transition-transform"></i>
+            </div>
+          </a>
+        </div>
+      </section>
+
+    </main>
+</div>
 
 <script>
 feather.replace();
 
-// Optimized Particle background
+// Audio and Entry logic
+const overlay = document.getElementById('entry-overlay');
+const wrapper = document.getElementById('main-wrapper');
+const music = document.getElementById('bg-music');
+
+overlay.addEventListener('click', () => {
+    music.volume = 1.0;
+    music.play().catch(e => console.log("Audio play blocked"));
+    
+    overlay.style.opacity = '0';
+    wrapper.classList.remove('is-blurred');
+    
+    setTimeout(() => {
+        overlay.style.display = 'none';
+    }, 1000);
+});
+
+// Optimized Particle background - Updated to Obsidian/Gray theme
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 let animationFrameId;
 
 function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
 
 resizeCanvas();
@@ -400,81 +422,90 @@ const particles = [];
 const particleCount = 70;
 
 class Particle {
-  constructor() {
-    this.reset();
-    this.y = Math.random() * canvas.height;
-  }
-  
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = 0;
-    this.size = Math.random() * 2 + 1;
-    this.speedX = Math.random() * 0.4 - 0.2;
-    this.speedY = Math.random() * 0.4 - 0.2;
-  }
-  
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    
-    if (this.x > canvas.width) this.x = 0;
-    if (this.x < 0) this.x = canvas.width;
-    if (this.y > canvas.height) this.y = 0;
-    if (this.y < 0) this.y = canvas.height;
-  }
-  
-  draw() {
-    ctx.fillStyle = 'rgba(93, 163, 199, 0.35)';
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
-  }
+  constructor() {
+    this.reset();
+    this.y = Math.random() * canvas.height;
+  }
+  
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = 0;
+    this.size = Math.random() * 2 + 1;
+    this.speedX = Math.random() * 0.4 - 0.2;
+    this.speedY = Math.random() * 0.4 - 0.2;
+  }
+  
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    
+    if (this.x > canvas.width) this.x = 0;
+    if (this.x < 0) this.x = canvas.width;
+    if (this.y > canvas.height) this.y = 0;
+    if (this.y < 0) this.y = canvas.height;
+  }
+  
+  draw() {
+    // Changed color to a subtle white/gray for the Obsidian theme
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
 }
 
 for (let i = 0; i < particleCount; i++) {
-  particles.push(new Particle());
+  particles.push(new Particle());
 }
 
 function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(particle => {
-    particle.update();
-    particle.draw();
-  });
-  animationFrameId = requestAnimationFrame(animate);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(particle => {
+    particle.update();
+    particle.draw();
+  });
+  animationFrameId = requestAnimationFrame(animate);
 }
 
 animate();
 
 window.addEventListener('resize', () => {
-  resizeCanvas();
+  resizeCanvas();
 });
 
 // Intersection Observer for smooth scroll animations
 const observerOptions = {
-  threshold: 0.2,
-  rootMargin: '0px'
+  threshold: 0.2,
+  rootMargin: '0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
-      entry.target.classList.add('animate-in');
-    }
-  });
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.classList.contains('animate-in')) {
+      entry.target.classList.add('animate-in');
+    }
+  });
 }, observerOptions);
 
 document.querySelectorAll('.stagger-item').forEach(item => {
-  observer.observe(item);
+  observer.observe(item);
 });
 
 // Cleanup on page unload
 window.addEventListener('beforeunload', () => {
-  if (animationFrameId) {
-    cancelAnimationFrame(animationFrameId);
-  }
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+  }
 });
 </script>
+
+<style>
+.is-blurred {
+    filter: blur(40px);
+    pointer-events: none;
+    transform: scale(1.05);
+}
+</style>
 
 </body>
 </html>
