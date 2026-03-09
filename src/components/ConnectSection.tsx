@@ -1,0 +1,65 @@
+import { motion } from "framer-motion";
+
+const socials = [
+  { name: "Discord", url: "https://discord.com/users/753556348784083024", icon: "https://cdn.simpleicons.org/discord/ffffff" },
+  { name: "YouTube", url: "https://www.youtube.com/@NotDimension", icon: "https://cdn.simpleicons.org/youtube/ffffff" },
+  { name: "Spotify", url: "https://open.spotify.com/user/31z2sjm4nmep3ecjeibav25czjsa", icon: "https://cdn.simpleicons.org/spotify/ffffff" },
+  { name: "Steam", url: "https://steamcommunity.com/id/notdimension", icon: "https://cdn.simpleicons.org/steam/ffffff" },
+  { name: "GitHub", url: "https://github.com/NotDimension", icon: "https://cdn.simpleicons.org/github/ffffff" },
+  { name: "NameMC", url: "https://namemc.com/profile/NotDimension.1", icon: "https://cdn.simpleicons.org/namemc/ffffff" },
+];
+
+const ConnectSection = () => {
+  return (
+    <section className="py-24 px-4">
+      <div className="container max-w-3xl mx-auto">
+        <motion.div
+          initial={{ y: 40, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <h2 className="text-sm font-mono text-primary mb-10 tracking-widest uppercase">
+            // Connect With Me
+          </h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            {socials.map((social, i) => (
+              <motion.a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: i * 0.06 }}
+                className="glass-card rounded-lg px-5 py-3 flex items-center gap-3 group transition-all duration-300 cursor-pointer"
+              >
+                <img src={social.icon} alt={social.name} className="w-4 h-4 opacity-60 group-hover:opacity-100 transition-opacity" />
+                <span className="text-sm font-mono text-secondary-foreground group-hover:text-foreground transition-colors">
+                  {social.name}
+                </span>
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.footer
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-24 text-center"
+        >
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-border to-transparent mx-auto mb-6" />
+          <p className="text-xs font-mono text-muted-foreground">
+            © 2024 NotDimension. All rights reserved.
+          </p>
+        </motion.footer>
+      </div>
+    </section>
+  );
+};
+
+export default ConnectSection;
