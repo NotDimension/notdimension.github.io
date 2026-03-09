@@ -60,13 +60,13 @@ const SpotifySection = () => {
                   <Music className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground text-sm">Coding Vibes</h3>
-                  <p className="text-xs text-muted-foreground">Lo-fi & RNB</p>
+                  <h3 className="font-semibold text-foreground text-sm">Dimensions Playlist</h3>
+                  <p className="text-xs text-muted-foreground">My Own Custom Playlist :D</p>
                 </div>
               </div>
               <div className="rounded-lg overflow-hidden">
                 <iframe
-                  src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3rxVfibe1L0?utm_source=generator&theme=0"
+                  src="https://open.spotify.com/embed/playlist/7sfUAINykAmpLJOwnUS5Bn?utm_source=generator&theme=0"
                   width="100%"
                   height="152"
                   frameBorder="0"
