@@ -2,72 +2,86 @@ import { motion } from "framer-motion";
 import { MapPin, ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
+  const name = "NotDimension";
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg">
+      {/* Background gradients */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,hsl(210_100%_55%/0.08)_0%,transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_80%,hsl(200_90%_50%/0.04)_0%,transparent_50%)]" />
 
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-14">
-          {/* Profile picture - bigger, on the left */}
+        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+
+          {/* Profile picture */}
           <motion.div
-            initial={{ scale: 0.6, opacity: 0, x: -40 }}
+            initial={{ scale: 0.7, opacity: 0, x: -50 }}
             animate={{ scale: 1, opacity: 1, x: 0 }}
+            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-shrink-0"
+            className="flex-shrink-0 group relative"
           >
-            <div className="relative group">
-              {/* Glow ring */}
-              <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary/40 via-accent/20 to-transparent blur-md group-hover:blur-lg transition-all duration-700 opacity-60 group-hover:opacity-80" />
-              <div className="relative w-44 h-44 md:w-52 md:h-52 rounded-full overflow-hidden border-2 border-primary/30 glow-border">
-                <img
-                  src="/images/profile.png"
-                  alt="NotDimension"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-              </div>
-              {/* Status dot */}
-              <div className="absolute bottom-3 right-3 w-5 h-5 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/30 animate-pulse-glow" />
+            <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary/40 via-accent/20 to-transparent blur-lg group-hover:blur-xl transition-all duration-700 opacity-60 group-hover:opacity-90" />
+            <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-2 border-primary/30 glow-border">
+              <img
+                src="/images/profile.png"
+                alt="NotDimension"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
             </div>
+            <div className="absolute bottom-4 right-4 w-5 h-5 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/30 animate-pulse-glow" />
           </motion.div>
 
-          {/* Text - on the right */}
-          <div className="text-center md:text-left">
+          {/* Text */}
+          <div className="text-center md:text-left space-y-4">
+            {/* Role badge */}
             <motion.div
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mb-3"
+              whileHover={{ y: -2, scale: 1.02 }}
+              transition={{ duration: 0.4 }}
             >
               <span className="inline-block text-xs font-mono text-primary/60 tracking-[0.3em] uppercase bg-primary/5 px-3 py-1 rounded-full border border-primary/10">
                 Minecraft Server Developer
               </span>
             </motion.div>
 
+            {/* Animated name */}
             <motion.h1
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="text-5xl md:text-7xl font-bold tracking-tight mb-4 font-mono leading-none"
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="text-5xl md:text-7xl font-bold tracking-tight font-mono flex flex-wrap gap-1 justify-center md:justify-start"
             >
-              <span className="text-primary glow-text">Not</span>
-              <span className="text-foreground">Dimension</span>
+              {name.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  whileHover={{ y: -8, scale: 1.3, rotate: 5, color: "#0ea5e9" }}
+                  transition={{ type: "spring", stiffness: 300, damping: 12 }}
+                >
+                  {char}
+                </motion.span>
+              ))}
             </motion.h1>
 
+            {/* Description */}
             <motion.p
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="text-sm md:text-base text-muted-foreground max-w-md leading-relaxed mb-5"
+              whileHover={{ y: -3 }}
+              transition={{ duration: 0.5 }}
+              className="text-sm md:text-base text-muted-foreground max-w-md leading-relaxed"
             >
               Building communities, configuring servers, and crafting exceptional
               Minecraft experiences from South Africa.
             </motion.p>
 
+            {/* Location & Status */}
             <motion.div
               initial={{ y: 15, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
+              whileHover={{ y: -2 }}
+              transition={{ duration: 0.5 }}
               className="flex items-center gap-4 justify-center md:justify-start"
             >
               <div className="flex items-center gap-2 text-muted-foreground">
